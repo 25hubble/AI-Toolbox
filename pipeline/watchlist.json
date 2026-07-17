@@ -1,0 +1,25 @@
+{
+  "_comment": "매일 감시할 대상. channels 는 유튜브 핸들(@name) 또는 전체 URL. 자유롭게 추가/삭제하세요.",
+  "channels": [
+    "@IndyDevDan",
+    "@matthew_berman",
+    "@samwitteveenai",
+    "@jamesbriggs",
+    "@AIJasonZ",
+    "@TrelisResearch",
+    "@1littlecoder",
+    "@Intellipaat"
+  ],
+  "queries": [
+    "LangGraph production agent",
+    "vLLM serving on-premise LLM",
+    "QLoRA fine-tuning tutorial",
+    "multi-agent orchestration framework",
+    "RAG vector database production"
+  ],
+
+  "since_hours": 30,
+  "min_duration_sec": 360,
+  "max_per_day": 3,
+  "scan_depth": 6
+}

@@ -29,6 +29,44 @@ window.DASHBOARD_DATA = {
   /* ---- 콘텐츠 엔트리 (최신이 위로) ---- */
   entries: [
     {
+      "id": "openai-vs-anthropic-compute-economics-2026",
+      "categoryId": "agentops",
+      "moduleTag": "COMPUTE ECONOMICS & CAPACITY STRATEGY",
+      "title": "OpenAI vs Anthropic: 2년 전의 컴퓨트 결정이 지금의 승부를 가른다",
+      "subtitle": "모델 지능은 앞서도 컴퓨트 용량·서빙 비용·개발자 신뢰에서 밀리면 시장을 내준다는 인프라 경제학 분석",
+      "tags": [
+            "OpenAI",
+            "Anthropic",
+            "Fable 5",
+            "GPT 5.6",
+            "cost per task",
+            "compute capacity",
+            "quota",
+            "RSI",
+            "recursive self-improvement",
+            "developer mindshare"
+      ],
+      "videoUrl": "https://www.youtube.com/watch?v=nxr20lcqagg",
+      "videoId": "nxr20lcqagg",
+      "channel": "Matthew Berman",
+      "duration": "19:02",
+      "refDate": "2026-07-15",
+      "takeaway": "세계 최고 모델(Fable 5)과 최대 매출을 가진 Anthropic이 밀리는 이유는 지능이 아니라 컴퓨트 용량 부족이다 — 2년 전 GPU 인프라에 공격적으로 베팅하지 않은 결정이, Fable을 구독에서 빼야 할 만큼의 서빙 제약과 개발자 신뢰 상실로 이어져 OpenAI에 코딩 mindshare를 넘겨주고 있다.",
+      "box1": {
+            "title": "1 · 2년 전의 결정 — Anthropic을 옭아매는 컴퓨트 제약",
+            "html": "<p><b>모든 지표에서 앞서지만 이기지 못하는 역설.</b> Anthropic은 매출에서 OpenAI를 추월했고, Fable 5로 지구상 가장 똑똑한 모델을 보유했으며, 세계 최초로 10조 파라미터급 <b>monster 모델</b>을 만들어냈다. 그런데도 시장 인식에서 밀리는 이유는 단 하나 — <b>2년 전의 컴퓨트 인프라 투자 결정</b>이다. Dario는 인터뷰에서 AI 수요 곡선이 예측만큼 강하지 않을 경우 회사를 파산시킬 수 있다는 리스크 때문에 데이터센터에 공격적으로 베팅하지 않았다고 밝혔다. \"성장률이 연 10배가 아니라 5배거나, 1년만 빗나가도 파산한다\"는 논리였다.</p><p><b>그러나 수요는 예측보다 더 강했다.</b> 결과적으로 이 신중한 결정이 오늘날까지 발목을 잡고 있다. 여기에 세계 최초 10조 파라미터 모델이라는 요인이 겹치면서 두 악재가 <b>서로를 증폭</b>시켰다 — 가장 크고 비싼 모델을 만들었지만, 그것을 넉넉히 서빙할 컴퓨트가 없는 상황이다. Anthropic의 Tar는 \"Fable의 가용성에 대한 질문이 많았다. 구독에서 내려가지만, <b>용량이 허락하는 대로(as capacity allows)</b> 표준 구독의 일부로 복원하는 것을 목표로 한다\"고 사실상 용량 제약을 인정했다.</p><p><b>핵심 문제 — Fable을 구독에서 제거하려는 시도.</b> Anthropic은 Fable을 월정액 구독에서 빼고, 프리미엄 per-token API 가격으로만 쓰게 하려 했다. 저자는 이를 <b>전략적 대실수</b>로 본다. Fable이 구독에서 빠지면 사용자는 GPT 5.6 대비 약 10배 비싼 토큰 비용을 감수해야 하고, 그 순간 ChatGPT 구독이 압도적으로 매력적으로 보이기 때문이다. 실제 저자는 \"Fable이 구독에서 빠지면 나는 구독을 취소할 것\"이라고 말한다.</p>"
+      },
+      "box2": {
+            "title": "2 · 숫자로 보는 승부 — 지능은 동률, 경제성은 완패",
+            "html": "<p><b>지능 지수는 초박빙.</b> Artificial Analysis Intelligence Index 기준 Claude Fable 5가 <b>60점으로 1위</b>, GPT 5.6 Soul Max가 <b>59점으로 2위</b> — 단 1점 차이다. 즉 순수 지능만 놓고 보면 두 모델은 사실상 동급이다.</p><table class=\"matrix-table\"><tr><th>지표</th><th>Claude Fable 5</th><th>GPT 5.6</th></tr><tr><td>Intelligence Index</td><td><b>60 (1위)</b></td><td>59 (2위)</td></tr><tr><td>Cost per task (낮을수록 우수)</td><td>$2.75</td><td><b>약 $1</b></td></tr><tr><td>구독 포함 여부</td><td>제거 위협 / 불확실</td><td>안정적 포함</td></tr><tr><td>Quota 정책</td><td>거의 리셋 없음</td><td>잦은 리셋(48h 내 94% 확률)</td></tr></table><p><b>비용 대비 효율에서 격차가 벌어진다.</b> 동일한 지능 작업을 수행하는 데 Fable 5는 <b>task당 $2.75</b>, GPT 5.6은 <b>약 $1</b>이 든다. 지능은 거의 같은데 GPT 5.6이 <b>더 효율적이고, task당 비용이 낮으며, 해결 경로가 직접적</b>이다. Fable이 구독에서 빠지면 사용자는 차선책인 Opus 4.8 Max($180대)나 Sonnet 5로 밀려나는데, 이들 역시 GPT 5.6보다 비싸다.</p><p><b>Quota 전쟁 — OpenAI의 공세.</b> OpenAI의 Tibo 팀은 <b>거의 격일로 quota를 리셋</b>한다(저자가 willcodexquotareset.com까지 만들 정도로 밈이 됨 — 48시간 내 리셋 확률 94%). 리셋된 quota는 즉시 안 써도 <b>30일간 뱅킹</b>되고, Plus·Business·Pro의 5시간 롤링 제한도 일시 해제했다. 반면 Anthropic은 quota가 훨씬 인색하고 사실상 리셋하지 않는다 — 주간 한도를 50% 올려줘도 저자는 \"두 개 반 작업이면 소진\"된다고 지적한다. Sam Altman은 \"최고 모델 때문에 오되, 우리가 당신을 <b>경멸하지 않기(don't treat you with contempt)</b> 때문에 머문다\"며 감정 전쟁에서 우위를 굳히고 있다.</p>"
+      },
+      "box3": {
+            "title": "3 · 실전 판단 — 지금 무엇을 하고, 무엇이 판을 뒤집나",
+            "html": "<p><b>베테랑 vs 루키 프레임.</b> 저자는 두 모델을 스포츠에 비유한다. <b>GPT 5.6</b>은 GPT5 훈련의 마지막 산물로, 그 세대의 정점에 오른 <b>베테랑 선수</b> — 똑똑하고 효율적이며 직접적 해법을 찾고 신뢰성 높은 \"good game IQ\"를 가졌다. 반면 <b>Fable</b>은 리그에 갓 진입한 <b>루키</b> — 기술적으로 가장 똑똑하지만 post-training으로 짜낼 여지가 무궁무진하다. OpenAI는 이미 GPT6를 구워 post-training 중일 가능성이 높지만, Fable급이라면 더 크고 서빙 비용이 비싸 <b>동일한 수요·공급 문제</b>에 부딪힐 수 있다. 다만 OpenAI는 초기에 GPU에 공격적으로 베팅해둔 덕에 차세대 모델 서빙 준비가 유리하다.</p><p><b>실무 권고 — 단일 구독이라면 OpenAI.</b> 예산상 하나만 고른다면 저자는 <b>OpenAI 구독</b>을 추천한다. Fable이 근소하게 더 우수해도, 종합 가치는 OpenAI가 몇 배 크고, Anthropic은 Fable의 구독 포함 여부조차 불확실해 <b>그 위에 빌드하기 어렵다(build on top)</b>. 이미 ChatGPT 구독이 있다면 <b>quota를 아끼지 말고 소진하라</b> — 토큰을 비축하거나 보수적으로 쓰지 말고, 만료되는 리셋을 최대한 활용해 지금 최대한 많이 빌드하라는 것이 명확한 액션이다.</p><p><b>와일드카드 — Recursive Self-Improvement(RSI).</b> 그럼에도 Anthropic이 진 것은 아니다. 두 이유: ① Fable은 더 좋아지고 효율화될 여지가 크며, Anthropic이 컴퓨트를 확보하면 서빙이 관대해진다. ② 더 중요하게, <b>RSI가 이 논쟁 전체를 무의미하게 만들 수 있다</b>. 최고 모델이 다음 최고 모델을 연구하는 순환이 시작되면 격차는 오히려 벌어지며, \"RSI가 시작되면 앞선 자가 이긴다(whoever's in the lead wins)\". 언젠가 Fable이 스스로를 5배 효율화하면 GPT 5.6보다 훨씬 저렴해질 수도 있다. 결론: Anthropic은 매출·엔터프라이즈에서 앞서지만, <b>개발자는 최초 채택자이자 최초 이탈자</b>다. 감정·신뢰 전쟁에서 이기는 OpenAI로 개발자가 옮겨가면 1년 단위 엔터프라이즈 계약 갱신 시 기업도 뒤따를 수 있다.</p>"
+      }
+},
+
+    {
       id: "agent-frameworks-2026",
       categoryId: "multi-agent",
       moduleTag: "PRODUCTION FRAMEWORK SELECTION",

@@ -1,0 +1,11 @@
+# 파이프라인 임시/대용량 산출물 — 저장소엔 올리지 않음
+pipeline/work/
+pipeline/transcripts/
+pipeline/logs/
+*.wav
+*.mp3
+*.vtt
+*.bin
+__pycache__/
+*.pyc
+.DS_Store

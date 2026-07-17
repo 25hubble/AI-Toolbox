@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.aitoolbox.daily</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>/Users/e80-0162/Desktop/tk/AI-Toolbox/pipeline/daily_run.sh</string>
+  </array>
+
+  <!-- 매일 오전 8시 0분 실행 -->
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Hour</key><integer>8</integer>
+    <key>Minute</key><integer>0</integer>
+  </dict>
+
+  <!-- 예약 시각에 맥이 잠들어 있었으면, 깨어난 직후 1회 실행 -->
+  <key>RunAtLoad</key>
+  <false/>
+
+  <key>WorkingDirectory</key>
+  <string>/Users/e80-0162/Desktop/tk/AI-Toolbox</string>
+
+  <key>StandardOutPath</key>
+  <string>/Users/e80-0162/Desktop/tk/AI-Toolbox/pipeline/logs/launchd.out.log</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/e80-0162/Desktop/tk/AI-Toolbox/pipeline/logs/launchd.err.log</string>
+
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PATH</key>
+    <string>/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/e80-0162/.local/bin</string>
+  </dict>
+</dict>
+</plist>
