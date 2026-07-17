@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Master Architecture Dashboard v2.0</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            margin: 0;
+            padding: 40px 20px;
+            background-color: #0b0f19;
+            color: #e2e8f0;
+            line-height: 1.7;
+        }
+        .container {
+            max-width: 1040px;
+            margin: 0 auto;
+        }
+        .header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #0d9488 100%);
+            padding: 40px;
+            border-radius: 16px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 32px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            color: #ffffff;
+        }
+        .header p {
+            margin: 10px 0 0 0;
+            font-size: 16px;
+            color: #cbd5e1;
+        }
+        .grid-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 25px;
+        }
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        .sidebar {
+            background: #111827;
+            padding: 25px;
+            border-radius: 16px;
+            border: 1px solid #1f2937;
+            height: fit-content;
+        }
+        .section {
+            background: #111827;
+            padding: 30px;
+            border-radius: 16px;
+            border: 1px solid #1f2937;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        .section:hover {
+            border-color: #0d9488;
+            transform: translateY(-2px);
+        }
+        h2 {
+            color: #38bdf8;
+            font-size: 22px;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+        h3 {
+            color: #f87171;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+        .tech-tags {
+            margin: 15px 0;
+        }
+        .tech-tag {
+            display: inline-block;
+            background: rgba(56, 189, 248, 0.1);
+            color: #38bdf8;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-right: 8px;
+            margin-bottom: 8px;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+        }
+        .box-callout {
+            background: #1f2937;
+            border-left: 4px solid #0d9488;
+            padding: 15px;
+            border-radius: 0 8px 8px 0;
+            margin: 15px 0;
+            font-size: 14px;
+        }
+        ul { padding-left: 20px; margin: 10px 0; }
+        li { margin-bottom: 8px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h1>🖥️ 25hubble's AI Master Consulting Hub</h1>
+            <p>로컬 및 하이브리드 지능형 시스템 엔지니어링 & 컨설팅 코어 (v2.0 MAX)</p>
+        </div>
+
+        <div class="grid-layout">
+            <div class="main-content">
+                
+                <!-- 7월 17일 리포트 시작 -->
+                <div class="section">
+                    <span style="color: #6b7280; font-size: 13px; font-weight: bold;">📅 DAILY REPORT • 2026-07-17</span>
+                    <h2 style="margin-top: 5px;">🌐 1. 프로덕션 표준 멀티 에이전트 지오메트리</h2>
+                    <p>엔터프라이즈 환경에서 완전한 상태 유지(Stateful) 및 감사 가능(Auditable) 시스템을 구축하기 위한 아키텍처입니다.</p>
+                    
+                    <div class="tech-tags">
+                        <span class="tech-tag">LangGraph 1.0</span>
+                        <span class="tech-tag">CrewAI 1.14</span>
+                        <span class="tech-tag">State Persistence</span>
+                    </div>
+
+                    <div class="box-callout">
+                        <strong>💡 컨설턴트 분석 핵심 (LangGraph vs CrewAI):</strong><br>
+                        CrewAI는 역할(Role) 기반 고속 프로토타이핑에 탁월하나 토큰 소모 제어가 어렵습니다. 반면 LangGraph는 결정론적 그래프 구조를 사용하여 금융/의료 등 규제 산업군에서 엣지 케이스 오류율을 0%에 수렴하게 제어하는 프로덕션 표준입니다.
+                    </div>
+
+                    <h3>📌 마스터 연계 유튜브 및 기술 문서</h3>
+                    <ul>
+                        <li><a href="https://www.youtube.com/watch?v=RSvYae1L9YI" style="color:#38bdf8; font-weight: bold;" target="_blank">🎬 [분석 영상] LangGraph vs CrewAI vs AutoGen 프로덕션 가이드</a></li>
+                        <li><a href="https://python.langchain.com/docs/concepts/" style="color:#cbd5e1;" target="_blank">📄 [공식 문서] LangGraph 1.0 순환 루프 및 지속성 제어 개념서</a></li>
+                    </ul>
+                </div>
+
+                <div class="section">
+                    <span style="color: #6b7280; font-size: 13px; font-weight: bold;">📅 DAILY REPORT • 2026-07-17</span>
+                    <h2 style="margin-top: 5px;">💻 2. 온프레미스 인프라 구축 & 로컬 Fine-Tuning</h2>
+                    <p>데이터 유출 위험을 100% 차단하고 상시 가동 비용을 극적으로 절감하려는 대기업/보안 타겟 컨설팅용 인프라 설계 전략입니다.</p>
+                    
+                    <div class="tech-tags">
+                        <span class="tech-tag">Hermes 3 (Nous)</span>
+                        <span class="tech-tag">vLLM Serving</span>
+                        <span class="tech-tag">Unsloth Kernels</span>
+                        <span class="tech-tag">QLoRA / AWQ</span>
+                    </div>
+
+                    <div class="box-callout">
+                        <strong>💰 인프라 컨설팅 ROI 도출법:</strong><br>
+                        Unsloth 라이브러리를 활용해 Triton 커널 기반으로 개별 GPU 연산 효율을 극대화하고, vLLM 분산 서빙 프레임워크를 연동하면 로컬 인프라에서 단일 LLM 서빙 대비 10배 빠른 추론 처리량(Throughput)을 확보할 수 있습니다.
+                    </div>
+
+                    <h3>📌 마스터 연계 유튜브 및 기술 문서</h3>
+                    <ul>
+                        <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" style="color:#38bdf8; font-weight: bold;" target="_blank">🎬 [분석 영상] vLLM Engine + Hermes 3 초고속 로컬 추론 시스템 구축</a></li>
+                        <li><a href="https://unsloth.ai/docs/get-started/fine-tuning-llms-guide" style="color:#cbd5e1;" target="_blank">📄 [공식 문서] Unsloth 기반 초고속 QLoRA Fine-Tuning 핸즈온 가이드</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- SIDEBAR -->
+            <div class="sidebar">
+                <h3 style="color:#0d9488;">🎯 마스터 컨설팅 미션</h3>
+                <p style="font-size: 14px; color: #9ca3af;"><strong>가상 시나리오 과제:</strong><br> 전 직원이 200명인 로펌 고객사가 사내 기밀 판례 데이터를 활용해 'AI 판례 요약 에이전트'를 원합니다. 외부 API 사용이 금지된 이 상황에서, 어떤 GPU 인프라와 오픈소스 파이프라인을 제안서에 적어야 할까요?</p>
+                <hr style="border: 0; border-top: 1px solid #1f2937; margin: 15px 0;">
+                <p style="font-size: 13px; color: #6b7280;">정답안 및 아키텍처 비용 계산식은 다음 주 월요일 아침 자동으로 업데이트되는 리포트에서 풀이됩니다.</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
