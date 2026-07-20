@@ -71,7 +71,7 @@ fi
 # 5) 변경 있으면 커밋 & 푸시
 if [ "$ADDED" -gt 0 ]; then
   git add data.js pipeline/state/processed.json
-  git commit -m "auto: $DAY 신규 영상 $ADDED건 분석 추가" -m "Co-Authored-By: Claude Opus 4.8 (1M context) <noreply@anthropic.com>"
+  git commit -m "auto: ${DAY} 신규 영상 ${ADDED}건 분석 추가" -m "Co-Authored-By: Claude Opus 4.8 (1M context) <noreply@anthropic.com>"
   git push origin main && echo "✅ push 완료 — GitHub Pages 반영됨"
 fi
 echo "===================== $(date '+%F %T') daily_run 종료 ====================="
