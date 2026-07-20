@@ -11,14 +11,17 @@
     <string>/Users/e80-0162/Desktop/tk/AI-Toolbox/pipeline/daily_run.sh</string>
   </array>
 
-  <!-- 매일 오전 8시 0분 실행 -->
+  <!-- 하루 여러 번 시도: 한 시각에 맥이 자고 있어도 다른 시각이 잡음.
+       새 영상이 없으면 즉시 종료(무해)하고, processed.json 중복방지로 재처리 안 함. -->
   <key>StartCalendarInterval</key>
-  <dict>
-    <key>Hour</key><integer>8</integer>
-    <key>Minute</key><integer>0</integer>
-  </dict>
+  <array>
+    <dict><key>Hour</key><integer>7</integer><key>Minute</key><integer>30</integer></dict>
+    <dict><key>Hour</key><integer>10</integer><key>Minute</key><integer>0</integer></dict>
+    <dict><key>Hour</key><integer>13</integer><key>Minute</key><integer>0</integer></dict>
+    <dict><key>Hour</key><integer>19</integer><key>Minute</key><integer>0</integer></dict>
+  </array>
 
-  <!-- 예약 시각에 맥이 잠들어 있었으면, 깨어난 직후 1회 실행 -->
+  <!-- 예약 시각에 맥이 잠들어 있었으면, macOS 가 깨어난 직후 놓친 작업을 1회 실행 -->
   <key>RunAtLoad</key>
   <false/>
 
