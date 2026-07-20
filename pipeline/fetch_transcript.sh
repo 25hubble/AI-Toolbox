@@ -15,7 +15,8 @@ HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ROOT="$(cd "$HERE/.." && pwd)"
 WORK="$ROOT/pipeline/work"           # 임시 오디오/자막 (git 무시)
 OUT="$ROOT/pipeline/transcripts"     # 최종 전사본 (git 무시)
-MODEL="/opt/homebrew/share/whisper-cpp/ggml-small.en.bin"
+# 다국어 모델(한국어 포함) — whisper 가 언어 자동 감지. 영어 인식도 .en 과 거의 동일.
+MODEL="/opt/homebrew/share/whisper-cpp/ggml-small.bin"
 # 유튜브 오디오 스트림은 인증을 요구 → 로그인된 브라우저 쿠키 사용 (기본 chrome)
 COOKIES_BROWSER="${YT_COOKIES_BROWSER:-chrome}"
 mkdir -p "$WORK" "$OUT"
@@ -34,7 +35,7 @@ STUB="$WORK/$VID"
 # --- 1) & 2) 자막(수동→자동) 시도: vtt로 받아 텍스트만 뽑기 -------------------
 log "자막 시도 (수동/자동)…"
 yt-dlp --no-warnings --skip-download \
-  --write-subs --write-auto-subs --sub-langs "en.*" --sub-format vtt \
+  --write-subs --write-auto-subs --sub-langs "en.*,ko.*" --sub-format vtt \
   -o "$STUB.%(ext)s" "$RAW" >/dev/null 2>&1 || true
 
 VTT="$(ls "$STUB"*.vtt 2>/dev/null | head -1 || true)"
@@ -64,7 +65,8 @@ WAV="$STUB.wav"
 [ -s "$WAV" ] || { echo "ERR: 오디오 다운로드 실패" >&2; exit 1; }
 
 log "STT 진행 중… (영상 길이에 비례)"
-whisper-cli -m "$MODEL" -f "$WAV" -otxt -of "$STUB" -np -nt >/dev/null 2>&1
+# -l auto: 언어 자동감지(한/영). 없으면 whisper 가 기본 영어로 처리해 한국어를 놓침.
+whisper-cli -m "$MODEL" -f "$WAV" -l auto -otxt -of "$STUB" -np -nt >/dev/null 2>&1
 
 [ -s "$STUB.txt" ] || { echo "ERR: STT 결과 없음" >&2; exit 1; }
 mv "$STUB.txt" "$DEST"

@@ -8,14 +8,21 @@
     "@AIJasonZ",
     "@TrelisResearch",
     "@1littlecoder",
-    "@Intellipaat"
+    "@Intellipaat",
+    "@teddynote",
+    "@jocoding",
+    "@nomadcoders",
+    "@딥러닝논문읽기모임"
   ],
   "queries": [
     "LangGraph production agent",
     "vLLM serving on-premise LLM",
     "QLoRA fine-tuning tutorial",
     "multi-agent orchestration framework",
-    "RAG vector database production"
+    "RAG vector database production",
+    "LangChain 실전 튜토리얼",
+    "RAG 구축 한국어",
+    "AI 에이전트 개발"
   ],
 
   "since_hours": 72,
