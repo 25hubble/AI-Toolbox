@@ -5,7 +5,7 @@
 #  - 중복(id) 이면 삽입하지 않음.
 #  usage:  add_entry.py <entry.json>
 # =============================================================================
-import json, sys, os, re
+import json, sys, os, re, datetime as dt
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 DATA = os.path.join(os.path.dirname(HERE), "data.js")
@@ -17,6 +17,9 @@ def main():
     vid = entry.get("id")
     if not vid:
         print("ERR: entry 에 id 없음", file=sys.stderr); sys.exit(1)
+
+    # 대시보드에 추가된 날짜 스탬프 (NEW 배지·최근 업데이트 표시에 사용)
+    entry.setdefault("addedDate", dt.date.today().isoformat())
 
     src = open(DATA, encoding="utf-8").read()
     if f'"{vid}"' in src or f"id: \"{vid}\"" in src or f'id: "{vid}"' in src:

@@ -255,6 +255,7 @@
       <div class="eyebrow">Enterprise AI Knowledge Console</div>
       <h1 id="title">AI Master <span class="accent">Architecture Matrix</span></h1>
       <p id="subtitle"></p>
+      <div id="fresh" class="fresh"></div>
       <div class="rule"><span class="tag">SELECT SECTOR →</span><span class="ln"></span></div>
     </header>
 
@@ -262,6 +263,16 @@
   </main>
 </div>
 
+<style>
+  .fresh{font-family:var(--mono); font-size:11.5px; color:var(--muted); margin:10px 0 2px; letter-spacing:.03em; display:flex; align-items:center; gap:7px; flex-wrap:wrap}
+  .fresh b{color:var(--ink); font-weight:600}
+  .fresh .dot-live{width:8px; height:8px; border-radius:50%; background:var(--emerald); box-shadow:0 0 0 3px var(--emerald-soft); animation:pulse 2s infinite}
+  @keyframes pulse{0%,100%{opacity:1} 50%{opacity:.35}}
+  .fresh-new{color:var(--emerald); font-weight:600}
+  .fresh-dim{color:var(--faint)}
+  .new-badge{display:inline-block; margin-left:8px; font-family:var(--mono); font-size:9px; font-weight:700;
+    letter-spacing:.1em; color:#fff; background:var(--emerald); padding:2px 6px; border-radius:5px; vertical-align:middle}
+</style>
 <script src="data.js"></script>
 <script>
 (function(){
@@ -275,6 +286,18 @@
   $('#subtitle').textContent = D.meta.subtitle;
   $('#tel-cats').textContent = String(D.categories.length).padStart(2,'0');
   $('#nav-total').textContent = D.entries.length + ' MOD';
+
+  // ---- 신규성(아침 확인용): addedDate(없으면 refDate) 기준 최근 2일 = NEW ----
+  const _today = new Date();
+  const daysSince = ds => { if(!ds) return 1e9; const d=new Date(ds+'T00:00:00'); return (_today - d)/864e5; };
+  const isNew = e => daysSince(e.addedDate || e.refDate) <= 2;
+  (function(){
+    const dates = D.entries.map(e=>e.addedDate||e.refDate).filter(Boolean).sort();
+    const last = dates[dates.length-1] || '—';
+    const n = D.entries.filter(isNew).length;
+    $('#fresh').innerHTML = `<span class="dot-live"></span> 최근 업데이트 <b>${last}</b>`
+      + (n ? ` <span class="fresh-new">· 새 항목 ${n}건</span>` : ' <span class="fresh-dim">· 오늘 새 항목 없음</span>');
+  })();
 
   const countBy = id => D.entries.filter(e=>e.categoryId===id).length;
   let active = 'all';
@@ -325,7 +348,7 @@
     return `<article class="panel">
       <div class="p-top">
         <span class="p-id">${e.moduleTag||'MODULE'}</span>
-        <span class="ref">REF <b>${e.refDate}</b></span>
+        <span class="ref">REF <b>${e.refDate}</b>${isNew(e)?'<span class="new-badge">NEW</span>':''}</span>
       </div>
       <h3>${e.title}</h3>
       <p class="sub">${e.subtitle||''}</p>

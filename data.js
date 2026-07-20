@@ -30,6 +30,7 @@ window.DASHBOARD_DATA = {
   entries: [
     {
       "id": "tencent-hunyuan3-moe-agentic-coding-2026",
+      "addedDate": "2026-07-20",
       "categoryId": "onprem",
       "moduleTag": "OPEN-WEIGHT MoE SERVING & AGENTIC CODING",
       "title": "Tencent Hunyuan 3(Hy3) 무료 공개 — 21B 활성 MoE로 플래그십급 에이전틱 코딩",
@@ -66,6 +67,7 @@ window.DASHBOARD_DATA = {
 
     {
       "id": "kimi-k3-real-coding-tests-open-weights-2026",
+      "addedDate": "2026-07-20",
       "categoryId": "onprem",
       "moduleTag": "OPEN-WEIGHTS MODEL EVALUATION",
       "title": "Kimi K3, 정말 마음을 뒤흔드는가 — 단일 프롬프트 실전 코딩 테스트 6종",
@@ -104,6 +106,7 @@ window.DASHBOARD_DATA = {
 
     {
       "id": "kimi-k3-vs-fable5-vs-sol56-coding-showdown-2026",
+      "addedDate": "2026-07-20",
       "categoryId": "agentops",
       "moduleTag": "PRODUCTION CODING MODEL SELECTION",
       "title": "누가 더 강한가: Kimi K3 vs Fable 5 vs OpenAI Sol 5.6 — 단일 프롬프트 3D 게임 대결",
@@ -140,6 +143,7 @@ window.DASHBOARD_DATA = {
 
     {
       "id": "fable5-orchestrator-sonnet5-executor-2026",
+      "addedDate": "2026-07-20",
       "categoryId": "multi-agent",
       "moduleTag": "ORCHESTRATOR-WORKER DELEGATION",
       "title": "Fable 5는 오케스트레이터, Sonnet 5는 실행자 — 토큰 35% 절감 멀티에이전트 설계",
@@ -178,6 +182,7 @@ window.DASHBOARD_DATA = {
 
     {
       "id": "kimi-k3-open-weights-frontier-2026",
+      "addedDate": "2026-07-20",
       "categoryId": "onprem",
       "moduleTag": "OPEN-WEIGHTS MODEL EVALUATION",
       "title": "Kimi K3, 오픈웨이트가 프론티어를 건드리다 — 벤치 1위와 '토큰 경제학'의 함정",
@@ -215,6 +220,7 @@ window.DASHBOARD_DATA = {
 
     {
       "id": "model-fusion-harness-2026",
+      "addedDate": "2026-07-20",
       "categoryId": "multi-agent",
       "moduleTag": "PRODUCTION FRAMEWORK SELECTION",
       "title": "모델을 고르지 말고 융합하라 — GPT-5.6 Soul × Claude Fable 5 Fusion Harness",
