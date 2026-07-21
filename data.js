@@ -29,6 +29,83 @@ window.DASHBOARD_DATA = {
   /* ---- 콘텐츠 엔트리 (최신이 위로) ---- */
   entries: [
     {
+      "id": "n8n-multi-agent-orchestrator-2025",
+      "categoryId": "multi-agent",
+      "moduleTag": "MULTI-AGENT ORCHESTRATION PATTERN",
+      "title": "n8n 노코드로 구축하는 궁극의 AI 에이전트 팀 — 오케스트레이터-서브에이전트 아키텍처",
+      "subtitle": "하나의 '델리게이터' 에이전트가 이메일·캘린더·연락처·콘텐츠 전문 에이전트를 도구처럼 호출하는 supervisor 패턴을 노코드로 구현한다.",
+      "tags": [
+            "n8n",
+            "multi-agent",
+            "orchestrator-worker",
+            "supervisor pattern",
+            "tool calling",
+            "from AI",
+            "Telegram",
+            "GPT-4o",
+            "Claude 3.5 Sonnet",
+            "no-code"
+      ],
+      "videoUrl": "https://www.youtube.com/watch?v=9FuNtfsnRNo",
+      "videoId": "9FuNtfsnRNo",
+      "channel": "Nate Herk | AI Automation",
+      "duration": "23:45",
+      "refDate": "2025-02-03",
+      "takeaway": "거대한 프롬프트에 모든 도구를 몰아넣은 단일 에이전트 대신, '작업 위임만 담당하는 얇은 오케스트레이터 + 각자 짧은 프롬프트를 가진 전문 서브에이전트' 구조로 나누면 확장성·유지보수성·안정성이 극적으로 좋아진다. n8n에서는 서브워크플로우를 그대로 '도구'로 등록해 이 supervisor 패턴을 노코드로 구현할 수 있다.",
+      "box1": {
+            "title": "1 · 아키텍처 — Supervisor(델리게이터) + 4개 전문 서브에이전트",
+            "html": "<p>핵심 설계는 <b>orchestrator-worker(supervisor) 패턴</b>이다. 최상위의 <b>Ultimate Assistant</b>는 실제 업무를 직접 처리하지 않고 <b>오직 '올바른 도구로 사용자 쿼리를 라우팅'하는 역할만</b> 수행한다. 시스템 프롬프트에 명시적으로 <i>\"너는 절대 이메일을 쓰거나 이벤트 요약을 만들지 않는다. 올바른 도구를 호출하기만 하면 된다\"</i>고 못박아 책임을 분리한다.</p><p>그 아래에 4개의 독립 서브에이전트가 존재한다: <b>Email Agent</b>(발송·답장·라벨링·초안·읽음처리 등), <b>Calendar Agent</b>(이벤트 생성/수정/삭제, 참석자 포함), <b>Contact Agent</b>(Airtable 연락처 조회/추가/수정), <b>Content Creator Agent</b>(웹 검색 후 블로그 작성). 여기에 범용 웹검색 도구 <b>Tavily</b>도 직접 붙였다. 입출력 채널은 <b>Telegram</b>이며, 음성·텍스트 양쪽을 받아 switch 노드로 분기하고 음성은 transcribe 후 모두 <code>json.text</code> 필드로 통일해 에이전트에 전달한다.</p><table class=\"matrix-table\"><tr><th>계층</th><th>모델</th><th>역할</th></tr><tr><td>Ultimate Assistant</td><td>GPT-4o</td><td>작업 위임/라우팅 전담</td></tr><tr><td>Email / Calendar / Contact Agent</td><td>GPT-4o</td><td>도메인 액션 실행</td></tr><tr><td>Content Creator Agent</td><td>Claude 3.5 Sonnet</td><td>사람이 읽기 좋은 HTML 콘텐츠 생성(구조화 품질 때문에 의도적 선택)</td></tr></table><p>이 구조의 결정적 이점은 <b>각 에이전트의 프롬프트가 짧고 단순하게 유지된다</b>는 점이다. 발표자는 반복해서 \"프롬프트가 길지도 복잡하지도 않아서 계속 새 에이전트/도구를 추가해도 압도되지 않는다\"고 강조한다. 즉 supervisor가 컨텍스트 부담을 분산시키므로 시스템이 수평 확장된다.</p>"
+      },
+      "box2": {
+            "title": "2 · 구현 메커니즘 — 서브워크플로우를 '도구'로, from AI로 파라미터 자동 채우기",
+            "html": "<p><b>서브에이전트를 도구로 등록하는 법:</b> Ultimate Assistant의 tool 섹션에서 <b>'Call n8n Workflow as a Tool'</b>을 추가한다. 각 도구에는 (1) 이름(시스템 프롬프트에서 참조하는 이름과 반드시 일치, 관례상 <b>camelCase</b>로 통일 — 예 <code>emailAgent</code>), (2) 설명(예 \"call this tool for email actions\"), (3) 데이터베이스에서 드롭다운으로 선택할 대상 워크플로우를 지정한다. 호출된 서브워크플로우는 <b>Execute Workflow Trigger</b>로 시작하며, 상위 에이전트는 <b>마지막 노드의 응답</b>을 결과로 읽어간다(과거엔 'response' 필드 관례가 있었으나 지금은 last node를 자동 참조).</p><p><b>from AI 함수:</b> 각 도구의 파라미터(수신자·제목·본문 등)를 코드/로직으로 파싱하지 않고 <code>from AI</code> 표현식으로 채운다. key(선택적으로 정의 포함)만 주면 모델이 들어온 쿼리에서 값을 추론해 채운다. 예컨대 \"Nate에게 안부와 좋아하는 색을 묻는 메일\" 한 문장으로 to/subject/HTML 본문이 자동 생성된다. 발표자는 이 기능이 에이전트 제작 속도를 극적으로 높인다고 극찬한다. Tavily처럼 HTTP 요청을 쓰는 경우엔 from AI 대신 <code>{{ }}</code> <b>placeholder</b>(예 <code>search term</code> + 설명 + string 타입)로 동일 효과를 낸다.</p><p><b>다단계 도구 체이닝(ID 조회 패턴):</b> 이메일 답장·라벨링·읽음처리는 <b>message ID</b>가, 라벨링은 추가로 <b>label ID</b>가 필요하다. 에이전트는 이 값을 직접 알 수 없으므로 프롬프트 규칙에 따라 먼저 <code>get emails</code>/<code>get labels</code>를 호출해 ID를 획득한 뒤 실제 액션 도구에 주입한다. 그 결과 답장은 원래 스레드에 정확히 붙는다. 캘린더도 수정/삭제 전 <code>get events</code>로 이벤트 ID를 먼저 얻는다. 또한 참석자 유무 때문에 create event를 <b>solo용</b>과 <b>attendee 포함용</b> 두 노드로 분리했다(참석자 파라미터가 비면 요청이 실패하기 때문).</p>"
+      },
+      "box3": {
+            "title": "3 · 협업·에러핸들링·실무 시사점",
+            "html": "<p><b>에이전트 간 대화형 협업:</b> supervisor 프롬프트에 <i>\"일부 액션은 먼저 연락처 정보를 조회해야 한다\"</i>는 규칙과 <b>단 하나의 예시(one-shot)</b>만 주고도 안정적으로 작동시켰다. 이메일 발송/초안/참석자 있는 이벤트 생성 시 Contact Agent로 이메일 주소를 먼저 얻은 뒤 해당 에이전트에 넘긴다. 데모에서 \"팀 싱크 1시간 미뤄줘\"라고만 했는데도 <b>메모리로 맥락을 유지</b>해 일정을 옮기고, 요청하지 않은 <b>확인 메일 후속 발송까지 자율 수행</b>했다. 이는 단순 '쿼리→출력'을 넘어 에이전트들이 서로 결과와 상태를 주고받는 협업의 힘을 보여준다.</p><p><b>장애 복구(agentops 관점):</b> 각 서브에이전트는 노드 Settings의 <b>'On Error → Continue (using error output)'</b>로 <b>success / try-again 두 갈래</b>로 분기된다. 성공이면 메인 에이전트의 output(<code>json.output</code>)을 반환하고, 실패면 <i>\"unable to perform the task, please try again\"</i>을 상위로 되돌려준다. 그러면 오케스트레이터가 이를 읽고 쿼리를 재구성해 재시도한다 — 즉 에이전트 간에 \"나 문제 생겼어, 다시 해봐\"라는 신호를 주고받는 <b>기본적 self-healing 루프</b>가 노코드로 구현된 셈이다.</p><p><b>실무 시사점:</b> (1) 도구 이름은 시스템 프롬프트 참조명과 camelCase로 반드시 일치시킬 것. (2) 콘텐츠 생성처럼 품질이 중요한 작업엔 모델을 태스크별로 다르게 배정(여기선 Claude 3.5 Sonnet)해 <b>이종 모델 오케스트레이션</b>을 활용할 것. (3) 확장은 '거대 프롬프트 확장'이 아니라 '짧은 프롬프트의 새 서브에이전트 추가'로 하라. Content Creator는 이메일 초안뿐 아니라 SNS·DB 적재 등으로 재사용 가능하다. 전체 워크플로우(4개 에이전트 포함)의 JSON 템플릿은 발표자의 무료 Skool 커뮤니티에서 내려받아 자신의 n8n 환경에 바로 로드할 수 있다.</p>"
+      },
+      "addedDate": "2026-07-20"
+},
+
+    {
+      "id": "n8n-self-hosted-workflow-orchestration-2025",
+      "categoryId": "multi-agent",
+      "moduleTag": "SELF-HOSTED WORKFLOW ORCHESTRATION",
+      "title": "n8n: 개발자의 삶을 바꾸는 오픈소스 자동화 오케스트레이터",
+      "subtitle": "Zapier의 오픈소스·셀프호스팅 대안으로, 트리거→조건분기→AI 에이전트→액션을 노코드 플로우차트로 오케스트레이션한다.",
+      "tags": [
+            "n8n",
+            "workflow-automation",
+            "orchestration",
+            "AI-agent",
+            "MCP",
+            "self-hosting",
+            "VPS",
+            "no-code",
+            "Zapier-alternative"
+      ],
+      "videoUrl": "https://www.youtube.com/watch?v=bS9R6aCVEzw",
+      "videoId": "bS9R6aCVEzw",
+      "channel": "Fireship",
+      "duration": "5:55",
+      "refDate": "2025-09-29",
+      "takeaway": "n8n은 Zapier의 오픈소스·셀프호스팅 대안으로, 월 $5짜리 VPS 한 대에서 트리거·조건분기·AI 에이전트·외부 API·코드 노드를 플로우차트로 엮어 반복 업무 전체를 코드 없이 오케스트레이션한다. 핵심 가치는 '자동화의 완전한 소유권'을 저렴하게 손에 넣는 것이다.",
+      "box1": {
+            "title": "1 · n8n의 정체 — 왜 개발자가 알아야 하는가",
+            "html": "<p><b>n8n</b>은 SaaS 자동화 도구(Zapier)에 매달 $500까지 지불하던 현실에 반발해 한 개발자가 \"차라리 내 손으로 Zapier를 처음부터 만들겠다\"며 만든 <b>오픈소스·셀프호스팅(self-hostable) 자동화 플랫폼</b>이다. 영상은 n8n이 스폰서가 아님을 명시하며, 순수하게 프로젝트의 완성도 때문에 소개한다고 강조한다.</p><p>핵심 개념은 단순하다. <b>입력 트리거(input trigger)</b> — 웹 폼 제출, 데이터베이스 쓰기, 음성 명령, GitHub 이슈 등 — 에서 발생한 이벤트의 데이터를 받아, 서드파티 앱이나 사용자 자신의 코드를 포함한 <b>단계별 파이프라인(pipeline of steps)</b>으로 흘려보내는 것이다. 이 모든 로직을 <b>플로우차트 스타일 에디터</b>로 다이어그램처럼 그리기 때문에, 로직이 시각적으로 명확해져 비개발자도 접근할 수 있다는 점이 결정적 차별점이다.</p><p>활용 범위는 사실상 무한하다. 영상이 제시하는 예: 개발자는 <b>GitHub PR 머지</b> 트리거로 Docker 이미지를 빌드하고 Discord에 알림을 보내고, 유튜버는 영상 업로드 시 여러 SNS에 자동 배포하며, IoT 사용자는 스마트 카메라 감지 이벤트로 경보를 울리고, 데이터 스크래핑+AI 분석으로 예측을 돌리는 것까지 가능하다. UI는 <b>Vue.js</b>로 제작되었다.</p>"
+      },
+      "box2": {
+            "title": "2 · 5초 만에 시작, $5 VPS로 완전한 소유권",
+            "html": "<p>가장 강력한 진입 장벽 제거는 <b>설치의 단순함</b>이다. 터미널에서 <code>npx n8n</code> 한 줄이면 수 초 만에 로컬호스트에서 워크플로우 편집 UI가 뜬다. 다만 실사용을 위해서는 실제 서버 호스팅이 필요하다.</p><p>영상은 이를 위해 <b>Hostinger의 Linux 기반 VPS(virtual private server)</b>를 사용한다(해당 영상의 실제 스폰서). 대형 클라우드 없이 앱을 호스팅할 수 있으며, 새 VPS와 리전을 선택한 뒤 베이스 리눅스에 수동 설치하는 대신 <b>사전 구축 템플릿(pre-built template)</b>을 쓰면 <b>Ubuntu + n8n이 즉시 준비(out of the box)</b>된 상태로 배포된다. 비용은 <b>월 $5</b> 수준이며, 프로모 코드 'fireship'으로 추가 할인이 가능하다.</p><p>배포 후에는 대시보드에서 VPS를 관리하며, SSH로 직접 들어갈 필요 없이 버튼 클릭만으로 n8n 인스턴스에 바로 접속한다. 첫 진입 시 권장 출발점은 <b>템플릿</b>이다. 예컨대 'Nano Banana'와 'V3'로 AI 바이럴 영상을 생성해 'Plateo'로 SNS에 배포하는 워크플로우 등이 제공된다. 모든 워크플로우는 <b>JSON 기반</b>이므로, 자신의 n8n 인스턴스로 템플릿을 그대로 import해 재사용할 수 있다. 핵심 메시지는 명확하다 — 월 $5짜리 서버 한 대에서 자동화 시스템 전체를 <b>완전히 통제·소유</b>할 수 있다는 것이 mind-blowing한 지점이다.</p>"
+      },
+      "box3": {
+            "title": "3 · 실전 워크플로우 해부 — 트리거·조건·AI 에이전트·액션",
+            "html": "<p>영상은 하나의 워크플로우를 처음부터 조립하며 각 노드 타입을 설명한다(위트 있는 '부부 싸움 자동 해결' 시나리오). 구조는 전형적인 <b>이벤트 기반 오케스트레이션</b>이다:</p><table class=\"matrix-table\"><tr><td><b>단계</b></td><td><b>노드 / 동작</b></td></tr><tr><td>Trigger</td><td>수동·스케줄, 또는 수백 개 서드파티 앱 연동. 예시에서는 <b>Telegram</b> 메시지 수신을 트리거로 설정(설정 정보만 입력하면 연결 완료).</td></tr><tr><td>Conditional</td><td><b>If 분기</b>로 코드처럼 조건 로직 처리. String의 <b>contains</b> 옵션으로 특정 이모지가 포함된 메시지를 포착.</td></tr><tr><td>Code / API</td><td>임의 코드 실행 또는 서드파티 API 호출 노드. 예: 외부 flowers API로 즉시 배송 주문.</td></tr><tr><td>AI Agent</td><td><b>AI 에이전트 노드</b>로 커스텀 프롬프트 실행(사과 편지 생성). 이전 단계의 데이터(아내 메시지)를 <b>동적으로</b> 프롬프트에 주입.</td></tr><tr><td>Action</td><td>결과를 X(트윗), Google Sheets 기록 등 여러 출력으로 팬아웃.</td></tr></table><p>가장 주목할 부분은 <b>AI 에이전트 노드</b>다. 이 노드는 (1) 원하는 <b>커스텀 모델</b>을 자유롭게 선택하고, (2) <b>메모리(memory)</b> 데이터를 제공하며, (3) <b>MCP(Model Context Protocol)</b>용 도구(tools)를 붙일 수 있다. 즉 n8n은 단순 자동화를 넘어, 모델·메모리·도구를 갖춘 <b>에이전트를 워크플로우의 한 단계로 오케스트레이션</b>하는 플랫폼으로 동작한다.</p><p><b>결론:</b> 트리거→조건분기→코드/API→AI 에이전트→다중 액션을 코드 한 줄 없이 시각적으로 엮어, SaaS 사업 운영 수준의 파이프라인까지 월 $5 VPS에서 완전 통제 가능하다는 것이 이 영상의 핵심 논지다.</p>"
+      },
+      "addedDate": "2026-07-20"
+},
+
+    {
       "id": "tencent-hunyuan3-moe-agentic-coding-2026",
       "addedDate": "2026-07-20",
       "categoryId": "onprem",
