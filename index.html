@@ -248,6 +248,9 @@
         <span>MODULES <span class="u" id="tel-count">00</span></span>
         <span>SECTORS <span class="u" id="tel-cats">00</span></span>
         <span class="live"><span class="led"></span>LIVE</span>
+        <div class="lang-seg" id="lang-seg" role="group" aria-label="language">
+          <button data-l="ko" type="button">KO</button><button data-l="en" type="button">EN</button>
+        </div>
       </div>
     </div>
 
@@ -272,6 +275,11 @@
   .fresh-dim{color:var(--faint)}
   .new-badge{display:inline-block; margin-left:8px; font-family:var(--mono); font-size:9px; font-weight:700;
     letter-spacing:.1em; color:#fff; background:var(--emerald); padding:2px 6px; border-radius:5px; vertical-align:middle}
+  .lang-seg{display:inline-flex; border:1px solid var(--line-2); border-radius:7px; overflow:hidden; margin-left:4px}
+  .lang-seg button{font-family:var(--mono); font-size:10.5px; font-weight:600; letter-spacing:.06em; padding:3px 9px;
+    border:0; background:transparent; color:var(--faint); cursor:pointer; transition:.15s}
+  .lang-seg button:hover{color:var(--muted)}
+  .lang-seg button.on{background:var(--accent); color:#fff}
 </style>
 <script src="data.js"></script>
 <script>
@@ -280,10 +288,24 @@
   const $ = s => document.querySelector(s);
   if(!D){ $('#content').innerHTML='<div class="empty">// DATA LINK FAILED — check data.js</div>'; return; }
 
+  // ================= 언어(KO/EN) =================
+  let lang = localStorage.getItem('am_lang') || 'ko';
+  const UI = {
+    ko:{ all:'전체 시스템', brief:'엔터프라이즈 실무 분석서', watch:'▶ 원본 영상 시청',
+         empty:'// 이 섹터엔 아직 아카이빙된 모듈이 없습니다', updated:'최근 업데이트',
+         newN:n=>`· 새 항목 ${n}건`, noNew:'· 오늘 새 항목 없음' },
+    en:{ all:'ALL SYSTEMS', brief:'Enterprise Field Analysis', watch:'▶ Watch original',
+         empty:'// No modules archived in this sector yet', updated:'Last updated',
+         newN:n=>`· ${n} new`, noNew:'· nothing new today' }
+  };
+  const t = k => UI[lang][k];
+  // 엔트리/카테고리의 현재 언어 값 (en 없으면 ko 로 폴백)
+  const pick    = (o,f) => (lang==='en' && o.en && o.en[f]!=null) ? o.en[f] : o[f];
+  const pickBox = (e,n) => (lang==='en' && e.en && e.en['box'+n]) ? e.en['box'+n] : e['box'+n];
+
   $('#brand').textContent = D.meta.brand;
   $('#ver').textContent = D.meta.version;
   $('#title').innerHTML = 'AI Master <span class="accent">Architecture Matrix</span>';
-  $('#subtitle').textContent = D.meta.subtitle;
   $('#tel-cats').textContent = String(D.categories.length).padStart(2,'0');
   $('#nav-total').textContent = D.entries.length + ' MOD';
 
@@ -291,13 +313,14 @@
   const _today = new Date();
   const daysSince = ds => { if(!ds) return 1e9; const d=new Date(ds+'T00:00:00'); return (_today - d)/864e5; };
   const isNew = e => daysSince(e.addedDate || e.refDate) <= 2;
-  (function(){
+  function renderStatic(){
+    $('#subtitle').textContent = pick(D.meta,'subtitle');
     const dates = D.entries.map(e=>e.addedDate||e.refDate).filter(Boolean).sort();
     const last = dates[dates.length-1] || '—';
     const n = D.entries.filter(isNew).length;
-    $('#fresh').innerHTML = `<span class="dot-live"></span> 최근 업데이트 <b>${last}</b>`
-      + (n ? ` <span class="fresh-new">· 새 항목 ${n}건</span>` : ' <span class="fresh-dim">· 오늘 새 항목 없음</span>');
-  })();
+    $('#fresh').innerHTML = `<span class="dot-live"></span> ${t('updated')} <b>${last}</b>`
+      + (n ? ` <span class="fresh-new">${t('newN')(n)}</span>` : ` <span class="fresh-dim">${t('noNew')}</span>`);
+  }
 
   const countBy = id => D.entries.filter(e=>e.categoryId===id).length;
   let active = 'all';
@@ -311,8 +334,8 @@
 
   const nav = $('#nav');
   function renderNav(){
-    let h = item('all','··','전체 시스템', D.entries.length, active==='all', false);
-    D.categories.forEach(c=>{ const n=countBy(c.id); h+=item(c.id,c.code,c.name,n,active===c.id,n===0); });
+    let h = item('all','··',t('all'), D.entries.length, active==='all', false);
+    D.categories.forEach(c=>{ const n=countBy(c.id); h+=item(c.id,c.code,pick(c,'name'),n,active===c.id,n===0); });
     nav.innerHTML = h;
     nav.querySelectorAll('.nav-item').forEach(el=>{
       if(el.classList.contains('void')) return;
@@ -331,35 +354,35 @@
   function renderContent(){
     const cats = active==='all' ? D.categories : D.categories.filter(c=>c.id===active);
     $('#crumb-cat').textContent = active==='all' ? 'ALL SYSTEMS' :
-      (D.categories.find(c=>c.id===active)||{}).name.toUpperCase();
+      String(pick((D.categories.find(c=>c.id===active)||{}),'name')||'').toUpperCase();
     let h='', shown=0;
     cats.forEach(c=>{
       const items = D.entries.filter(e=>e.categoryId===c.id);
       if(!items.length) return; shown+=items.length;
       h += `<div class="sec-head"><span class="code">${c.code}</span>
-        <div class="meta"><h2>${c.name}</h2><span class="desc">${c.desc}</span></div><span class="ln"></span></div>
+        <div class="meta"><h2>${pick(c,'name')}</h2><span class="desc">${pick(c,'desc')}</span></div><span class="ln"></span></div>
         <div class="stack">${items.map(card).join('')}</div>`;
     });
-    content.innerHTML = shown ? h : '<div class="empty">// 이 섹터엔 아직 아카이빙된 모듈이 없습니다</div>';
+    content.innerHTML = shown ? h : `<div class="empty">${t('empty')}</div>`;
   }
 
   function card(e){
     const tags=(e.tags||[]).map(t=>`<span class="tag">${t}</span>`).join('');
     return `<article class="panel">
       <div class="p-top">
-        <span class="p-id">${e.moduleTag||'MODULE'}</span>
+        <span class="p-id">${pick(e,'moduleTag')||'MODULE'}</span>
         <span class="ref">REF <b>${e.refDate}</b>${isNew(e)?'<span class="new-badge">NEW</span>':''}</span>
       </div>
-      <h3>${e.title}</h3>
-      <p class="sub">${e.subtitle||''}</p>
+      <h3>${pick(e,'title')}</h3>
+      <p class="sub">${pick(e,'subtitle')||''}</p>
       <div class="tags">${tags}</div>
-      <div class="readout"><span class="k">▸ Key Readout</span><span class="v">${e.takeaway||''}</span></div>
+      <div class="readout"><span class="k">▸ Key Readout</span><span class="v">${pick(e,'takeaway')||''}</span></div>
       <details>
-        <summary><span class="chev"></span><span class="flex">엔터프라이즈 실무 분석서</span><span class="st">EXPAND ▾</span></summary>
-        <div class="brief">${boxN(e.box1,1)}${boxN(e.box2,2)}${boxN(e.box3,3)}</div>
+        <summary><span class="chev"></span><span class="flex">${t('brief')}</span><span class="st">EXPAND ▾</span></summary>
+        <div class="brief">${boxN(pickBox(e,1),1)}${boxN(pickBox(e,2),2)}${boxN(pickBox(e,3),3)}</div>
       </details>
       <div class="actions">
-        <a class="btn btn-primary" href="${e.videoUrl}" target="_blank" rel="noopener">▶ 원본 영상 시청</a>
+        <a class="btn btn-primary" href="${e.videoUrl}" target="_blank" rel="noopener">${t('watch')}</a>
         <span class="btn btn-meta">${e.channel} <span class="dot">·</span> ${e.duration}</span>
       </div>
     </article>`;
@@ -368,7 +391,16 @@
     return `<div class="box g${i}"><div class="box-h"><span class="num">0${i}</span><h4>${b.title.replace(/^\d+\s*·\s*/,'')}</h4></div>${b.html}</div>`;
   }
 
-  renderNav(); renderContent();
+  // ---- 언어 토글 ----
+  const seg = $('#lang-seg');
+  function syncSeg(){ seg.querySelectorAll('button').forEach(b=>b.classList.toggle('on', b.dataset.l===lang)); }
+  function renderAll(){ renderStatic(); renderNav(); renderContent(); }
+  seg.querySelectorAll('button').forEach(b=>{
+    b.onclick=()=>{ if(lang===b.dataset.l) return; lang=b.dataset.l; localStorage.setItem('am_lang',lang); syncSeg(); renderAll(); };
+  });
+  syncSeg();
+
+  renderAll();
 })();
 </script>
 </body>
