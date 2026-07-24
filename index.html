@@ -291,12 +291,14 @@
   // ================= 언어(KO/EN) =================
   let lang = localStorage.getItem('am_lang') || 'ko';
   const UI = {
-    ko:{ all:'전체 시스템', brief:'엔터프라이즈 실무 분석서', watch:'▶ 원본 영상 시청',
+    ko:{ all:'전체 시스템', recent:'최근 업데이트', brief:'엔터프라이즈 실무 분석서', watch:'▶ 원본 영상 시청',
          empty:'// 이 섹터엔 아직 아카이빙된 모듈이 없습니다', updated:'최근 업데이트',
-         newN:n=>`· 새 항목 ${n}건`, noNew:'· 오늘 새 항목 없음' },
-    en:{ all:'ALL SYSTEMS', brief:'Enterprise Field Analysis', watch:'▶ Watch original',
+         newN:n=>`· 새 항목 ${n}건`, noNew:'· 오늘 새 항목 없음',
+         modN:n=>`모듈 ${n}건`, today:'오늘', yesterday:'어제', daysAgo:n=>`${n}일 전` },
+    en:{ all:'ALL SYSTEMS', recent:'RECENT UPDATES', brief:'Enterprise Field Analysis', watch:'▶ Watch original',
          empty:'// No modules archived in this sector yet', updated:'Last updated',
-         newN:n=>`· ${n} new`, noNew:'· nothing new today' }
+         newN:n=>`· ${n} new`, noNew:'· nothing new today',
+         modN:n=>`${n} module${n>1?'s':''}`, today:'today', yesterday:'yesterday', daysAgo:n=>`${n} days ago` }
   };
   const t = k => UI[lang][k];
   // 엔트리/카테고리의 현재 언어 값 (en 없으면 ko 로 폴백)
@@ -335,6 +337,7 @@
   const nav = $('#nav');
   function renderNav(){
     let h = item('all','··',t('all'), D.entries.length, active==='all', false);
+    h += item('recent','↻',t('recent'), D.entries.length, active==='recent', D.entries.length===0);
     D.categories.forEach(c=>{ const n=countBy(c.id); h+=item(c.id,c.code,pick(c,'name'),n,active===c.id,n===0); });
     nav.innerHTML = h;
     nav.querySelectorAll('.nav-item').forEach(el=>{
@@ -351,10 +354,16 @@
   }
 
   const content = $('#content');
+  const catName = id => String(pick((D.categories.find(c=>c.id===id)||{}),'name')||'');
+  function relLabel(ds){
+    const d = daysSince(ds);
+    if(d<=0.5) return t('today'); if(d<=1.5) return t('yesterday'); return t('daysAgo')(Math.round(d));
+  }
   function renderContent(){
+    if(active==='recent'){ renderRecent(); return; }
     const cats = active==='all' ? D.categories : D.categories.filter(c=>c.id===active);
     $('#crumb-cat').textContent = active==='all' ? 'ALL SYSTEMS' :
-      String(pick((D.categories.find(c=>c.id===active)||{}),'name')||'').toUpperCase();
+      catName(active).toUpperCase();
     let h='', shown=0;
     cats.forEach(c=>{
       const items = D.entries.filter(e=>e.categoryId===c.id);
@@ -366,11 +375,33 @@
     content.innerHTML = shown ? h : `<div class="empty">${t('empty')}</div>`;
   }
 
+  function renderRecent(){
+    $('#crumb-cat').textContent = t('recent').toUpperCase();
+    // 날짜(addedDate 없으면 refDate) 기준 최신 먼저로 정렬 후 날짜별 그룹
+    const sorted = D.entries.slice().sort((a,b)=>
+      String(b.addedDate||b.refDate).localeCompare(String(a.addedDate||a.refDate)));
+    const groups=[]; const idx={};
+    sorted.forEach(e=>{ const d=e.addedDate||e.refDate||'—';
+      if(idx[d]==null){ idx[d]=groups.length; groups.push({date:d, items:[]}); }
+      groups[idx[d]].items.push(e); });
+    if(!groups.length){ content.innerHTML=`<div class="empty">${t('empty')}</div>`; return; }
+    content.innerHTML = groups.map(g=>{
+      const code = g.date==='—' ? '··' : g.date.slice(5).replace('-','/');
+      const nNew = g.items.filter(isNew).length;
+      const desc = t('modN')(g.items.length) + ' · ' + relLabel(g.date)
+        + (nNew ? ` <span class="fresh-new">${t('newN')(nNew)}</span>` : '');
+      return `<div class="sec-head"><span class="code">${code}</span>
+        <div class="meta"><h2>${g.date}</h2><span class="desc">${desc}</span></div><span class="ln"></span></div>
+        <div class="stack">${g.items.map(card).join('')}</div>`;
+    }).join('');
+  }
+
   function card(e){
+    const cat = catName(e.categoryId);
     const tags=(e.tags||[]).map(t=>`<span class="tag">${t}</span>`).join('');
     return `<article class="panel">
       <div class="p-top">
-        <span class="p-id">${pick(e,'moduleTag')||'MODULE'}</span>
+        <span class="p-id">${pick(e,'moduleTag')||'MODULE'}${cat?' · '+cat:''}</span>
         <span class="ref">REF <b>${e.refDate}</b>${isNew(e)?'<span class="new-badge">NEW</span>':''}</span>
       </div>
       <h3>${pick(e,'title')}</h3>
@@ -395,6 +426,16 @@
   const seg = $('#lang-seg');
   function syncSeg(){ seg.querySelectorAll('button').forEach(b=>b.classList.toggle('on', b.dataset.l===lang)); }
   function renderAll(){ renderStatic(); renderNav(); renderContent(); }
+
+  // 히어로의 '최근 업데이트' 라인 → 최근 뷰로 진입
+  const freshEl = $('#fresh');
+  freshEl.style.cursor = 'pointer';
+  freshEl.setAttribute('role','button');
+  freshEl.setAttribute('tabindex','0');
+  freshEl.title = t('recent');
+  const goRecent = ()=>{ active='recent'; renderNav(); renderContent(); scrollTo({top:0,behavior:'smooth'}); };
+  freshEl.onclick = goRecent;
+  freshEl.onkeydown = e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); goRecent(); } };
   seg.querySelectorAll('button').forEach(b=>{
     b.onclick=()=>{ if(lang===b.dataset.l) return; lang=b.dataset.l; localStorage.setItem('am_lang',lang); syncSeg(); renderAll(); };
   });

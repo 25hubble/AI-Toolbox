@@ -8,7 +8,7 @@
   <key>ProgramArguments</key>
   <array>
     <string>/bin/bash</string>
-    <string>/Users/e80-0162/Desktop/tk/AI-Toolbox/pipeline/daily_run.sh</string>
+    <string>/Users/e80-0162/TK/AI-Toolbox/pipeline/daily_run.sh</string>
   </array>
 
   <!-- 하루 여러 번 시도: 한 시각에 맥이 자고 있어도 다른 시각이 잡음.
@@ -26,12 +26,12 @@
   <false/>
 
   <key>WorkingDirectory</key>
-  <string>/Users/e80-0162/Desktop/tk/AI-Toolbox</string>
+  <string>/Users/e80-0162/TK/AI-Toolbox</string>
 
   <key>StandardOutPath</key>
-  <string>/Users/e80-0162/Desktop/tk/AI-Toolbox/pipeline/logs/launchd.out.log</string>
+  <string>/Users/e80-0162/TK/AI-Toolbox/pipeline/logs/launchd.out.log</string>
   <key>StandardErrorPath</key>
-  <string>/Users/e80-0162/Desktop/tk/AI-Toolbox/pipeline/logs/launchd.err.log</string>
+  <string>/Users/e80-0162/TK/AI-Toolbox/pipeline/logs/launchd.err.log</string>
 
   <key>EnvironmentVariables</key>
   <dict>
