@@ -280,6 +280,17 @@
     border:0; background:transparent; color:var(--faint); cursor:pointer; transition:.15s}
   .lang-seg button:hover{color:var(--muted)}
   .lang-seg button.on{background:var(--accent); color:#fff}
+
+  /* ---- 사용자 하이라이트(형광펜) ---- */
+  mark.hl{background:#ffe27a; color:inherit; padding:0 1px; border-radius:2px; cursor:pointer;
+    box-shadow:inset 0 -0.5em 0 rgba(255,210,63,.35); -webkit-box-decoration-break:clone; box-decoration-break:clone; transition:background .15s}
+  mark.hl:hover{background:#ffd23f}
+  .hl-btn{position:absolute; z-index:60; font-family:var(--mono); font-size:11px; font-weight:600; letter-spacing:.03em;
+    color:#4a3a00; background:#ffe27a; border:1px solid #e5c74a; border-radius:9px; padding:7px 12px; cursor:pointer;
+    box-shadow:0 8px 22px rgba(16,26,51,.20); white-space:nowrap; line-height:1}
+  .hl-btn:hover{background:#ffd23f}
+  .brief::before{content:'🖍 중요한 부분을 드래그하면 하이라이트 · 하이라이트를 클릭하면 삭제';
+    display:block; font-family:var(--mono); font-size:10px; letter-spacing:.02em; color:var(--faint); margin:2px 0 12px}
 </style>
 <script src="data.js"></script>
 <script>
@@ -373,6 +384,7 @@
         <div class="stack">${items.map(card).join('')}</div>`;
     });
     content.innerHTML = shown ? h : `<div class="empty">${t('empty')}</div>`;
+    hlApplyAll();
   }
 
   function renderRecent(){
@@ -394,6 +406,7 @@
         <div class="meta"><h2>${g.date}</h2><span class="desc">${desc}</span></div><span class="ln"></span></div>
         <div class="stack">${g.items.map(card).join('')}</div>`;
     }).join('');
+    hlApplyAll();
   }
 
   function card(e){
@@ -410,7 +423,7 @@
       <div class="readout"><span class="k">▸ Key Readout</span><span class="v">${pick(e,'takeaway')||''}</span></div>
       <details>
         <summary><span class="chev"></span><span class="flex">${t('brief')}</span><span class="st">EXPAND ▾</span></summary>
-        <div class="brief">${boxN(pickBox(e,1),1)}${boxN(pickBox(e,2),2)}${boxN(pickBox(e,3),3)}</div>
+        <div class="brief" data-hl="${e.id}">${boxN(pickBox(e,1),1)}${boxN(pickBox(e,2),2)}${boxN(pickBox(e,3),3)}</div>
       </details>
       <div class="actions">
         <a class="btn btn-primary" href="${e.videoUrl}" target="_blank" rel="noopener">${t('watch')}</a>
@@ -421,6 +434,100 @@
   function boxN(b,i){ if(!b) return '';
     return `<div class="box g${i}"><div class="box-h"><span class="num">0${i}</span><h4>${b.title.replace(/^\d+\s*·\s*/,'')}</h4></div>${b.html}</div>`;
   }
+
+  // ================= 하이라이트(사용자 형광펜) =================
+  //  분석서(.brief) 안에서 드래그 → localStorage 저장(카드ID+언어별) → 새로고침 유지.
+  //  하이라이트 클릭 시 삭제. 백엔드 없이 문자 오프셋으로 범위를 보관한다.
+  const HL_KEY = 'am_highlights';
+  const hlLoad = () => { try{ return JSON.parse(localStorage.getItem(HL_KEY)||'{}'); }catch(e){ return {}; } };
+  const hlDump = o => { try{ localStorage.setItem(HL_KEY, JSON.stringify(o)); }catch(e){} };
+  const briefKey = brief => brief.dataset.hl + '::' + lang;
+  const closestBrief = n => { while(n && n!==document){ if(n.nodeType===1 && n.hasAttribute && n.hasAttribute('data-hl')) return n; n=n.parentNode; } return null; };
+
+  // 컨테이너 시작부터 (node,offset) 지점까지의 '텍스트 문자 수'
+  function absOffset(container, node, offset){
+    const r = document.createRange();
+    r.selectNodeContents(container); r.setEnd(node, offset);
+    return r.toString().length;
+  }
+  // 겹치거나 맞닿은 구간 병합
+  function mergeRanges(list){
+    const a = list.slice().sort((x,y)=>x[0]-y[0]); const out=[];
+    for(const iv of a){ const last=out[out.length-1];
+      if(last && iv[0]<=last[1]) last[1]=Math.max(last[1],iv[1]); else out.push([iv[0],iv[1]]); }
+    return out;
+  }
+  // 기존 마크 제거 → 순수 텍스트 상태로 복원(오프셋 보존)
+  function stripMarks(brief){
+    brief.querySelectorAll('mark.hl').forEach(m=>{ const p=m.parentNode;
+      while(m.firstChild) p.insertBefore(m.firstChild, m); p.removeChild(m); });
+    brief.normalize();
+  }
+  // [start,end) 문자범위를 텍스트노드 단위로 잘라 <mark>로 감싼다
+  function wrapRange(brief, start, end){
+    const walker = document.createTreeWalker(brief, NodeFilter.SHOW_TEXT, null);
+    let pos=0, n, segs=[];
+    while((n=walker.nextNode())){ const len=n.nodeValue.length, ns=pos, ne=pos+len;
+      const s=Math.max(start,ns), e=Math.min(end,ne);
+      if(s<e) segs.push({node:n, from:s-ns, to:e-ns}); pos=ne; }
+    segs.reverse().forEach(seg=>{ try{
+      const rg=document.createRange(); rg.setStart(seg.node, seg.from); rg.setEnd(seg.node, seg.to);
+      const mk=document.createElement('mark'); mk.className='hl'; rg.surroundContents(mk);
+    }catch(err){/* 경계 문제시 해당 조각만 건너뜀 */} });
+  }
+  function paintBrief(brief){
+    stripMarks(brief);
+    const list = hlLoad()[briefKey(brief)] || [];
+    mergeRanges(list).sort((a,b)=>b[0]-a[0]).forEach(iv=> wrapRange(brief, iv[0], iv[1]));
+  }
+  function hlApplyAll(){ content.querySelectorAll('.brief[data-hl]').forEach(paintBrief); }
+
+  function addHighlight(brief, s, e){
+    if(e<=s) return;
+    const key=briefKey(brief), store=hlLoad();
+    store[key]=mergeRanges((store[key]||[]).concat([[s,e]]));
+    hlDump(store); paintBrief(brief);
+  }
+  function removeAt(brief, mark){
+    const key=briefKey(brief);
+    const r=document.createRange(); r.selectNodeContents(brief); r.setEndBefore(mark);
+    const s=r.toString().length, e=s+mark.textContent.length, store=hlLoad();
+    store[key]=(store[key]||[]).filter(iv=> iv[1]<=s || iv[0]>=e);
+    if(!store[key].length) delete store[key];
+    hlDump(store); paintBrief(brief);
+  }
+
+  // 플로팅 '하이라이트' 버튼
+  const hlBtn=document.createElement('button');
+  hlBtn.className='hl-btn'; hlBtn.type='button'; hlBtn.textContent='🖍 하이라이트';
+  hlBtn.style.display='none'; document.body.appendChild(hlBtn);
+  let hlRange=null, hlBrief=null;
+  const hideBtn=()=>{ hlBtn.style.display='none'; hlRange=null; hlBrief=null; };
+  hlBtn.addEventListener('mousedown', e=> e.preventDefault());  // 선택 유지
+  hlBtn.addEventListener('click', ()=>{
+    if(!hlBrief||!hlRange) return;
+    addHighlight(hlBrief, absOffset(hlBrief,hlRange.startContainer,hlRange.startOffset),
+                          absOffset(hlBrief,hlRange.endContainer,hlRange.endOffset));
+    const sel=getSelection(); if(sel) sel.removeAllRanges(); hideBtn();
+  });
+  document.addEventListener('mouseup', ()=> setTimeout(()=>{
+    const sel=getSelection();
+    if(!sel||sel.isCollapsed||!sel.rangeCount) return hideBtn();
+    const r=sel.getRangeAt(0), brief=closestBrief(r.commonAncestorContainer);
+    if(!brief||!brief.contains(r.startContainer)||!brief.contains(r.endContainer)||!r.toString().trim()) return hideBtn();
+    hlRange=r.cloneRange(); hlBrief=brief;
+    const rect=r.getBoundingClientRect();
+    hlBtn.style.left=(window.scrollX+rect.left+rect.width/2-46)+'px';
+    hlBtn.style.top =(window.scrollY+rect.top-40)+'px';
+    hlBtn.style.display='block';
+  },0));
+  document.addEventListener('mousedown', e=>{ if(e.target!==hlBtn) hideBtn(); });
+  window.addEventListener('scroll', hideBtn, {passive:true});
+  // 하이라이트 클릭 → 삭제
+  content.addEventListener('click', e=>{
+    const m=e.target.closest && e.target.closest('mark.hl'); if(!m) return;
+    const brief=closestBrief(m); if(brief){ e.preventDefault(); removeAt(brief, m); }
+  });
 
   // ---- 언어 토글 ----
   const seg = $('#lang-seg');
