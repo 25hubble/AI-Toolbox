@@ -295,6 +295,24 @@
   .hl-sw.on{box-shadow:0 0 0 2px #fff,0 0 0 4px var(--accent)}
   .brief::before{content:'🖍 중요한 부분을 드래그해 색을 고르면 하이라이트 · 하이라이트를 클릭하면 삭제';
     display:block; font-family:var(--mono); font-size:10px; letter-spacing:.02em; color:var(--faint); margin:2px 0 12px}
+
+  /* ---- 스크랩 · 공유 · 라이브러리 ---- */
+  .actions .btn-meta{cursor:pointer}
+  .act-scrap.on{color:#a9791d; border-color:#e5c74a; background:#fff7e0}
+  .actions .btn-meta.ghost{margin-left:auto; cursor:default; color:var(--faint)}
+  .share-pop{position:absolute; z-index:70; display:none; min-width:186px; padding:6px;
+    background:#fff; border:1px solid var(--line-2); border-radius:12px; box-shadow:0 10px 26px rgba(16,26,51,.20)}
+  .share-pop button{display:flex; align-items:center; gap:9px; width:100%; text-align:left;
+    font-family:var(--sans); font-size:13px; font-weight:500; color:var(--ink); background:transparent;
+    border:0; padding:10px 12px; border-radius:8px; cursor:pointer}
+  .share-pop button:hover{background:var(--panel-2)}
+  .toast{position:fixed; left:50%; bottom:34px; transform:translateX(-50%) translateY(8px);
+    background:var(--ink); color:#fff; font-family:var(--mono); font-size:12px; letter-spacing:.03em;
+    padding:12px 20px; border-radius:11px; box-shadow:var(--shadow-lg); z-index:90; opacity:0;
+    transition:opacity .22s, transform .22s; pointer-events:none}
+  .toast.on{opacity:1; transform:translateX(-50%) translateY(0)}
+  .panel.flash{animation:flashcard 2.2s ease}
+  @keyframes flashcard{0%,100%{box-shadow:var(--shadow)} 18%{box-shadow:0 0 0 3px var(--accent-line),var(--shadow-lg)}}
 </style>
 <script src="data.js"></script>
 <script>
@@ -306,14 +324,22 @@
   // ================= 언어(KO/EN) =================
   let lang = localStorage.getItem('am_lang') || 'ko';
   const UI = {
-    ko:{ all:'전체 시스템', recent:'최근 업데이트', brief:'엔터프라이즈 실무 분석서', watch:'▶ 원본 영상 시청',
+    ko:{ all:'전체 시스템', recent:'최근 업데이트', library:'내 라이브러리', brief:'엔터프라이즈 실무 분석서', watch:'▶ 원본 영상 시청',
          empty:'// 이 섹터엔 아직 아카이빙된 모듈이 없습니다', updated:'최근 업데이트',
          newN:n=>`· 새 항목 ${n}건`, noNew:'· 오늘 새 항목 없음',
-         modN:n=>`모듈 ${n}건`, today:'오늘', yesterday:'어제', daysAgo:n=>`${n}일 전` },
-    en:{ all:'ALL SYSTEMS', recent:'RECENT UPDATES', brief:'Enterprise Field Analysis', watch:'▶ Watch original',
+         modN:n=>`모듈 ${n}건`, today:'오늘', yesterday:'어제', daysAgo:n=>`${n}일 전`,
+         scrap:'스크랩', scrapped:'스크랩됨', share:'공유',
+         byEmail:'✉ 이메일로 보내기', copyLink:'🔗 링크 복사', copySum:'📋 요약 복사',
+         copied:'링크가 복사되었습니다', copiedSum:'요약이 복사되었습니다',
+         libEmpty:'// 아직 스크랩한 카드가 없습니다 — 카드의 ☆ 스크랩 버튼으로 담아보세요' },
+    en:{ all:'ALL SYSTEMS', recent:'RECENT UPDATES', library:'MY LIBRARY', brief:'Enterprise Field Analysis', watch:'▶ Watch original',
          empty:'// No modules archived in this sector yet', updated:'Last updated',
          newN:n=>`· ${n} new`, noNew:'· nothing new today',
-         modN:n=>`${n} module${n>1?'s':''}`, today:'today', yesterday:'yesterday', daysAgo:n=>`${n} days ago` }
+         modN:n=>`${n} module${n>1?'s':''}`, today:'today', yesterday:'yesterday', daysAgo:n=>`${n} days ago`,
+         scrap:'Save', scrapped:'Saved', share:'Share',
+         byEmail:'✉ Send by email', copyLink:'🔗 Copy link', copySum:'📋 Copy summary',
+         copied:'Link copied', copiedSum:'Summary copied',
+         libEmpty:'// No saved cards yet — tap the ☆ Save button on any card' }
   };
   const t = k => UI[lang][k];
   // 엔트리/카테고리의 현재 언어 값 (en 없으면 ko 로 폴백)
@@ -342,6 +368,14 @@
   const countBy = id => D.entries.filter(e=>e.categoryId===id).length;
   let active = 'all';
 
+  // ================= 내 라이브러리(스크랩) =================
+  const LIB_KEY = 'am_library';
+  const libLoad = () => { try{ return JSON.parse(localStorage.getItem(LIB_KEY)||'[]'); }catch(e){ return []; } };
+  const libDump = a => { try{ localStorage.setItem(LIB_KEY, JSON.stringify(a)); }catch(e){} };
+  const libHas = id => libLoad().indexOf(id) !== -1;
+  const libToggle = id => { const a=libLoad(), i=a.indexOf(id);
+    if(i===-1) a.unshift(id); else a.splice(i,1); libDump(a); return i===-1; };
+
   (function(){
     const el=$('#tel-count'), target=D.entries.length; let i=0;
     const reduce = matchMedia('(prefers-reduced-motion:reduce)').matches;
@@ -353,6 +387,7 @@
   function renderNav(){
     let h = item('all','··',t('all'), D.entries.length, active==='all', false);
     h += item('recent','↻',t('recent'), D.entries.length, active==='recent', D.entries.length===0);
+    h += item('library','★',t('library'), libLoad().length, active==='library', false);
     D.categories.forEach(c=>{ const n=countBy(c.id); h+=item(c.id,c.code,pick(c,'name'),n,active===c.id,n===0); });
     nav.innerHTML = h;
     nav.querySelectorAll('.nav-item').forEach(el=>{
@@ -376,6 +411,7 @@
   }
   function renderContent(){
     if(active==='recent'){ renderRecent(); return; }
+    if(active==='library'){ renderLibrary(); return; }
     const cats = active==='all' ? D.categories : D.categories.filter(c=>c.id===active);
     $('#crumb-cat').textContent = active==='all' ? 'ALL SYSTEMS' :
       catName(active).toUpperCase();
@@ -413,10 +449,25 @@
     hlApplyAll();
   }
 
+  function renderLibrary(){
+    $('#crumb-cat').textContent = t('library').toUpperCase();
+    const lib = new Set(libLoad());
+    let h='', shown=0;
+    D.categories.forEach(c=>{
+      const items = D.entries.filter(e=>e.categoryId===c.id && lib.has(e.id));
+      if(!items.length) return; shown+=items.length;
+      h += `<div class="sec-head"><span class="code">${c.code}</span>
+        <div class="meta"><h2>${pick(c,'name')}</h2><span class="desc">${t('modN')(items.length)}</span></div><span class="ln"></span></div>
+        <div class="stack">${items.map(card).join('')}</div>`;
+    });
+    content.innerHTML = shown ? h : `<div class="empty">${t('libEmpty')}</div>`;
+    hlApplyAll();
+  }
+
   function card(e){
     const cat = catName(e.categoryId);
     const tags=(e.tags||[]).map(t=>`<span class="tag">${t}</span>`).join('');
-    return `<article class="panel">
+    return `<article class="panel" data-card="${e.id}">
       <div class="p-top">
         <span class="p-id">${pick(e,'moduleTag')||'MODULE'}${cat?' · '+cat:''}</span>
         <span class="ref">REF <b>${e.refDate}</b>${isNew(e)?'<span class="new-badge">NEW</span>':''}</span>
@@ -431,7 +482,9 @@
       </details>
       <div class="actions">
         <a class="btn btn-primary" href="${e.videoUrl}" target="_blank" rel="noopener">${t('watch')}</a>
-        <span class="btn btn-meta">${e.channel} <span class="dot">·</span> ${e.duration}</span>
+        <button type="button" class="btn btn-meta act-scrap ${libHas(e.id)?'on':''}" data-scrap="${e.id}">${libHas(e.id)?'★ '+t('scrapped'):'☆ '+t('scrap')}</button>
+        <button type="button" class="btn btn-meta act-share" data-share="${e.id}">⤴ ${t('share')}</button>
+        <span class="btn btn-meta ghost">${e.channel} <span class="dot">·</span> ${e.duration}</span>
       </div>
     </article>`;
   }
@@ -545,13 +598,93 @@
     hlBar.style.left=(window.scrollX+rect.left+rect.width/2-hlBar.offsetWidth/2)+'px';
     hlBar.style.top =(window.scrollY+rect.top-hlBar.offsetHeight-8)+'px';
   },0));
-  document.addEventListener('mousedown', e=>{ if(!hlBar.contains(e.target)) hideBar(); });
+  document.addEventListener('mousedown', e=>{
+    if(!hlBar.contains(e.target)) hideBar();
+    if(!sharePop.contains(e.target) && !(e.target.closest && e.target.closest('.act-share'))) hideShare();
+  });
   window.addEventListener('scroll', hideBar, {passive:true});
   // 하이라이트 클릭 → 삭제
   content.addEventListener('click', e=>{
     const m=e.target.closest && e.target.closest('mark.hl'); if(!m) return;
     const brief=closestBrief(m); if(brief){ e.preventDefault(); removeAt(brief, m); }
   });
+
+  // ================= 스크랩 토글 · 공유 · 딥링크 =================
+  // 카드 액션 클릭(스크랩/공유) — content 위임
+  content.addEventListener('click', e=>{
+    const sc = e.target.closest && e.target.closest('.act-scrap');
+    if(sc){ e.preventDefault();
+      const id=sc.dataset.scrap, now=libToggle(id);
+      sc.classList.toggle('on', now);
+      sc.textContent = now ? '★ '+t('scrapped') : '☆ '+t('scrap');
+      renderNav();                                   // 라이브러리 카운트 갱신
+      if(active==='library' && !now){ renderContent(); } // 라이브러리 뷰에서 해제 시 즉시 제거
+      return; }
+    const sh = e.target.closest && e.target.closest('.act-share');
+    if(sh){ e.preventDefault(); openShare(sh, sh.dataset.share); return; }
+  });
+
+  // 공유 팝오버
+  const deepLink = e => location.origin + location.pathname + '#m=' + e.id;
+  function shareSummary(e){
+    return [pick(e,'title'), '', (pick(e,'subtitle')||''), '', '▸ '+(pick(e,'takeaway')||''), '',
+      '원본 영상: '+e.videoUrl, '카드 링크: '+deepLink(e), '', '— AI Master Architecture Matrix'].join('\n');
+  }
+  function copyText(txt){
+    if(navigator.clipboard && navigator.clipboard.writeText) return navigator.clipboard.writeText(txt);
+    return new Promise((res,rej)=>{ try{ const ta=document.createElement('textarea');
+      ta.value=txt; ta.style.position='fixed'; ta.style.opacity='0'; document.body.appendChild(ta);
+      ta.select(); document.execCommand('copy'); ta.remove(); res(); }catch(err){ rej(err); } });
+  }
+  const toastEl=document.createElement('div'); toastEl.className='toast'; document.body.appendChild(toastEl);
+  let toastT=null;
+  function toast(msg){ toastEl.textContent=msg; toastEl.classList.add('on');
+    clearTimeout(toastT); toastT=setTimeout(()=>toastEl.classList.remove('on'),1900); }
+
+  const sharePop=document.createElement('div'); sharePop.className='share-pop';
+  sharePop.innerHTML = `<button type="button" data-a="email"></button>
+    <button type="button" data-a="link"></button><button type="button" data-a="sum"></button>`;
+  document.body.appendChild(sharePop);
+  let shareEntry=null;
+  const hideShare=()=>{ sharePop.style.display='none'; shareEntry=null; };
+  function openShare(btn, id){
+    shareEntry = D.entries.find(x=>x.id===id); if(!shareEntry) return;
+    const [b1,b2,b3]=sharePop.querySelectorAll('button');
+    b1.textContent=t('byEmail'); b2.textContent=t('copyLink'); b3.textContent=t('copySum');
+    const r=btn.getBoundingClientRect();
+    sharePop.style.display='block';
+    let left=window.scrollX+r.left, top=window.scrollY+r.bottom+8;
+    if(left+sharePop.offsetWidth > window.scrollX+document.documentElement.clientWidth-12)
+      left = window.scrollX+document.documentElement.clientWidth-sharePop.offsetWidth-12;
+    sharePop.style.left=left+'px'; sharePop.style.top=top+'px';
+  }
+  sharePop.addEventListener('click', e=>{
+    const b=e.target.closest('button'); if(!b||!shareEntry) return;
+    const e2=shareEntry;
+    if(b.dataset.a==='email'){
+      location.href = 'mailto:?subject='+encodeURIComponent(pick(e2,'title'))+'&body='+encodeURIComponent(shareSummary(e2));
+    } else if(b.dataset.a==='link'){
+      copyText(deepLink(e2)).then(()=>toast(t('copied'))).catch(()=>{});
+    } else {
+      copyText(shareSummary(e2)).then(()=>toast(t('copiedSum'))).catch(()=>{});
+    }
+    hideShare();
+  });
+
+  // 딥링크(#m=<id>) — 공유받은 링크로 특정 카드 열기
+  function openDeepLink(){
+    const m=(location.hash.match(/m=([\w-]+)/)||[])[1]; if(!m) return false;
+    const e=D.entries.find(x=>x.id===m); if(!e) return false;
+    active='all'; renderNav(); renderContent();
+    requestAnimationFrame(()=>{
+      const card=content.querySelector('[data-card="'+m+'"]');
+      if(card){ const det=card.querySelector('details'); if(det) det.open=true;
+        card.classList.add('flash'); card.scrollIntoView({behavior:'smooth',block:'center'});
+        setTimeout(()=>card.classList.remove('flash'), 2200); }
+    });
+    return true;
+  }
+  window.addEventListener('hashchange', openDeepLink);
 
   // ---- 언어 토글 ----
   const seg = $('#lang-seg');
@@ -573,6 +706,7 @@
   syncSeg();
 
   renderAll();
+  openDeepLink();   // 공유 링크(#m=<id>)로 진입한 경우 해당 카드 열기
 })();
 </script>
 </body>
