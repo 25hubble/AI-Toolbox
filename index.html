@@ -313,6 +313,70 @@
   .toast.on{opacity:1; transform:translateX(-50%) translateY(0)}
   .panel.flash{animation:flashcard 2.2s ease}
   @keyframes flashcard{0%,100%{box-shadow:var(--shadow)} 18%{box-shadow:0 0 0 3px var(--accent-line),var(--shadow-lg)}}
+
+  /* ---- 라이브러리: 툴바 · 읽음 · 컬렉션 ---- */
+  .p-right{display:flex; align-items:center; gap:10px}
+  .read-pill{font-family:var(--mono); font-size:10px; letter-spacing:.04em; padding:3px 9px; border-radius:20px;
+    border:1px solid var(--line-2); background:var(--panel); color:var(--muted); cursor:pointer; white-space:nowrap}
+  .read-pill.on{color:var(--emerald); border-color:var(--emerald-line); background:var(--emerald-soft)}
+  .panel.is-unread{border-left:3px solid var(--accent)}
+  .lib-bar{display:flex; flex-wrap:wrap; align-items:center; gap:10px; margin:26px 0 6px; padding:14px 16px;
+    background:var(--panel); border:1px solid var(--line); border-radius:13px; box-shadow:var(--shadow-sm)}
+  .lib-search{display:flex; align-items:center; gap:8px; flex:1; min-width:190px; background:var(--panel-2);
+    border:1px solid var(--line-2); border-radius:9px; padding:8px 12px}
+  .lib-search span{color:var(--faint); font-size:12px}
+  .lib-search input{flex:1; border:0; background:transparent; outline:none; font-family:var(--sans); font-size:13.5px; color:var(--ink)}
+  .lib-seg{display:inline-flex; border:1px solid var(--line-2); border-radius:9px; overflow:hidden}
+  .lib-seg button{font-family:var(--mono); font-size:11px; font-weight:600; letter-spacing:.03em; padding:7px 12px;
+    border:0; background:transparent; color:var(--faint); cursor:pointer}
+  .lib-seg button.on{background:var(--accent); color:#fff}
+  .lib-sort{display:inline-flex; align-items:center; gap:7px; font-family:var(--mono); font-size:11px; color:var(--muted); letter-spacing:.03em}
+  .lib-sort select{font-family:var(--sans); font-size:13px; color:var(--ink); border:1px solid var(--line-2);
+    border-radius:9px; padding:7px 9px; background:var(--panel); cursor:pointer}
+  .lib-btn{font-family:var(--mono); font-size:11px; font-weight:600; letter-spacing:.03em; padding:8px 12px;
+    border:1px solid var(--line-2); border-radius:9px; background:var(--panel); color:var(--muted); cursor:pointer}
+  .lib-btn:hover{color:var(--ink); border-color:var(--accent-line); background:var(--accent-soft)}
+  .lib-sec .code{font-size:13px}
+  .col-empty{font-family:var(--mono); font-size:11.5px; color:var(--faint); padding:18px 4px; letter-spacing:.03em}
+
+  .col-pop{position:absolute; z-index:70; min-width:220px; max-width:280px; padding:7px;
+    background:#fff; border:1px solid var(--line-2); border-radius:12px; box-shadow:0 10px 26px rgba(16,26,51,.2)}
+  .col-pop-h{font-family:var(--mono); font-size:9.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--faint); padding:5px 9px 7px}
+  .col-opt{display:flex; align-items:center; gap:9px; width:100%; text-align:left; font-family:var(--sans);
+    font-size:13px; color:var(--ink); background:transparent; border:0; padding:9px 10px; border-radius:8px; cursor:pointer}
+  .col-opt:hover{background:var(--panel-2)}
+  .col-opt .chk{width:16px; height:16px; flex-shrink:0; border:1.5px solid var(--line-2); border-radius:5px; display:grid; place-items:center}
+  .col-opt.on .chk{background:var(--accent); border-color:var(--accent)}
+  .col-opt.on .chk::after{content:'✓'; color:#fff; font-size:11px; line-height:1}
+  .col-opt .nm{flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+  .col-opt .cn{font-family:var(--mono); font-size:10.5px; color:var(--faint)}
+  .col-new{display:flex; gap:6px; padding:7px 6px 4px; margin-top:4px; border-top:1px solid var(--line)}
+  .col-new input{flex:1; min-width:0; border:1px solid var(--line-2); border-radius:8px; padding:8px 10px; font-size:13px; font-family:var(--sans); outline:none}
+  .col-new button, .col-new-row button{font-family:var(--mono); font-size:11px; font-weight:600; color:#fff; background:var(--accent);
+    border:0; border-radius:8px; padding:0 12px; cursor:pointer; white-space:nowrap}
+
+  .modal-back{position:fixed; inset:0; z-index:100; background:rgba(16,26,51,.34); backdrop-filter:blur(3px);
+    display:none; align-items:center; justify-content:center; padding:24px}
+  .modal{width:min(460px,100%); background:#fff; border:1px solid var(--line); border-radius:16px; padding:22px 24px; box-shadow:var(--shadow-lg)}
+  .modal-h{display:flex; align-items:center; justify-content:space-between; margin-bottom:6px}
+  .modal-h h3{margin:0; font-size:17px; font-weight:800; letter-spacing:-.01em}
+  .modal-x{border:0; background:transparent; font-size:16px; color:var(--faint); cursor:pointer; padding:4px 8px; border-radius:8px}
+  .modal-x:hover{background:var(--panel-2); color:var(--ink)}
+  .modal-hint{font-family:var(--mono); font-size:10.5px; color:var(--faint); letter-spacing:.02em; margin:0 0 14px}
+  .col-manage{list-style:none; margin:0 0 14px; padding:0; display:flex; flex-direction:column; gap:8px; max-height:46vh; overflow-y:auto}
+  .col-manage li{display:flex; align-items:center; gap:8px; background:var(--panel-2); border:1px solid var(--line); border-radius:10px; padding:8px 10px}
+  .col-manage li.none{justify-content:center; color:var(--faint); font-family:var(--mono); font-size:12px}
+  .col-manage .col-nm{flex:1; min-width:0; border:1px solid transparent; background:transparent; font-size:14px; font-weight:600;
+    font-family:var(--sans); color:var(--ink); padding:5px 7px; border-radius:7px; outline:none}
+  .col-manage .col-nm:focus{border-color:var(--accent-line); background:#fff}
+  .col-manage .col-cnt{font-family:var(--mono); font-size:10.5px; color:var(--faint); min-width:18px; text-align:center}
+  .col-manage .mv,.col-manage .del{border:1px solid var(--line-2); background:var(--panel); color:var(--muted); cursor:pointer;
+    width:28px; height:28px; border-radius:7px; font-size:12px; display:grid; place-items:center}
+  .col-manage .mv:disabled{opacity:.35; cursor:default}
+  .col-manage .del:hover{color:#c0392b; border-color:#e6b0a8; background:#fdecea}
+  .col-new-row{display:flex; gap:8px}
+  .col-new-row input{flex:1; border:1px solid var(--line-2); border-radius:9px; padding:9px 11px; font-size:13.5px; font-family:var(--sans); outline:none}
+  .col-new-row button{padding:0 15px; border-radius:9px}
 </style>
 <script src="data.js"></script>
 <script>
@@ -331,7 +395,13 @@
          scrap:'스크랩', scrapped:'스크랩됨', share:'공유',
          byEmail:'✉ 이메일로 보내기', copyLink:'🔗 링크 복사', copySum:'📋 요약 복사',
          copied:'링크가 복사되었습니다', copiedSum:'요약이 복사되었습니다',
-         libEmpty:'// 아직 스크랩한 카드가 없습니다 — 카드의 ☆ 스크랩 버튼으로 담아보세요' },
+         libEmpty:'// 아직 스크랩한 카드가 없습니다 — 카드의 ☆ 스크랩 버튼으로 담아보세요',
+         read:'읽음', unread:'안읽음', collection:'컬렉션', newCol:'새 컬렉션', manageCol:'컬렉션 관리',
+         uncategorized:'미분류', sortLabel:'정렬', sortRecent:'최근 담은 순', sortTitle:'제목순', sortDate:'영상 날짜순',
+         filAll:'전체', filUnread:'안읽음', filRead:'읽음', searchPh:'라이브러리 검색…',
+         addColPh:'새 컬렉션 이름', create:'만들기', add:'＋ 추가', close:'닫기',
+         colEmptyMsg:'이 컬렉션은 비어 있습니다', noMatch:'// 검색·필터에 맞는 카드가 없습니다',
+         manageHint:'이름을 눌러 수정 · 화살표로 순서 · ✕ 로 삭제', addTo:'컬렉션에 담기/빼기' },
     en:{ all:'ALL SYSTEMS', recent:'RECENT UPDATES', library:'MY LIBRARY', brief:'Enterprise Field Analysis', watch:'▶ Watch original',
          empty:'// No modules archived in this sector yet', updated:'Last updated',
          newN:n=>`· ${n} new`, noNew:'· nothing new today',
@@ -339,7 +409,13 @@
          scrap:'Save', scrapped:'Saved', share:'Share',
          byEmail:'✉ Send by email', copyLink:'🔗 Copy link', copySum:'📋 Copy summary',
          copied:'Link copied', copiedSum:'Summary copied',
-         libEmpty:'// No saved cards yet — tap the ☆ Save button on any card' }
+         libEmpty:'// No saved cards yet — tap the ☆ Save button on any card',
+         read:'Read', unread:'Unread', collection:'Collection', newCol:'New collection', manageCol:'Manage collections',
+         uncategorized:'Uncategorized', sortLabel:'Sort', sortRecent:'Recently added', sortTitle:'Title', sortDate:'Video date',
+         filAll:'All', filUnread:'Unread', filRead:'Read', searchPh:'Search library…',
+         addColPh:'New collection name', create:'Create', add:'＋ Add', close:'Close',
+         colEmptyMsg:'This collection is empty', noMatch:'// No cards match your search/filter',
+         manageHint:'Click a name to rename · arrows to reorder · ✕ to delete', addTo:'Add to / remove from collections' }
   };
   const t = k => UI[lang][k];
   // 엔트리/카테고리의 현재 언어 값 (en 없으면 ko 로 폴백)
@@ -375,6 +451,40 @@
   const libHas = id => libLoad().indexOf(id) !== -1;
   const libToggle = id => { const a=libLoad(), i=a.indexOf(id);
     if(i===-1) a.unshift(id); else a.splice(i,1); libDump(a); return i===-1; };
+  // 라이브러리에서 완전 제거(컬렉션·읽음까지 정리)
+  function libRemove(id){ libDump(libLoad().filter(x=>x!==id));
+    const cs=colLoad(); cs.forEach(c=>{ const j=c.ids.indexOf(id); if(j!==-1) c.ids.splice(j,1); }); colDump(cs);
+    setRead(id,false); }
+
+  // ---- 컬렉션(폴더): [{id,name,ids:[cardId,…]}] ----
+  const COL_KEY='am_collections';
+  const colLoad=()=>{ try{ return JSON.parse(localStorage.getItem(COL_KEY)||'[]'); }catch(e){ return []; } };
+  const colDump=a=>{ try{ localStorage.setItem(COL_KEY, JSON.stringify(a)); }catch(e){} };
+  const colsOf=cardId=> colLoad().filter(c=> c.ids.indexOf(cardId)!==-1);
+  function colCreate(name){ const a=colLoad();
+    const id='c'+Date.now().toString(36)+Math.random().toString(36).slice(2,5);
+    a.push({id, name:(name||t('newCol')).slice(0,40), ids:[]}); colDump(a); return id; }
+  function colRename(id,name){ const a=colLoad(), c=a.find(x=>x.id===id); if(c){ c.name=name.slice(0,40); colDump(a); } }
+  function colDelete(id){ colDump(colLoad().filter(x=>x.id!==id)); }
+  function colMove(id,dir){ const a=colLoad(), i=a.findIndex(x=>x.id===id), j=i+dir;
+    if(i<0||j<0||j>=a.length) return; const x=a.splice(i,1)[0]; a.splice(j,0,x); colDump(a); }
+  function colToggleCard(colId,cardId){ const a=colLoad(), c=a.find(x=>x.id===colId); if(!c) return false;
+    const i=c.ids.indexOf(cardId);
+    if(i===-1){ c.ids.unshift(cardId); if(!libHas(cardId)) libToggle(cardId); } else c.ids.splice(i,1);
+    colDump(a); return i===-1; }
+
+  // ---- 읽음/안읽음 ----
+  const READ_KEY='am_read';
+  const readLoad=()=>{ try{ return JSON.parse(localStorage.getItem(READ_KEY)||'[]'); }catch(e){ return []; } };
+  const readDump=a=>{ try{ localStorage.setItem(READ_KEY, JSON.stringify(a)); }catch(e){} };
+  const isRead=id=> readLoad().indexOf(id)!==-1;
+  function setRead(id,val){ const a=readLoad(), i=a.indexOf(id);
+    if(val&&i===-1) a.push(id); else if(!val&&i!==-1) a.splice(i,1); readDump(a); }
+
+  const esc=s=> String(s==null?'':s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+
+  // 라이브러리 뷰 상태(세션 내)
+  let libSort='recent', libFilter='all', libQuery='';
 
   (function(){
     const el=$('#tel-count'), target=D.entries.length; let i=0;
@@ -421,7 +531,7 @@
       if(!items.length) return; shown+=items.length;
       h += `<div class="sec-head"><span class="code">${c.code}</span>
         <div class="meta"><h2>${pick(c,'name')}</h2><span class="desc">${pick(c,'desc')}</span></div><span class="ln"></span></div>
-        <div class="stack">${items.map(card).join('')}</div>`;
+        <div class="stack">${items.map(e=>card(e,false)).join('')}</div>`;
     });
     content.innerHTML = shown ? h : `<div class="empty">${t('empty')}</div>`;
     hlApplyAll();
@@ -444,33 +554,87 @@
         + (nNew ? ` <span class="fresh-new">${t('newN')(nNew)}</span>` : '');
       return `<div class="sec-head"><span class="code">${code}</span>
         <div class="meta"><h2>${g.date}</h2><span class="desc">${desc}</span></div><span class="ln"></span></div>
-        <div class="stack">${g.items.map(card).join('')}</div>`;
+        <div class="stack">${g.items.map(e=>card(e,false)).join('')}</div>`;
     }).join('');
     hlApplyAll();
   }
 
+  function matchQuery(e,q){ if(!q) return true; q=q.toLowerCase();
+    const hay=[pick(e,'title'),e.title,(e.en&&e.en.title),pick(e,'subtitle'),pick(e,'moduleTag'),
+      e.channel,catName(e.categoryId),(e.tags||[]).join(' ')].filter(Boolean).join(' ').toLowerCase();
+    return hay.indexOf(q)!==-1; }
+  function passFilter(e){ if(libFilter==='unread') return !isRead(e.id); if(libFilter==='read') return isRead(e.id); return true; }
+  function sortCards(list, orderIds){
+    if(libSort==='title') return list.slice().sort((a,b)=>String(pick(a,'title')).localeCompare(String(pick(b,'title'))));
+    if(libSort==='date')  return list.slice().sort((a,b)=>String(b.addedDate||b.refDate).localeCompare(String(a.addedDate||a.refDate)));
+    if(orderIds){ const pos=new Map(orderIds.map((id,i)=>[id,i]));
+      return list.slice().sort((a,b)=>(pos.has(a.id)?pos.get(a.id):1e9)-(pos.has(b.id)?pos.get(b.id):1e9)); }
+    return list;
+  }
+  function secHead(icon,name,desc,inner){
+    return `<div class="sec-head lib-sec"><span class="code">${icon}</span>
+      <div class="meta"><h2>${name}</h2><span class="desc">${desc}</span></div><span class="ln"></span></div>
+      <div class="stack">${inner}</div>`;
+  }
   function renderLibrary(){
     $('#crumb-cat').textContent = t('library').toUpperCase();
-    const lib = new Set(libLoad());
-    let h='', shown=0;
-    D.categories.forEach(c=>{
-      const items = D.entries.filter(e=>e.categoryId===c.id && lib.has(e.id));
-      if(!items.length) return; shown+=items.length;
-      h += `<div class="sec-head"><span class="code">${c.code}</span>
-        <div class="meta"><h2>${pick(c,'name')}</h2><span class="desc">${t('modN')(items.length)}</span></div><span class="ln"></span></div>
-        <div class="stack">${items.map(card).join('')}</div>`;
+    if(!libLoad().length){ content.innerHTML=`<div class="empty">${t('libEmpty')}</div>`; return; }
+    content.innerHTML = `
+      <div class="lib-bar">
+        <div class="lib-search"><span>🔍</span><input id="lib-q" type="text" placeholder="${t('searchPh')}" value="${esc(libQuery)}"></div>
+        <div class="lib-seg" id="lib-fil">
+          <button type="button" data-f="all" class="${libFilter==='all'?'on':''}">${t('filAll')}</button>
+          <button type="button" data-f="unread" class="${libFilter==='unread'?'on':''}">${t('filUnread')}</button>
+          <button type="button" data-f="read" class="${libFilter==='read'?'on':''}">${t('filRead')}</button>
+        </div>
+        <label class="lib-sort">${t('sortLabel')}
+          <select id="lib-sort">
+            <option value="recent" ${libSort==='recent'?'selected':''}>${t('sortRecent')}</option>
+            <option value="title" ${libSort==='title'?'selected':''}>${t('sortTitle')}</option>
+            <option value="date" ${libSort==='date'?'selected':''}>${t('sortDate')}</option>
+          </select>
+        </label>
+        <button type="button" class="lib-btn" id="lib-newcol">＋ ${t('newCol')}</button>
+        <button type="button" class="lib-btn" id="lib-manage">⚙ ${t('manageCol')}</button>
+      </div>
+      <div id="lib-body"></div>`;
+    const q=$('#lib-q');
+    q.addEventListener('input', ()=>{ libQuery=q.value; renderLibBody(); });
+    $('#lib-fil').addEventListener('click', e=>{ const b=e.target.closest('button'); if(!b) return;
+      libFilter=b.dataset.f; $('#lib-fil').querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b)); renderLibBody(); });
+    $('#lib-sort').addEventListener('change', e=>{ libSort=e.target.value; renderLibBody(); });
+    $('#lib-newcol').addEventListener('click', ()=>{ const nm=prompt(t('addColPh')); if(nm&&nm.trim()){ colCreate(nm.trim()); renderNav(); renderLibBody(); } });
+    $('#lib-manage').addEventListener('click', openManage);
+    renderLibBody();
+  }
+  function renderLibBody(){
+    const body=$('#lib-body'); if(!body) return;
+    const set=new Set(libLoad()), filtering = libQuery || libFilter!=='all';
+    const visible = e => set.has(e.id) && passFilter(e) && matchQuery(e,libQuery);
+    const cols=colLoad(); let h='', shown=0;
+    cols.forEach(c=>{
+      let items=sortCards(D.entries.filter(e=> c.ids.indexOf(e.id)!==-1 && visible(e)), c.ids);
+      if(!items.length && filtering) return;
+      shown += items.length;
+      h += secHead('📁', esc(c.name), t('modN')(items.length),
+        items.length ? items.map(e=>card(e,true)).join('') : `<div class="col-empty">${t('colEmptyMsg')}</div>`);
     });
-    content.innerHTML = shown ? h : `<div class="empty">${t('libEmpty')}</div>`;
+    const inAny=new Set(); cols.forEach(c=>c.ids.forEach(id=>inAny.add(id)));
+    let unc=sortCards(D.entries.filter(e=> set.has(e.id) && !inAny.has(e.id) && passFilter(e) && matchQuery(e,libQuery)), libLoad());
+    if(unc.length){ shown+=unc.length; h += secHead('📂', t('uncategorized'), t('modN')(unc.length), unc.map(e=>card(e,true)).join('')); }
+    body.innerHTML = shown ? h : `<div class="empty">${filtering?t('noMatch'):t('libEmpty')}</div>`;
     hlApplyAll();
   }
 
-  function card(e){
+  function card(e, inLib){
     const cat = catName(e.categoryId);
     const tags=(e.tags||[]).map(t=>`<span class="tag">${t}</span>`).join('');
-    return `<article class="panel" data-card="${e.id}">
+    const rd=isRead(e.id);
+    const readPill = inLib ? `<button type="button" class="read-pill ${rd?'on':''}" data-read="${e.id}" title="${t('read')}/${t('unread')}">${rd?'✓ '+t('read'):'● '+t('unread')}</button>` : '';
+    return `<article class="panel ${inLib&&!rd?'is-unread':''}" data-card="${e.id}">
       <div class="p-top">
         <span class="p-id">${pick(e,'moduleTag')||'MODULE'}${cat?' · '+cat:''}</span>
-        <span class="ref">REF <b>${e.refDate}</b>${isNew(e)?'<span class="new-badge">NEW</span>':''}</span>
+        <span class="p-right">${readPill}<span class="ref">REF <b>${e.refDate}</b>${isNew(e)?'<span class="new-badge">NEW</span>':''}</span></span>
       </div>
       <h3>${pick(e,'title')}</h3>
       <p class="sub">${pick(e,'subtitle')||''}</p>
@@ -484,6 +648,7 @@
         <a class="btn btn-primary" href="${e.videoUrl}" target="_blank" rel="noopener">${t('watch')}</a>
         <button type="button" class="btn btn-meta act-scrap ${libHas(e.id)?'on':''}" data-scrap="${e.id}">${libHas(e.id)?'★ '+t('scrapped'):'☆ '+t('scrap')}</button>
         <button type="button" class="btn btn-meta act-share" data-share="${e.id}">⤴ ${t('share')}</button>
+        ${inLib ? `<button type="button" class="btn btn-meta act-col" data-col="${e.id}">📁 ${t('collection')}</button>` : ''}
         <span class="btn btn-meta ghost">${e.channel} <span class="dot">·</span> ${e.duration}</span>
       </div>
     </article>`;
@@ -601,6 +766,7 @@
   document.addEventListener('mousedown', e=>{
     if(!hlBar.contains(e.target)) hideBar();
     if(!sharePop.contains(e.target) && !(e.target.closest && e.target.closest('.act-share'))) hideShare();
+    if(!colPop.contains(e.target) && !(e.target.closest && e.target.closest('.act-col'))) hideColPop();
   });
   window.addEventListener('scroll', hideBar, {passive:true});
   // 하이라이트 클릭 → 삭제
@@ -613,16 +779,32 @@
   // 카드 액션 클릭(스크랩/공유) — content 위임
   content.addEventListener('click', e=>{
     const sc = e.target.closest && e.target.closest('.act-scrap');
-    if(sc){ e.preventDefault();
-      const id=sc.dataset.scrap, now=libToggle(id);
+    if(sc){ e.preventDefault(); const id=sc.dataset.scrap; let now;
+      if(libHas(id)){ libRemove(id); now=false; } else { libToggle(id); now=true; }
       sc.classList.toggle('on', now);
       sc.textContent = now ? '★ '+t('scrapped') : '☆ '+t('scrap');
-      renderNav();                                   // 라이브러리 카운트 갱신
-      if(active==='library' && !now){ renderContent(); } // 라이브러리 뷰에서 해제 시 즉시 제거
+      renderNav();
+      if(active==='library'){ renderLibBody(); }
       return; }
     const sh = e.target.closest && e.target.closest('.act-share');
     if(sh){ e.preventDefault(); openShare(sh, sh.dataset.share); return; }
+    const cb = e.target.closest && e.target.closest('.act-col');
+    if(cb){ e.preventDefault(); openColPop(cb, cb.dataset.col); return; }
+    const rp = e.target.closest && e.target.closest('.read-pill');
+    if(rp){ e.preventDefault(); const id=rp.dataset.read, now=!isRead(id); setRead(id,now);
+      rp.classList.toggle('on',now); rp.innerHTML = now ? '✓ '+t('read') : '● '+t('unread');
+      const cardEl=rp.closest('[data-card]'); if(cardEl) cardEl.classList.toggle('is-unread',!now);
+      if(active==='library' && libFilter!=='all') renderLibBody();
+      return; }
   });
+  // 분석서를 펼치면 자동 '읽음' (toggle 은 버블 안 하므로 캡처)
+  content.addEventListener('toggle', e=>{
+    const d=e.target; if(d.tagName!=='DETAILS'||!d.open) return;
+    const cardEl=d.closest('[data-card]'); if(!cardEl) return;
+    const id=cardEl.dataset.card; if(isRead(id)) return;
+    setRead(id,true); cardEl.classList.remove('is-unread');
+    const rp=cardEl.querySelector('.read-pill'); if(rp){ rp.classList.add('on'); rp.innerHTML='✓ '+t('read'); }
+  }, true);
 
   // 공유 팝오버
   const deepLink = e => location.origin + location.pathname + '#m=' + e.id;
@@ -685,6 +867,69 @@
     return true;
   }
   window.addEventListener('hashchange', openDeepLink);
+
+  // ================= 컬렉션 담기 팝오버 · 관리 모달 =================
+  const colPop=document.createElement('div'); colPop.className='col-pop'; colPop.style.display='none';
+  document.body.appendChild(colPop);
+  let colCard=null;
+  const hideColPop=()=>{ colPop.style.display='none'; colCard=null; };
+  function buildColPop(){
+    const cols=colLoad(), mine=new Set(colsOf(colCard).map(c=>c.id));
+    colPop.innerHTML =
+      `<div class="col-pop-h">${t('addTo')}</div>`
+      + (cols.length ? cols.map(c=>`<button type="button" data-col="${c.id}" class="col-opt ${mine.has(c.id)?'on':''}"><span class="chk"></span><span class="nm">${esc(c.name)}</span><span class="cn">${c.ids.length}</span></button>`).join('') : '')
+      + `<div class="col-new"><input type="text" maxlength="40" placeholder="${t('addColPh')}"><button type="button" data-a="new">${t('create')}</button></div>`;
+  }
+  function openColPop(btn,cardId){ colCard=cardId; buildColPop(); colPop.style.display='block';
+    const r=btn.getBoundingClientRect(); let left=window.scrollX+r.left, top=window.scrollY+r.bottom+8;
+    const vw=window.scrollX+document.documentElement.clientWidth;
+    if(left+colPop.offsetWidth>vw-12) left=vw-colPop.offsetWidth-12;
+    colPop.style.left=left+'px'; colPop.style.top=top+'px';
+  }
+  function syncScrapBtn(id){ const b=content.querySelector('[data-card="'+id+'"] .act-scrap');
+    if(b){ const on=libHas(id); b.classList.toggle('on',on); b.textContent=on?'★ '+t('scrapped'):'☆ '+t('scrap'); } }
+  colPop.addEventListener('click', e=>{
+    const nb=e.target.closest('[data-a="new"]');
+    if(nb){ const inp=colPop.querySelector('.col-new input'); const nm=(inp.value||'').trim(); if(!nm) return;
+      const id=colCreate(nm); colToggleCard(id,colCard); renderNav(); syncScrapBtn(colCard);
+      buildColPop(); if(active==='library') renderLibBody(); return; }
+    const ob=e.target.closest('.col-opt');
+    if(ob){ const on=colToggleCard(ob.dataset.col,colCard); ob.classList.toggle('on',on);
+      const cn=ob.querySelector('.cn'); const c=colLoad().find(x=>x.id===ob.dataset.col); if(cn&&c) cn.textContent=c.ids.length;
+      renderNav(); syncScrapBtn(colCard); if(active==='library') renderLibBody(); return; }
+  });
+
+  // 컬렉션 관리 모달
+  const modal=document.createElement('div'); modal.className='modal-back'; modal.style.display='none';
+  document.body.appendChild(modal);
+  const closeManage=()=>{ modal.style.display='none'; if(active==='library') renderLibrary(); };
+  function renderManageList(){
+    const ul=modal.querySelector('.col-manage'); const cols=colLoad();
+    ul.innerHTML = cols.length ? cols.map((c,i)=>`<li data-col="${c.id}">
+      <input type="text" class="col-nm" value="${esc(c.name)}" maxlength="40">
+      <span class="col-cnt">${c.ids.length}</span>
+      <button type="button" class="mv" data-d="-1" ${i===0?'disabled':''}>↑</button>
+      <button type="button" class="mv" data-d="1" ${i===cols.length-1?'disabled':''}>↓</button>
+      <button type="button" class="del" title="${t('close')}">✕</button></li>`).join('')
+      : `<li class="none">—</li>`;
+    ul.querySelectorAll('li[data-col]').forEach(li=>{ const id=li.dataset.col;
+      li.querySelector('.col-nm').onchange=ev=>{ colRename(id, ev.target.value.trim()||t('newCol')); };
+      li.querySelectorAll('.mv').forEach(b=> b.onclick=()=>{ colMove(id,+b.dataset.d); renderManageList(); });
+      li.querySelector('.del').onclick=()=>{ colDelete(id); renderManageList(); renderNav(); };
+    });
+  }
+  function openManage(){
+    modal.innerHTML=`<div class="modal">
+      <div class="modal-h"><h3>⚙ ${t('manageCol')}</h3><button type="button" class="modal-x" aria-label="${t('close')}">✕</button></div>
+      <p class="modal-hint">${t('manageHint')}</p>
+      <ul class="col-manage"></ul>
+      <div class="col-new-row"><input type="text" maxlength="40" placeholder="${t('addColPh')}"><button type="button" class="mk">${t('add')}</button></div>
+    </div>`;
+    modal.style.display='flex'; renderManageList();
+    modal.querySelector('.modal-x').onclick=closeManage;
+    modal.querySelector('.mk').onclick=()=>{ const inp=modal.querySelector('.col-new-row input'); const nm=(inp.value||'').trim(); if(!nm) return; colCreate(nm); inp.value=''; renderManageList(); renderNav(); };
+    modal.onclick=e=>{ if(e.target===modal) closeManage(); };
+  }
 
   // ---- 언어 토글 ----
   const seg = $('#lang-seg');
