@@ -66,6 +66,63 @@ window.DASHBOARD_DATA = {
   ],
   entries: [
     {
+      "id": "grok-4-6-cost-per-task-2026",
+      "categoryId": "agentops",
+      "moduleTag": "MODEL ECONOMICS & COST-PER-TASK OPS",
+      "title": "Grok 4.6 — Cursor 인수가 완성한 제3의 프런티어 랩, '작업당 비용'으로 읽는 모델 선택 전략",
+      "subtitle": "xAI가 Cursor의 코딩 데이터와 20만 GPU를 결합해 GDPval 1위 모델을 내놓으며, 품질 점수가 아닌 cost-per-task가 모델 선택의 진짜 기준임을 다시 증명했다.",
+      "tags": [
+            "Grok 4.6",
+            "xAI",
+            "Cursor",
+            "cost-per-task",
+            "GDPval",
+            "Artificial Analysis",
+            "recursive self-improvement",
+            "SFT",
+            "코딩 플라이휠",
+            "모델 선택"
+      ],
+      "videoUrl": "https://www.youtube.com/watch?v=rdYBjpylJUQ",
+      "videoId": "rdYBjpylJUQ",
+      "channel": "Matthew Berman",
+      "duration": "17:15",
+      "refDate": "2026-08-13",
+      "takeaway": "모델 평가의 진짜 축은 '품질 점수 × 작업당 비용(cost-per-task)'이며, Grok 4.6은 GPT-5.6 Soul급 지능을 더 낮은 단가($2/$6 per 1M tokens)로 제공해 '워크호스 모델' 포지션을 차지했다. 그리고 이 도약의 원천은 Cursor 인수로 확보한 코딩 데이터를 Grok 4.5로 재생성(SFT trajectory regeneration)하는 재귀적 자기개선 루프다.",
+      "box1": {
+            "title": "1 · 벤치마크 성적표 — 지식노동 1위, 코딩 체감은 3위, 그리고 cost-per-task의 함정",
+            "html": "<p>Grok 4.6은 Grok 4.5의 <b>dot 업그레이드</b>(완전 신규 학습이 아닌 반복 개선)임에도 전 영역에서 큰 폭의 향상을 보였다. 핵심 벤치마크 결과는 다음과 같다.</p><table class=\"matrix-table\"><tr><th>벤치마크</th><th>Grok 4.6</th><th>비교 대상</th><th>해석</th></tr><tr><td>GDPval (OpenAI, 실무 지식노동)</td><td><b>1위</b> (4.6 high)</td><td>GPT-5.6 Soul, Fable 5 Max 모두 제침</td><td>지식노동 태스크에서 최강</td></tr><tr><td>Cursor Bench</td><td>Fable 5 Max와 동급</td><td>1위는 아님</td><td>자사(Cursor) 내부 벤치인데도 1위 실패</td></tr><tr><td>Deep Suite (체감 코딩)</td><td>65.9 (3위)</td><td>GPT-5.6 Soul Max 73, Fable 5 70</td><td>'실사용 감각'에선 아직 열세</td></tr><tr><td>Terminal Bench</td><td>26%</td><td>이전 버전 15%</td><td>터미널 에이전트 능력 급상승</td></tr><tr><td>Harvey Lab (법률)</td><td><b>15.8%</b></td><td>Soul 2.5%, Fable 11.3%</td><td>법률 도메인 압도적 우위</td></tr></table><p>그러나 진행자의 핵심 주장은 <b>품질 점수만 보는 벤치마크는 불충분하다</b>는 것이다. Artificial Analysis Intelligence Index에서 Grok 4.6 high는 4위(Opus 5 1위, Fable 5 2위, GPT-5.6 Soul과 3위 동률)이지만, 진짜 봐야 할 것은 <b>cost-per-task 차트</b>다. 작업당 비용 = <b>사용 토큰 수 × 토큰 단가</b>의 곱이기 때문에, 예컨대 Kimi K3 Max는 단가가 Soul/Fable의 절반이지만 토큰을 2배 소모해 실질 비용이 같아진다. 단가표만 보고 모델을 고르면 안 되는 이유다.</p><p>이 축으로 보면 Grok 4.5 high는 작업당 약 <b>$0.36</b>에 지능지수 55~56이었고, Grok 4.6은 약 <b>$0.83</b>으로 비싸졌지만 지능이 60으로 뛰었다. 같은 지능대의 GPT-5.6 Soul Max보다는 여전히 저렴하고, Opus 5는 훨씬 지능이 높지만 비용이 극단적으로 크다. 반대편엔 작업당 ~$0.05에 지수 52를 내는 GPT-5.6 Luna Max 같은 초저가 옵션이 있다. 목표는 항상 차트의 <b>좌상단(고지능·저비용) 사분면</b>이며, 에이전트 파이프라인의 모델 라우팅 설계 시 이 2차원 평가를 기본으로 삼아야 한다.</p>"
+      },
+      "box2": {
+            "title": "2 · 가격·배포·제품 전략 — $2/$6 워크호스와 '코드를 숨긴' Grokbot",
+            "html": "<p>Grok 4.6의 API 가격은 <b>입력 $2 / 출력 $6 per 1M tokens</b>로, GPT-5.6 Soul의 수 배, Fable 5보다 훨씬 저렴하다. 속도도 이미 빠른데 <b>2배 가격의 fast 변형</b>까지 제공하며, 출시 첫 주에는 Grok Build와 Cursor에서 <b>2배 사용량(2x usage)</b> 프로모션을 진행한다. 배포 채널은 Cursor, Grok Build, 자체 API, OpenRouter, Vercel, Cloudflare로 즉시 사용 가능하다. 진행자는 이 모델을 '내 유스케이스의 <b>워크호스 모델</b>'로 규정한다 — 최고 지능이 필요한 곳이 아니라, 대량 반복 작업(서브에이전트 등)에 기본 탑재하는 포지션이다. 실제로 Grok 4.5는 Cursor의 기본 서브에이전트 모델로 널리 쓰였다.</p><p>실전 테스트(디자인 지향 프로필 카드 원샷 생성)에서는 <b>GPT-5.6 Soul이 명확히 승리</b>했다. Soul은 인물 이미지와 깔끔한 레이아웃을 완성했고, Grok 4.6은 준수하지만 버튼 잘림·하단 패딩 누락·어색한 줄바꿈 등 마감 문제가 있었으며, Fable 5는 'Microsoft Paint 수준의 SVG'라는 혹평을 받을 만큼 부진했다. 즉 <b>프런트엔드 심미성 영역에서는 Grok 4.6이 2위</b>라는 것이 진행자의 체감 판정이다.</p><p>제품 전략 면에서 주목할 것은 Cursor가 전날 출시한 <b>Grokbot</b>이다. Grok 4.6이 구동하는 이 제품은 <b>모델 선택 UI를 완전히 제거</b>했고(어떤 모델인지조차 표시 안 함), <b>코드를 일절 노출하지 않으며</b>, 사용자는 텍스트와 PowerPoint·Word 같은 <b>지식노동 산출물(artifacts)</b>만 본다. 스레드마다 마스코트가 붙는 '스레드 = 에이전트' 구조다. 개발자용 Cursor와 비개발자 대중용 Grokbot의 투트랙으로, '모든 지식노동은 결국 코드로 수행된다'는 전제를 일반 사용자 시장까지 확장한 것이다.</p>"
+      },
+      "box3": {
+            "title": "3 · 전략 해부 — 코딩 플라이휠, 데이터×GPU 결합, 재귀적 자기개선",
+            "html": "<p>이 도약의 구조적 원인은 <b>Cursor 인수</b>다(2026년 4월, SpaceX 주도). Cursor는 AI를 IDE에 최초로 깊게 통합한 회사로 <b>방대한 코딩 데이터</b>를 보유했지만 자체 데이터센터·GPU가 없었고, xAI는 <b>122일 만에 20만 GPU</b>를 구축하는 속도를 보였지만 쓸 만한 모델이 없어 GPU가 놀고 있었다. '데이터 산더미 + GPU 산더미'의 결합이 Grok 4.5→4.6의 연쇄 개선을 만든 것이다. 이는 Anthropic이 개척하고 OpenAI가 복제한 <b>코딩 플라이휠</b>(개발자가 코딩 도구 사용 → 데이터·수익 환류 → 그 코딩 모델로 차세대 모델 학습)의 세 번째 구현이며, 진행자는 'LLM의 승리 공식은 코딩에 올인하는 것'이라고 결론짓는다.</p><p>기술적으로 가장 중요한 대목은 블로그에 명시된 <b>재귀적 자기개선</b>이다: <b>Grok 4.5를 사용해 SFT trajectory를 재생성</b>했으며, 그 범위는 reasoning effort 전반, agent harness, 그리고 STEM·소프트웨어 엔지니어링·지식노동 도메인에 걸친다. 완전 폐쇄 루프의 자기개선 AI는 아니지만, <b>현세대 모델이 차세대 모델의 학습 데이터를 큐레이션·생성하는 패턴</b>은 이미 모든 주요 랩의 표준이 되었다. 도메인 파인튜닝이나 에이전트 학습 데이터를 설계하는 팀이라면 이 'trajectory 재생성' 접근을 벤치마킹할 가치가 있다.</p><p>지정학적 관전 포인트도 있다. <b>Anthropic이 xAI로부터 컴퓨트를 구매</b>하는 계약을 맺었는데, Grok 수요가 급증하면 계약 만료 시점에 xAI가 그 GPU 용량을 전부 Cursor와 Grok에 재배정할 가능성이 높다 — 진행자는 '적에게 무기를 파는' 이 구도가 Anthropic에 리스크라고 본다. 또한 Elon Musk는 <b>Grok 4.7이 4.6보다 훨씬 뛰어나며 3~4주 내 출시</b>될 것이고, 초기 학습 완료 후 <b>SpaceX 사내 데이터를 보충 학습</b>에 대량 투입 중이라고 밝혔다. 결론: OpenAI·Anthropic 양강 구도에 <b>제3의 미국 프런티어 랩</b>이 실질적으로 합류했고, 이 경쟁은 전체 시장의 모델 단가 하락과 품질 상승으로 귀결된다.</p>"
+      },
+      "en": {
+            "title": "Grok 4.6 — The Third Frontier Lab Forged by the Cursor Acquisition, and Model Selection Through the Lens of Cost-per-Task",
+            "subtitle": "By fusing Cursor's coding data with 200K GPUs, xAI shipped a GDPval-topping model — proving again that cost-per-task, not quality score alone, is the real criterion for model selection.",
+            "moduleTag": "MODEL ECONOMICS & COST-PER-TASK OPS",
+            "takeaway": "The true axes of model evaluation are quality score × cost-per-task, and Grok 4.6 claims the 'workhorse model' position by delivering GPT-5.6 Soul-class intelligence at a lower price ($2/$6 per 1M tokens). The source of this leap is a recursive self-improvement loop: regenerating SFT trajectories with Grok 4.5 on the coding data acquired through Cursor.",
+            "box1": {
+                  "title": "1 · Benchmark Report Card — #1 in Knowledge Work, 3rd in Coding Feel, and the Cost-per-Task Trap",
+                  "html": "<p>Grok 4.6 is a <b>dot upgrade</b> of Grok 4.5 (an iterative improvement, not a fresh training run), yet it shows major gains across the board. Key benchmark results:</p><table class=\"matrix-table\"><tr><th>Benchmark</th><th>Grok 4.6</th><th>Comparison</th><th>Read</th></tr><tr><td>GDPval (OpenAI, real knowledge work)</td><td><b>#1</b> (4.6 high)</td><td>Beats both GPT-5.6 Soul and Fable 5 Max</td><td>Strongest on knowledge-work tasks</td></tr><tr><td>Cursor Bench</td><td>On par with Fable 5 Max</td><td>Not #1</td><td>Failed to top even its own (Cursor's) internal bench</td></tr><tr><td>Deep Suite (real-feel coding)</td><td>65.9 (3rd)</td><td>GPT-5.6 Soul Max 73, Fable 5 70</td><td>Still behind on 'how it actually feels'</td></tr><tr><td>Terminal Bench</td><td>26%</td><td>15% for the previous version</td><td>Sharp jump in terminal-agent capability</td></tr><tr><td>Harvey Lab (legal)</td><td><b>15.8%</b></td><td>Soul 2.5%, Fable 11.3%</td><td>Dominant in the legal domain</td></tr></table><p>The host's central claim, however, is that <b>quality-only benchmarks are insufficient</b>. On the Artificial Analysis Intelligence Index, Grok 4.6 high ranks 4th (Opus 5 first, Fable 5 second, tied with GPT-5.6 Soul for third), but the chart that matters is <b>cost-per-task</b>. Cost per task = <b>tokens used × token price</b>: Kimi K3 Max, for instance, charges half the per-token price of Soul/Fable but burns twice the tokens, making its effective cost identical. This is why you should never pick a model from the price sheet alone.</p><p>On this axis, Grok 4.5 high sat at roughly <b>$0.36 per task</b> with an intelligence index of 55–56, while Grok 4.6 rises to about <b>$0.83</b> but jumps to 60 in intelligence. It remains cheaper than GPT-5.6 Soul Max at equivalent intelligence, while Opus 5 is far smarter but dramatically more expensive. At the other extreme sits GPT-5.6 Luna Max at ~$0.05 per task with an index of 52. The goal is always the <b>upper-left quadrant (high intelligence, low cost)</b> — make this two-dimensional evaluation the default when designing model routing for agent pipelines.</p>"
+            },
+            "box2": {
+                  "title": "2 · Pricing, Distribution, and Product Strategy — the $2/$6 Workhorse and the Code-Hiding Grokbot",
+                  "html": "<p>Grok 4.6's API pricing is <b>$2 input / $6 output per 1M tokens</b> — several times cheaper than GPT-5.6 Soul and far cheaper than Fable 5. Despite already being fast, it also offers a <b>fast variant at 2x the price</b>, plus a <b>2x usage promotion</b> in Grok Build and Cursor for the first week. It is immediately available via Cursor, Grok Build, the native API, OpenRouter, Vercel, and Cloudflare. The host frames it as 'the <b>workhorse model</b> for my use cases' — not where peak intelligence is required, but as the default for high-volume repetitive work (e.g., sub-agents). Grok 4.5 was in fact widely used as Cursor's default sub-agent model.</p><p>In a hands-on test (one-shot generation of a design-oriented profile card), <b>GPT-5.6 Soul clearly won</b>: it produced a real portrait image and a clean layout. Grok 4.6 was decent but had finish issues — a cut-off follow button, missing bottom padding, awkward line breaks — while Fable 5 flopped badly enough to be called 'the worst Microsoft Paint-grade SVG.' The host's verdict: <b>Grok 4.6 takes second place in front-end aesthetics</b>.</p><p>On the product side, the standout is <b>Grokbot</b>, launched by Cursor the day before and powered by Grok 4.6. It <b>removes model selection entirely</b> (it doesn't even display which model you're using), <b>shows no code whatsoever</b>, and surfaces only text and <b>knowledge-work artifacts</b> like PowerPoint decks and Word documents. Each thread is an agent, each with its own little mascot. It's a two-track strategy — developer-facing Cursor plus a mass-market, non-technical Grokbot — extending the premise that 'all knowledge work is ultimately performed through code' to general consumers.</p>"
+            },
+            "box3": {
+                  "title": "3 · Strategic Anatomy — the Coding Flywheel, Data×GPU Fusion, and Recursive Self-Improvement",
+                  "html": "<p>The structural cause of this leap is the <b>Cursor acquisition</b> (April 2026, led by SpaceX). Cursor — the company that first deeply integrated AI into an IDE — held a <b>mountain of coding data</b> but had no data centers or GPUs, while xAI had built <b>200,000 GPUs in 122 days</b> yet lacked a model anyone wanted to use, leaving that compute idle. Merging the data mountain with the GPU mountain produced the Grok 4.5→4.6 improvement chain. This is the third implementation of the <b>coding flywheel</b> pioneered by Anthropic and replicated by OpenAI (developers use the coding tool → data and revenue flow back → that coding model trains the next generation), and the host concludes: 'the winning formula for LLMs is simply to go hard on coding.'</p><p>The most technically important detail is the <b>recursive self-improvement</b> stated in the blog: they <b>used Grok 4.5 to regenerate SFT trajectories</b> across reasoning efforts, agent harnesses, and domains spanning STEM, software engineering, and knowledge work. It's not a fully closed self-improving loop, but <b>current-generation models curating and generating training data for next-generation models</b> is now standard practice at every major lab. Teams designing domain fine-tuning or agent training data should benchmark this trajectory-regeneration approach.</p><p>There's a geopolitical subplot as well. <b>Anthropic is buying compute from xAI</b> — and if Grok demand surges, xAI is likely to reallocate all that GPU capacity to Cursor and Grok when the contract term ends. The host likens it to 'selling weapons to your enemy' and sees real risk for Anthropic. Meanwhile, Elon Musk announced that <b>Grok 4.7 is significantly better than 4.6 and ships in 3–4 weeks</b>, with initial training complete and a <b>massive amount of SpaceX company data</b> now being added in supplemental training. Bottom line: a <b>third major US frontier lab</b> has effectively joined the OpenAI–Anthropic duopoly, and this competition drives down model prices and drives up quality for everyone.</p>"
+            }
+      },
+      "addedDate": "2026-08-13"
+},
+
+    {
       "id": "ai-skills-roadmap-2026-nine-essentials",
       "categoryId": "multi-agent",
       "moduleTag": "AI CAPABILITY ROADMAP",
