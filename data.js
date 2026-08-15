@@ -66,6 +66,120 @@ window.DASHBOARD_DATA = {
   ],
   entries: [
     {
+      "id": "gemini-3-7-flash-enterprise-cost-agentic-2026",
+      "categoryId": "agentops",
+      "moduleTag": "COST-EFFICIENT MODEL SELECTION",
+      "title": "Gemini 3.7 Flash — '쓸모없다'는 여론을 뒤집는 엔터프라이즈 비용 절감형 에이전틱 모델",
+      "subtitle": "벤치마크 마케팅은 걸러 읽되, 동급 경량 모델(Luna·Haiku급) 중 가격 대비 실전 성능은 최상위라는 실측 검증",
+      "tags": [
+            "Gemini 3.7 Flash",
+            "Google AI Studio",
+            "비용 최적화",
+            "agentic coding",
+            "Cursor",
+            "Three.js",
+            "모델 티어링",
+            "Kimi K3"
+      ],
+      "videoUrl": "https://www.youtube.com/watch?v=BOTJ0iXda-4",
+      "videoId": "BOTJ0iXda-4",
+      "channel": "1littlecoder",
+      "duration": "11:41",
+      "refDate": "2026-08-14",
+      "takeaway": "Gemini 3.7 Flash의 진짜 가치는 Sonnet 5급 벤치마크 주장이 아니라, Gemini 3.6 Flash와 동일한 가격(입력 $0.75/출력 $3.75 per 1M 토큰)에 10~15% 성능 향상을 얹어 '프로덕션 비용 절감용 기본 모델' 자리를 차지한다는 점이다. 프론티어급과 비교하지 말고 Luna·Haiku급 경량 티어 안에서 비교하면 사실상 최강이다.",
+      "box1": {
+            "title": "1 · 포지셔닝 해부 — 벤치마크 마케팅과 실제 체급 구분",
+            "html": "<p>Google은 Gemini 3.7 Flash를 <b>agentic model</b>로 포지셔닝하며 Claude Sonnet 5, GPT 5.6 Terra와 나란히 비교표를 내놨다. 전작 Gemini 3.6 Flash 대비 주요 벤치마크에서 <b>10~15% 향상</b>을 보였고, 특히 에이전틱 코딩 벤치마크인 <b>Frontier Code에서는 약 10%p 더 높은 점수</b>를 기록했다. MMLU 같은 구세대 벤치마크가 아니라 에이전틱 벤치마크 중심으로 개선됐다는 점이 핵심이다.</p><p>그러나 발표자는 이 비교 프레임 자체에 이의를 제기한다. GPT 5.6은 <b>Luna / Terra / Soul</b> 세 등급으로 나뉘는데, Flash 계열의 실제 체급은 Terra가 아니라 <b>Luna(및 Claude의 Haiku급)</b>이라는 것. Sonnet 5를 오래 써본 경험상 \"벤치마크 43%가 같으니 Sonnet 5급\"이라는 해석은 신뢰하지 않으며, Google이 굳이 상위 체급과 비교한 것은 '용감한' 마케팅이라고 평가한다. 이 비교 때문에 Gemini 팀은 소셜미디어에서 역풍을 맞기도 했다.</p><p>실무자의 판단 기준: <b>같은 경량 티어(Luna, Haiku 등) 내에서 비교하면 Gemini 3.7 Flash가 대부분의 벤치마크에서 우위</b>다. 유일하게 완패하는 상대는 가격·성능 모두 극단적으로 공격적인 <b>Grok</b> 정도. 즉 '프론티어 대체재'가 아니라 '경량 티어 1순위 후보'로 읽어야 한다.</p>"
+      },
+      "box2": {
+            "title": "2 · 4종 실전 테스트 — 공용 엔드포인트만으로 검증한 실측 결과",
+            "html": "<p>발표자는 provisioned throughput 없이 <b>누구나 쓸 수 있는 공용 엔드포인트</b>(Google AI Studio → Playground → Gemini → Gemini 3.7 Flash)만으로 4가지 실전 워크로드를 돌렸다.</p><ul><li><b>① 이미지→HTML 변환(OCR):</b> 벤치마크 표 이미지를 붙여넣고 \"working HTML로 변환\" 지시. 매우 빠른 속도로 원본과 동일한 테이블을 재현했고, 셀의 dash(–)까지 정확히 구분하는 등 <b>OCR + 구조화 정확도</b>가 검증됨. PDF 이해 등 전형적 기업 문서 처리 유즈케이스에 직결.</li><li><b>② Cursor에서 3D 게임 생성:</b> \"Odyssey 기반 완전 동작하는 3D 게임\" 단일 프롬프트. <b>에러 없이 첫 실행에 동작(works out of the box)</b>했다는 점이 1차 합격 기준. 물리엔진은 조악하고(배가 육지로 올라감) 게임성은 낮지만, 캐릭터 이동·카메라 전환·부하 소집 등 기능은 구현됨. 비교 기준인 <b>Kimi K3(발표자 평가로는 오픈 진영 최강, Opus급)</b>의 결과물이 물리·스토리라인에서 확실히 우위 — 체급 차이는 인정.</li><li><b>③ 타이포그래피 포트폴리오 사이트:</b> halmark 스킬을 활용해 실험적 타이포그래퍼 포트폴리오 제작. 특히 \"질문하지 말고 네 판단으로 선택하라\"고 맡겼을 때 <b>모델 스스로의 디자인 선택이 사용자가 지정한 옵션보다 나은 결과</b>(parametric system, synapsis matrix 등 인터랙티브 요소 포함)를 냄.</li><li><b>④ Three.js 제품 데모(가장 인상적):</b> OpenAI Codex Micro(Workloud 협업 하드웨어) 이미지 링크 하나로 \"온라인에서 스킬을 찾아 3JS 애니메이션 데모 + 랜딩페이지\"를 지시. 웹에서 레퍼런스 이미지를 찾아 OpenAI 협업 사실까지 식별했고, <b>360° 회전, 클릭 가능한 버튼, 텔레메트리 표시</b>까지 갖춘 데모를 완성.</li></ul><p>요약하면 '완성도 높은 프론티어급 산출물'은 아니지만, <b>단일 프롬프트로 에러 없이 동작하는 결과물을 내는 일관성</b>이 이 가격대에서는 이례적이라는 것이 실측 결론이다.</p>"
+      },
+      "box3": {
+            "title": "3 · 실무 적용 — 프로덕션 비용 구조에서의 자리매김",
+            "html": "<p>이 모델의 결정적 무기는 성능이 아니라 <b>가격 동결</b>이다. Gemini 3.6 Flash와 <b>완전히 동일한 요금</b>(캐시 미적용 기준 <b>입력 $0.75 / 출력 $3.75 per 1M 토큰</b>)으로 10~15% 향상된 모델을 쓰는 셈이므로, 기존 Flash 파이프라인은 <b>추가 비용 0으로 업그레이드</b>가 가능하다. GPT 5.6 Terra나 Claude Sonnet 5 대비로는 압도적으로 저렴하다.</p><p>권장 적용 시나리오는 명확하다. <b>(a)</b> 대량 문서/이미지 OCR·구조화 등 볼륨이 큰 파이프라인, <b>(b)</b> 비디오·오디오 처리(발표자가 Flash 계열을 꾸준히 추천해온 영역), <b>(c)</b> 에이전틱 코딩 중 프론티어급 판단력이 필수는 아닌 보일러플레이트·프로토타입 생성. 반대로 복잡한 물리 시뮬레이션이나 정교한 완성도가 필요한 작업은 Kimi K3·Opus급에 남겨두는 <b>티어링 전략</b>이 합리적이다.</p><p>발표자의 최종 판정: 소셜미디어의 \"이 모델은 존재 이유가 없다\"는 조롱과 달리, <b>엔터프라이즈에서 가장 많이 쓰이는 모델 중 하나가 될 것</b>. 비용 통제가 1순위인 프로덕션 워크로드에서는 벤치마크 논쟁보다 '동일 가격 + 즉시 동작하는 산출물 + 경량 티어 최상위 성능'이라는 조합이 채택 근거로 충분하다는 결론이다.</p>"
+      },
+      "en": {
+            "title": "Gemini 3.7 Flash — The Cost-Saving Agentic Model for Enterprises That Defies the 'Useless' Narrative",
+            "subtitle": "Read past the benchmark marketing: hands-on tests show it is the top performer in its lightweight class (Luna/Haiku tier) for the price",
+            "moduleTag": "COST-EFFICIENT MODEL SELECTION",
+            "takeaway": "The real value of Gemini 3.7 Flash is not its Sonnet 5-level benchmark claims, but that it delivers a 10–15% performance gain at exactly the same price as Gemini 3.6 Flash ($0.75 input / $3.75 output per 1M tokens), claiming the 'default model for production cost savings' slot. Don't compare it against frontier models — within the Luna/Haiku lightweight tier, it is effectively the strongest option.",
+            "box1": {
+                  "title": "1 · Dissecting the Positioning — Benchmark Marketing vs. Actual Weight Class",
+                  "html": "<p>Google positions Gemini 3.7 Flash as an <b>agentic model</b>, publishing comparison tables against Claude Sonnet 5 and GPT 5.6 Terra. Versus the previous Gemini 3.6 Flash, it shows <b>10–15% improvements</b> across key benchmarks, and notably scores <b>about 10 percentage points higher on Frontier Code</b>, an agentic coding benchmark. The key point is that the gains center on agentic benchmarks, not legacy ones like MMLU.</p><p>However, the presenter challenges the comparison frame itself. GPT 5.6 comes in three classes — <b>Luna / Terra / Soul</b> — and the Flash family's true weight class is not Terra but <b>Luna (and Claude's Haiku tier)</b>. Having used Sonnet 5 extensively, he does not trust the reading that 'a matching 43% benchmark score makes it Sonnet 5-class,' and calls Google's decision to compare against a higher tier 'brave' marketing. The Gemini team took backlash on social media over this comparison.</p><p>The practitioner's takeaway: <b>compared within the same lightweight tier (Luna, Haiku, etc.), Gemini 3.7 Flash wins on most benchmarks</b>. The only opponent it loses to outright is <b>Grok</b>, which is aggressively strong on both price and performance at this point. In short, read it not as a 'frontier substitute' but as the 'top candidate in the lightweight tier.'</p>"
+            },
+            "box2": {
+                  "title": "2 · Four Hands-On Tests — Verified on the Public Endpoint Only",
+                  "html": "<p>The presenter ran four real-world workloads using only the <b>public endpoint available to anyone</b> (Google AI Studio → Playground → Gemini → Gemini 3.7 Flash), with no provisioned throughput.</p><ul><li><b>① Image→HTML conversion (OCR):</b> Pasted a benchmark table image with the instruction 'convert into a working HTML file.' It reproduced the table identically at high speed, correctly distinguishing even dash (–) cells — validating <b>OCR + structuring accuracy</b>. Directly applicable to typical enterprise document workloads like PDF understanding.</li><li><b>② 3D game generation in Cursor:</b> A single prompt: 'a fully functional 3D game based on the Odyssey.' It <b>worked out of the box with zero errors</b> — the presenter's first-pass quality bar. Physics is rough (the boat sails onto land) and gameplay is weak, but character movement, camera switching, and summoning crew all work. The reference output from <b>Kimi K3 (in the presenter's view the best near-open frontier model, Opus-level)</b> was clearly superior in physics and storyline — the class gap is acknowledged.</li><li><b>③ Typography portfolio site:</b> Built an experimental typographer's portfolio using the halmark skill. Notably, when told 'don't ask questions, use your judgment,' <b>the model's own design choices beat the user-specified options</b>, including interactive elements like a parametric system and synapsis matrix.</li><li><b>④ Three.js product demo (most impressive):</b> From a single image link of OpenAI Codex Micro (the Workloud collaboration hardware), it was told to 'find any skill online and build a 3JS animated demo on a landing page.' It fetched reference images from the web, identified the OpenAI collaboration, and shipped a demo with <b>360° rotation, clickable buttons, and telemetry readouts</b>.</li></ul><p>In sum: not 'frontier-grade polish,' but the <b>consistency of producing error-free, working output from a single prompt</b> is exceptional at this price point — that is the empirical conclusion.</p>"
+            },
+            "box3": {
+                  "title": "3 · Practical Application — Where It Fits in Production Cost Structure",
+                  "html": "<p>This model's decisive weapon is not performance but the <b>price freeze</b>. It costs <b>exactly the same as Gemini 3.6 Flash</b> (<b>$0.75 input / $3.75 output per 1M tokens</b>, excluding caching), so existing Flash pipelines get a <b>zero-additional-cost upgrade</b> to a model that is 10–15% better. Against GPT 5.6 Terra or Claude Sonnet 5, it is overwhelmingly cheaper.</p><p>The recommended scenarios are clear: <b>(a)</b> high-volume pipelines like bulk document/image OCR and structuring, <b>(b)</b> video and audio processing (an area where the presenter has consistently recommended the Flash family), and <b>(c)</b> agentic coding tasks like boilerplate and prototype generation that don't require frontier-level judgment. Conversely, work demanding complex physics simulation or fine-grained polish should stay with Kimi K3 / Opus-class models — a rational <b>tiering strategy</b>.</p><p>The presenter's final verdict: contrary to the social-media mockery that 'this model has no place on this planet,' <b>it will become one of the most-used models in enterprises</b>. For production workloads where cost control comes first, the combination of 'same price + output that works on the first run + top-of-tier lightweight performance' is sufficient grounds for adoption — more so than any benchmark debate.</p>"
+            }
+      },
+      "addedDate": "2026-08-14"
+},
+
+    {
+      "id": "chatgpt-ultrafast-grok46-open-models-2026",
+      "categoryId": "agentops",
+      "moduleTag": "AGENT INFRASTRUCTURE ECONOMICS",
+      "title": "ChatGPT 초고속 모드, Grok 4.6, 오픈소스 모델 3종 — 에이전트 운영 경제학이 바뀌는 한 주",
+      "subtitle": "Cerebras 기반 14배 추론 가속과 초저가 오픈소스 모델의 동시 등장으로, 에이전트 오케스트레이션의 병목이 GPU에서 CPU·툴콜링·비용 설계로 이동했다.",
+      "tags": [
+            "Cerebras",
+            "GPT 5.6 Soul",
+            "Grok 4.6",
+            "Grokbot",
+            "GLM 5.3",
+            "DeepSeek V4 Pro",
+            "Muse Glimmer",
+            "Anthropic Watermark",
+            "EU AI Act",
+            "Terminal Bench",
+            "추론 가속",
+            "비용 최적화"
+      ],
+      "videoUrl": "https://www.youtube.com/watch?v=9qix4oDB5aw",
+      "videoId": "9qix4oDB5aw",
+      "channel": "Matthew Berman",
+      "duration": "13:09",
+      "refDate": "2026-08-14",
+      "takeaway": "추론 속도가 14배 빨라지면 '10개 에이전트 병렬 실행'이라는 기존 워크플로우 자체가 무의미해진다 — 병목은 이제 모델의 사고가 아니라 툴콜링·CPU·로컬 머신이며, 에이전트 설계는 '대기 시간 관리'에서 '속도·비용·거버넌스 관리'로 재편된다.",
+      "box1": {
+            "title": "1 · 초고속 추론의 충격 — Cerebras×OpenAI가 바꾼 에이전트 워크플로우",
+            "html": "<p>OpenAI가 Cerebras(자체 커스텀 칩 기반, 세계 최속 추론 프로바이더)와의 파트너십으로 <b>GPT 5.6 Soul을 14배 속도로 서빙하는 ultra-fast mode</b>를 프리뷰 공개했다. 데모에서 금융 터미널 대시보드 구축 과제를 Cerebras 버전은 <b>1분 50초</b>, 일반 버전은 <b>12분 20초</b>에 완료 — 약 6.7배의 체감 격차다. Paul Graham의 지적처럼 토큰당 과금 구조에서 속도는 곧 매출이지만, 사용자 입장에서는 '빠른 에이전트'가 갖는 실무 가치가 핵심이다.</p><p>Berman이 짚는 운영상 함의가 중요하다. 지금은 <b>에이전트 하나가 30분씩 걸리기 때문에 10개를 병렬로 돌리고, 그 컨텍스트 스위칭 비용을 사람이 부담</b>한다. 추론이 이 정도로 빨라지면 동시 실행 에이전트를 2~3개로 줄여도 처리량이 유지되고, 인간 오퍼레이터의 인지 부하가 급감한다. 즉 병렬도(parallelism)는 모델이 느릴 때의 보상 전략이었다는 것이 드러난다.</p><p>더 중요한 발견: 실사용 결과 <b>병목이 모델의 '사고'가 아니라 툴콜링과 전통적인 코드·CPU 처리로 이동</b>했다. Codex 팀 Tibo의 '차세대 모델에는 노트북 이상이 필요하다'는 트윗이 이 맥락이다. LLM이 로컬 머신보다 빨라지는 순간, 에이전트 인프라는 필연적으로 클라우드로 이동한다 — AgentOps 관점에서 실행 환경 설계(로컬 vs 클라우드)와 툴콜링 레이턴시 최적화가 새로운 1순위 과제가 된다.</p>"
+      },
+      "box2": {
+            "title": "2 · 모델 4종 동시 상륙 — 벤치마크·가격으로 본 프론티어 지형도",
+            "html": "<p>이번 주에만 4개 모델이 출시됐고 그중 3개가 오픈소스다. 공통 패턴은 <b>'프론티어 바로 아래, 가격은 수분의 일'</b> — 에이전트 비용 통제 관점에서 라우팅 전략을 다시 짜야 하는 지형 변화다.</p><table class=\"matrix-table\"><tr><th>모델</th><th>포지션</th><th>핵심 수치</th></tr><tr><td><b>Grok 4.6</b> (xAI, Cursor·SpaceX 통합)</td><td>프론티어 근접, GPT 5.6 Soul·Fable 5 직하</td><td>$2/M input · $6/M output, 6개월 만의 대약진</td></tr><tr><td><b>GLM 5.3</b> (오픈소스)</td><td>Kimi K3를 Terminal Bench에서 추월</td><td>DeepSuite 66.9 (GLM 5.2 대비 대폭 상승, Soul에는 미달)</td></tr><tr><td><b>DeepSeek V4 Pro</b> (오픈소스)</td><td>사실상 프론티어 동급</td><td>Terminal Bench <b>87.9</b> (Kimi K3 88, Fable 5 88과 대등)</td></tr><tr><td><b>Muse Glimmer</b> (Meta, 오픈웨이트)</td><td>온디바이스 특화 30B</td><td>Terminal Bench 51, RTX 40/50 시리즈 데스크톱 GPU에 탑재 가능</td></tr></table><p>비용 통제 관점의 백미는 <b>DeepSeek V4 Pro의 시간대별 차등 과금</b>이다. 오프피크 기준 캐시 미스 input $0.66/M·output $1.98/M(피크는 약 2배), 그리고 <b>캐시 히트 시 input $0.02/M</b>. 대용량 컨텍스트를 반복 주입하는 에이전트 파이프라인이라면 캐시 설계 + 오프피크 배치 스케줄링만으로 비용을 자릿수 단위로 줄일 수 있다. Meta의 오픈소스 복귀(Muse Glimmer)는 폐쇄망·온디바이스 시나리오의 선택지를 다시 넓혔다.</p><p>함께 출시된 <b>Grokbot</b>은 Grok 4.6 기반의 단순화된 코딩 에이전트 제품이다. 코드·사고 과정·모델 선택을 모두 감추고, <b>스레드 하나가 곧 독립 에이전트</b>이며 Slack·Google Docs·이메일 플러그인을 지원한다. 에이전트가 다른 에이전트를 생성·위임하고 <b>에이전트 간 대화가 저장되어 다중 에이전트를 한 대화에 넣고 공동 목표를 수행</b>시킬 수 있다 — 'OpenClaw의 대중화 버전'이라는 평가로, Berman은 자신의 워크플로우 상당수를 이관 중이라고 밝혔다.</p>"
+      },
+      "box3": {
+            "title": "3 · 거버넌스 변수 — Anthropic 워터마크와 OpenAI Computer History",
+            "html": "<p>Anthropic이 <b>EU AI Act 제52조(AI 생성 콘텐츠 투명성 실천규범)</b> 준수를 위해 향후 Claude 모델 출력에 <b>비가시 워터마크</b>를 도입한다. 메커니즘: LLM이 다음 단어를 고를 때의 '저부담(low-stakes) 선택'에서 난수 소스를 일반 RNG 대신 <b>키 + 직전 단어들로 결정되는 시드</b>로 교체해 패턴을 심는다. 독자는 감지할 수 없지만 키 보유자는 검출 가능한 구조다.</p><p>적용 범위에 명확한 경계가 있다. <b>Claude가 직접 생성한 단어에만 워터마크가 붙는다</b> — 사람이 쓴 글의 교정처럼 원문 단어가 대부분 유지되는 경우엔 부착 지점이 거의 없고, 코드에서는 주석 등 임의 선택이 가능한 지점에만 적용되어 실제 코드에는 영향이 미미하다고 Anthropic은 설명한다. 다만 Berman의 반박이 타당하다: '선택은 여전히 랜덤이지만 난수의 소스가 다르다'는 말 자체가 <b>출력이 달라진다는 뜻</b>이며, 가드레일이든 워터마크든 모델에 무언가를 얹으면 출력은 어떤 식으로든 영향을 받는다. 왜 EU가 이를 강제하는지, 왜 Anthropic만 하는지, 벤더가 내 출력을 추적 가능하다는 것의 다운스트림 효과는 무엇인지 — 엔터프라이즈에서 Claude 산출물을 대량 생산하는 조직이라면 감사·컴플라이언스 관점에서 추적 가능성을 아키텍처 변수로 반영해야 한다.</p><p>OpenAI는 <b>Computer History</b>를 조용히 출시했다. 사용자의 컴퓨터 활동을 기록해 자동화 가능 지점을 ChatGPT가 선제 제안하는 기능으로, <b>옵트인 전용 + 앱 단위 세분화 공유 제어</b>(스프레드시트만, 브라우저만 등)를 제공한다. Microsoft Recall이 프라이버시 논란으로 무너진 전례가 있지만, 방향성은 명확하다 — 반응형 챗봇에서 <b>사용 패턴을 관측해 자동화를 먼저 제안하는 프로액티브 에이전트</b>로의 전환이며, 관측성(observability)의 대상이 시스템에서 사용자 행동으로 확장되는 신호다.</p>"
+      },
+      "en": {
+            "title": "ChatGPT Ultrafast, Grok 4.6, and Three Open-Source Models — The Week Agent Operating Economics Changed",
+            "subtitle": "With Cerebras-powered 14x inference and ultra-cheap open-source models arriving simultaneously, the agent orchestration bottleneck has shifted from GPUs to CPUs, tool calling, and cost design.",
+            "moduleTag": "AGENT INFRASTRUCTURE ECONOMICS",
+            "takeaway": "When inference gets 14x faster, the old workflow of 'run 10 agents in parallel' becomes obsolete — the bottleneck is no longer model thinking but tool calling, CPUs, and your local machine, and agent design shifts from managing wait time to managing speed, cost, and governance.",
+            "box1": {
+                  "title": "1 · The Ultrafast Inference Shock — How Cerebras×OpenAI Rewrote Agent Workflows",
+                  "html": "<p>OpenAI previewed an <b>ultra-fast mode serving GPT 5.6 Soul at 14x speed</b> through its partnership with Cerebras (the fastest inference provider on the planet, built on custom chips). In the demo, a financial-terminal dashboard build finished in <b>1 minute 50 seconds</b> on Cerebras versus <b>12 minutes 20 seconds</b> on the regular version — roughly a 6.7x real-world gap. As Paul Graham noted, speed is revenue when customers pay by the token, but for users the real story is the practical value of genuinely fast agents.</p><p>Berman's operational insight matters most. Today, <b>because each agent takes ~30 minutes, developers run 10 in parallel and personally absorb the context-switching cost</b>. With inference this fast, you can drop to 2–3 concurrent agents while maintaining throughput, and the human operator's cognitive load collapses. In other words, parallelism turns out to have been a compensation strategy for slow models.</p><p>The bigger discovery: in actual use, <b>the bottleneck has moved from the model's 'thinking' to tool calling and traditional code/CPU processing</b>. This is the context behind Codex team member Tibo's tweet that 'the next generation of models need more than your laptop.' The moment the LLM outpaces your local machine, agent infrastructure inevitably moves to the cloud — from an AgentOps perspective, execution-environment design (local vs. cloud) and tool-calling latency optimization become the new top priorities.</p>"
+            },
+            "box2": {
+                  "title": "2 · Four Models Land at Once — The Frontier Map by Benchmarks and Pricing",
+                  "html": "<p>Four models shipped this week alone, three of them open source. The common pattern is <b>'just below the frontier, at a fraction of the price'</b> — a terrain shift that forces a rethink of routing strategy for agent cost control.</p><table class=\"matrix-table\"><tr><th>Model</th><th>Position</th><th>Key numbers</th></tr><tr><td><b>Grok 4.6</b> (xAI; Cursor·SpaceX now one company)</td><td>Near-frontier, just below GPT 5.6 Soul and Fable 5</td><td>$2/M input · $6/M output; a massive leap in 6 months</td></tr><tr><td><b>GLM 5.3</b> (open source)</td><td>Overtakes Kimi K3 on Terminal Bench</td><td>DeepSuite 66.9 (big jump over GLM 5.2, still short of Soul)</td></tr><tr><td><b>DeepSeek V4 Pro</b> (open source)</td><td>Effectively frontier-class</td><td>Terminal Bench <b>87.9</b> (on par with Kimi K3 at 88 and Fable 5 at 88)</td></tr><tr><td><b>Muse Glimmer</b> (Meta, open weights)</td><td>On-device-focused 30B</td><td>Terminal Bench 51; fits an RTX 40/50-series desktop GPU</td></tr></table><p>The highlight for cost control is <b>DeepSeek V4 Pro's time-of-day pricing</b>. Off-peak, a cache miss runs $0.66/M input and $1.98/M output (peak is roughly double), and <b>a cache hit costs $0.02/M input</b>. For agent pipelines that repeatedly inject large contexts, cache design plus off-peak batch scheduling alone can cut costs by an order of magnitude. Meta's return to open source with Muse Glimmer also re-expands the option space for air-gapped and on-device scenarios.</p><p>Also launched: <b>Grokbot</b>, a radically simplified coding-agent product built on Grok 4.6. It hides code, reasoning traces, and model selection entirely; <b>each thread is an independent agent</b>, with plugins for Slack, Google Docs, and email. Agents can spawn and delegate to other agents, and <b>inter-agent conversations are stored, so you can put multiple agents in one conversation and let them work toward a shared goal</b> — 'OpenClaw for a broader audience,' as Berman puts it, adding that he is migrating much of his own workflow to it.</p>"
+            },
+            "box3": {
+                  "title": "3 · The Governance Variables — Anthropic's Watermark and OpenAI Computer History",
+                  "html": "<p>Anthropic will embed an <b>invisible watermark</b> in future Claude model outputs to comply with <b>Article 52 of the EU AI Act (the code of practice on transparency of AI-generated content)</b>. The mechanism: at 'low-stakes' next-word choices, the randomness source is swapped from an ordinary RNG to <b>a seed derived from a key plus the preceding words</b>, leaving a pattern undetectable to readers but detectable by anyone holding the key.</p><p>The scope has clear boundaries. <b>The watermark only attaches to words Claude itself chooses</b> — when proofreading human-written text, nearly all words are the person's, leaving almost nothing to attach to; in code it applies only where arbitrary choices exist, such as comments, with negligible effect on the actual code, per Anthropic. But Berman's counterpoint holds: saying 'the choice is still random, but the source of randomness is different' <b>literally means the output changes</b> — anything layered onto a model, guardrails or watermarks, affects output one way or another. Why is the EU mandating this, why is Anthropic seemingly alone in doing it, and what are the downstream effects of a vendor being able to trace your output? Any enterprise producing Claude outputs at scale should treat traceability as an architectural variable for audit and compliance.</p><p>OpenAI quietly shipped <b>Computer History</b>: it records your computer activity so ChatGPT can proactively suggest automations, with <b>opt-in-only activation and fine-grained per-app sharing controls</b> (spreadsheets only, browser only, etc.). Microsoft Recall collapsed under privacy backlash, but the direction is unmistakable — a shift from reactive chatbot to <b>proactive agent that observes usage patterns and proposes automations first</b>, a signal that observability is expanding from systems to user behavior.</p>"
+            }
+      },
+      "addedDate": "2026-08-14"
+},
+
+    {
       "id": "ml-full-course-regression-to-trees-2026",
       "categoryId": "finetuning",
       "moduleTag": "MODEL TRAINING FUNDAMENTALS",
