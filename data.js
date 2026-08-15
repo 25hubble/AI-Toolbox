@@ -66,6 +66,63 @@ window.DASHBOARD_DATA = {
   ],
   entries: [
     {
+      "id": "aws-vs-azure-cloud-career-2026",
+      "categoryId": "agentops",
+      "moduleTag": "CLOUD PLATFORM STRATEGY",
+      "title": "AWS vs Azure 2026: 플랫폼 논쟁을 끝내는 커리어 선택 프레임워크",
+      "subtitle": "플랫폼 선택보다 클라우드 아키텍처 근본기가 커리어를 결정한다 — 하나를 깊게 판 뒤 멀티클라우드로 확장하는 전략",
+      "tags": [
+            "AWS",
+            "Azure",
+            "Cloud Computing",
+            "Multi-Cloud",
+            "DevOps",
+            "AI Infrastructure",
+            "Career Strategy",
+            "EC2",
+            "Entra ID",
+            "Kubernetes"
+      ],
+      "videoUrl": "https://www.youtube.com/watch?v=1qOy8D0eq-A",
+      "videoId": "1qOy8D0eq-A",
+      "channel": "Intellipaat",
+      "duration": "11:06",
+      "refDate": "2026-08-15",
+      "takeaway": "기업은 '어느 클라우드를 골랐는가'가 아니라 '빌드·배포·문제해결이 가능한가'로 채용한다. 클라우드 펀더멘털(networking·security·automation·architecture)을 깊게 이해하면 AWS↔Azure 전환은 서비스 명칭 매핑 수준의 문제로 축소된다.",
+      "box1": {
+            "title": "1 · 두 플랫폼의 구조적 DNA — 기술이 아니라 생태계가 선택을 결정한다",
+            "html": "<p><b>AWS(2006년 출시)</b>는 물리 서버 구매·데이터센터 유지보수·수동 스케일링이라는 기존 모델을 '인터넷으로 인프라를 빌려 쓰는' 모델로 전환시킨 선발주자다. 시장 선점 효과로 스타트업·SaaS·인터넷 비즈니스·모던 테크 플랫폼의 <b>기본값(default) 클라우드</b>가 됐고, Netflix·Airbnb 같은 사례가 이 포지션을 수년간 강화했다. 반면 <b>Azure</b>는 후발주자였지만 Microsoft만이 가진 무기 — Windows Server, Active Directory, Microsoft 365, SQL Server, 엔터프라이즈 라이선싱 계약 — 위에 올라탔다. 이미 Microsoft에 깊게 종속된 대기업들에게 Azure는 '자연스러운 전환 경로'였다.</p><p>영상이 지적하는 초심자의 최대 오해: <b>기업은 순수하게 기술로 클라우드를 고르지 않는다.</b> 실제 선택 기준은 생태계 호환성, 마이그레이션 편의성, 기존 인프라, 엔터프라이즈 계약, 컴플라이언스, 통합 용이성이다. 이것이 두 플랫폼이 '서로 다른 방식으로' 거대해진 이유다.</p><p>그리고 핵심 반전 — 두 플랫폼의 코어 개념은 사실상 동일하다. VM 실행, 스토리지, DB, 앱 배포, Kubernetes, 네트워킹, AI 시스템, IaC 자동화, 보안까지 모두 겹친다. 차이는 명칭과 철학 수준이다:</p><table class=\"matrix-table\"><tr><th>개념</th><th>AWS</th><th>Azure</th></tr><tr><td>가상 서버</td><td>EC2</td><td>Virtual Machine</td></tr><tr><td>오브젝트 스토리지</td><td>S3</td><td>Blob Storage</td></tr><tr><td>권한·ID 관리</td><td>IAM</td><td>Microsoft Entra ID</td></tr></table><p>따라서 클라우드 펀더멘털을 제대로 이해하면 플랫폼 간 전환은 생각보다 훨씬 쉽다. 실제로 중견·대형 조직 다수가 이미 <b>멀티클라우드</b>(일부 워크로드는 AWS, 일부는 Azure, AI/analytics는 GCP)로 운영 중이다.</p>"
+      },
+      "box2": {
+            "title": "2 · 학습 난이도와 잡마켓의 실체 — 진짜 장벽은 플랫폼이 아니라 '클라우드 그 자체'",
+            "html": "<p><b>학습 진입 장벽:</b> Azure는 초반에 다소 쉽게 느껴진다 — 명명 규칙이 단순하고, 인터페이스가 엔터프라이즈 친화적이며, Microsoft 제품에 익숙한 사람은 빠르게 적응한다. AWS는 수백 개의 서비스와 독특한 명명 규칙 때문에 초기 콘솔에서 길을 잃기 쉽다. 그러나 AWS는 <b>학습 생태계 규모</b>에서 압도적이다 — 튜토리얼, 랩, 자격증, 프로젝트, 포럼, 문서, 커뮤니티의 양이 비교 불가 수준이라 독학 리소스 접근성이 가장 높다.</p><p>영상의 핵심 통찰: <b>난이도의 본질은 AWS vs Azure가 아니라 클라우드 컴퓨팅 자체다.</b> 대시보드 버튼 클릭이 아니라 networking, security, Linux, automation, containers, CI/CD pipelines, monitoring, identity management, system architecture를 이해해야 실전 가치가 생긴다. 자격증만 수집하고 인터뷰에서 무너지는 사람이 많은 이유가 바로 이것 — 기업이 검증하는 것은 '앱을 배포할 수 있는가, 클라우드 네트워크를 구성할 수 있는가, 인프라를 자동화할 수 있는가, 장애를 트러블슈팅할 수 있는가, 권한을 안전하게 관리할 수 있는가, <b>클라우드 비용을 최적화할 수 있는가</b>'다.</p><p><b>잡마켓 세그먼트 분화:</b> AWS는 스타트업·SaaS·스트리밍·클라우드네이티브 엔지니어링 환경을 지배하고, Azure는 은행·헬스케어·컨설팅·정부기관 중심의 엔터프라이즈 모더나이제이션, 마이그레이션 프로젝트, identity management, governance, 하이브리드 클라우드 영역에서 공격적으로 성장 중이다. 어느 쪽도 틀린 경로가 아니라 <b>서로 다른 기회의 생태계</b>다. 스타트업·DevOps 중심 커리어라면 AWS, 엔터프라이즈 컨설팅·IT 트랜스포메이션·Microsoft 중심 조직이라면 Azure가 직접적 이점을 준다.</p>"
+      },
+      "box3": {
+            "title": "3 · AI가 바꾼 판도와 2026 실행 전략 — 하나 깊게, 그다음 멀티클라우드",
+            "html": "<p><b>AI가 클라우드 수요를 재점화하고 있다.</b> 몇 년 전까지 클라우드는 인프라·확장성 담론이었지만, 이제 클라우드 플랫폼은 AI 시스템의 백본이다. 모델 학습에는 막대한 컴퓨팅 파워가, AI 앱 운영에는 확장 가능한 인프라가, 엔터프라이즈 AI 도입에는 보안이 확보된 클라우드 환경이 필요하다. 이것이 양사가 AI 인프라에 수십억 달러를 투자하는 이유다. 현시점 모멘텀은 <b>Microsoft-OpenAI 파트너십</b>을 등에 업은 Azure가 크게 가져갔고, AWS는 AI 인프라·ML 서비스·엔터프라이즈 AI 툴링에 지속 투자로 맞서고 있다. AI 성장이 클라우드 수요를 전 세계적으로 가속하면서 2026년 클라우드 커리어의 가치는 오히려 상승 중이다.</p><p><b>연봉의 진실:</b> Cloud Engineer, DevOps Engineer, Solutions Architect, SRE, Platform Engineer, Cloud Security Engineer는 여전히 테크 최고 연봉군이다. 그러나 고연봉은 'AWS를 안다'에서 나오지 않는다 — automation, architecture, security, scalability, performance, reliability, infrastructure design으로 <b>비즈니스 문제를 해결하는 능력</b>에서 나온다. 프로젝트 경험이 자격증보다 중요한 이유다.</p><p><b>2026 초심자 실행 전략(영상의 결론):</b> ① 플랫폼 하나를 골라 <b>깊게</b> 판다 → ② 실제 애플리케이션을 배포하는 프로젝트를 만든다 → ③ networking과 security를 제대로 이해한다 → ④ 그 후 멀티클라우드 지식으로 점진 확장한다. 하나의 생태계를 깊게 이해하면 두 번째 플랫폼 학습은 극적으로 쉬워진다. 시작점 선택 기준은 단순하다: 완전 초심자 + 최대 학습 리소스 + 스타트업 지향이면 <b>AWS</b>, 이미 Microsoft 중심 환경·기업 IT에서 일한다면 <b>Azure</b>. 초심자는 플랫폼 선택에 집착하지만 숙련 엔지니어는 architecture, scalability, automation, reliability, execution에 집중한다 — 그것이 진짜 격차다.</p>"
+      },
+      "en": {
+            "title": "AWS vs Azure 2026: A Career Decision Framework That Ends the Platform Debate",
+            "subtitle": "Cloud architecture fundamentals — not platform choice — determine your career; go deep on one, then expand to multi-cloud",
+            "moduleTag": "CLOUD PLATFORM STRATEGY",
+            "takeaway": "Companies hire based on whether you can build, deploy, and solve problems — not which cloud you picked. Once you deeply understand cloud fundamentals (networking, security, automation, architecture), switching between AWS and Azure reduces to a service-naming mapping exercise.",
+            "box1": {
+                  "title": "1 · The Structural DNA of Both Platforms — Ecosystem, Not Technology, Drives the Choice",
+                  "html": "<p><b>AWS (launched 2006)</b> was the first mover that transformed the old model of buying physical servers, maintaining data centers, and scaling manually into 'renting infrastructure over the internet.' Its early-market advantage made it the <b>default cloud</b> for startups, SaaS, internet businesses, and modern tech platforms — a position reinforced for years by companies like Netflix and Airbnb. <b>Azure</b> arrived later but rode a weapon only Microsoft had: Windows Server, Active Directory, Microsoft 365, SQL Server, and enterprise licensing agreements. For large organizations already deeply dependent on Microsoft, Azure was the 'natural transition path.'</p><p>The biggest beginner misconception the video calls out: <b>companies do not choose clouds purely on technology.</b> The real criteria are ecosystem compatibility, migration convenience, existing infrastructure, enterprise agreements, compliance, and integration. That is why both platforms became massive in different ways.</p><p>And the key twist — the core concepts of both platforms are essentially identical. VMs, storage, databases, app deployment, Kubernetes, networking, AI systems, IaC automation, and security all overlap. The differences are mostly naming and philosophy:</p><table class=\"matrix-table\"><tr><th>Concept</th><th>AWS</th><th>Azure</th></tr><tr><td>Virtual server</td><td>EC2</td><td>Virtual Machine</td></tr><tr><td>Object storage</td><td>S3</td><td>Blob Storage</td></tr><tr><td>Identity & permissions</td><td>IAM</td><td>Microsoft Entra ID</td></tr></table><p>So once you properly understand cloud fundamentals, switching platforms is far easier than people think. In fact, many medium and large organizations already run <b>multi-cloud</b> — AWS for some workloads, Azure for others, and GCP for specific AI/analytics use cases.</p>"
+            },
+            "box2": {
+                  "title": "2 · The Reality of Learning Curves and the Job Market — The Real Barrier Is the Cloud Itself, Not the Platform",
+                  "html": "<p><b>Learning curve:</b> Azure often feels slightly easier at first — simpler naming conventions, enterprise-friendly interfaces, and faster adaptation for anyone familiar with Microsoft products. AWS can feel overwhelming initially, with hundreds of services and unusual naming that leaves beginners lost in the console. But AWS wins decisively on <b>learning ecosystem scale</b> — an unmatched volume of tutorials, labs, certifications, projects, forums, documentation, and communities makes it the most accessible for self-learners.</p><p>The video's core insight: <b>the real difficulty is not AWS vs Azure — it is cloud computing itself.</b> Real value comes not from clicking dashboard buttons but from understanding networking, security, Linux, automation, containers, CI/CD pipelines, monitoring, identity management, and system architecture. This is why so many people collect certifications yet collapse in interviews — what companies actually test is: can you deploy applications, configure cloud networks, automate infrastructure, troubleshoot failures, manage permissions securely, and <b>optimize cloud cost</b>?</p><p><b>Job market segmentation:</b> AWS dominates startup, SaaS, streaming, and cloud-native engineering environments, while Azure is growing aggressively in enterprise modernization, migration projects, identity management, governance, and hybrid cloud — driven by banks, healthcare, consulting firms, and government institutions. Neither path is wrong; they are <b>different ecosystems of opportunity</b>. For startup/DevOps-heavy careers, AWS excels; for enterprise consulting, IT transformation, or Microsoft-heavy organizations, Azure gives a more direct advantage.</p>"
+            },
+            "box3": {
+                  "title": "3 · How AI Changed the Game and the 2026 Playbook — Go Deep on One, Then Go Multi-Cloud",
+                  "html": "<p><b>AI is reigniting cloud demand.</b> A few years ago, cloud was an infrastructure-and-scalability conversation; now cloud platforms are the backbone of AI systems. Training models requires enormous compute, running AI applications requires scalable infrastructure, and enterprise AI adoption requires secure cloud environments. That is why both companies are pouring billions into AI infrastructure. Right now, <b>Azure has gained massive momentum from the Microsoft–OpenAI partnership</b>, while AWS counters with sustained investment in AI infrastructure, ML services, and enterprise AI tooling. With AI accelerating cloud demand globally, cloud careers are becoming even more valuable in 2026.</p><p><b>The truth about salaries:</b> Cloud Engineer, DevOps Engineer, Solutions Architect, SRE, Platform Engineer, and Cloud Security Engineer remain among the highest-paid roles in tech. But high salaries do not come from 'knowing AWS' — they come from <b>solving business problems</b> through automation, architecture, security, scalability, performance, reliability, and infrastructure design. That is why projects matter more than certifications.</p><p><b>The 2026 beginner playbook (the video's conclusion):</b> ① pick one platform and go <b>deep</b> → ② build projects that deploy real applications → ③ properly learn networking and security → ④ then gradually expand into multi-cloud knowledge. Once you deeply understand one ecosystem, learning the second becomes dramatically easier. The starting-point rule is simple: total beginner + broadest learning resources + startup orientation → <b>AWS</b>; already working in Microsoft-heavy environments or corporate IT → <b>Azure</b>. Beginners obsess over platform choice; experienced engineers focus on architecture, scalability, automation, reliability, and execution — that is the real difference.</p>"
+            }
+      },
+      "addedDate": "2026-08-15"
+},
+
+    {
       "id": "gemini-3-7-flash-enterprise-cost-agentic-2026",
       "categoryId": "agentops",
       "moduleTag": "COST-EFFICIENT MODEL SELECTION",
