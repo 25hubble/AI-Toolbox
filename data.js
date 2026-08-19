@@ -66,6 +66,121 @@ window.DASHBOARD_DATA = {
   ],
   entries: [
     {
+      "id": "html-in-canvas-gpu-texture-2026",
+      "categoryId": "onprem",
+      "moduleTag": "GPU RENDERING PIPELINE",
+      "title": "이게 진짜 HTML이라고? — Chrome 'HTML in Canvas' API로 열리는 GPU 웹 렌더링의 신세계",
+      "subtitle": "살아있는 HTML 요소를 Canvas/WebGL/WebGPU 텍스처로 직접 그려 넣어, 접근성과 상호작용을 유지한 채 셰이더로 왜곡·3D 매핑까지 가능해진 Chrome 신규 API 완전 해부",
+      "tags": [
+            "HTML in Canvas",
+            "Chrome Canary",
+            "Canvas API",
+            "WebGL",
+            "WebGPU",
+            "Shader",
+            "drawElementImage",
+            "layoutsubtree",
+            "GPU Texture",
+            "Frontend"
+      ],
+      "videoUrl": "https://www.youtube.com/watch?v=8ucoskmA1yg",
+      "videoId": "8ucoskmA1yg",
+      "channel": "노마드 코더 Nomad Coders",
+      "duration": "6:38",
+      "refDate": "2026-08-19",
+      "takeaway": "HTML in Canvas API의 본질은 '같은 요소의 두 개의 살아있는 사본'이다 — DOM에는 클릭·타이핑·접근성이 살아있는 진짜 요소가, Canvas에는 셰이더로 마음대로 주무를 수 있는 픽셀 사본이 동시에 존재하며, 이로써 '픽셀 제어 vs 진짜 HTML'이라는 웹의 오랜 양자택일이 사라진다.",
+      "box1": {
+            "title": "1 · 무엇이 가능해졌나 — '2D 페이지'에서 '비디오 게임 같은 웹'으로",
+            "html": "<p>Chrome이 새로 출시한 <b>HTML in Canvas</b> API는 버튼, 폼, 심지어 웹페이지 전체 등 <b>임의의 HTML 요소를 canvas 안에 '라이브'로 그려 넣는 것</b>을 허용한다. 지금까지는 원천적으로 불가능했던 일이다. 영상이 보여주는 데모의 파괴력은 상당하다: 포트폴리오 사이트의 <b>진짜 HTML 폼이 3D 씬 안의 천(cloth) 위에 페인팅</b>되어 있는데, 마우스로 제목 텍스트를 선택하고, 버튼과 슬라이더를 조작하고, 텍스트 입력창에 타이핑까지 할 수 있다. 'poke/pet' 버튼을 누르면 천이 실제 직물처럼 출렁이고 폼도 함께 왜곡되며, 캐릭터가 걸어와 천에 부딪히기까지 한다.</p><p>풀 3D가 아니어도 활용처는 넓다. <b>HTML range input을 젤리처럼 출렁이는 슬라이더</b>로 바꾸거나, 진짜 input에 타이핑한 뒤 제출 시 canvas 효과를 입히거나, <b>input의 포커스 효과·테두리 움직임·글로우를 전부 셰이더로 처리</b>한 폼, 라이트/다크 모드 전환 시 <b>페이지가 불타 사라지는 애니메이션</b>, 그리고 누군가 웹에서 구현한 <b>Apple Liquid Glass</b>까지 — 기존 웹사이트를 '증강'하는 용도로도 충분히 쓸 수 있다.</p><p>발표자의 전망은 명확하다: 웹사이트가 2D 문서가 아니라 <b>비디오 게임이나 아트 인스톨레이션처럼 느껴지는 시대</b>가 열렸다는 것. Flash 시절처럼 웹이 다시 재미있어질 수 있는 기술적 토대가 마련됐다는 평가다.</p>"
+      },
+      "box2": {
+            "title": "2 · 왜 지금까지 불가능했고, 어떻게 가능해졌나 — DOM과 GPU 텍스처의 이중 존재",
+            "html": "<p>기존 canvas는 픽셀 제어에는 절대적으로 강력하지만(게임, 이미지 편집, 3D 씬) <b>다른 HTML 요소의 존재 자체를 모른다</b>. canvas 위에 버튼 하나를 올리려면: ① 사각형과 텍스트를 직접 그리고 ② canvas 전체의 클릭을 감청해 좌표가 버튼 영역 안인지 히트 테스트하고 ③ hover 때도 같은 히트 테스트를 반복해 색을 다시 칠해야 했다. 그 모든 수고 끝에 얻는 것은 <b>'버튼 그림'일 뿐 — 접근성도, 키보드 지원도, CSS 스타일링도 없다</b>. 그래서 웹은 오랫동안 '픽셀 캔버스냐, HTML 페이지냐'의 양자택일을 강요받았다.</p><p>새 API의 핵심 원리는 <b>HTML이 두 곳에 동시에 존재</b>한다는 것이다. DOM에는 클릭하고 타이핑할 수 있는 진짜 요소가 살아있고, canvas에는 <b>셰이더가 잡아채고, 비틀고, 왜곡하고, 블렌딩하고, 3D 형상에 매핑할 수 있는 픽셀 사본</b>이 존재한다. 같은 요소의 두 사본 — 하나는 만질 수 있고, 하나는 칠할 수 있다.</p><p>API 표면은 놀랍도록 작다:</p><ul><li><b>opt-in</b>: canvas에 <b>layoutsubtree 속성</b>을 붙이고 그리고 싶은 HTML을 자식으로 넣는다.</li><li><b>2D Canvas</b>: 컨텍스트의 <b>drawElementImage(요소, 좌표)</b> 호출로 라이브 사본을 페인팅.</li><li><b>WebGL</b>: <b>texElementImage2D</b> 사용.</li><li><b>WebGPU</b>: <b>copyElementImageToTexture</b>로 HTML을 GPU 텍스처에 직접 공급.</li><li><b>변경 감지</b>: canvas 안 HTML에 변화가 생기면(input 포커스, 버튼 hover 등) canvas가 <b>paint 이벤트</b>를 발화 — 이 안에서 재페인팅, 셰이더 왜곡, 3D 래핑 등 원하는 처리를 수행.</li></ul>"
+      },
+      "box3": {
+            "title": "3 · 실전 구현 20줄 + 프로덕션 판단 — 히트 테스트 동기화가 핵심",
+            "html": "<p>영상은 <b>'반사(reflection)가 있는 클릭 가능한 버튼'</b>을 약 20줄의 JavaScript로 직접 구현한다. HTML은 layoutsubtree 속성을 가진 canvas와 그 안의 평범한 button, CSS도 평범한 핑크 라운드 버튼(hover 시 보라색+확대, click 시 축소)이다. JS에서는 canvas·context·button을 잡고 좌표(x, y)와 버튼 높이(h)를 저장한 뒤, <b>초당 60회 도는 render 함수</b>에서: ① 매 프레임 canvas를 지우고 ② context 상태를 save(북마크)하고 ③ 아래로 이동+상하 반전+30% 불투명도로 브러시를 조작해 <b>반사본을 스탬프</b>하고 ④ restore 후 정상 브러시로 <b>실제 클릭용 사본을 다시 스탬프</b>한 뒤 ⑤ requestAnimationFrame으로 다음 프레임을 예약한다.</p><p>여기서 이 API의 가장 중요한 함정이 나온다: 버튼은 canvas(그려진 곳)와 DOM(브라우저가 유지하는 투명한 진짜 버튼) 두 곳에 존재하는데, <b>브라우저는 우리가 canvas 어디에 그렸는지 모른다</b>. 그려진 버튼을 클릭해도 진짜 버튼은 다른 곳에 있어 클릭이 빗나갈 수 있다. 해법은 <b>drawElementImage가 반환하는 페인팅 위치 행렬을 버튼의 style.transform에 넘겨</b> 투명한 진짜 버튼을 그려진 위치로 이동시키는 것 — 그래야 클릭이 명중한다. 일단 픽셀을 소유하면 클릭 좌표에 ripple 효과를 넣는 것 같은 확장은 고전적인 canvas 수학(픽셀 샘플링·시프트)일 뿐이며, 이런 부분은 AI의 도움을 받기 좋은 영역이다.</p><p><b>프로덕션 판단</b>: 이 API는 아직 <b>Chrome Canary의 플래그 뒤</b>에 있어 사용자가 직접 활성화해야 하며, 전체가 <b>아직 draft 단계의 proposal</b>이라 시그니처는 물론 API의 기본 형태까지 바뀔 수 있다. 결론은 명확하다 — <b>내일 프로덕션에 배포할 물건은 아니지만, 오늘 당장 실험을 시작해야 할 기술</b>이다.</p>"
+      },
+      "en": {
+            "title": "Is This Really HTML? — Chrome's 'HTML in Canvas' API Opens a New Era of GPU Web Rendering",
+            "subtitle": "A full breakdown of Chrome's new API that draws live HTML elements directly into Canvas/WebGL/WebGPU textures — enabling shader distortion and 3D mapping while preserving accessibility and interactivity",
+            "moduleTag": "GPU RENDERING PIPELINE",
+            "takeaway": "The essence of the HTML in Canvas API is 'two live copies of the same element' — a real element with clicks, typing, and accessibility living in the DOM, and a pixel copy in the canvas that shaders can freely manipulate. This erases the web's long-standing either/or between pixel control and real HTML.",
+            "box1": {
+                  "title": "1 · What Just Became Possible — From '2D Page' to 'Video-Game-Like Web'",
+                  "html": "<p>Chrome's newly shipped <b>HTML in Canvas</b> API allows <b>any HTML element — a button, a form, even an entire webpage — to be drawn 'live' inside a canvas</b>, something fundamentally impossible until now. The demos in the video are striking: a portfolio site's <b>real HTML form is painted onto a cloth inside a 3D scene</b>, yet you can select the title text with your mouse, operate buttons and sliders, and type into the text input. Clicking 'poke/pet' makes the cloth react like real fabric with the form blending along, and a character even walks into and crashes against it.</p><p>You don't need full 3D to benefit. Use cases include turning an <b>HTML range input into a jelly-like wobbling slider</b>, applying canvas effects on submit to a real typed input, a form whose <b>focus effects, moving borders, and glow are all rendered by shaders</b>, an animation that <b>burns the page away</b> when switching between light and dark mode, and even <b>Apple's Liquid Glass recreated on the web</b> — the API works just as well for 'augmenting' existing websites.</p><p>The presenter's outlook is clear: an era has opened where websites feel less like 2D documents and more like <b>video games or art installations</b> — a technical foundation for making the web fun again, like in the Flash days.</p>"
+            },
+            "box2": {
+                  "title": "2 · Why It Was Impossible and How It Works Now — Dual Existence in DOM and GPU Texture",
+                  "html": "<p>The traditional canvas is absolutely powerful for pixel control (games, image editing, 3D scenes) but <b>has no awareness of other HTML elements</b>. To put a single button on a canvas you had to: ① draw the rectangle and text yourself, ② listen for clicks on the entire canvas and hit-test whether coordinates fall inside the button, and ③ repeat the same hit test on hover just to repaint the color. After all that effort, what you get is <b>merely a 'drawing of a button' — no accessibility, no keyboard support, no CSS styling</b>. That's why the web long forced a choice: a canvas full of pixels, or a page full of HTML — never both.</p><p>The core principle of the new API is that <b>the HTML lives in two places at once</b>. In the DOM there is a real element you can click and type into; in the canvas there is a <b>pixel copy that shaders can grab, twist, distort, blend, or map onto 3D shapes</b>. Two copies of the same element — one you can touch, one you can paint with.</p><p>The API surface is surprisingly tiny:</p><ul><li><b>Opt-in</b>: add the <b>layoutsubtree attribute</b> to the canvas and place the HTML you want to draw inside it as children.</li><li><b>2D Canvas</b>: call <b>drawElementImage(element, coordinates)</b> on the context to paint a live copy.</li><li><b>WebGL</b>: use <b>texElementImage2D</b>.</li><li><b>WebGPU</b>: use <b>copyElementImageToTexture</b> to feed HTML directly into a GPU texture.</li><li><b>Change detection</b>: whenever the HTML inside the canvas changes (an input gaining focus, a button hover), the canvas fires a <b>paint event</b> — inside it you do whatever you want: repaint, distort with a shader, or wrap around a 3D shape.</li></ul>"
+            },
+            "box3": {
+                  "title": "3 · A 20-Line Real Implementation + Production Verdict — Hit-Test Synchronization Is the Key",
+                  "html": "<p>The video builds a <b>'clickable button with a reflection'</b> in about 20 lines of JavaScript. The HTML is a canvas with the layoutsubtree attribute and a plain button inside; the CSS is an ordinary pink rounded button (purple + grow on hover, shrink on click). The JS grabs the canvas, context, and button, stores coordinates (x, y) and the button height (h), then in a <b>render function called 60 times per second</b>: ① wipes the canvas every frame, ② saves (bookmarks) the context state, ③ manipulates the brush — shifted down, flipped upside down, 30% opacity — and <b>stamps the reflection copy</b>, ④ restores and <b>stamps the real clickable copy</b> with a normal brush, and ⑤ requests the next frame via requestAnimationFrame.</p><p>Here comes the API's most important pitfall: the button exists in two places — the canvas (where it's painted) and the DOM (where the browser keeps the real, invisible, clickable button) — and <b>the browser has no idea where on the canvas you painted it</b>. Clicking the painted button can miss the real one sitting elsewhere. The fix: <b>drawElementImage returns the painting-position math, which you hand to the button's style.transform</b> to move the invisible real button to match the painted one — and now clicks land. Once you own the pixels, extensions like a ripple effect at the click coordinates are just classic canvas math (pixel sampling and shifting) — exactly the kind of area where AI can help.</p><p><b>Production verdict</b>: the API still lives <b>behind a flag in Chrome Canary</b>, requiring users to enable it themselves, and the whole thing is <b>still a draft-stage proposal</b> — the signatures and even the basic shape of the API could change. The conclusion is clear: <b>not something to ship into production tomorrow, but absolutely something to start experimenting with today</b>.</p>"
+            }
+      },
+      "addedDate": "2026-08-19"
+},
+
+    {
+      "id": "docker-sandboxes-microvm-agent-isolation-2026",
+      "categoryId": "agentops",
+      "moduleTag": "AGENT SANDBOX ISOLATION",
+      "title": "Docker Sandboxes — 에이전트를 microVM에 가두고 24/7 안전하게 돌리는 법",
+      "subtitle": "컨테이너가 아닌 하드웨어 강제 microVM으로 코딩 에이전트·커스텀 에이전트의 파일시스템/네트워크/크리덴셜을 정책 기반으로 봉쇄하는 실전 가이드",
+      "tags": [
+            "Docker Sandboxes",
+            "microVM",
+            "hypervisor",
+            "sbx CLI",
+            "network policy",
+            "secret proxy",
+            "Kits",
+            "Deep Agents",
+            "LM Studio",
+            "OpenRouter",
+            "agent security"
+      ],
+      "videoUrl": "https://www.youtube.com/watch?v=erQnRkMrpls",
+      "videoId": "erQnRkMrpls",
+      "channel": "Sam Witteveen",
+      "duration": "23:26",
+      "refDate": "2026-08-19",
+      "takeaway": "에이전트 안전의 답은 'yes/allow 배빗시팅'도 'dangerously skip permissions'도 아니라, 자체 Linux 커널을 가진 하드웨어 강제 microVM 안에 에이전트를 넣고 파일 쓰기 범위·네트워크 허용 호스트·API 키를 정책과 프록시로 통제하는 것이다. 키는 샌드박스 안에서 placeholder로만 존재하므로 프롬프트 인젝션이 성공해도 유출될 원본이 없다.",
+      "box1": {
+            "title": "1 · 왜 컨테이너가 아니라 microVM인가 — 하이퍼바이저 기반 격리 아키텍처",
+            "html": "<p>영상의 출발점은 에이전트 운영의 고질적 딜레마다. Claude Code·Codex 같은 코딩 에이전트를 쓰면 3시간 동안 'yes, allow'를 눌러주는 배빗시팅을 하거나, <b>dangerously skip permissions</b>를 켜고 드라이브가 지워질 위험을 감수해야 한다. Hermes·OpenClaw 같은 자율 에이전트나 직접 만든 커스텀 에이전트로 가면 이 리스크는 더 커진다. 자율성은 주되, 시스템은 봉쇄해야 한다는 상충 요구를 Docker Sandboxes가 해결한다.</p><p>핵심은 이것이 <b>일반 Docker 컨테이너가 아니라는 점</b>이다. 컨테이너는 앱 패키징에는 훌륭하지만 에이전트 격리에는 이상적이지 않다. Docker Sandbox는 <b>자체 Linux 커널을 가진 microVM</b>이며, 하드웨어와 VM 사이에서 CPU·메모리 슬라이스를 배분하는 <b>hypervisor</b>가 격리를 담당한다. 즉 소프트웨어 수준이 아닌 <b>하드웨어 강제(hardware-enforced) 격리</b>로, 컨테이너보다 강한 경계를 제공한다.</p><table class=\"matrix-table\"><tr><th>방식</th><th>격리 수준</th><th>기동/해체 속도</th><th>에이전트 적합성</th></tr><tr><td>컨테이너</td><td>커널 공유, 소프트웨어 격리</td><td>매우 빠름</td><td>앱 패키징용, 에이전트 봉쇄엔 부족</td></tr><tr><td>Full VM</td><td>완전 격리</td><td>무겁고 느림 (spin up/down 비용 큼)</td><td>격리는 충분하나 반복 실험에 부적합</td></tr><tr><td><b>microVM (Sandbox)</b></td><td><b>VM급 하드웨어 강제 격리</b></td><td><b>빠른 부팅·즉시 폐기</b></td><td><b>에이전트에 최적 — 어지럽히고 통째로 버림</b></td></tr></table><p>각 microVM 내부에는 Docker engine이 들어 있어 패키지 설치·실행·실험을 마음껏 할 수 있고, 끝나면 전체를 폐기해도 호스트 머신에는 아무 영향이 없다. 이 '빠르게 만들고, 어지럽히고, 통째로 버린다'는 라이프사이클이 에이전트 실험 워크로드와 정확히 맞아떨어진다.</p>"
+      },
+      "box2": {
+            "title": "2 · sbx CLI 실전 — 파일시스템 봉쇄, 3단계 네트워크 정책, 프록시 관리형 시크릿",
+            "html": "<p>설정은 <b>sbx login</b>으로 Docker 계정을 연동하면 끝이며 무료다(발표자는 이를 엔터프라이즈 유료 계정 유도 장치로 추정). <b>sbx run codex</b>를 실행하면 Codex가 지정 폴더 안의 샌드박스에서 구동된다. 데모의 핵심 장면: 한 단계 상위 폴더에 README를 쓰라고 지시하면 에이전트는 <b>성공했다고 믿지만 실제 쓰기는 차단</b>되어 파일이 존재하지 않고, 작업 폴더 내부에는 index.html 등을 문제없이 생성한다. 즉 에이전트의 쓰기 권한이 작업 디렉토리로 물리적으로 한정된다. <b>sbx ls</b>로 실행 중인 샌드박스 목록을 확인한다.</p><p>네트워크는 <b>sbx policy</b>로 3단계 프리셋을 제공한다 — <b>open</b>(무제한), <b>closed</b>(전체 차단), <b>balanced</b>(권장 기본값). balanced는 ChatGPT, Cursor, OpenAI, Anthropic, AWS, Google API 등 <b>약 192개 호스트</b>가 사전 승인된 범용 설정이며, 언제든 reset하거나 완전 커스텀 정책을 처음부터 작성할 수 있다. shell 전용 샌드박스(<b>sbx run</b>에 에이전트 대신 shell 지정)에서 curl로 example.com을 치면 forbidden이 반환되고, 특정 URL·포트만 allow 규칙으로 추가하면 즉시 통과되는 것을 시연했다. 폴더 단위로도 <b>읽기 전용 폴더(불변 문서)와 쓰기 가능 폴더(스크래치패드·메모리)</b>를 분리 설계할 수 있다.</p><p>가장 중요한 기능은 <b>프록시 관리형 시크릿</b>이다. <b>sbx secret</b>으로 OpenRouter API 키를 등록하면 샌드박스 내부에서는 <b>'proxy managed' placeholder만 보이고 원본 키는 절대 노출되지 않는다</b>. 요청이 샌드박스 밖으로 나가는 시점에 프록시가 placeholder를 실제 키로 치환해 OpenRouter로 전송한다. 따라서 프롬프트 인젝션으로 에이전트가 키 탈취를 시도해도 <b>훔칠 원본 자체가 샌드박스 안에 없다</b>. 자주 쓰는 키는 global secret으로 등록해 여러 샌드박스에서 재사용하고, 필요하면 OpenRouter 외 모든 아웃바운드를 차단하는 이중 봉쇄도 가능하다.</p>"
+      },
+      "box3": {
+            "title": "3 · Kits로 커스텀 에이전트 템플릿화 — Deep Agents + LM Studio 완전 봉쇄 운영 사례",
+            "html": "<p>프리메이드 템플릿(Codex, Claude Code, OpenCode 등)을 넘어 자기만의 샌드박스를 정의하는 시스템이 <b>Kits</b>다(early access이나 누구나 사용 가능). Kit 하나로 <b>설치할 도구, 환경변수, 크리덴셜, 네트워크 규칙, 앱 실행까지</b> 선언한다. 발표자가 만든 LangChain <b>Deep Agents</b>용 kit 구성: shell을 상속하고, 네트워크는 <b>OpenRouter(443)와 localhost:1234(LM Studio)만 허용</b>하며 OpenAI·ChatGPT 등 나머지는 전부 deny. Linux 업데이트와 PyPI 설치는 허용하고, OpenRouter 크리덴셜은 global secret으로 선언해 프록시로 주입한다(kit 파일에 키를 직접 넣으면 목적 자체가 무너진다). 생성 시 Python 설치 → venv 구성 → deepagents·langchain·langchain-openai·langchain-openrouter pip 설치 → 에이전트 스크립트 자동 실행까지 이어진다.</p><p>실행은 <b>sbx run deepagents . &lt;kit URL&gt;</b> 한 줄이다. 최초 1~2분의 셋업 후에는 <b>kit명+폴더명으로 샌드박스가 명명·영속화</b>되어 재실행 시 즉시 진입한다. 데모에서 OpenRouter 경유 DeepSeek v4 Flash와 대화하며 봉쇄를 검증했다: Google 검색 요청 → \"네트워크는 openrouter.ai와 로컬 LM Studio로 제한됨\" 응답으로 거부, /users 파일 목록 요청 → 읽기·쓰기·편집 도구를 갖고 있음에도 <b>호스트 Mac의 파일에는 전혀 접근 불가</b>(빈 환경만 확인). 도구를 쥐여줘도 경계 자체가 뚫리지 않는다는 것이 핵심이다.</p><p>실무 함의를 정리하면 이렇다. <b>① 신규 에이전트 검증</b>: GitHub의 낯선 에이전트를 내 머신 오염 걱정 없이 몇 시간 돌려보고 평가. <b>② 로컬 모델 결합 24/7 운영</b>: LM Studio 로컬 모델과 연결하면 토큰 비용 폭주와 드라이브 삭제 리스크 없이 상시 구동 가능하며, Tavily·DuckDuckGo나 특정 사이트만 선별 허용해 정보 수집 에이전트로 확장. <b>③ 문서 불변성 설계</b>: 읽기 전용 폴더에 기준 문서를, 쓰기 폴더에 스크래치패드·메모리를 배치하는 파일시스템 권한 설계 패턴. 발표자의 결론 — 코딩 에이전트든 커스텀 에이전트든, <b>에이전트를 가둬야 하는 모든 머신에서 기본값으로 써야 할 도구</b>다.</p>"
+      },
+      "en": {
+            "title": "Docker Sandboxes — How to Confine Agents in microVMs and Run Them Safely 24/7",
+            "subtitle": "A hands-on guide to locking down the filesystem, network, and credentials of coding and custom agents with hardware-enforced microVMs and policy-based control — not containers",
+            "moduleTag": "AGENT SANDBOX ISOLATION",
+            "takeaway": "The answer to agent safety is neither 'yes/allow babysitting' nor 'dangerously skip permissions' — it is putting the agent inside a hardware-enforced microVM with its own Linux kernel, and governing file-write scope, allowed network hosts, and API keys through policies and a proxy. Keys exist only as placeholders inside the sandbox, so even a successful prompt injection finds no original to exfiltrate.",
+            "box1": {
+                  "title": "1 · Why microVMs, Not Containers — Hypervisor-Based Isolation Architecture",
+                  "html": "<p>The video starts from the chronic dilemma of agent operations. With coding agents like Claude Code and Codex, you either babysit them clicking 'yes, allow' for three hours, or enable <b>dangerously skip permissions</b> and accept the risk of a wiped drive. With autonomous agents like Hermes and OpenClaw, or custom agents you build yourself, the risk compounds. Docker Sandboxes resolves the conflicting demands: give agents autonomy, but keep the system locked down.</p><p>The key point is that <b>these are not ordinary Docker containers</b>. Containers are great for packaging apps but not ideal for agent isolation. A Docker Sandbox is a <b>microVM with its own Linux kernel</b>, isolated by a <b>hypervisor</b> that sits between the hardware and the VM, handing off slices of CPU and memory. In other words, isolation is <b>hardware-enforced</b>, not merely software-level — a stronger boundary than containers provide.</p><table class=\"matrix-table\"><tr><th>Approach</th><th>Isolation level</th><th>Spin-up/teardown speed</th><th>Agent suitability</th></tr><tr><td>Container</td><td>Shared kernel, software isolation</td><td>Very fast</td><td>For app packaging; insufficient for confining agents</td></tr><tr><td>Full VM</td><td>Complete isolation</td><td>Heavy and slow (costly spin up/down)</td><td>Isolates fine but poor for iterative experiments</td></tr><tr><td><b>microVM (Sandbox)</b></td><td><b>VM-grade hardware-enforced isolation</b></td><td><b>Fast boot, instant disposal</b></td><td><b>Optimal for agents — make a mess, throw it all away</b></td></tr></table><p>Each microVM contains a Docker engine inside, so you can install packages, run things, and experiment freely — then discard the whole thing with zero impact on the host machine. This 'spin up fast, make a mess, throw it away whole' lifecycle maps exactly onto agent experimentation workloads.</p>"
+            },
+            "box2": {
+                  "title": "2 · sbx CLI in Practice — Filesystem Confinement, 3-Tier Network Policy, Proxy-Managed Secrets",
+                  "html": "<p>Setup is just <b>sbx login</b> to link a Docker account, and it's free (the presenter guesses this is Docker's way of steering enterprises toward paid accounts). Running <b>sbx run codex</b> launches Codex inside a sandbox scoped to a designated folder. The demo's key moment: asked to write a README one directory up, the agent <b>believes it succeeded but the write is actually blocked</b> — no file exists — while inside the working folder it creates index.html and the like without issue. The agent's write access is physically confined to its working directory. <b>sbx ls</b> lists running sandboxes.</p><p>Networking offers three presets via <b>sbx policy</b> — <b>open</b> (unrestricted), <b>closed</b> (all traffic blocked), and <b>balanced</b> (the recommended default). Balanced is a general-purpose setup with <b>about 192 pre-approved hosts</b> including ChatGPT, Cursor, OpenAI, Anthropic, AWS, and Google APIs; you can reset it at any time or author a fully custom policy from scratch. In a shell-only sandbox (specify shell instead of an agent in <b>sbx run</b>), curling example.com returns forbidden, and adding an allow rule for a specific URL and port makes it pass immediately, as demonstrated. At the folder level, you can also split <b>read-only folders (immutable documents) from writable folders (scratchpad, memory)</b>.</p><p>The most important feature is <b>proxy-managed secrets</b>. Register an OpenRouter API key with <b>sbx secret</b>, and inside the sandbox you only ever see a <b>'proxy managed' placeholder — the raw key is never exposed</b>. As requests leave the sandbox, the proxy swaps the placeholder for the real key before sending to OpenRouter. So even if a prompt injection makes the agent try to steal the key, <b>there is no original inside the sandbox to steal</b>. Frequently used keys can be registered as global secrets for reuse across sandboxes, and you can add a second layer of confinement by blocking all outbound traffic except OpenRouter.</p>"
+            },
+            "box3": {
+                  "title": "3 · Templating Custom Agents with Kits — A Fully Confined Deep Agents + LM Studio Deployment",
+                  "html": "<p>Beyond the pre-made templates (Codex, Claude Code, OpenCode, etc.), <b>Kits</b> is the system for defining your own sandboxes (early access, but open to everyone). A single kit declares <b>tools to install, environment variables, credentials, network rules, and even app execution</b>. The presenter's kit for LangChain's <b>Deep Agents</b>: it inherits from shell, the network allows <b>only OpenRouter (443) and localhost:1234 (LM Studio)</b> while denying OpenAI, ChatGPT, and everything else. Linux updates and PyPI installs are permitted, and the OpenRouter credential is declared as a global secret injected via the proxy (putting the key directly in the kit file would defeat the purpose). On creation it installs Python → sets up a venv → pip installs deepagents, langchain, langchain-openai, and langchain-openrouter → auto-runs the agent script.</p><p>Execution is a single line: <b>sbx run deepagents . &lt;kit URL&gt;</b>. After a 1–2 minute initial setup, the sandbox is <b>named and persisted as kit name + folder name</b>, so subsequent runs enter instantly. The demo verifies confinement while chatting with DeepSeek v4 Flash via OpenRouter: a Google search request is refused with \"network access in this sandbox is restricted to openrouter.ai and local LM Studio,\" and a request to list files in /users shows that despite having read, write, and edit tools, the agent has <b>zero access to the host Mac's files</b> (it only finds an empty environment). The point: even with tools in hand, the boundary itself does not break.</p><p>The practical implications: <b>① Vetting new agents</b> — run an unfamiliar agent from GitHub for a few hours and evaluate it without worrying about contaminating your machine. <b>② 24/7 operation with local models</b> — paired with an LM Studio local model, you can run continuously without runaway token bills or drive-wipe risk, and selectively allow Tavily, DuckDuckGo, or specific sites to extend it into an information-gathering agent. <b>③ Document immutability design</b> — a filesystem permission pattern placing reference documents in read-only folders and scratchpad/memory in writable ones. The presenter's conclusion: whether for coding agents or custom agents, this is <b>a tool you should be using by default on any machine where an agent needs to be confined</b>.</p>"
+            }
+      },
+      "addedDate": "2026-08-19"
+},
+
+    {
       "id": "aws-full-course-cloud-foundation-2026",
       "categoryId": "agentops",
       "moduleTag": "CLOUD COST & OPS FOUNDATION",
