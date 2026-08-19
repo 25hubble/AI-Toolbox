@@ -66,6 +66,63 @@ window.DASHBOARD_DATA = {
   ],
   entries: [
     {
+      "id": "learn-to-code-2026-systems-thinking",
+      "categoryId": "multi-agent",
+      "moduleTag": "HUMAN-AI ORCHESTRATION FUNDAMENTALS",
+      "title": "2026년 코딩 입문 전략: 문법 암기가 아니라 AI를 지휘하는 시스템 사고를 배워라",
+      "subtitle": "AI가 코드를 쓰는 시대의 병목은 문법이 아니라 사고 — 인간은 설계도(방향), AI는 시공팀(속도)이라는 역할 분담으로 90일 안에 실전 시스템을 완성하는 로드맵",
+      "tags": [
+            "Vibe Coding",
+            "Python",
+            "Git",
+            "Modularity",
+            "Systems Thinking",
+            "AI-assisted Development",
+            "90-Day Roadmap",
+            "Code Reading",
+            "Debugging",
+            "MVP"
+      ],
+      "videoUrl": "https://www.youtube.com/watch?v=PWmi7IwBSwk",
+      "videoId": "PWmi7IwBSwk",
+      "channel": "Intellipaat",
+      "duration": "7:58",
+      "refDate": "2026-08-19",
+      "takeaway": "2026년 코딩 학습의 병목은 문법이 아니라 사고다. AI는 아키텍트가 아니라 '가장 빠른 시공팀'이므로, 시스템·데이터·문제를 깊이 이해해 AI에게 방향을 제시할 수 있는 사람만이 AI를 도구로 삼아 이전에 없던 것을 만든다.",
+      "box1": {
+            "title": "1 · 패러다임 전환 — '어떤 언어?'는 이제 틀린 질문이다",
+            "html": "<p>영상의 출발점은 도발적이다. <b>\"2026년에 어떤 언어를 배울까?\"라고 묻는 순간 이미 틀린 질문을 하고 있다</b>는 것. 몇 년 전까지 코딩 학습은 문법·함수·철자를 암기하는 일이었지만, ChatGPT, Claude, Cursor, Copilot 같은 AI 도구가 코드 작성·설명·디버깅·언어 간 번역을 즉시 처리하는 지금, <b>병목은 문법(syntax)이 아니라 사고(thinking)</b>로 이동했다. 언어와 도구는 계속 바뀌지만 진짜 펀더멘털은 남는다. 따라서 질문은 \"무슨 언어를 배울까\"가 아니라 <b>\"소프트웨어를 만들기 위해 무엇을 이해해야 하는가\"</b>로 바뀌어야 한다.</p><p>그럼에도 시작점을 하나 고르라면 화자는 <b>Python</b>을 추천한다. 이유는 Python이 특별해서가 아니라 <b>'가장 방해가 안 되는' 진입로</b>이기 때문이다. 영어처럼 읽히고, 학습 자료가 무한하며, 대부분의 AI 도구가 기본값으로 Python을 먼저 내놓는다. 목표는 'Python 개발자'가 되는 것이 아니라 문법과 싸우는 대신 <b>사고에 집중해 소프트웨어의 작동 원리를 이해하는 것</b>이다.</p><p>그 핵심 원리는 놀랍도록 단순하다. 모든 소프트웨어는 <b>① 정보를 받아들이고 ② 저장하고 ③ 변환한다</b>. Instagram, Spotify, ChatGPT — 제품은 달라도 기반은 동일하다. 리스트·딕셔너리·셋 같은 자료구조는 현실을 컴퓨터 안에 조직하는 방식일 뿐이며, 내면화해야 할 명제는 하나다: <b>\"소프트웨어는 움직이는 데이터(data in motion)다.\"</b> 이것이 체화되는 순간 나머지 전부가 쉬워진다. 또한 '코드는 마법'이라는 초보자의 착각도 깨야 한다. 컴퓨터는 극도로 문자 그대로(literal) 동작하며 지시를 한 줄씩 순서대로 실행할 뿐이다. 레시피의 1단계가 틀리면 이후 전부가 무너지듯, 디버깅은 감이 아니라 <b>'기대와 현실이 갈라진 단계를 찾아 고치는 프로세스'</b>가 된다.</p>"
+      },
+      "box2": {
+            "title": "2 · 프로와 초보를 가르는 기반 역량 — 모듈화 · Git · 코드 읽기 · Vibe Coding의 진짜 정의",
+            "html": "<p>초보와 프로를 조용히 가르는 첫 번째 습관은 <b>모듈화(modularity)</b>다. 초보는 단일 파일에 모든 것을 넣지만, 실제 소프트웨어는 집을 지을 때 방을 나누듯 입력·로직·데이터·외부 서비스·AI 호출을 <b>파일별 책임으로 분리</b>한다. 결정적으로, 깨끗한 구조는 사람만 돕는 게 아니라 <b>AI가 프로젝트를 이해하는 능력도 끌어올린다</b> — AI 협업 시대에 모듈화가 곧 AI 활용 성능이 되는 이유다. 같은 맥락에서 '전부 직접 만들어야 한다'는 본능도 버려야 한다. 현대 소프트웨어는 라이브러리와 API 위에서 만든다. 매번 원자재 금속부터 자동차를 만드는 사람은 없다. <b>목표는 더 많은 코드가 아니라 더 나은 해법</b>이다.</p><p>단 하나의 스킬을 패스트트랙으로 꼽으라면 <b>Git</b>이다. 모든 의미 있는 변경이 기록되고, 무언가 깨지면 시간을 되돌릴 수 있는 '코드의 금고 시스템'이자, 협업과 AI 워크플로우의 토대다. 공식은 <b>\"AI writes code, Git manages evolution\"</b> — AI가 코드를 쓰고 Git이 진화를 관리하며, 둘 다 필수다. 또 하나의 프로 습관은 <b>코드 읽기</b>다. 초보는 쓰기에만 집중하지만 프로는 읽기에 같은 시간을 쓴다. AI가 대량의 코드를 즉시 생성하는 지금, <b>읽지 못하면 검증하지 못하고, 검증하지 못하면 자신이 만든 것을 이해하지 못한 것</b>이다. 실전 훈련법: 실제 오픈 프로젝트를 열어 흐름을 추적하고 데이터가 어떻게 움직이는지 따라가라.</p><p>마지막으로 영상은 가장 오해받는 개념인 <b>Vibe Coding</b>을 재정의한다. Vibe Coding은 'AI에게 전부 만들어달라고 시키는 것'이 아니다 — 그것은 <b>사고의 외주(outsourcing thinking)</b>다. 진짜 정의는 <b>\"시스템을 충분히 이해해서 AI를 그 안으로 안내(guide)할 수 있는 상태\"</b>다. 역할 분담은 명확하다: <b>AI는 속도를, 인간은 방향을 담당</b>한다. AI는 아키텍트가 아니라 역사상 가장 빠른 시공팀이며, 설계도(blueprint)는 여전히 인간의 몫이다. 이 조합이 성립할 때만 AI 협업이 가치를 낸다.</p>"
+      },
+      "box3": {
+            "title": "3 · 실행 프레임워크 — AI 문서 요약기 빌드 5단계와 첫 90일 로드맵",
+            "html": "<p>추상론을 실전으로 옮기는 예시로 영상은 <b>AI 문서 요약기</b>(사용자가 파일 업로드 → AI가 요약 반환)를 든다. 빌드 프로세스는 5단계다. <b>Step 1 — 문제 정의</b>: 무엇을, 누구를 위해 만들고, 성공을 어떻게 판정하는가. <b>Step 2 — 시스템 설계</b>: UI·데이터베이스·AI 모델·스토리지 등 어떤 컴포넌트가 존재하는가. <b>Step 3 — 구조 세팅 + Git 초기화</b>. <b>Step 4 — 최소 동작 버전 구축</b>: 완벽한 버전이 아니라 가장 작은 버전. 입력을 받아 출력을 내면 이미 '진짜'를 만든 것이고 나머지는 전부 확장이다. <b>Step 5 — 반복(iterate)</b>: AI를 파트너로 삼아 질문하고, 의도적으로 부수고, 고치고, 일찍 배포하고, 끊임없이 개선한다. <b>\"Build → Ship → Learn → Repeat\" 루프 자체가 진짜 스킬</b>이며, 튜토리얼도 이론도 아닌 이 루핑이 실력을 만든다.</p><p>제로에서 재시작한다면의 <b>첫 90일 로드맵</b>은 다음과 같다.</p><table class=\"matrix-table\"><tr><th>기간</th><th>목표</th><th>내용</th></tr><tr><td><b>1~2주차</b></td><td>Python 기초</td><td>변수·루프·함수를 이해할 만큼만 — 그 이상 파지 않는다</td></tr><tr><td><b>3~4주차</b></td><td>자료구조 + 문제 해결</td><td>문법이 아니라 <b>패턴으로 사고</b>하기 시작</td></tr><tr><td><b>2개월차</b></td><td>소형 프로젝트</td><td>계산기, To-do 리스트, 날씨 앱 등 '진짜인 것' 아무거나</td></tr><tr><td><b>3개월차</b></td><td>AI와 함께 실전 시스템 1개</td><td>API + 데이터 + 간단한 인터페이스 결합 — 마스터가 아니라 <b>조각들이 연결되는 방식을 보는 것</b>이 목적</td></tr></table><p>결론은 단 하나로 수렴한다. <b>2026년의 코딩 학습은 문법 암기가 아니라 시스템 이해다.</b> AI는 코드를 '어떻게' 쓰는지를 바꿨지만 소프트웨어가 '왜' 존재하는지는 바꾸지 못했다 — 무엇을, 왜 만들며, 어떻게 동작해야 하는지는 여전히 누군가가 결정해야 한다. 시스템으로 사고하는 법을 배운 사람은 AI를 따라가는 데 그치지 않고 <b>AI를 이용해 이전에 존재하지 않던 것을 만든다</b>. 그러니 기다리지 말고, 작은 것을 골라, 지금 만들기 시작하라.</p>"
+      },
+      "en": {
+            "title": "How to Start Coding in 2026: Learn Systems Thinking That Directs AI, Not Syntax Memorization",
+            "subtitle": "In the era where AI writes code, the bottleneck is thinking, not syntax — a 90-day roadmap built on the division of labor where humans own the blueprint (direction) and AI is the construction crew (speed)",
+            "moduleTag": "HUMAN-AI ORCHESTRATION FUNDAMENTALS",
+            "takeaway": "The bottleneck of learning to code in 2026 is thinking, not syntax. AI is not the architect but 'the fastest construction crew you've ever seen' — only those who understand systems, data, and problems deeply enough to give AI direction will use it to build things that didn't exist before.",
+            "box1": {
+                  "title": "1 · The Paradigm Shift — 'Which Language?' Is Now the Wrong Question",
+                  "html": "<p>The video opens with a provocation: <b>the moment you ask \"which language should I learn in 2026?\", you're already asking the wrong question</b>. Until a few years ago, learning to code meant memorizing syntax, functions, and spelling — but now that AI tools like ChatGPT, Claude, Cursor, and Copilot instantly write, explain, debug, and translate code between languages, <b>the bottleneck has moved from syntax to thinking</b>. Languages and tools keep changing, but real fundamentals stick around. So the question must change from \"what language should I learn\" to <b>\"what do I need to understand to build software?\"</b></p><p>That said, if forced to pick a starting point, the speaker recommends <b>Python</b> — not because it's special, but because it's <b>the entry path that 'gets out of your way' the most</b>. It reads like English, has endless resources, and most AI tools default to it first. The goal is not to become a 'Python developer' but to <b>focus on thinking instead of fighting syntax, and understand how software actually works</b>.</p><p>That core principle is strikingly simple: every piece of software <b>① takes information in, ② stores it, ③ transforms it</b>. Instagram, Spotify, ChatGPT — different products, same foundation. Data structures like lists, dictionaries, and sets are just ways of organizing reality inside a computer, and the one proposition to internalize is: <b>\"Software is data in motion.\"</b> Once that clicks, everything else gets easier. The beginner illusion that 'code is magic' must also be broken: computers are extremely literal, executing instructions line by line in order. Just as a recipe collapses when step one is wrong, debugging stops being guesswork and becomes <b>'the process of finding the step where reality diverged from expectation and fixing it.'</b></p>"
+            },
+            "box2": {
+                  "title": "2 · The Foundational Skills That Separate Pros from Beginners — Modularity · Git · Code Reading · The Real Definition of Vibe Coding",
+                  "html": "<p>The first habit that quietly separates beginners from professionals is <b>modularity</b>. Beginners put everything in a single file, but real software — like a house divided into rooms — <b>separates responsibilities across files</b>: input, logic, data, external services, AI calls. Crucially, clean structure doesn't just help humans; it <b>also helps AI understand your project better</b> — which is why, in the AI-collaboration era, modularity directly becomes AI leverage. In the same vein, drop the instinct that 'I should build everything myself.' Modern software is built on libraries and APIs; nobody builds a car from raw metal every time they need to drive. <b>The goal is not more code — the goal is better solutions.</b></p><p>If one skill could be fast-tracked, it would be <b>Git</b>: a 'safe system for your code' where every meaningful change is recorded and you can go back in time when something breaks — and the foundation for working with other people and AI-assisted workflows. The formula: <b>\"AI writes code, Git manages evolution\"</b> — both matter. Another professional habit is <b>reading code</b>. Beginners focus on writing, but professionals spend just as much time reading — especially now that AI generates large chunks instantly. <b>If you can't read code, you can't verify it; and if you can't verify it, you don't really understand what you've built.</b> The practical drill: open real projects, trace the flow, follow how the data moves.</p><p>Finally, the video redefines the most misunderstood idea in modern programming: <b>Vibe Coding</b>. It is NOT 'asking AI to build everything for you' — that's <b>outsourcing thinking</b>. The real definition: <b>\"understanding the system well enough to guide AI through it.\"</b> The division of labor is explicit: <b>AI handles speed, you handle direction</b>. AI is not the architect — it's the fastest construction crew you've ever seen, and the blueprint remains the human's job. AI collaboration only creates value when this combination holds.</p>"
+            },
+            "box3": {
+                  "title": "3 · The Execution Framework — The 5-Step AI Document Summarizer Build and the First 90-Day Roadmap",
+                  "html": "<p>To turn theory into practice, the video walks through building an <b>AI document summarizer</b> (user uploads a file → AI returns a summary) in five steps. <b>Step 1 — Define the problem clearly</b>: what are we building, who is it for, how do we know it works? <b>Step 2 — Design the system</b>: which components exist — UI, database, AI model, storage? <b>Step 3 — Set up structure and initialize Git.</b> <b>Step 4 — Build the smallest working version</b>: not the perfect version, the smallest one. If it takes input and produces output, you've already built something real — everything else is expansion. <b>Step 5 — Iterate</b>: use AI as a partner, ask questions, break things intentionally, fix them, ship early, improve constantly. <b>The \"Build → Ship → Learn → Repeat\" loop is the actual skill</b> — not tutorials, not theory, just looping.</p><p>The <b>first 90-day roadmap</b>, restarting from zero, looks like this:</p><table class=\"matrix-table\"><tr><th>Period</th><th>Goal</th><th>Content</th></tr><tr><td><b>Weeks 1–2</b></td><td>Python basics</td><td>Just enough to understand variables, loops, and functions — no deeper</td></tr><tr><td><b>Weeks 3–4</b></td><td>Data structures + problem solving</td><td>Start <b>thinking in patterns</b>, not syntax</td></tr><tr><td><b>Month 2</b></td><td>Small projects</td><td>Calculator, to-do list, weather app — anything real</td></tr><tr><td><b>Month 3</b></td><td>One real system with AI</td><td>Combine APIs + data + a simple interface — the goal is not mastery but <b>seeing how the pieces connect</b></td></tr></table><p>Everything converges on one conclusion: <b>learning to code in 2026 is not about memorizing syntax — it's about understanding systems.</b> AI has changed 'how' we write code but not 'why' software exists — someone still has to decide what we're building, why, and how it should work. People who learn to think in systems won't just keep up with AI; <b>they'll use it to build things that didn't exist before</b>. So stop waiting, pick something small, and start building.</p>"
+            }
+      },
+      "addedDate": "2026-08-19"
+},
+
+    {
       "id": "html-in-canvas-gpu-texture-2026",
       "categoryId": "onprem",
       "moduleTag": "GPU RENDERING PIPELINE",
