@@ -66,6 +66,61 @@ window.DASHBOARD_DATA = {
   ],
   entries: [
     {
+      "id": "ubuntu-vmware-workstation-setup-2026",
+      "categoryId": "onprem",
+      "moduleTag": "LOCAL LAB ENVIRONMENT PROVISIONING",
+      "title": "VMware Workstation Pro 위에 Ubuntu 설치하기 — 입문자를 위한 로컬 Linux 실습 환경 구축 완전 가이드",
+      "subtitle": "Windows를 그대로 둔 채 VMware 가상머신 안에 Ubuntu를 올려, 명령어 실습이 가능한 안전한 Linux 샌드박스를 처음부터 끝까지 만드는 절차",
+      "tags": [
+            "Ubuntu",
+            "VMware Workstation Pro",
+            "가상머신",
+            "Linux",
+            "ISO",
+            "VM 리소스 설정",
+            "터미널",
+            "입문 실습환경"
+      ],
+      "videoUrl": "https://www.youtube.com/watch?v=WqcC9DFf5Dc",
+      "videoId": "WqcC9DFf5Dc",
+      "channel": "Intellipaat",
+      "duration": "11:21",
+      "refDate": "2026-08-20",
+      "takeaway": "Linux 학습의 진입장벽은 OS 교체가 아니라 '안전한 격리 환경'의 부재다. VMware Workstation Pro + Ubuntu ISO 조합이면 기존 Windows를 전혀 건드리지 않고 약 30GB 디스크·4GB 메모리만으로 완전한 Linux 실습 샌드박스를 20분 내에 확보할 수 있다.",
+      "box1": {
+            "title": "1 · 준비물 2가지와 사전 요구사항 — 가상화 계층의 이해",
+            "html": "<p>이 영상의 전제는 단순하다. Linux를 배우기 위해 기존 노트북의 Windows를 지우거나 듀얼부팅으로 위험을 감수할 필요가 없다는 것. 필요한 것은 단 두 가지다. <b>① VMware Workstation Pro(영상 기준 17.6.4 버전)</b> — 호스트 OS(Windows) 위에서 게스트 OS(Linux)를 실행하게 해주는 가상화 플랫폼이며, <b>② Ubuntu ISO 파일</b> — 부팅 가능한 DVD를 단일 파일로 저장한 형태의 OS 설치 이미지다. 강사는 이 구조를 'Windows 컴퓨터 안에 완전히 안전한 방식으로 또 하나의 Linux 컴퓨터를 만드는 것'으로 비유하며, 호스트의 Windows 설치는 전혀 변경되지 않는다는 점을 반복 강조한다.</p><p>버전 선택에는 실무적 뉘앙스가 있다. 영상에서는 최신 <b>Ubuntu 26.04</b>를 사용하지만, 더 안정적이고 보안이 검증된 환경을 원한다면 <b>24.04 LTS</b>를 권장한다고 명시한다. LTS(Long Term Support) 버전은 장기 지원이 보장되므로 학습·실무 겸용이라면 LTS가 안전한 선택이다. 자신의 노트북 사양·호환성에 따라 버전을 선택하면 된다.</p><p>리소스 요구사항도 구체적으로 제시된다. Ubuntu ISO 파일 자체가 <b>약 6.1GB</b>로 크기 때문에 다운로드에 수 분이 걸리며, 두 소프트웨어 설치 전 <b>최소 20GB, 권장 30GB 이상의 여유 디스크 공간</b>을 확보해야 한다. Ubuntu가 입문자에게 추천되는 이유는 명확하다 — 가장 대중적인 Linux 배포판으로 설정이 쉽고 지원이 풍부하며, 웹/앱 개발·데이터 사이언스·AI/ML·DevOps·시스템 관리까지 모든 실습 도구 체인이 기본 제공되기 때문이다.</p>"
+      },
+      "box2": {
+            "title": "2 · VM 생성과 설치 절차 — 핵심 설정값 매트릭스",
+            "html": "<p>VMware Workstation Pro 설치는 관리자 권한 실행 → 라이선스 동의 → 기본값 유지(Next 연타) → 바로가기 생성 → Install의 전형적인 위저드 흐름이다. 기존 버전이 설치되어 있으면 제거 후 재설치를 안내받는다. 설치 완료 후 'Create a New Virtual Machine'으로 VM 생성을 시작하는데, 여기서 입문자가 놓치기 쉬운 결정 포인트들이 있다.</p><table class=\"matrix-table\"><tr><th>설정 항목</th><th>영상의 선택값</th><th>이유/비고</th></tr><tr><td>OS 설치 방식</td><td>I will install the operating system later</td><td>ISO 이미지를 나중에 CD/DVD 장치로 직접 마운트하기 위함</td></tr><tr><td>게스트 OS 타입</td><td>Linux → Ubuntu 64-bit</td><td>호스트(Windows) 안의 게스트로 Ubuntu 배포판 지정</td></tr><tr><td>가상 디스크 저장</td><td>Store virtual disk as a single file</td><td>단일 파일 관리로 단순화</td></tr><tr><td>최대 디스크 크기</td><td>40GB</td><td>실습용 여유 확보</td></tr><tr><td>메모리(RAM)</td><td>4096MB로 상향</td><td>기본값에서 증설, 관련 자동 옵션은 체크 해제</td></tr><tr><td>ISO 연결</td><td>CD/DVD → Use ISO image → Downloads의 ubuntu-26.04-desktop-amd64.iso 선택</td><td>부팅 가능한 DVD처럼 동작</td></tr></table><p>VM 생성 후 'Edit virtual machine settings'에서 메모리를 4096MB로 올리고 CD/DVD 장치에 ISO를 연결한 뒤 'Power on this virtual machine'으로 부팅한다. 이후 Ubuntu 설치 마법사에서 언어(English) → 접근성(강사는 가독성을 위해 high contrast 선택) → 'Install Ubuntu' 선택 → 디스크 설정 기본값 유지 → <b>암호화 없음(no encryption)</b> 순으로 진행한다. 파일 복사와 설치에 <b>최대 10분</b>이 걸릴 수 있으니, 도중에 전원을 끄거나 창을 닫는 등 프로세스를 중단하지 말라는 경고가 핵심 주의사항이다.</p>"
+      },
+      "box3": {
+            "title": "3 · 계정 규약, 첫 터미널 검증, 그리고 실무 단축키",
+            "html": "<p>사용자 계정 설정에서 강사는 데모용으로 사용자명과 비밀번호를 동일하게('sona') 설정하며, 이것이 <b>Kali Linux 실습에서도 통용되는 관례</b>라고 설명한다. 학습·데모 환경에서는 username=password로 단순화해 인증 마찰을 없애되, 중요·기밀 작업 환경에서는 절대 이렇게 하지 말라는 조건을 분명히 단다. 이는 '실습 환경의 편의성'과 '운영 환경의 보안'을 구분하는 기본적인 위생 규칙이다.</p><p>설치 완료 팝업('Ubuntu 26.04 is installed and ready to use') 후 재시작하면 로그인 화면이 나타난다. 이 과정에서 유용한 단축키 두 가지가 소개된다. <b>Ctrl+Alt</b>는 VM 안팎으로 마우스 커서를 전환(해제)하는 VMware 단축키이고, <b>Ctrl+Alt+T</b>는 Ubuntu 안에서 터미널을 즉시 여는 단축키다. 다크 모드 등 테마 설정을 마치면 데스크톱 진입이 완료된다.</p><p>환경 검증은 실무의 smoke test와 같은 절차로 마무리된다. 터미널을 열면 로그인한 사용자명이 프롬프트에 표시되는지 확인하고, 홈 디렉터리에서 파일·폴더 목록 명령(ls)을 실행해 정상 출력되면 환경 구축이 성공한 것이다. 강사는 마지막으로 'Linux는 현재와 앞으로 등장할 모든 기술의 기반(foundation)이며 2026년에도 여전히 유효하다'고 강조한다 — 사이버보안, DevOps, 커맨드라인 중심 도메인을 배우려는 입문자라면 이 Ubuntu VM이 명령어 연습, 파일 작업, 소프트웨어 설치 등 모든 후속 핸즈온 실습의 베이스캠프가 된다.</p>"
+      },
+      "en": {
+            "title": "Installing Ubuntu on VMware Workstation Pro — The Complete Beginner's Guide to Building a Local Linux Lab",
+            "subtitle": "An end-to-end procedure for standing up a safe Linux sandbox for command-line practice inside a VMware virtual machine, without touching your existing Windows install",
+            "moduleTag": "LOCAL LAB ENVIRONMENT PROVISIONING",
+            "takeaway": "The real barrier to learning Linux isn't replacing your OS — it's the lack of a safe, isolated environment. With VMware Workstation Pro plus an Ubuntu ISO, you can provision a fully functional Linux sandbox in about 20 minutes using only ~30GB of disk and 4GB of RAM, leaving Windows completely untouched.",
+            "box1": {
+                  "title": "1 · The Two Prerequisites — Understanding the Virtualization Layer",
+                  "html": "<p>The premise of this video is simple: you don't need to wipe Windows or risk dual-booting to learn Linux. You need exactly two things. <b>① VMware Workstation Pro (version 17.6.4 in the video)</b> — a virtualization platform that runs a guest OS (Linux) on top of your host OS (Windows), and <b>② an Ubuntu ISO file</b> — an OS installation image that works like a bootable DVD stored as a single file. The instructor frames this as 'creating another Linux computer inside your Windows computer in a completely safe way,' repeatedly stressing that the host's Windows installation remains entirely unchanged.</p><p>Version choice carries a practical nuance. The video uses the latest <b>Ubuntu 26.04</b>, but explicitly recommends <b>24.04 LTS</b> if you want a more stable, security-hardened environment. LTS (Long Term Support) releases guarantee extended support, making them the safer pick for combined learning and real work. Choose based on your laptop's specs and compatibility.</p><p>Resource requirements are stated concretely. The Ubuntu ISO alone is <b>about 6.1GB</b>, so the download takes several minutes, and you should have <b>at least 20GB — ideally 30GB or more — of free disk space</b> before installing both pieces of software. Why Ubuntu for beginners is also made clear: it's the most popular Linux distribution, easy to set up and well supported, and ships the full toolchain for web/app development, data science, AI/ML, DevOps, and system administration out of the box.</p>"
+            },
+            "box2": {
+                  "title": "2 · VM Creation and Installation — The Key Settings Matrix",
+                  "html": "<p>Installing VMware Workstation Pro follows the classic wizard flow: run as administrator → accept the license → keep defaults (click Next repeatedly) → create shortcuts → Install. If an older version exists, you'll be prompted to remove it first. After installation, start VM creation via 'Create a New Virtual Machine' — this is where beginners hit the decision points that are easy to get wrong.</p><table class=\"matrix-table\"><tr><th>Setting</th><th>Choice in the video</th><th>Reason / Note</th></tr><tr><td>OS install method</td><td>I will install the operating system later</td><td>The ISO image will be mounted directly as a CD/DVD device afterward</td></tr><tr><td>Guest OS type</td><td>Linux → Ubuntu 64-bit</td><td>Designates the Ubuntu distribution as the guest inside the Windows host</td></tr><tr><td>Virtual disk storage</td><td>Store virtual disk as a single file</td><td>Simplifies management with a single file</td></tr><tr><td>Maximum disk size</td><td>40GB</td><td>Headroom for hands-on practice</td></tr><tr><td>Memory (RAM)</td><td>Raised to 4096MB</td><td>Increased from default; the related auto option is unchecked</td></tr><tr><td>ISO attachment</td><td>CD/DVD → Use ISO image → select ubuntu-26.04-desktop-amd64.iso from Downloads</td><td>Behaves like a bootable DVD</td></tr></table><p>After creating the VM, open 'Edit virtual machine settings' to raise memory to 4096MB and attach the ISO to the CD/DVD device, then boot with 'Power on this virtual machine.' In the Ubuntu installer, proceed through language (English) → accessibility (the instructor picks high contrast for readability) → 'Install Ubuntu' → keep default disk settings → <b>no encryption</b>. Copying files and installing can take <b>up to 10 minutes</b> — the key warning is to never interrupt the process by powering off or closing the window mid-install.</p>"
+            },
+            "box3": {
+                  "title": "3 · Account Conventions, First Terminal Verification, and Practical Shortcuts",
+                  "html": "<p>During account setup, the instructor sets the username and password to the same value ('sona') for demo purposes, noting this is <b>a common convention in Kali Linux practice environments</b> as well. The rule: simplify to username=password in learning/demo environments to remove authentication friction, but never do this for anything important, critical, or confidential. It's a basic hygiene rule separating 'lab convenience' from 'production security.'</p><p>After the completion popup ('Ubuntu 26.04 is installed and ready to use') and a restart, the login screen appears. Two useful shortcuts are introduced along the way: <b>Ctrl+Alt</b> is the VMware shortcut to release the mouse cursor between the VM and the host, and <b>Ctrl+Alt+T</b> instantly opens a terminal inside Ubuntu. After theme choices like dark mode, you land on the desktop.</p><p>Environment verification closes out like a proper smoke test: open the terminal, confirm the logged-in username appears in the prompt, and run the file/folder listing command (ls) in the home directory — if it outputs correctly, the setup succeeded. The instructor closes by emphasizing that 'Linux is the foundation for every technology coming and going, and it remains relevant in 2026' — for beginners targeting cybersecurity, DevOps, or any command-line-centric domain, this Ubuntu VM becomes the base camp for all subsequent hands-on practice: running commands, working with files, and installing software.</p>"
+            }
+      },
+      "addedDate": "2026-08-20"
+},
+
+    {
       "id": "learn-to-code-2026-systems-thinking",
       "categoryId": "multi-agent",
       "moduleTag": "HUMAN-AI ORCHESTRATION FUNDAMENTALS",
