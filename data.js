@@ -66,6 +66,61 @@ window.DASHBOARD_DATA = {
   ],
   entries: [
     {
+      "id": "ai-leadership-cost-strategy-2026",
+      "categoryId": "agentops",
+      "moduleTag": "AI COST GOVERNANCE & LEADERSHIP",
+      "title": "AI 리더십의 실체: 비용·성능·거버넌스를 지휘하는 4대 전략",
+      "subtitle": "같은 AI 도구를 쓰는 시대, 승부는 모델이 아니라 '누가 어떻게 통제하는가'에서 갈린다",
+      "tags": [
+            "AI Leadership",
+            "Model Cascading",
+            "SLM",
+            "Quantization",
+            "Edge AI",
+            "AI Guardrails",
+            "Digital Transformation",
+            "AgentOps"
+      ],
+      "videoUrl": "https://www.youtube.com/watch?v=fJeNt9479lM",
+      "videoId": "fJeNt9479lM",
+      "channel": "Intellipaat",
+      "duration": "12:37",
+      "refDate": "2026-09-05",
+      "takeaway": "경쟁사도 나와 똑같은 AI 모델과 도구를 쓸 수 있는 시대에는 AI 자체가 아니라 'AI 리더십' — 즉 비용·성능·보안·거버넌스를 동시에 최적화하는 의사결정 능력 — 이 유일한 차별화 요소다.",
+      "box1": {
+            "title": "1 · 왜 지금 'AI 리더십'인가",
+            "html": "<p>영상은 디지털 전환을 4단계(업무 자동화, 고객경험 개선, 데이터 기반 의사결정, 신규 비즈니스 모델 창출)로 정의하고, Netflix·Uber 사례를 들어 진짜 전환은 '온라인화'가 아니라 <b>기술로 고객 경험 자체를 재설계</b>하는 것이었다고 짚는다. 클라우드 중심의 1차 전환에 이어, 지금은 AI가 행동 예측·업무 자동화·운영 최적화를 이끄는 2차 전환기이며, 이 국면에서 'AI를 어디에, 왜, 어떻게 써야 실질적 비즈니스 가치가 나오는가'를 결정하는 역할이 필요해졌다는 것이 핵심 전제다.</p><p>여기서 AI 리더십은 모델을 만들거나 코드를 짜는 기술 역량이 아니라, <b>비즈니스 전략·기술·데이터·사람을 연결</b>해 AI 도입의 방향을 잡는 능력으로 정의된다. AI 리더는 '어떤 AI 툴을 쓸까'가 아니라 '어떤 비즈니스 문제를 풀 것인가, AI가 맞는 해법인가, 어떤 데이터가 필요한가, 성공을 어떻게 측정할 것인가, 어떤 리스크·윤리 이슈가 있는가'를 먼저 묻는다. 경쟁사도 동일한 모델·에이전트에 접근할 수 있는 지금, 실제 차별화는 이 의사결정 품질에서 나온다는 것이 영상의 핵심 주장이다.</p>"
+      },
+      "box2": {
+            "title": "2 · AI 확산기의 4대 실전 전략(비용·성능·안전 통제)",
+            "html": "<p><b>① Model Cascading(모델 계층화):</b> 모든 요청을 값비싼 최상위 모델로 보내지 않고, 병원의 '일반의 → 전문의' 구조처럼 이메일 요약·피드백 분류·번역 같은 단순 작업은 저비용 소형 모델이, 법률 계약 검토·재무 분석 같은 복잡 작업만 고성능 모델이 처리하도록 AI 라우터(트래픽 컨트롤러)가 요청을 분배한다. Manifest AI의 실증에 따르면 이런 지능형 라우팅이 응답 품질을 유지하면서 토큰 비용을 크게 절감할 잠재력을 보였다.</p><p><b>② SLM(소형 언어모델):</b> 인보이스 분류, 회의록 요약, 사내 FAQ 응답처럼 특정 업무만 처리하면 되는 경우 범용 대형 모델은 과잉 스펙이며, 작을수록 연산량·응답속도·비용에서 유리하다. Mistral.ai의 프로덕션 사례가 GPT-4에 전적으로 의존하는 대신 특화 오픈소스 SLM으로 일상 텍스트 생성 업무를 대체한 예로 제시된다.</p><p><b>③ Quantization + Edge AI:</b> 양자화는 영상 압축처럼 성능을 최대한 유지하며 모델을 경량화하는 기법이고, 이렇게 가벼워진 모델은 공장·매장·병원·모바일 기기 등 실제 업무 현장(엣지)에서 클라우드 왕복 없이 직접 구동될 수 있다. 이는 응답 지연 감소, 클라우드 인프라 비용 절감, 민감 데이터가 조직 환경을 벗어나지 않아도 되는 프라이버시 이점까지 제공한다.</p><p><b>④ AI Guardrails(가드레일):</b> AI가 고객지원·재무·인사·법무 전반에 확산되면 응답을 사람이 일일이 검토하는 것이 불가능해지므로, 입력·출력을 자동 감시해 정책 위반·민감정보 노출·부적절 응답을 걸러내고 고위험 케이스만 사람에게 에스컬레이션하는 자동화 규칙·검증 체계가 필요하다. 이 4가지 전략을 관통하는 메시지는 'AI 리더십은 가장 큰 모델을 쓰거나 AI를 전방위로 배치하는 것이 아니라, 비용·성능·확장성·보안·비즈니스 가치 사이에서 올바른 균형을 잡는 것'이라는 점이다.</p>"
+      },
+      "box3": {
+            "title": "3 · 필요 역량 7가지와 커리어 전망",
+            "html": "<p>영상이 제시하는 AI 리더 역량 스택은 순서대로 ① AI/ML/딥러닝 기초 ② 생성형 AI(LLM, 프롬프트 엔지니어링, AI 에이전트, ChatGPT·Gemini·Copilot 활용) ③ 데이터 분석(Excel, SQL, Power BI, Tableau) ④ 비즈니스 전략과 문제해결(AI 유스케이스 발굴, 비즈니스 임팩트 측정) ⑤ AI 구현 및 프로젝트 관리(도입·배포·확장 전 과정 이해) ⑥ 책임 있는 AI(윤리, 데이터 프라이버시, 보안, 거버넌스) ⑦ 커뮤니케이션과 리더십(팀 리딩, 변화관리, 조직 내 AI 채택 지원)이다. 기술 역량뿐 아니라 조직을 움직이는 소프트스킬까지 포함된다는 점, 그리고 이 순서로 학습하는 것이 실전 준비에 중요하다는 점을 강조한다.</p><p>커리어 측면에서는 AI 프로덕트 매니저, AI 전략 컨설턴트, 디지털 전환 매니저, AI 프로그램 매니저, 심지어 Chief AI Officer까지 수요가 급증하는 직군으로 꼽히며, 이 역할들은 기술 배경이 없어도 제품·마케팅·운영·재무·컨설팅·프로젝트 관리 경험자가 AI·비즈니스 역량을 더해 전환 가능하다는 점이 강조된다. 수치 근거로는 2026년 말까지 기업 애플리케이션의 약 40%가 특정 작업을 자동 수행하는 AI 에이전트를 포함할 것으로 추정된다는 점, 그리고 Chief Data and Analytics Officer의 70%가 조직의 AI 전략을 책임지고 있다는 점을 들어, AI 리더십이 이제 'AI 부서의 책임'이 아니라 '비즈니스 우선순위' 자체가 되었다고 결론짓는다.</p>"
+      },
+      "en": {
+            "title": "AI Leadership Unpacked: 4 Strategies to Govern Cost, Performance & Guardrails",
+            "subtitle": "When everyone has the same AI tools, the real edge is who controls cost, performance, and governance",
+            "moduleTag": "AI COST GOVERNANCE & LEADERSHIP",
+            "takeaway": "When competitors have access to the exact same AI models and tools, AI itself is no longer the differentiator — AI leadership, the ability to govern cost, performance, security, and governance simultaneously, is.",
+            "box1": {
+                  "title": "1 · Why AI Leadership Matters Now",
+                  "html": "<p>The video frames digital transformation as four stages — automating business processes, enhancing customer experience, using data for faster decisions, and creating new business models/revenue streams — and uses Netflix and Uber as examples where the real transformation wasn't 'going online' but <b>redesigning the entire customer experience with technology as the enabler</b>. After a first wave centered on cloud adoption, we're now in a second wave where AI predicts behavior, automates complex work, and optimizes operations — and someone must decide where, why, and how AI should be used to create measurable business value.</p><p>AI leadership is defined here not as building models or writing code, but as <b>connecting business strategy, technology, data, and people</b>. An AI leader doesn't start with 'which AI tool should we use' — they start with 'what business problem are we solving, is AI the right solution, what data do we need, how do we measure success, and what risks or ethical concerns apply.' Since competitors can access the same models and agents, the video's core claim is that this decision-making quality is the actual differentiator.</p>"
+            },
+            "box2": {
+                  "title": "2 · Four Practical Strategies for Scaling AI (Cost, Performance, Safety)",
+                  "html": "<p><b>① Model Cascading:</b> instead of routing every request to one expensive model, an AI router acts like a traffic controller — simple tasks (summarizing emails, classifying feedback, translation) go to cheaper, smaller models, while complex tasks (legal contract review, financial analysis) are routed to a more powerful model, much like a hospital sending routine cases to a general physician and only complex cases to a specialist. A demonstration by Manifest AI showed this intelligent routing can significantly cut token costs while preserving response quality.</p><p><b>② Small Language Models (SLMs):</b> when a company's AI only needs to classify invoices, summarize meeting notes, or answer internal FAQs, a massive general-purpose model is overkill — smaller models need less compute, respond faster, and cost less. A production case study from Mistral.ai showed specialized open-source SLMs replacing full reliance on GPT-4 for daily text generation tasks.</p><p><b>③ Quantization + Edge AI:</b> quantization compresses a model (like compressing a large video file) while preserving most of its performance, and once compact enough, the model can run directly on devices near the point of work — a factory, retail store, hospital, or mobile device — instead of a cloud server. This reduces response latency, lowers cloud infrastructure needs, and improves data privacy since sensitive data doesn't have to leave the organization's environment.</p><p><b>④ AI Guardrails:</b> as AI spreads across customer support, finance, HR, and legal, manually reviewing every response becomes impractical, so automated rule and validation systems monitor inputs/outputs for policy violations or sensitive information and escalate high-risk cases to a human reviewer. The unifying message: AI leadership isn't about deploying the biggest model everywhere — it's about balancing cost, performance, scalability, security, and business value.</p>"
+            },
+            "box3": {
+                  "title": "3 · Seven Core Skills and Career Outlook",
+                  "html": "<p>The video lays out a skill stack, in order: ① AI/ML/deep learning fundamentals ② Generative AI (LLMs, prompt engineering, AI agents, tools like ChatGPT, Gemini, Microsoft Copilot) ③ Data analytics (Excel, SQL, Power BI, Tableau) ④ Business strategy and problem-solving (identifying AI use cases, measuring business impact) ⑤ AI implementation and project management (how AI projects are planned, deployed, and scaled) ⑥ Responsible AI (ethics, data privacy, security, governance) ⑦ Communication and leadership (leading teams, managing change, driving AI adoption). It stresses that learning these in the right order — not just knowing them — is what actually prepares someone to lead.</p><p>On career prospects, roles like AI Product Manager, AI Strategy Consultant, Digital Transformation Manager, AI Program Manager, and even Chief AI Officer are highlighted as high-demand positions open to non-technical professionals from product, marketing, operations, finance, consulting, or project management who add AI and business skills. Supporting figures: by the end of 2026, roughly 40% of enterprise applications are estimated to include task-specific AI agents, and 70% of Chief Data and Analytics Officers are already responsible for their organization's AI strategy — evidence that AI leadership has become a business priority, not just an AI department's job.</p>"
+            }
+      },
+      "addedDate": "2026-09-05"
+},
+
+    {
       "id": "gpt6-astra-agentic-generation-2026",
       "categoryId": "multi-agent",
       "moduleTag": "AUTONOMOUS AGENT CAPABILITY BENCHMARK",
