@@ -66,6 +66,120 @@ window.DASHBOARD_DATA = {
   ],
   entries: [
     {
+      "id": "ui-vs-ux-fundamentals-2026",
+      "categoryId": "agentops",
+      "moduleTag": "PRODUCT DESIGN FUNDAMENTALS",
+      "title": "6분 만에 이해하는 UI/UX: UI와 UX의 차이와 사용자 중심 설계 프로세스",
+      "subtitle": "UI는 보이는 인터페이스이고 UX는 전체 경험입니다. 좋은 제품은 사용자 리서치, 와이어프레임, UI 디자인, 사용성 테스트를 반복하는 루프에서 나옵니다.",
+      "tags": [
+            "UI",
+            "UX",
+            "User Research",
+            "Wireframe",
+            "Usability Testing",
+            "Visual Design",
+            "Iterative Design",
+            "Product Design"
+      ],
+      "videoUrl": "https://www.youtube.com/watch?v=_RKGLjdaAlo",
+      "videoId": "_RKGLjdaAlo",
+      "channel": "Intellipaat",
+      "duration": "6:21",
+      "refDate": "2026-09-23",
+      "takeaway": "좋은 UX는 '무엇을 디자인할까?'가 아니라 '누구를 위해 디자인하는가?'에서 출발합니다. 예쁜 UI도 사용자가 쓰는 방법을 모르면 쓸모가 없으므로, 리서치 → 구조 → 시각 → 테스트를 계속 반복해야 합니다.",
+      "box1": {
+            "title": "1 · UI vs UX: 개념 정의와 구분법",
+            "html": "<p><b>UI(User Interface)</b>는 <b>눈에 보이고 직접 조작하는 모든 것</b>입니다. 버튼, 색상, 폰트, 아이콘, 이미지, 화면 배치가 여기에 속합니다. 보이거나, 탭하거나, 클릭하거나, 조작할 수 있는 것이라면 대부분 UI입니다.</p><p><b>UX(User Experience)</b>는 겉모습보다 넓은 개념입니다. 경험 전체가 <b>얼마나 쉽고, 유용하고, 즐거운지</b>를 다룹니다. 음식 배달 앱을 예로 들면, 식당을 빨리 찾고, 메뉴를 담고, 몇 번의 탭으로 결제하고, 도착 시간을 정확히 알 수 있으면 좋은 UX입니다. 주문 하나에 화면을 6개나 거쳐야 한다면 나쁜 UX입니다.</p><table class=\"matrix-table\"><tr><th>구분</th><th>UI</th><th>UX</th></tr><tr><td>본질</td><td>인터페이스(Interface)</td><td>경험(Experience)</td></tr><tr><td>핵심 질문</td><td>명확하고 매력적으로 보이는가?</td><td>사용자에게 실제로 잘 작동하는가?</td></tr><tr><td>자동차 비유</td><td>대시보드, 버튼, 핸들, 스크린, 조작계</td><td>운전하기 쉬운지, 필요한 것을 빨리 찾는지, 전체적으로 편안한지</td></tr></table><p>결론은 <b>Good UI + Good UX = Better Product</b>입니다. 둘 중 하나만으로는 훌륭한 제품이 되지 않습니다.</p>"
+      },
+      "box2": {
+            "title": "2 · 사용자 중심 설계 4단계 파이프라인",
+            "html": "<h5>① User Research: 문제부터 이해하기</h5><p>디자이너가 가장 흔히 하는 실수는 <b>사용자가 원하는 것을 이미 안다고 가정하는 것</b>입니다. 실제 사용자가 누구인지, 무엇을 하려는지, 어떤 문제를 겪는지, 무엇에 불편을 느끼는지 먼저 파악해야 합니다. 방법으로는 인터뷰, 행동 관찰, 기존 제품 분석, 피드백 수집이 있습니다. 예를 들어 학생용 과제 앱을 만들 때 학생들과 이야기해 보면, 기능 100개가 아니라 딱 3가지를 원한다는 것을 알게 됩니다. <b>(1) 내 과제 목록 보기, (2) 새 과제 빠르게 추가하기, (3) 마감 알림 받기.</b> 이렇게 가정이 아닌 <b>User Needs</b>를 확보합니다.</p><h5>② Wireframe: 겉모습보다 동작 구조 먼저</h5><p>와이어프레임은 제품의 <b>대략적인 설계도</b>입니다. 화려한 색이나 그래픽 없이 기본 구조만 담습니다. 메뉴와 버튼을 어디에 둘지, 탭하면 무엇이 일어나는지를 정합니다. 목적은 <b>어떻게 보일지보다 어떻게 작동할지를 먼저 확정</b>하는 것입니다.</p><h5>③ UI Design: 아름다움보다 명확성</h5><p>구조가 확정되면 색상, 타이포그래피, 아이콘, 버튼, 여백, 전체 비주얼 스타일을 입힙니다. 핵심은 <b>명확성(Clarity)</b>입니다.</p><ul><li>버튼은 버튼처럼 보여야 합니다.</li><li>중요한 정보는 눈에 띄어야 합니다.</li><li>텍스트는 읽기 쉬워야 합니다.</li><li>화면이 바뀌어도 디자인이 일관돼야 합니다.</li></ul><h5>④ Usability Testing: 실제 사람으로 검증</h5><p>실제 사용자가 제품을 쓰는 모습을 관찰합니다. 어디서 막히는지, 무엇을 오해하는지, 어떤 버튼을 놓치는지, 무엇이 예상보다 오래 걸리는지 봅니다. 그다음 수정하고 다시 테스트하기를 반복합니다.</p>"
+      },
+      "box3": {
+            "title": "3 · 실전 비교와 흔한 오해: 반복 개선 루프",
+            "html": "<p>음식 배달 앱 두 개를 비교해 보겠습니다.</p><table class=\"matrix-table\"><tr><th>항목</th><th>App A</th><th>App B</th></tr><tr><td>비주얼</td><td>멋진 색상, 화려한 애니메이션, 훌륭한 사진</td><td>화려한 애니메이션은 없음</td></tr><tr><td>탐색</td><td>검색 버튼을 찾기 어렵고 메뉴가 헷갈림</td><td>필요한 것을 바로 찾고, 메뉴가 단순하고, 버튼이 명확함</td></tr><tr><td>결제</td><td><b>8단계</b></td><td><b>몇 번의 탭</b></td></tr><tr><td>판정</td><td>Beautiful UI + Poor UX</td><td>Good UX, 깔끔한 UI까지 더하면 이상적</td></tr></table><p><b>흔한 오해:</b> UI와 UX는 같은 것이 아니고, UX는 단순히 보기 좋게 만드는 일이 아닙니다. 아무도 쓰는 법을 모르는 아름다운 제품도, 기술적으로는 동작하지만 혼란스럽고 답답한 제품도 좋은 제품이 아닙니다. 목표는 <b>유용하고(Useful), 쉽고(Easy), 접근 가능하고(Accessible), 쾌적한(Pleasant)</b> 제품입니다.</p><p><b>실무 원칙:</b> UX는 한 번 하고 끝나는 활동이 아니라 <b>Design → Test → Learn → Improve</b>를 계속 도는 과정입니다. AI 에이전트나 대시보드 같은 내부 도구에도 똑같이 적용됩니다. 기능을 늘리기보다 사용자의 핵심 요구 3가지를 먼저 찾고, 실제 사용 관찰로 병목을 없애야 합니다. 정리하면 <b>UI는 보이는 것, UX는 경험이 작동하고 느껴지는 방식</b>입니다. <b>Create for people, not just for screens.</b></p>"
+      },
+      "en": {
+            "title": "UI/UX in 6 Minutes: The Difference Between UI and UX and the User-Centered Design Process",
+            "subtitle": "UI is the interface you see, and UX is the whole experience. Great products come from a loop of user research, wireframes, UI design, and usability testing, repeated over time.",
+            "moduleTag": "PRODUCT DESIGN FUNDAMENTALS",
+            "takeaway": "Good UX doesn't start with 'What should we design?' It starts with 'Who are we designing for?' A beautiful UI is useless if nobody knows how to use it, so research → structure → visuals → testing has to repeat continuously.",
+            "box1": {
+                  "title": "1 · UI vs UX: Definitions and How to Tell Them Apart",
+                  "html": "<p><b>UI (User Interface)</b> is <b>everything you see and interact with</b>: buttons, colors, fonts, icons, images, and how the screen is laid out. If you can see it, tap it, click it, or interact with it, it's most likely UI.</p><p><b>UX (User Experience)</b> is bigger than how something looks. It's about how <b>easy, useful, and enjoyable</b> the whole experience is. Take a food delivery app. If you find a restaurant quickly, add items to your cart, pay in a few taps, and know exactly when your food will arrive, that's good UX. If placing one order takes six screens, that's poor UX.</p><table class=\"matrix-table\"><tr><th>Aspect</th><th>UI</th><th>UX</th></tr><tr><td>Essence</td><td>Interface</td><td>Experience</td></tr><tr><td>Key question</td><td>Does it look clear and appealing?</td><td>Does it actually work well for the user?</td></tr><tr><td>Car analogy</td><td>Dashboard, buttons, steering wheel, screens, controls</td><td>How easy it is to drive, how fast you find what you need, how comfortable it feels overall</td></tr></table><p>The bottom line: <b>Good UI + Good UX = Better Product</b>. Neither one alone makes a great product.</p>"
+            },
+            "box2": {
+                  "title": "2 · The Four-Step User-Centered Design Pipeline",
+                  "html": "<h5>① User Research: Understand the Problem First</h5><p>The most common designer mistake is <b>assuming you already know what users want</b>. First find out who your real users are, what they're trying to do, what problems they face, and what frustrates them. Methods include interviews, observing behavior, studying existing products, and collecting feedback. For example, when building a homework app, talking to students shows they don't want 100 features. They want just three: <b>(1) show me my homework, (2) let me add a new assignment quickly, (3) remind me when something is due.</b> Now you have real <b>User Needs</b> instead of assumptions.</p><h5>② Wireframe: Structure Before Looks</h5><p>A wireframe is a <b>rough blueprint</b> of the product. It has no fancy colors or graphics, only the basic structure. You decide where the menu and buttons go and what happens when the user taps something. The goal is to <b>settle how it works before deciding how it looks</b>.</p><h5>③ UI Design: Clarity Over Beauty</h5><p>Once the structure is settled, you apply colors, typography, icons, buttons, spacing, and the overall visual style. What matters most is <b>clarity</b>.</p><ul><li>A button should look like a button.</li><li>Important information should stand out.</li><li>Text should be easy to read.</li><li>The design should stay consistent from screen to screen.</li></ul><h5>④ Usability Testing: Validate with Real People</h5><p>Watch real people use the product. See where they get stuck, what they misunderstand, which buttons they miss, and what takes longer than expected. Then make changes and test again, over and over.</p>"
+            },
+            "box3": {
+                  "title": "3 · A Side-by-Side Comparison, Common Misconceptions, and the Improvement Loop",
+                  "html": "<p>Let's compare two food delivery apps.</p><table class=\"matrix-table\"><tr><th>Item</th><th>App A</th><th>App B</th></tr><tr><td>Visuals</td><td>Great colors, beautiful animations, amazing photos</td><td>No flashy animations</td></tr><tr><td>Navigation</td><td>Search button is hard to find, menu is confusing</td><td>You find what you need right away, the menu is simple, the buttons are obvious</td></tr><tr><td>Checkout</td><td><b>8 steps</b></td><td><b>A few taps</b></td></tr><tr><td>Verdict</td><td>Beautiful UI + Poor UX</td><td>Good UX, and ideal once it also gets a clean UI</td></tr></table><p><b>A common misconception:</b> UI and UX are not the same thing, and UX isn't just about making things look nice. A beautiful product nobody can figure out isn't a good product. Neither is one that technically works but feels confusing and frustrating. The goal is a product that is <b>useful, easy, accessible, and pleasant</b>.</p><p><b>Practical principle:</b> UX isn't a one-time activity. It's a process that keeps cycling through <b>Design → Test → Learn → Improve</b>. The same applies to internal tools like AI agents and dashboards. Instead of adding more features, first find the users' three core needs, then remove bottlenecks by watching real usage. In short, <b>UI is what you see, and UX is how the experience works and feels</b>. <b>Create for people, not just for screens.</b></p>"
+            }
+      },
+      "addedDate": "2026-09-23"
+},
+
+    {
+      "id": "nemotron-3-diarization-speaker-aware-2026",
+      "categoryId": "onprem",
+      "moduleTag": "LOCAL SPEECH DIARIZATION PIPELINE",
+      "title": "Nemotron 3 Diarization: 누가 말했나? 8화자 화자 분리 로컬 파이프라인",
+      "subtitle": "NVIDIA의 약 1억 파라미터 오픈 웨이트 화자 분리 모델을 기존 ASR 옆에 붙이면 4GB GPU에서도 화자별 전사본을 만들 수 있다.",
+      "tags": [
+            "Nemotron 3 Diarization",
+            "Speaker Diarization",
+            "DER",
+            "Parakeet",
+            "Nemotron ASR",
+            "Sortformer",
+            "NVIDIA NeMo",
+            "FastAPI",
+            "DGX Spark",
+            "Streaming vs Offline",
+            "Speaker-aware Transcript",
+            "Local Inference"
+      ],
+      "videoUrl": "https://www.youtube.com/watch?v=PZuuOXNB3Vw",
+      "videoId": "PZuuOXNB3Vw",
+      "channel": "Sam Witteveen",
+      "duration": "13:09",
+      "refDate": "2026-09-23",
+      "takeaway": "에이전트에게 필요한 컨텍스트는 '무엇을 말했나'가 아니라 '누가 무엇을 말했나'다. Nemotron 3 Diarization은 4GB GPU에서 돌아가는 약 100M 모델로 8화자와 발화 겹침까지 처리해, 화자별 전사본을 로컬 표준 파이프라인으로 만들 수 있게 한다.",
+      "box1": {
+            "title": "1 · 왜 전사본만으로는 부족한가: 화자 분리의 역할",
+            "html": "<p>Whisper, Parakeet, Canary 같은 ASR 덕분에 <b>'무엇을 말했나'</b>를 뽑는 일은 거의 해결됐다. 그런데 LLM이나 에이전트에 컨텍스트로 넣으려면 전사본만으로는 모자란다. <b>언제</b> 말했는지(timestamp), 그리고 그보다 중요한 <b>누가</b> 말했는지를 알아야 한다. 네 명이 토론하는 팟캐스트에서 누가 어느 편에 섰는지, 회의에서 누가 어떤 액션 아이템에 동의했는지 모르면 에이전트는 모든 발화를 한 사람이 한 말처럼 다루게 된다.</p><p><b>Diarization</b>은 '누가 언제 말했는가'를 판별하는 작업이다. ASR 결과와 합치면 <b>Speaker-aware Transcript</b>가 된다. 모델은 실명을 모르고 <code>speaker_1 … speaker_8</code> 같은 라벨만 붙인다. 이름은 애플리케이션 코드에서 라벨→실명 매핑으로 바꾸면 되고, 어렵지 않다.</p><h5>평가 지표: DER (Diarization Error Rate)</h5><ul><li><b>Missed speech</b>: 실제 발화를 놓친 구간</li><li><b>False alarm</b>: 발화가 아닌데 발화로 판단한 구간</li><li><b>Speaker confusion</b>: 발화를 엉뚱한 화자에게 붙인 구간</li></ul><p>세 오류를 더한 값이라 낮을수록 좋다. 영상에 나온 벤치마크에서 Nemotron 3 Diarization은 경쟁 모델은 물론 NVIDIA의 이전 모델 Sortformer보다도 DER이 크게 낮다. 발표자는 사람에게도 어려운 작업이라 어떤 모델도 완벽할 수는 없다고 덧붙였다. 예전 시스템이 가장 약했던 부분은 여러 사람이 동시에 답하는 <b>overlapping speech</b>였다.</p>"
+      },
+      "box2": {
+            "title": "2 · 모델 스펙과 NVIDIA Speech 스택에서의 위치",
+            "html": "<table class=\"matrix-table\"><tr><th>항목</th><th>Nemotron 3 Diarization</th><th>이전 모델 Sortformer</th></tr><tr><td>파라미터</td><td>약 100M (ASR 제외)</td><td>-</td></tr><tr><td>최소 GPU</td><td>약 4GB VRAM (노트북 RTX 가능)</td><td>-</td></tr><tr><td>최대 화자 수</td><td><b>8명</b></td><td>4명</td></tr><tr><td>발화 겹침</td><td>잘 처리함</td><td>상대적으로 약함</td></tr><tr><td>언어</td><td>언어 무관(language agnostic)</td><td>-</td></tr><tr><td>모드</td><td>Streaming + Offline</td><td>-</td></tr><tr><td>라이선스</td><td>오픈 웨이트, 상업적 사용 가능</td><td>8월 한 달에만 30만+ 다운로드</td></tr></table><p>기존 모델 대부분이 3~4화자에서 한계에 걸리는 반면, 이 모델은 8화자를 다루고 겹침 발화도 꽤 잘 분리한다. 또 <b>ASR과 분리된 독립 모듈</b>이라 Parakeet 같은 기존 ASR 옆에 그대로 붙일 수 있다. 실질적으로는 Sortformer를 대체하는 훨씬 나은 drop-in 교체재다.</p><h5>Nemotron Speech 제품군</h5><ul><li><b>ASR</b>: Parakeet, Canary, Nemotron ASR. 합쳐서 43개 언어, streaming/batch 모두 지원</li><li><b>TTS</b>: Magpie (다국어, 음성 커스터마이징)</li><li><b>번역 및 Full-duplex speech-to-speech</b>: PersonaPlex 등</li><li><b>Diarization</b>: Sortformer에서 Nemotron 3 Diarization으로 교체</li></ul><h5>Streaming과 Offline 중 무엇을 쓸까</h5><ul><li><b>Offline</b>: 녹음 전체를 보고, 뒤에 나오는 내용까지 참고해 판단한다. 녹음된 팟캐스트나 회의에는 항상 이쪽을 쓴다.</li><li><b>Streaming</b>: 오디오가 들어오는 대로 판단한다. 실시간 자막이나 Voice Agent에 필수다. 정확도는 조금 떨어진다.</li></ul><p>발표자는 NVIDIA가 음성 모델을 체계적으로 하나씩 개선하고 있다고 본다. 사용자와 에이전트 간 음성 상호작용이 늘고, 에이전트가 리서치용 컨텍스트를 YouTube 같은 멀티모달 소스에서 가져오는 수요도 늘기 때문이다.</p>"
+      },
+      "box3": {
+            "title": "3 · 데모 아키텍처와 성능 수치, 실무 적용 가이드",
+            "html": "<h5>레퍼런스 아키텍처 (전부 로컬)</h5><ul><li><b>Frontend</b>: Mac에서 로컬로 도는 Next.js 앱</li><li><b>Network</b>: Tailscale로 DGX Spark 백엔드 호출</li><li><b>Serving</b>: DGX Spark의 Docker 컨테이너 안 <b>NVIDIA NeMo</b>에서 Diarization, Parakeet ASR, Nemotron 3.5 multilingual ASR 세 모델을 함께 서빙</li><li><b>API</b>: FastAPI 래퍼. 대규모 운영이라면 <b>Dynamo</b>나 <b>Triton</b>으로 바꾸는 것을 권장</li></ul><h5>데모 결과</h5><table class=\"matrix-table\"><tr><th>테스트</th><th>결과</th></tr><tr><td>8개 합성 TTS 음성 (Nemotron, Qwen 3, Kokoro, Chatterbox, Dia, Maia 등), 약 1분 30초</td><td>약 3~4초 만에 전사와 화자 분리 완료. 두 명이 동시에 말해도 둘 다 라벨링</td></tr><tr><td>All-In Podcast의 Jensen Huang 인터뷰 (1시간 이상)</td><td><b>148초</b>(약 2.5분)에 처리. 화자별 발화 시간 통계로 게스트 Jensen이 가장 오래 말한 것 확인</td></tr></table><p>ASR은 멀티스피커 상황에 강한 <b>Parakeet</b>를 골랐다. 다국어가 필요하면 Nemotron 다국어 ASR로 바꾸기만 하면 되고, 이 모델은 'adaptation ready'라서 다른 언어에 맞게 fine-tuning할 수도 있다. 모델이 돌려주는 raw JSON에는 화자 라벨과 구간이 들어 있다. 앱은 이를 받아 <code>speaker_3 → Adam</code>처럼 실명으로 바꾸고, 화자별 <b>발화 시간, 단어 수, 턴 수</b>를 집계한다. 결과는 TXT나 SRT로 내보낸다.</p><h5>실무 적용 체크리스트</h5><ul><li>회의록 에이전트: 액션 아이템을 담당자에게 자동으로 귀속하고 누가 동의·반대했는지 추출</li><li>리서치 에이전트: 영상·팟캐스트에서 발언자별 인용 추출</li><li>배치 작업은 Offline, 실시간 자막과 Voice Agent는 Streaming으로 모드 분리</li><li>화자 라벨→실명 매핑 레이어는 애플리케이션 쪽에 두고, 한 번 지정한 이름을 세션 간에 유지</li><li>4GB급 GPU에서도 돌아가므로 폐쇄망·온프레미스에서 음성 데이터를 외부로 보내지 않고 처리 가능</li></ul>"
+      },
+      "en": {
+            "title": "Nemotron 3 Diarization: Who Said That? A Local 8-Speaker Diarization Pipeline",
+            "subtitle": "Pair NVIDIA's ~100M-parameter open-weights diarization model with your existing ASR to get speaker-attributed transcripts on a GPU with just 4GB.",
+            "moduleTag": "LOCAL SPEECH DIARIZATION PIPELINE",
+            "takeaway": "The context agents need is not just what was said but who said what. Nemotron 3 Diarization is a ~100M model that runs on a 4GB GPU and handles up to 8 speakers, including overlapping speech, which makes speaker-aware transcripts practical as a standard local pipeline.",
+            "box1": {
+                  "title": "1 · Why a Transcript Alone Isn't Enough: The Role of Diarization",
+                  "html": "<p>With ASR models like Whisper, Parakeet and Canary, getting <b>what was said</b> is close to a solved problem. When you feed that into an LLM or agent as context, though, the transcript alone falls short. You need to know <b>when</b> something was said (timestamps) and, more importantly, <b>who</b> said it. In a four-person podcast debate you need to know who took which side, and in a meeting you need to know who agreed to which action item. Without that, the agent treats every utterance as if one person said it.</p><p><b>Diarization</b> is the task of working out who spoke when. Combined with ASR output, it produces a <b>speaker-aware transcript</b>. The model doesn't know real names; it assigns labels like <code>speaker_1 … speaker_8</code>. Swapping those for real names is a simple label-to-name mapping in your application code.</p><h5>Evaluation Metric: DER (Diarization Error Rate)</h5><ul><li><b>Missed speech</b>: real speech the model failed to detect</li><li><b>False alarm</b>: non-speech the model treated as speech</li><li><b>Speaker confusion</b>: speech attributed to the wrong speaker</li></ul><p>DER is the sum of these three errors, so lower is better. In the benchmarks shown, Nemotron 3 Diarization has a much lower DER than competing models and than NVIDIA's own previous model, Sortformer. The presenter adds that no model will ever be perfect here, since the task is hard even for humans. The historical weak spot of older systems was <b>overlapping speech</b>, where several people answer at once.</p>"
+            },
+            "box2": {
+                  "title": "2 · Model Specs and Its Place in NVIDIA's Speech Stack",
+                  "html": "<table class=\"matrix-table\"><tr><th>Item</th><th>Nemotron 3 Diarization</th><th>Previous model: Sortformer</th></tr><tr><td>Parameters</td><td>~100M (excluding ASR)</td><td>-</td></tr><tr><td>Minimum GPU</td><td>~4GB VRAM (laptop RTX works)</td><td>-</td></tr><tr><td>Max speakers</td><td><b>8</b></td><td>4</td></tr><tr><td>Overlapping speech</td><td>Handles it well</td><td>Relatively weak</td></tr><tr><td>Language</td><td>Language agnostic</td><td>-</td></tr><tr><td>Modes</td><td>Streaming + Offline</td><td>-</td></tr><tr><td>License</td><td>Open weights, commercial use allowed</td><td>300K+ downloads in August alone</td></tr></table><p>Most earlier models top out at 3–4 speakers. This one handles 8 and does a good job separating overlapping speech. It is also a <b>standalone module, separate from ASR</b>, so it sits alongside your existing ASR such as Parakeet. In practice it is a much better drop-in replacement for Sortformer.</p><h5>The Nemotron Speech Family</h5><ul><li><b>ASR</b>: Parakeet, Canary and Nemotron ASR, together covering 43 languages for both streaming and batch</li><li><b>TTS</b>: Magpie (multilingual, voice customization)</li><li><b>Translation and full-duplex speech-to-speech</b>: PersonaPlex and others</li><li><b>Diarization</b>: Sortformer replaced by Nemotron 3 Diarization</li></ul><h5>Streaming vs. Offline</h5><ul><li><b>Offline</b>: sees the whole recording, including what comes later. Always use it for recorded podcasts and meetings.</li><li><b>Streaming</b>: decides as audio arrives. Required for live captions and voice agents, with somewhat lower accuracy.</li></ul><p>The presenter reads this as NVIDIA systematically improving its speech models one by one. Demand is rising both for voice interaction between users and agents and for agents pulling context from multimodal sources like YouTube for research.</p>"
+            },
+            "box3": {
+                  "title": "3 · Demo Architecture, Performance Numbers, and Practical Guidance",
+                  "html": "<h5>Reference Architecture (Fully Local)</h5><ul><li><b>Frontend</b>: Next.js app running locally on a Mac</li><li><b>Network</b>: calls a DGX Spark backend over Tailscale</li><li><b>Serving</b>: <b>NVIDIA NeMo</b> in a Docker container on the DGX Spark, serving three models together: Diarization, Parakeet ASR and Nemotron 3.5 multilingual ASR</li><li><b>API</b>: a FastAPI wrapper; for production scale, moving to <b>Dynamo</b> or <b>Triton</b> is recommended</li></ul><h5>Demo Results</h5><table class=\"matrix-table\"><tr><th>Test</th><th>Result</th></tr><tr><td>8 synthetic TTS voices (Nemotron, Qwen 3, Kokoro, Chatterbox, Dia, Maia, etc.), ~1:30 of audio</td><td>Transcribed and diarized in ~3–4 seconds; both speakers labeled even when two talked at once</td></tr><tr><td>All-In Podcast interview with Jensen Huang (over 1 hour)</td><td>Processed in <b>148 seconds</b> (~2.5 minutes); per-speaker talk-time stats confirmed Jensen, the guest, spoke the most</td></tr></table><p>The ASR used was <b>Parakeet</b>, which is strong for multi-speaker audio. For multilingual needs you just swap to the Nemotron multilingual ASR, which is 'adaptation ready' and can be fine-tuned for other languages. The model returns raw JSON with speaker labels and segments. The app maps labels to names such as <code>speaker_3 → Adam</code> and computes per-speaker <b>talk time, word count and turn count</b>. Output can be exported as TXT or SRT.</p><h5>Practical Checklist</h5><ul><li>Meeting-notes agents: automatically assign action items to owners and extract who agreed or objected</li><li>Research agents: pull speaker-attributed quotes from videos and podcasts</li><li>Use Offline mode for batch jobs and Streaming for live captions and voice agents</li><li>Keep the label-to-name mapping in the application layer and persist names across sessions</li><li>Because it runs on 4GB-class GPUs, audio can be processed in air-gapped or on-prem environments without leaving the network</li></ul>"
+            }
+      },
+      "addedDate": "2026-09-23"
+},
+
+    {
       "id": "forward-deployed-engineer-roadmap-2026",
       "categoryId": "agentops",
       "moduleTag": "ENTERPRISE AI DEPLOYMENT CAREER TRACK",
