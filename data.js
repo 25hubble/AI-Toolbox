@@ -66,6 +66,65 @@ window.DASHBOARD_DATA = {
   ],
   entries: [
     {
+      "id": "gpt6-sol-luna-cost-routing-2026",
+      "categoryId": "agentops",
+      "moduleTag": "MODEL TIER COST ROUTING",
+      "title": "GPT-6 Sol·Luna 출시: 프런티어 한 단계 아래 워크호스 모델의 가격 파괴와 비용 라우팅 전략",
+      "subtitle": "OpenAI가 GPT-6 Sol($2/$10)과 Luna($0.10/$0.50)를 API 가격 50% 영구 인하와 함께 출시했다. 최상위 Astra와의 성능 차이는 몇 포인트에 그치지만 가격은 수십 배 차이 나므로, 이제 '어떤 작업을 어떤 등급 모델로 보낼지' 정하는 라우팅이 비용 통제의 핵심 과제가 됐다.",
+      "tags": [
+            "GPT-6 Sol",
+            "GPT-6 Luna",
+            "GPT-6 Astra",
+            "Opus 5.5",
+            "Claude Fable 5.1",
+            "Automation Bench",
+            "Frontier Code",
+            "OSWorld",
+            "Cost per Task",
+            "Model Routing",
+            "Distillation",
+            "Codex"
+      ],
+      "videoUrl": "https://www.youtube.com/watch?v=Ima_AVPyQ9E",
+      "videoId": "Ima_AVPyQ9E",
+      "channel": "Matthew Berman",
+      "duration": "7:26",
+      "refDate": "2026-09-23",
+      "takeaway": "Frontier Code에서 Luna·Sol·Opus 5.5의 점수 차이는 6~7%p에 불과하지만 입력 토큰 가격은 $0.10·$2·$4로 몇 배에서 수십 배까지 벌어진다. '최고의 답'이 필요한 소수 작업만 Astra로 보내고, 나머지 90~95%는 Luna·Sol로 처리하는 계층형 라우팅이 이제 기본 설계가 돼야 한다.",
+      "box1": {
+            "title": "1 · 출시 개요와 가격 구조: 인하에 인하가 겹쳤다",
+            "html": "<p>OpenAI가 <b>GPT-6 Sol</b>과 <b>GPT-6 Luna</b>를 공개했다. 같은 날 Anthropic은 <b>Opus 5.5</b>를, 하루 전 xAI는 <b>Grok 4.7</b>을 내놓아 한 주에 신규 모델이 몰렸다. 발표자는 GPT-5.6 Luna가 80% 가격 인하 이후 '빠르고, 싸고, 여전히 지능이 높은' 모델로 가장 매력적인 선택지였다고 평가하며, 이번 출시를 자신이 가장 아끼는 모델의 후속판으로 소개한다.</p><table class=\"matrix-table\"><tr><th>모델</th><th>입력 ($/1M tokens)</th><th>출력 ($/1M tokens)</th><th>이전 세대 대비</th><th>포지션</th></tr><tr><td><b>GPT-6 Astra</b></td><td>-</td><td>-</td><td>-</td><td>OpenAI 최상위 프런티어 모델</td></tr><tr><td><b>GPT-6 Sol</b></td><td>$2</td><td>$10</td><td>GPT-5.6 Sol 대비 50% 인하</td><td>프런티어 바로 아래 워크호스</td></tr><tr><td><b>GPT-6 Luna</b></td><td>$0.10</td><td>$0.50</td><td>기존 80% 인하에 추가 50% 인하</td><td>초저가·고속 범용 모델</td></tr></table><p>OpenAI는 두 모델의 API 가격을 <b>영구적으로 50% 인하</b>한다고 밝혔다. 이 인하는 구독 사용량에도 반영돼 같은 요금제로 더 많이 쓸 수 있다. 발표자는 <b>Luna가 실무 작업의 90~95%를 감당할 수 있다</b>고 본다. 출시 범위는 다음과 같다.</p><ul><li>ChatGPT Work와 Codex: Plus·Pro·Business·Enterprise·Edu 사용자에게 당일부터 Sol·Luna 제공</li><li>Free·Go 사용자: 데스크톱 앱에서 GPT-6 Luna 사용 가능</li><li>OpenAI 공식 메시지: 전반적인 성능 향상과 함께 특히 글쓰기 품질이 좋아졌다는 점을 강조</li></ul>"
+      },
+      "box2": {
+            "title": "2 · 벤치마크 해부: 점수보다 작업당 비용을 봐야 한다",
+            "html": "<p>발표자는 Y축(점수, 높을수록 좋음)과 X축(작업당 비용, 왼쪽일수록 쌈)으로 된 차트에서 <b>좌상단 '머니 쿼드런트'</b>, 즉 가장 싸면서 가장 잘하는 영역을 기준으로 모델을 평가한다.</p><table class=\"matrix-table\"><tr><th>벤치마크</th><th>핵심 수치</th><th>해석</th></tr><tr><td><b>Automation Bench</b></td><td>GPT-5.6 max 28.8 → GPT-6 Sol xhigh 33%. Luna max는 20% 이상을 기록하면서 작업당 비용은 $0.05 미만</td><td>발표자는 더 큰 도약을 기대했지만 개선폭은 완만했다. 최고 성능은 여전히 Astra이고, Sol은 '조금 덜 좋지만 훨씬 싼' 대안이다</td></tr><tr><td><b>종합 비교</b></td><td>Sol이 Claude Fable 5.1보다 높은 점수를 훨씬 낮은 비용으로 달성하고, low effort 설정의 Astra도 넘어섬</td><td>Astra가 1위이고 Sol이 크게 싼 가격으로 바로 뒤를 따른다</td></tr><tr><td><b>Frontier Code</b></td><td>Luna Max $0.11/작업 ≈ Sol Medium $0.80/작업 ≈ Astra Low $1.70/작업</td><td>비슷한 성능을 약 1/7~1/15 비용으로 얻는다</td></tr><tr><td><b>에이전틱 코딩 벤치마크</b>(발표자가 가장 정확하다고 평가)</td><td>GPT-6 Luna Max <b>66.6%</b>, 작업당 <b>$0.22</b></td><td>저가 모델로 에이전틱 코딩까지 실용권에 들어왔다</td></tr><tr><td><b>OSWorld</b>(컴퓨터 사용)</td><td>Luna 53% vs Astra 73%</td><td>이 벤치마크에서는 Luna가 크게 뒤진다. GUI/컴퓨터 조작 작업은 상위 모델이 필요하다</td></tr></table><p>발표자가 Astra로 직접 만든 비교 차트에서는 같은 날 출시된 <b>Luna·Sol·Opus 5.5</b>의 Frontier Code 점수 차이가 약 <b>6~7%p</b>에 그쳤다. 반면 입력 가격은 <b>$0.10 vs $2 vs $4</b>로 몇 배에서 수십 배까지 벌어진다. 발표자는 이 결과를 <b>'절대 최고의 답을 얻는 데는 비싼 값을 치러야 한다'</b>는 명제의 근거로 제시한다.</p>"
+      },
+      "box3": {
+            "title": "3 · 업계 해석과 AgentOps 적용: 프런티어 페이싱 시대의 비용 라우팅",
+            "html": "<h5>왜 두 회사가 같은 날 가격을 내렸나</h5><p>Anthropic과 OpenAI는 같은 날 신모델 가격을 함께 낮췄다. 발표자는 두 회사가 말하는 <b>'pacing the frontier'(프런티어 속도 조절)</b>의 결과로 해석한다. 이번 공개 모델에서 얻는 것은 <b>효율·속도·가격</b>이고, <b>원천적인 지능 도약은 아니라는</b> 것이다. 내부적으로 더 강한 모델을 만들고 있을 가능성은 열어 두지만, 시장에 풀린 것은 효율형 모델이다.</p><h5>출시 패턴: 프런티어 다음에 워크호스</h5><p>일반적인 흐름은 먼저 비싼 기반 프런티어 모델(<b>Astra, Fable</b>)이 나오고, 이후 몇 주에서 몇 달에 걸쳐 더 싸고 효율적인 워크호스 모델이 뒤따르는 것이다. 이 워크호스 모델은 프런티어 모델과 <b>아키텍처가 비슷하거나, 증류(distillation)된 버전</b>일 가능성이 크다. 발표자는 이번 출시가 이 패턴대로 진행됐다고 본다.</p><h5>실무 적용 체크리스트</h5><ul><li><b>계층형 라우팅 기본값:</b> 기본 트래픽은 Luna로 보낸다(약 90~95%). 중간 난이도 작업과 코딩 에이전트는 Sol, 정답의 가치가 비용보다 큰 소수 작업만 Astra로 승격한다.</li><li><b>토큰 단가 대신 작업당 비용으로 평가:</b> 모델 선택 KPI를 cost per task와 점수를 함께 보는 파레토 곡선으로 관리한다(예: Luna Max $0.11 vs Astra Low $1.70).</li><li><b>effort 설정도 라우팅 변수로:</b> 같은 모델이라도 low/medium/max/xhigh에 따라 점수와 비용이 크게 달라진다. 저가 모델을 max로 쓰는 쪽이 상위 모델을 low로 쓰는 것보다 효율적일 수 있다.</li><li><b>작업 유형별 예외 규칙:</b> OSWorld처럼 컴퓨터 사용·GUI 조작 작업은 Luna와 Astra의 격차(53% vs 73%)가 크므로 상위 모델로 고정한다.</li><li><b>가격 변동 대응:</b> 영구 50% 인하처럼 단가가 자주 바뀌므로 라우팅 테이블과 예산 한도를 설정값으로 분리해 빠르게 다시 조정할 수 있게 한다.</li></ul>"
+      },
+      "en": {
+            "title": "GPT-6 Sol & Luna Arrive: Price Disruption from Workhorse Models Just Below the Frontier, and a Cost-Routing Strategy",
+            "subtitle": "OpenAI launched GPT-6 Sol ($2/$10) and Luna ($0.10/$0.50) with a permanent 50% API price cut. They trail the top-tier Astra by only a few points but cost many times less, so deciding which tier each task goes to is now the core of cost control.",
+            "moduleTag": "MODEL TIER COST ROUTING",
+            "takeaway": "On Frontier Code, Luna, Sol, and Opus 5.5 are only 6–7 points apart, but their input prices ($0.10, $2, $4) differ several-fold to twenty-fold. The default design should now be tiered routing: send only the few tasks that need the best possible answer to Astra, and let Luna and Sol handle the other 90–95%.",
+            "box1": {
+                  "title": "1 · Launch Overview and Pricing: One Price Cut on Top of Another",
+                  "html": "<p>OpenAI released <b>GPT-6 Sol</b> and <b>GPT-6 Luna</b>. Anthropic shipped <b>Opus 5.5</b> the same day, and xAI released <b>Grok 4.7</b> the day before, so several new models landed in one week. The presenter says that after GPT-5.6 Luna's 80% price cut it was the most compelling option around: fast, cheap, and still highly intelligent. He presents this release as the successor to his favorite model.</p><table class=\"matrix-table\"><tr><th>Model</th><th>Input ($/1M tokens)</th><th>Output ($/1M tokens)</th><th>vs. Previous Gen</th><th>Position</th></tr><tr><td><b>GPT-6 Astra</b></td><td>-</td><td>-</td><td>-</td><td>OpenAI's top frontier model</td></tr><tr><td><b>GPT-6 Sol</b></td><td>$2</td><td>$10</td><td>50% cheaper than GPT-5.6 Sol</td><td>Workhorse one step below the frontier</td></tr><tr><td><b>GPT-6 Luna</b></td><td>$0.10</td><td>$0.50</td><td>Another 50% cut on top of the earlier 80% cut</td><td>Ultra-cheap, high-speed general model</td></tr></table><p>OpenAI says it is <b>permanently cutting the API price of both models by 50%</b>. The cut also applies to subscription usage, so the same plan goes further. The presenter thinks <b>Luna can handle 90–95% of real-world tasks</b>. Availability:</p><ul><li>ChatGPT Work and Codex: Sol and Luna available from day one for Plus, Pro, Business, Enterprise, and Edu users</li><li>Free and Go users: GPT-6 Luna available in the desktop app</li><li>OpenAI's official message: improvements across the board, with particular emphasis on better writing quality</li></ul>"
+            },
+            "box2": {
+                  "title": "2 · Benchmarks Dissected: Look at Cost per Task, Not Just Scores",
+                  "html": "<p>The presenter reads charts with score on the Y-axis (higher is better) and cost per task on the X-axis (further left is cheaper). He judges each model by the <b>top-left 'money quadrant'</b>: the region that is both cheapest and best.</p><table class=\"matrix-table\"><tr><th>Benchmark</th><th>Key Numbers</th><th>Interpretation</th></tr><tr><td><b>Automation Bench</b></td><td>GPT-5.6 max 28.8 → GPT-6 Sol xhigh 33%. Luna max scores above 20% at under $0.05 per task</td><td>The presenter expected a bigger jump; the gain was modest. Astra still has the best score, and Sol is the 'slightly worse but much cheaper' option</td></tr><tr><td><b>Overall comparison</b></td><td>Sol outscores Claude Fable 5.1 at a much lower cost and also beats Astra on its low-effort setting</td><td>Astra ranks first, with Sol close behind at a much lower price</td></tr><tr><td><b>Frontier Code</b></td><td>Luna Max $0.11/task ≈ Sol Medium $0.80/task ≈ Astra Low $1.70/task</td><td>Similar performance for roughly 1/7 to 1/15 of the cost</td></tr><tr><td><b>Agentic coding benchmark</b> (which the presenter considers the most accurate)</td><td>GPT-6 Luna Max <b>66.6%</b> at <b>$0.22</b> per task</td><td>A low-cost model is now practical even for agentic coding</td></tr><tr><td><b>OSWorld</b> (computer use)</td><td>Luna 53% vs. Astra 73%</td><td>Luna falls well behind here. GUI and computer-use tasks need a higher-tier model</td></tr></table><p>In a comparison chart the presenter had Astra build, <b>Luna, Sol, and Opus 5.5</b> (all released the same day) are only about <b>6–7 points</b> apart on Frontier Code. Their input prices, however, are <b>$0.10 vs. $2 vs. $4</b>, a gap of several-fold to twenty-fold. The presenter cites this as evidence that <b>'getting the absolute best answer is expensive.'</b></p>"
+            },
+            "box3": {
+                  "title": "3 · Industry Interpretation and AgentOps Application: Cost Routing in the Era of Frontier Pacing",
+                  "html": "<h5>Why both labs cut prices on the same day</h5><p>Anthropic and OpenAI both lowered prices on their new models on the same day. The presenter reads this as the result of what both companies call <b>'pacing the frontier.'</b> What these public releases deliver is <b>efficiency, speed, and price</b>, <b>not a leap in raw intelligence</b>. He leaves open the possibility that stronger models are being built internally, but efficiency-focused models are what reached the market.</p><h5>Release pattern: frontier first, then workhorses</h5><p>The usual sequence is that an expensive foundational frontier model (<b>Astra, Fable</b>) ships first, and cheaper, more efficient workhorse models follow over the next weeks and months. These workhorse models are likely <b>architecturally similar to the frontier models, or distilled versions of them</b>. The presenter sees this release as following that pattern.</p><h5>Practical checklist</h5><ul><li><b>Tiered routing by default:</b> Send baseline traffic to Luna (about 90–95%). Use Sol for medium-difficulty tasks and coding agents, and escalate to Astra only for the few tasks where a correct answer is worth more than its cost.</li><li><b>Evaluate on cost per task, not token price:</b> Track model choice as a Pareto curve of score vs. cost per task (e.g., Luna Max at $0.11 vs. Astra Low at $1.70).</li><li><b>Treat effort as a routing variable too:</b> The same model's score and cost change a lot across low/medium/max/xhigh. A cheap model at max can be more efficient than a top model at low.</li><li><b>Exception rules by task type:</b> For computer-use and GUI tasks like OSWorld, the Luna–Astra gap is large (53% vs. 73%), so pin these to the higher tier.</li><li><b>Plan for price changes:</b> Prices change often, as with this permanent 50% cut, so keep routing tables and budget limits in separate configuration that can be re-tuned quickly.</li></ul>"
+            }
+      },
+      "addedDate": "2026-09-23"
+},
+
+    {
       "id": "codex-mac-mini-ai-employee-creator-ops-2026",
       "categoryId": "agentops",
       "moduleTag": "AUTONOMOUS DESKTOP AGENT OPERATIONS",
