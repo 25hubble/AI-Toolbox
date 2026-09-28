@@ -66,6 +66,67 @@ window.DASHBOARD_DATA = {
   ],
   entries: [
     {
+      "id": "dont-overthink-short-m-at-k-2026",
+      "categoryId": "agentops",
+      "moduleTag": "TEST-TIME COMPUTE COST CONTROL",
+      "title": "생각이 길수록 오답이 는다? — Don't Overthink It: 짧은 CoT를 택해 추론 비용과 정확도를 함께 잡는 short-m@k",
+      "subtitle": "Meta FAIR 논문 소개: 추론 모델은 정답일 때 사고 토큰이 오답일 때보다 훨씬 짧습니다. 그래서 K개를 병렬로 생성한 뒤 먼저 끝난 m개만 채택하면 계산량을 약 40% 넘게 줄이면서 majority voting과 같거나 더 나은 정확도를 얻습니다.",
+      "tags": [
+            "Chain-of-Thought",
+            "Overthinking",
+            "Test-Time Compute",
+            "short-m@k",
+            "Majority Voting",
+            "Batch Decoding",
+            "Early Stopping",
+            "Reasoning Model",
+            "S1 Dataset",
+            "Fine-tuning",
+            "Meta FAIR",
+            "Anthropic",
+            "Inverse Scaling",
+            "Cost Control"
+      ],
+      "videoUrl": "https://www.youtube.com/watch?v=13-E9MqK-V0",
+      "videoId": "13-E9MqK-V0",
+      "channel": "딥러닝논문읽기모임",
+      "duration": "8:17",
+      "refDate": "2026-09-28",
+      "takeaway": "CoT는 길다고 좋은 게 아닙니다. 같은 문제에 대해 먼저 생각을 끝낸 답이 대체로 정답입니다. 따라서 추론 서빙에서 '가장 짧은 사고 경로 우선'을 기본 정책으로 두면 test-time compute 비용과 지연을 줄이면서 정확도도 지키거나 높일 수 있습니다.",
+      "box1": {
+            "title": "1 · 문제 제기: CoT의 성공과 '긴 생각'이라는 비용 함정",
+            "html": "<h5>배경: CoT 이후 3년</h5><p>2022년 무렵은 LLM의 emergence가 막 주목받고 모델 크기를 공격적으로 키우던 시기였습니다. 이때 <b>Chain-of-Thought(CoT)</b> 논문이 나왔습니다. 답을 바로 생성하지 않고 think token으로 먼저 '생각'하게 하면, 한 번에 못 풀던 문제도 풀 수 있다는 내용이었습니다. 효과는 <b>큰 모델일수록</b> 컸습니다. 이후 3년 동안 '올바른 생각이 올바른 답을 만든다'는 논리가 퍼졌고, thought trajectory 자체가 학습·연구 대상이 됐습니다. 추론 시점 연산으로 성능을 끌어올리는 <b>test-time compute</b> 논의도 이 흐름에서 커졌습니다.</p><h5>문제: CoT는 비싸다</h5><p>긴 사고 문자열을 만들어야 좋은 답이 나온다는 방식은 구조적으로 비용이 큽니다. 저자들(Meta FAIR)은 바둑 격언 <b>'장고 끝에 악수 둔다'</b>에서 출발해 가설을 세웠습니다. 사람처럼 LLM도 너무 오래 생각하면 오히려 잘못 판단하지 않을까 하는 것입니다.</p><h5>핵심 관찰</h5><ul><li>같은 질문에서 <b>정답을 낸 경우의 평균 사고 토큰 길이가 오답인 경우보다 훨씬 짧습니다</b>.</li><li>이 경향은 easy·hard 난이도 모두에서 유지됩니다. 어려운 문제에서도 맞힐 때가 틀릴 때보다 짧게 생각했습니다.</li><li>결론적으로 <b>긴 사고는 비용만 키우고 더 나은 답으로 이어지지 않습니다</b>. CoT 길이 자체가 품질의 반대 신호일 수 있다는 뜻입니다.</li></ul>"
+      },
+      "box2": {
+            "title": "2 · 방법과 결과: short-m@k (먼저 끝난 답을 믿어라)",
+            "html": "<h5>알고리즘</h5><p><b>short-m@k</b>: batch decoding으로 K개 출력을 동시에 생성합니다. 그중 <b>사고(think) 토큰을 가장 먼저 끝낸 m개</b>가 나오는 순간 나머지 생성은 중단하고 이 m개로 답을 정합니다. 쉽게 말해 '덜 고민한 답을 믿는' 선착순 방식입니다. 로직은 매우 단순하지만 효과는 강력합니다.</p><h5>실험 설정</h5><ul><li>모델: Llama 기반 Nemotron, R1 데이터로 distill된 모델 등 당시 경쟁력 있는 SOTA reasoning 모델 대부분을 썼습니다.</li><li>벤치마크: 주요 reasoning 벤치마크 대부분을 썼으나 <b>수학 문제 위주</b>입니다. 모두 매우 어려운 벤치마크입니다.</li></ul><table class=\"matrix-table\"><tr><th>비교 항목</th><th>결과</th></tr><tr><td>계산량</td><td>기존 대비 <b>약 40% 이상 감소</b></td></tr><tr><td>정확도 vs majority voting(batch)</td><td><b>동등하거나 더 높음</b></td></tr><tr><td>shortest vs random 선택</td><td>대부분의 경우 shortest가 우세 (random과는 일부 차이만 있음)</td></tr><tr><td>short-1@k (가장 빠른 1개)</td><td>가장 빠르지만 정확도 이득이 제한적</td></tr><tr><td><b>short-3@k</b></td><td>속도 손실이 거의 없고 정확도는 다른 설정보다 크게 높음. <b>가장 균형 잡힌 설정</b></td></tr></table><h5>K와 m 스케일링</h5><p>K(한 번에 생성하는 개수)를 늘리면 답의 다양성이 커져 정확도가 오릅니다. 동시에 먼저 끝나는 짧은 샘플이 더 빨리 나오므로 <b>답이 나오기까지의 시간은 오히려 줄어듭니다</b>. 시간(가로축)–정확도(세로축) 그래프에서 short-3@k(청록색 선)가 전 구간에서 가장 우세했습니다. m을 1·3·5·7·9로 바꿔 본 실험에서도 <b>m=3</b>일 때 성능과 시간 효율이 가장 좋았습니다. 선택된 3개 중에서도 <b>가장 짧게 추론한 답</b>을 고르면 성능이 더 올랐습니다.</p><h5>Fine-tuning 확장: S1-Short</h5><p>질문·답·reasoning trajectory로 구성된 <b>S1 dataset</b>에서 짧은 reasoning만 남긴 변형 <b>S1-Short</b>를 만들어 fine-tuning했습니다. 그 결과 대부분의 경우에서 가장 좋은 성능을 냈습니다. 샘플링 단계를 넘어 모델이 처음부터 짧게 생각하도록 학습시킬 수 있다는 근거입니다.</p>"
+      },
+      "box3": {
+            "title": "3 · 한계, 업계 합의, 실무 적용 가이드",
+            "html": "<h5>한계 (저자 스스로 인정)</h5><ul><li><b>batch decoding에 의존</b>합니다. K개를 병렬로 돌려야 하므로 완전히 자원 효율적인 방법이라고 할 수는 없습니다(동시 GPU 메모리·처리량을 씁니다).</li><li>검증이 <b>수학 벤치마크 위주</b>라 코드·에이전트·개방형 과제로 일반화되는지는 추가 확인이 필요합니다.</li><li>그럼에도 test-time compute에 드는 총자원을 크게 줄인다는 점에서 의미가 큽니다.</li></ul><h5>업계 합의로 굳어지는 중</h5><p>이 논문이 나오고 약 두 달 뒤 <b>Anthropic</b>도 비슷한 논지의 논문을 냈습니다. reasoning token이 지나치게 길어지면 성능이 떨어진다는 점을 더 강조한 내용입니다. 발표자는 '모델이 크면 좋다', '데이터가 많으면 좋다'처럼 <b>'CoT는 가능한 한 짧게'</b>가 LLM 실무자의 상식이 될 것이라고 봤습니다(Occam's razor가 적어도 LLM에서는 맞았다는 비유).</p><h5>실무 적용 체크리스트</h5><table class=\"matrix-table\"><tr><th>영역</th><th>적용 방안</th></tr><tr><td>서빙(vLLM 등)</td><td>n=K 병렬 샘플링 + <b>먼저 끝난 m개 도착 시 나머지 abort</b>. 시작값은 m=3.</td></tr><tr><td>Self-consistency 대체</td><td>전체 K개 majority voting 대신 short-m@k를 써서 토큰 비용·지연을 줄입니다.</td></tr><tr><td>Tie-break</td><td>m개의 투표가 갈리면 <b>사고 길이가 가장 짧은 답</b>을 우선합니다.</td></tr><tr><td>관측성</td><td>요청별 think token 길이를 메트릭으로 수집합니다. 비정상적으로 긴 추론은 오답 위험 신호로 보고 알람·재시도에 씁니다.</td></tr><tr><td>비용 통제</td><td>reasoning budget(max thinking tokens) 상한을 정합니다. 길수록 좋다는 가정을 버립니다.</td></tr><tr><td>미세조정</td><td>도메인 trajectory 데이터에서 짧은 정답 경로만 골라 SFT합니다(S1-Short 방식).</td></tr></table>"
+      },
+      "en": {
+            "title": "Overthink It and You Get It Wrong? Don't Overthink It: short-m@k Uses Shorter CoT to Cut Reasoning Cost and Improve Accuracy",
+            "subtitle": "A Meta FAIR paper review: reasoning models use far fewer thinking tokens when they answer correctly than when they answer wrongly. Generating K samples in parallel and keeping only the first m to finish cuts compute by more than about 40% while matching or beating majority voting.",
+            "moduleTag": "TEST-TIME COMPUTE COST CONTROL",
+            "takeaway": "Longer CoT is not better. For the same problem, the answer that finishes thinking first is usually the correct one. Making 'shortest reasoning path first' the default policy in inference serving cuts test-time compute cost and latency while keeping or even improving accuracy.",
+            "box1": {
+                  "title": "1 · The Problem: CoT's Success and the Cost Trap of 'Long Thinking'",
+                  "html": "<h5>Background: Three Years After CoT</h5><p>Around 2022, LLM emergence was just getting attention and model sizes were growing aggressively. That is when the <b>Chain-of-Thought (CoT)</b> paper came out. It showed that if a model 'thinks' with think tokens before answering, instead of answering directly, it can solve problems it could not solve in one shot. The gain was <b>larger for bigger models</b>. Over the next three years, the idea that 'correct thoughts lead to correct answers' spread, and the thought trajectory itself became something to train on and study. Discussion of <b>test-time compute</b>, which boosts performance with extra computation at inference time, grew out of this trend.</p><h5>The Problem: CoT Is Expensive</h5><p>A method that needs long thought strings to get good answers is costly by design. The authors (Meta FAIR) started from the Go proverb <b>'long thought leads to a bad move'</b> and formed a hypothesis: like people, maybe LLMs also make wrong calls when they think too long.</p><h5>Key Observation</h5><ul><li>On the same question, <b>the average thinking-token length of correct answers is much shorter than that of incorrect ones</b>.</li><li>This holds at both easy and hard difficulty. Even on hard problems, the model thought for less time when it was right than when it was wrong.</li><li>In short, <b>long thinking only adds cost and does not lead to better answers</b>. CoT length itself may be a negative signal for quality.</li></ul>"
+            },
+            "box2": {
+                  "title": "2 · Method and Results: short-m@k (Trust the Answer That Finishes First)",
+                  "html": "<h5>Algorithm</h5><p><b>short-m@k</b>: generate K outputs at once with batch decoding. As soon as the <b>first m outputs finish their thinking tokens</b>, stop the rest and decide the answer from those m. Put simply, it is a first-come, first-served approach that trusts the answer that needed less thinking. The logic is very simple, but it works very well.</p><h5>Experimental Setup</h5><ul><li>Models: most of the competitive SOTA reasoning models of the time, such as Llama-based Nemotron and models distilled from R1 data.</li><li>Benchmarks: most major reasoning benchmarks, but <b>mainly math</b>. All of them are very hard.</li></ul><table class=\"matrix-table\"><tr><th>Comparison</th><th>Result</th></tr><tr><td>Compute</td><td><b>Cut by more than about 40%</b> versus the baseline</td></tr><tr><td>Accuracy vs majority voting (batch)</td><td><b>Equal or better</b></td></tr><tr><td>Shortest vs random selection</td><td>Shortest wins in most cases (only some differences from random)</td></tr><tr><td>short-1@k (fastest single answer)</td><td>Fastest, but limited accuracy gain</td></tr><tr><td><b>short-3@k</b></td><td>Almost no speed loss and much higher accuracy than other settings. <b>The best-balanced setting</b></td></tr></table><h5>Scaling K and m</h5><p>Raising K (the number generated at once) makes the answers more diverse, which raises accuracy. At the same time, short samples finish sooner, so <b>time to answer actually drops</b>. On the time (x-axis) vs accuracy (y-axis) plot, short-3@k (the teal line) led across the whole range. When m was varied across 1, 3, 5, 7, 9, <b>m=3</b> gave the best mix of performance and time efficiency. Picking the <b>shortest-reasoning answer</b> among those three selected outputs improved performance further.</p><h5>Fine-tuning Extension: S1-Short</h5><p>The authors took the <b>S1 dataset</b> (questions, answers, and reasoning trajectories), built a variant called <b>S1-Short</b> that keeps only short reasoning, and fine-tuned on it. This gave the best results in most cases. It shows that models can be trained to think briefly from the start, not only nudged toward short answers at sampling time.</p>"
+            },
+            "box3": {
+                  "title": "3 · Limitations, Industry Consensus, and a Practical Adoption Guide",
+                  "html": "<h5>Limitations (Acknowledged by the Authors)</h5><ul><li>It <b>relies on batch decoding</b>. Running K samples in parallel means it cannot be called fully resource-efficient (it uses concurrent GPU memory and throughput).</li><li>Evaluation is <b>mostly math benchmarks</b>, so more work is needed to confirm it generalizes to code, agentic, and open-ended tasks.</li><li>Even so, it meaningfully cuts the total resources spent on test-time compute.</li></ul><h5>An Emerging Industry Consensus</h5><p>About two months after this paper, <b>Anthropic</b> published a paper with a similar message. It puts more weight on showing that performance drops when reasoning tokens get too long. The presenter expects <b>'keep CoT as short as possible'</b> to become common sense for LLM practitioners, just like 'bigger models are better' and 'more data is better' (with an Occam's razor analogy: it may not always hold, but it held for LLMs).</p><h5>Practical Adoption Checklist</h5><table class=\"matrix-table\"><tr><th>Area</th><th>How to Apply</th></tr><tr><td>Serving (vLLM, etc.)</td><td>Parallel sampling with n=K, and <b>abort the rest once the first m finish</b>. Start with m=3.</td></tr><tr><td>Replacing self-consistency</td><td>Use short-m@k instead of majority voting over all K to cut token cost and latency.</td></tr><tr><td>Tie-break</td><td>If the m votes are split, prefer the <b>answer with the shortest reasoning</b>.</td></tr><tr><td>Observability</td><td>Record think-token length per request as a metric. Treat unusually long reasoning as a wrong-answer risk signal and use it for alerts and retries.</td></tr><tr><td>Cost control</td><td>Set a reasoning budget (max thinking tokens) cap. Drop the assumption that longer is better.</td></tr><tr><td>Fine-tuning</td><td>From domain trajectory data, keep only short correct paths for SFT (the S1-Short approach).</td></tr></table>"
+            }
+      },
+      "addedDate": "2026-09-28"
+},
+
+    {
       "id": "opus-5-5-effort-ladder-agent-platform-war-2026",
       "categoryId": "agentops",
       "moduleTag": "FRONTIER MODEL COST & AGENT PLATFORM BRIEFING",
