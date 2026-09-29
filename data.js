@@ -66,6 +66,176 @@ window.DASHBOARD_DATA = {
   ],
   entries: [
     {
+      "id": "supply-chain-management-scm-basics-2026",
+      "categoryId": "agentops",
+      "moduleTag": "SUPPLY CHAIN MANAGEMENT FUNDAMENTALS",
+      "title": "공급망 관리(SCM) 6분 총정리: 퀵커머스를 움직이는 Plan-Source-Make-Deliver-Return 네트워크",
+      "subtitle": "빠른 배송의 비밀은 배송 인력이 아니라, 수요예측부터 재고·물류·반품까지 전체 공급 네트워크를 계획하고 조율하는 SCM에 있다.",
+      "tags": [
+            "SCM",
+            "Supply Chain Management",
+            "Demand Forecasting",
+            "Inventory",
+            "Logistics",
+            "Reverse Logistics",
+            "Dark Store",
+            "Quick Commerce",
+            "AI Analytics",
+            "IoT"
+      ],
+      "videoUrl": "https://www.youtube.com/watch?v=Z7ElovVv5Ng",
+      "videoId": "Z7ElovVv5Ng",
+      "channel": "Intellipaat",
+      "duration": "6:24",
+      "refDate": "2026-09-29",
+      "takeaway": "몇 분 만에 도착하는 배송은 배송 파트너 수가 아니라 수요예측 기반의 재고 배치와 제품·정보·자금 흐름 전체를 조율하는 공급망 관리의 결과이며, 목표는 '비용을 통제하면서 고객이 원하는 것을 원할 때 제공'하는 것이다.",
+      "box1": {
+            "title": "1 · SCM의 정의와 퀵커머스 사례: 왜 배송 인력만으로는 부족한가",
+            "html": "<p>영상은 Blinkit·Zepto처럼 '몇 분 배송'을 약속하는 서비스에서 출발합니다. 이 약속이 지켜지려면 ① 상품이 내 주변에 이미 있어야 하고, ② 지역별 주문을 예측해야 하며, ③ 누군가 피킹·패킹을 하고, ④ 배송 파트너가 대기하고, ⑤ 이 모든 것이 비용 폭증 없이 빠르게 이루어져야 합니다. 따라서 빠른 배송은 단순히 배송 인력을 늘리는 문제가 아니라 <b>전체 공급 네트워크를 어떻게 계획·관리하느냐</b>의 문제입니다.</p><p><b>SCM의 정의:</b> 공급자에서 고객에게 제품이 전달되기까지 관련된 모든 요소가 원활하게 함께 작동하도록 만드는 것. 계획(planning), 구매(purchasing), 생산(production), 재고(inventory), 운송(transportation) 등을 포괄합니다. 신발 사업의 예로, 원자재·공급업체·제조·창고·운송·고객이 모두 연결되어야 하며, 공급업체가 늦거나 창고 재고가 바닥나거나 배송이 늦으면 제품이 훌륭해도 사업은 문제를 겪습니다.</p><ul><li>공급망은 일직선이 아니라, 여러 공급업체·창고·배송 파트너가 하나의 <b>네트워크</b>로 연결된 구조일 수 있음</li><li>SCM의 목표는 이 전체 네트워크를 효율적으로 유지하는 것</li><li>Blinkit은 주문 후 상품을 찾기 시작하지 않고, <b>dark store</b>(빠른 배송용 소형 창고)에 미리 재고를 두고 있음</li></ul>"
+      },
+      "box2": {
+            "title": "2 · SCM 5단계(Plan·Source·Make·Deliver·Return)와 3대 흐름",
+            "html": "<p>영상은 수요예측(demand forecasting)에서 출발해 SCM의 다섯 단계를 설명합니다. 과거 주문과 구매 패턴을 분석해(예: 우유는 아침, 콜드드링크는 여름에 수요 증가) 재고를 사전에 계획합니다.</p><table class=\"matrix-table\"><thead><tr><th>단계</th><th>핵심 내용</th><th>실무 포인트</th></tr></thead><tbody><tr><td><b>Plan</b></td><td>고객 수요를 추정하고 필요한 재고·생산·자원을 결정</td><td>적게 주문하면 품절, 많이 주문하면 보관비 증가·폐기 발생</td></tr><tr><td><b>Source</b></td><td>공급업체 선정, 가격 협상, 품질 확인, 납기 보장</td><td>가장 싼 공급업체가 항상 최선은 아님. 납기 지연은 더 큰 문제를 유발</td></tr><tr><td><b>Make</b></td><td>원자재를 완제품으로 전환(생산·품질검사·포장)</td><td>Blinkit은 제조 단계 없이 구매 후 fulfillment center에 보관</td></tr><tr><td><b>Deliver</b></td><td>창고 관리, 운송, 주문 이행, 고객 전달</td><td>여기서 logistics가 등장</td></tr><tr><td><b>Return</b></td><td>손상·불량·반품 제품 처리 시스템</td><td>공급망을 거슬러 되돌리는 것을 reverse logistics라 함</td></tr></tbody></table><p><b>Logistics vs SCM:</b> Logistics는 SCM의 일부로, 제품의 보관과 이동에 초점을 둡니다. SCM은 계획·구매·재고·생산·물류·고객 수요까지 포함하는 더 큰 그림이며, logistics는 중요한 한 부분, SCM은 전체 네트워크를 관리합니다.</p><p><b>3대 흐름:</b> ① <b>Product flow</b> — 원자재와 완제품이 공급자에서 고객으로 이동, ② <b>Information flow</b> — 주문 내역, 재고 업데이트, 배송 상태, 고객 수요 정보, ③ <b>Financial flow</b> — 결제, 인보이스, 기업 간 거래 기록. 즉 SCM은 제품·정보·자금이 올바른 방향으로 올바른 때에 흐르도록 관리하는 일입니다.</p>"
+      },
+      "box3": {
+            "title": "3 · SCM이 중요한 이유와 기술의 역할, 결론",
+            "html": "<p><b>왜 중요한가:</b> 기업의 가장 큰 과제는 불필요한 비용 증가 없이 고객을 만족시키는 것입니다. 재고를 많이 두면 품절은 막지만 자금이 묶이고 보관비가 늘며, 재고가 적으면 판매 기회를 놓칩니다. 특히 신선식품 같은 perishable 상품은 과잉 재고가 곧 폐기물이 됩니다. 그래서 기업은 <b>적절한 제품을, 적절한 수량으로, 적절한 장소와 시점에</b> 두려 합니다. 이를 잘 수행하면 비용 절감, 배송 개선, 폐기 최소화, 이익 증가로 이어집니다.</p><p><b>기술의 역할:</b> 기술은 공급망을 더 스마트하게 만듭니다.</p><ul><li><b>AI analytics</b> — 수요 예측</li><li><b>IoT</b> — 제품 추적</li><li><b>Cloud platform</b> — 팀 간 연결</li><li><b>Automation</b> — 창고 운영 가속</li></ul><p>예를 들어 특정 지역에서 수요가 갑자기 늘면 그 추세를 감지해 재고가 떨어지기 전에 보충(replenish)할 수 있습니다. 영상은 <b>기술 자체가 목적이 아니라, 더 나은 정보로 더 빠른 의사결정을 하는 것</b>이 목표라고 강조합니다.</p><p><b>결론:</b> SCM은 운송이나 창고 관리 이상의 개념으로, 제품이 공급자에서 최종 고객에게 이르는 전 과정을 조율합니다. 계획·구매·재고·생산·물류·정보·재무를 통합하며, 목표는 비용을 통제하면서 고객이 필요한 것을 필요한 때에 제공하는 것입니다. 참고로 이 영상은 입문 수준의 개념 설명이며 구체적인 수치나 벤치마크는 제시하지 않습니다.</p>"
+      },
+      "en": {
+            "title": "Supply Chain Management (SCM) in 6 Minutes: The Plan-Source-Make-Deliver-Return Network Behind Quick Commerce",
+            "subtitle": "The secret to fast delivery is not more delivery partners but SCM: planning and coordinating the whole supply network, from demand forecasting to inventory, logistics and returns.",
+            "moduleTag": "SUPPLY CHAIN MANAGEMENT FUNDAMENTALS",
+            "takeaway": "Delivery in minutes is the result of supply chain management: demand-forecast-driven inventory placement and coordination of product, information and financial flows, not the number of delivery partners. The goal is to give customers what they need, when they need it, while keeping cost under control.",
+            "box1": {
+                  "title": "1 · Definition of SCM and the Quick-Commerce Case: Why Delivery Staff Alone Is Not Enough",
+                  "html": "<p>The video starts with services like Blinkit and Zepto that promise delivery in minutes. To keep that promise: (1) the product must already be near you, (2) orders per area must be predicted, (3) someone must pick and pack, (4) a delivery partner must be available, and (5) all of it must happen quickly without exploding cost. So fast delivery is not simply about adding delivery staff; it is about <b>how the entire supply network is planned and managed</b>.</p><p><b>Definition of SCM:</b> making sure everything involved in getting a product from the supplier to the customer works together smoothly. It covers planning, purchasing, production, inventory, transportation and more. In the shoe-business example, raw materials, suppliers, manufacturing, warehouses, transportation and customers must all connect. If suppliers are late, the warehouse runs out of stock or delivery is late, the business has problems even if the product is great.</p><ul><li>A supply chain is not always a straight line; several suppliers, warehouses and delivery partners can form one <b>network</b></li><li>The goal of SCM is to keep this whole network running efficiently</li><li>Blinkit does not start searching for products after an order; stock is already held in a <b>dark store</b> (a small warehouse built for quick delivery)</li></ul>"
+            },
+            "box2": {
+                  "title": "2 · The Five SCM Steps (Plan, Source, Make, Deliver, Return) and Three Flows",
+                  "html": "<p>Starting from demand forecasting, the video explains the five steps of SCM. Companies analyze past orders and buying patterns (e.g., milk sells more in the morning, cold drinks in summer) to plan inventory in advance.</p><table class=\"matrix-table\"><thead><tr><th>Step</th><th>Key content</th><th>Practical point</th></tr></thead><tbody><tr><td><b>Plan</b></td><td>Estimate customer demand and decide needed inventory, production and resources</td><td>Order too little and you stock out; order too much and you face storage cost and wastage</td></tr><tr><td><b>Source</b></td><td>Choose suppliers, negotiate price, check quality, ensure on-time delivery</td><td>The cheapest supplier is not always the best; late deliveries cause bigger problems</td></tr><tr><td><b>Make</b></td><td>Turn raw materials into finished goods (production, quality checks, packaging)</td><td>Blinkit has no manufacturing stage; products are purchased and stored in fulfillment centers</td></tr><tr><td><b>Deliver</b></td><td>Warehousing, transportation, order fulfillment, getting products to customers</td><td>This is where logistics comes in</td></tr><tr><td><b>Return</b></td><td>A system for damaged, defective or returned products</td><td>Moving them back through the network is called reverse logistics</td></tr></tbody></table><p><b>Logistics vs SCM:</b> Logistics is one part of SCM, focused on storing and moving products. SCM is the bigger picture, including planning, purchasing, inventory, production, logistics and customer demand. Logistics is one important part; SCM manages the entire network.</p><p><b>Three flows:</b> (1) <b>Product flow</b> — raw materials and finished goods moving from suppliers to customers, (2) <b>Information flow</b> — order details, inventory updates, delivery status and customer demand information, (3) <b>Financial flow</b> — payments, invoices and transaction records between businesses. In short, SCM keeps products, information and money moving in the right direction at the right time.</p>"
+            },
+            "box3": {
+                  "title": "3 · Why SCM Matters, the Role of Technology, and Conclusion",
+                  "html": "<p><b>Why it matters:</b> The biggest challenge for any business is keeping customers happy without increasing cost unnecessarily. Extra inventory prevents stockouts but ties up money and raises storage cost; too little inventory means missed sales. For perishable products, excess stock becomes waste. So businesses try to have <b>the right products, in the right quantity, at the right place and time</b>. Done well, this reduces cost, improves delivery, minimizes wastage and increases profit.</p><p><b>Role of technology:</b> Technology makes the supply chain smarter.</p><ul><li><b>AI analytics</b> — forecast demand</li><li><b>IoT</b> — track products</li><li><b>Cloud platforms</b> — connect teams</li><li><b>Automation</b> — speed up warehouse operations</li></ul><p>For example, if demand suddenly rises in one area, the company can detect the trend and replenish before stock runs out. The video stresses that <b>the goal is not technology for its own sake but better information and faster decisions</b>.</p><p><b>Conclusion:</b> SCM is much more than transportation or warehouse management; it coordinates the entire journey of a product from supplier to final customer. It brings together planning, purchasing, inventory, production, logistics, information and finance, with the goal of delivering what customers need when they need it while keeping cost under control. Note that this is an introductory concept video and gives no concrete figures or benchmarks.</p>"
+            }
+      },
+      "addedDate": "2026-09-29"
+},
+
+    {
+      "id": "jev-decision-model-agent-harness-2026",
+      "categoryId": "agentops",
+      "moduleTag": "DECISION MODEL FOR AGENT HARNESS",
+      "title": "에이전트 하니스 내부에 Jev 도입하기: 결정은 LLM이 아니라 결정 모델에게",
+      "subtitle": "툴 선택·리스크 게이팅·스킬 로딩·RAG 리랭킹 같은 '스마트 if문'을 Jev 계열 결정 모델로 대체해 비용과 지연을 줄이는 실전 가이드",
+      "tags": [
+            "Jev",
+            "Decision Model",
+            "Agent Harness",
+            "Progressive Disclosure",
+            "Skills",
+            "RAG Re-ranking",
+            "Risk Gating",
+            "Model Routing",
+            "LangChain Middleware",
+            "OpenRouter"
+      ],
+      "videoUrl": "https://www.youtube.com/watch?v=zaLQ0AnY9dI",
+      "videoId": "zaLQ0AnY9dI",
+      "channel": "Sam Witteveen",
+      "duration": "20:24",
+      "refDate": "2026-09-29",
+      "takeaway": "에이전트 루프의 LLM 호출 대부분은 글쓰기가 아니라 '몇 초면 답할 수 있는 선택·판정'이며, 이를 Jev 같은 결정 모델(choice/score/bool + 확률)로 옮기면 검증 단계를 늘리면서도 비용과 지연을 함께 줄일 수 있다.",
+      "box1": {
+            "title": "1 · 문제 정의: 루프 속 '결정'에 매번 풀 LLM을 쓰는 비효율",
+            "html": "<p>에이전트 하니스의 표준 루프는 요청 → (툴 레지스트리·시스템 프롬프트·스킬 포함) LLM → 함수 호출(툴명+JSON 인자) → 하니스가 실행 → 결과를 대화에 append → 다시 LLM, 이 과정을 최종 답변까지 반복하는 구조입니다. 영상의 핵심 관찰은 이 루프의 LLM 스텝 대부분이 <b>텍스트 생성이 아니라 결정</b>이라는 점입니다: 어떤 툴을 쓸지, 어떤 스킬을 로드할지, 이 명령이 안전한지, RAG 검색 결과 20개 중 무엇이 질문에 답하는지 등.</p><p>문제는 두 가지입니다. 첫째, <b>비용·지연</b>: 선택지가 몇 개뿐인 결정에도 대형 LLM 풀 콜을 지불하므로 토큰 비용은 물론 시간 손실이 더 큽니다. 둘째, <b>검증 부재</b>: LLM이 스스로 결정하다 보니 '이 명령 실행해도 안전한가', '이 결과가 충분히 좋은가, 다시 시도할까' 같은 안전·반성(reflection) 단계가 빠지기 쉽습니다. 검증을 넣으면 느려지기 때문에 커스텀 에이전트 개발자들이 의도적으로 검증 스텝을 줄이는 경향이 있다고 지적합니다.</p><p>Jev는 이를 <b>'스마트 if문'</b>으로 다룹니다. 평가 대상인 state와 타입이 있는 질문 집합을 주면, 텍스트 없이 확률이 붙은 타입 답변만 반환합니다. 질문 유형은 <ul><li><b>choice</b>: 목록에서 하나 선택</li><li><b>score</b>: 사용자가 정의한 척도로 평가</li><li><b>bool(yes/no)</b>: 참/거짓을 확률로 반환</li></ul>한 state에 여러 질문을 한 번의 호출로 병렬 처리할 수 있고 응답 시간은 거의 늘지 않습니다. 따라서 '함수 툴이나 구조화 JSON 응답으로 위장한 if문'을 찾아 결정 모델 호출로 바꾸는 것이 하니스 개선의 핵심 접근입니다.</p>"
+      },
+      "box2": {
+            "title": "2 · 적용 지점 6가지, 훅 4곳, 두 가지 패턴과 판단 기준",
+            "html": "<h5>하니스에서 결정 모델이 들어갈 6개 영역</h5><table class=\"matrix-table\"><tr><th>영역</th><th>역할</th></tr><tr><td>1. Model routing</td><td>요청을 싸고 빠른 모델 vs 고비용 고추론 모델로 분기</td></tr><tr><td>2. Risk gating</td><td>bash 등 툴 실행 전 인자를 보고 destructive(DB 삭제, 폴더 wipe) vs benign 판정. 밀리초 단위, 오픈 모델이면 완전 로컬 실행 가능</td></tr><tr><td>3. Tool/Skill selection</td><td>전체 툴 레지스트리를 프롬프트에 넣지 않고 카테고리 → 스킬 순으로 골라 필요한 것만 로드 (progressive disclosure)</td></tr><tr><td>4. Ranking &amp; judging</td><td>검색 청크 점수화, 루브릭 기반 답변 채점. RAG나 컨텍스트 주입에 큰 효과</td></tr><tr><td>5. Triage</td><td>지원 티켓·이메일의 긴급도를 확률로 산출, human-in-the-loop 에스컬레이션 트리거</td></tr><tr><td>6. Real-time filtering</td><td>API 응답·폴링 결과를 컨텍스트에 넣기 전에 필터링</td></tr></table><p><b>판단 기준(Typesafe 유래 rule of thumb)</b>: 똑똑한 사람 패널이 몇 초 안에 답할 수 있는 질문이면 결정 모델 대상이고, 답을 구상해 길게 써야 하면 LLM 대상입니다.</p><h5>연결 방법: 4개 훅 (LangChain, ADK, 커스텀 Python 어디서나 동일)</h5><ul><li><b>프롬프트 구성 전</b>: 로드할 스킬·툴 결정</li><li><b>모델 호출 전</b>: 호출할 모델 결정</li><li><b>툴 실행 전</b>: 안전성 판정</li><li><b>결과 수신 후</b>: 충분히 좋은지, 루프를 다시 돌지 결정</li></ul><p>각 훅은 같은 작은 코드 조각입니다. 루프가 이미 가진 정보로 state를 만들고, 질문을 던지고, 반환된 확률·답으로 분기합니다. 두 번째 패턴은 <b>Jev가 루프의 결정자이고 LLM은 폴백</b>인 구조로, 불확실하거나 텍스트 작성이 필요할 때만 LLM에 넘깁니다. LLM 호출을 더 줄일 수 있지만 에이전트 변경 폭이 크고, 복잡한 작업에서는 성능이 덜 좋았다고 합니다. 두 패턴 모두 프레임워크가 필수는 아니며, 첫 번째 패턴은 LangChain이 미들웨어로, Pydantic이 TypeSafe 모델 플러그인 방식으로 이미 제공합니다.</p>"
+      },
+      "box3": {
+            "title": "3 · 데모 두 가지와 적용하면 안 되는 경우, 실무 체크리스트",
+            "html": "<h5>데모 1: 스킬 Progressive Disclosure (Cascade Classifier)</h5><p>10개 카테고리 × 5개 스킬 = 50개 스킬을 매번 시스템 프롬프트에 넣으면 토큰이 크게 소모됩니다. 대신 프롬프트에는 <b>카테고리만</b> 주입하고, Jev가 1단계로 카테고리를 choice로 고른 뒤, 해당 카테고리의 스킬 목록에서 2단계로 최적 스킬을 고릅니다. 이후 선택된 스킬 파일만 컨텍스트에 로드하며, 스킬 인자는 대형 LLM이 채웁니다. 예시: 'CEO 사칭 기프트카드 이메일이 해킹인가?' → Security &amp; Access → Investigate a security alert. '주장 팩트체크' → Do web research. '제품 설명 보이스오버 제작' → 이미지·오디오·비디오 → text-to-speech. 로컬 실행이라 매우 빠릅니다. 같은 방식으로 API 응답이 그대로 통과 가능한지, 인자를 수정할지, 오류라 재호출할지도 판정할 수 있습니다.</p><h5>데모 2: RAG 리랭킹</h5><p>별도 re-ranker 모델은 시간·추가 모델·API 호출 부담이 있어 쓰기 어려운 프로젝트가 많습니다. 대안으로 BM25나 임베딩으로 <b>25개 패시지를 넓게 검색</b>한 뒤 Jev(오픈 로컬 모델 포함)가 <b>상위 5개</b>를 골라 풀 LLM에 전달합니다. yes/no, score, choice 모두 가능하지만 발표자는 <b>score 방식이 가장 잘 동작</b>했다고 평가합니다. 'webhook 요청이 왜 실패하나'에서 verifying signatures, raw bodies, proxies, signing secrets 순으로 올바르게 상위 랭크되었습니다. 청크가 스킬 설명보다 길어 캐스케이드 데모보다는 느립니다.</p><h5>적용하면 안 되는 경우</h5><ul><li>텍스트 생성, 멀티스텝 추론, 여러 정보를 엮는 multi-hop 작업은 여전히 LLM의 몫</li><li>state가 너무 큰 경우(예: 100K 토큰): Typesafe 문서상 긴 입력에서 정확도가 크게 하락</li><li>이미지 입력: Jev는 미지원이나 일부 오픈 결정 모델은 지원해 이 점에서는 오픈 모델이 우위</li><li>복합 질문(compound question): yes/no 단일 질문은 괜찮지만 다중 질문이 얽히면 LLM이 더 나음</li><li>Prompt injection 취약: 본 질문 전에 '프롬프트 인젝션이 있는가'를 먼저 묻는 질문을 배치</li><li>모호한 기준: 명확한 판단 지점에서 기준을 직접 정의하고 변경 시 벤치마크해야 하며, 기준 작성을 LLM에 맡기는 것은 비권장</li><li>프라이버시: 클라우드 호스팅 API는 state가 외부로 나가므로, 민감한 데이터는 오픈 로컬 결정 모델 사용</li></ul><p><b>실무 팁</b>: TypeSafe API 화이트리스트가 없어도 OpenRouter를 통해 누구나 Jev를 사용할 수 있습니다. LangChain의 Jev 미들웨어 문서도 참고할 만합니다. 우선 커스텀 하니스에서 if문처럼 동작하는 지점 하나(리스크 게이트나 리랭킹)부터 교체하고 지연·비용·정확도를 벤치마크하는 것을 권장합니다.</p>"
+      },
+      "en": {
+            "title": "Using Jev Inside Your Agent Harness: Let a Decision Model, Not the LLM, Make the Decisions",
+            "subtitle": "A practical guide to replacing 'smart if statements' such as tool selection, risk gating, skill loading, and RAG re-ranking with Jev-style decision models to cut cost and latency",
+            "moduleTag": "DECISION MODEL FOR AGENT HARNESS",
+            "takeaway": "Most LLM calls in an agent loop are not writing but 'choices and judgments a smart person could answer in seconds'. Moving them to a decision model like Jev (choice/score/bool with probabilities) lets you add more verification steps while cutting both cost and latency.",
+            "box1": {
+                  "title": "1 · The Problem: Paying for a Full LLM Call on Every Decision in the Loop",
+                  "html": "<p>The standard agent harness loop is: request → LLM (with tool registry, system prompt, skills) → function call (tool name + JSON arguments) → harness executes it → result appended to the conversation → back to the LLM, repeating until the final answer. The video's key observation is that most LLM steps in this loop are <b>decisions, not text generation</b>: which tool to use, which skill to load, whether a command is safe, which of 20 RAG search results actually answers the question.</p><p>This causes two problems. First, <b>cost and latency</b>: even decisions with only a handful of options pay for a full call to a large LLM, costing tokens and, even more, time. Second, <b>missing verification</b>: because the LLM decides for itself, safety and reflection steps such as 'is it safe to run this command?' and 'is this result good enough, or should I retry?' tend to be skipped. The speaker notes that developers of custom agents often deliberately cut verification steps because they slow everything down.</p><p>Jev treats this as a <b>'smart if statement'</b>. You give it the state being evaluated and a set of typed questions, and it returns typed answers with probabilities, with no text. The question types are <ul><li><b>choice</b>: pick one option from a list</li><li><b>score</b>: rate on a scale you define</li><li><b>bool (yes/no)</b>: return true/false as a probability</li></ul>Multiple questions about one state can be asked in a single call and processed in parallel, with almost no added response time. So the core approach to improving a harness is to find the 'if statements disguised as function tools or structured-JSON responses' and replace them with decision model calls.</p>"
+            },
+            "box2": {
+                  "title": "2 · Six Integration Areas, Four Hooks, Two Patterns, and Decision Criteria",
+                  "html": "<h5>Six areas of the harness where a decision model fits</h5><table class=\"matrix-table\"><tr><th>Area</th><th>Role</th></tr><tr><td>1. Model routing</td><td>Route requests to a cheap, fast model vs. an expensive, high-reasoning model</td></tr><tr><td>2. Risk gating</td><td>Before a tool such as bash runs, inspect the arguments and classify as destructive (DB deletion, folder wipe) vs. benign. Takes milliseconds and can run fully locally with open models</td></tr><tr><td>3. Tool/Skill selection</td><td>Instead of putting the entire tool registry in the prompt, pick category → skill and load only what is needed (progressive disclosure)</td></tr><tr><td>4. Ranking &amp; judging</td><td>Score retrieved chunks and grade answers against a rubric. A big win for RAG and any context injection</td></tr><tr><td>5. Triage</td><td>Produce urgency probabilities for support tickets and emails, and trigger human-in-the-loop escalation</td></tr><tr><td>6. Real-time filtering</td><td>Filter API responses and polling results before they enter the context</td></tr></table><p><b>Decision criterion (rule of thumb from Typesafe)</b>: if a panel of smart people could answer the question in a few seconds, it is a job for a decision model; if they would need to go away and compose a long answer, it is a job for an LLM.</p><h5>How to wire it in: four hooks (the same in LangChain, ADK, or custom Python)</h5><ul><li><b>Before the prompt is built</b>: decide which skills/tools to load</li><li><b>Before the model call</b>: decide which model to call</li><li><b>Before a tool runs</b>: decide whether it is safe</li><li><b>After a result returns</b>: decide whether it is good enough or whether to loop again</li></ul><p>Each hook is the same small piece of code: build a state from what the loop already has, ask your questions, and branch on the returned probabilities and answers. The second pattern makes <b>Jev the loop's decider and the LLM the fallback</b>: the LLM is called only when Jev is unsure or text must be written. It can cut LLM calls further, but it is a much bigger change to the agent, and the speaker found it worked less well on complex tasks. Neither pattern requires a framework; LangChain already ships the first pattern as middleware, and Pydantic lets you plug in the TypeSafe model.</p>"
+            },
+            "box3": {
+                  "title": "3 · Two Demos, When Not to Use It, and a Practical Checklist",
+                  "html": "<h5>Demo 1: Skill progressive disclosure (cascade classifier)</h5><p>Putting 50 skills (10 categories × 5 skills) into the system prompt on every call burns a lot of tokens. Instead, inject <b>only the categories</b>: Jev first picks a category via choice, then picks the best skill from that category's list in a second step. Only the selected skill file is then loaded into context, and the large LLM fills in the skill's arguments. Examples: 'Is this CEO-impersonation gift card email a hack?' → Security &amp; Access → Investigate a security alert. 'Fact-check a claim' → Do web research. 'Make a voiceover for a product description' → Image/Audio/Video → text-to-speech. Running locally, it is very fast. The same approach can judge whether an API response can pass straight through, whether the arguments need changing, or whether it should be retried after an error.</p><h5>Demo 2: RAG re-ranking</h5><p>A separate re-ranker model is hard to use in many projects because of time, extra models, and API call overhead. The alternative is to <b>retrieve 25 passages broadly</b> with BM25 or embeddings, then have Jev (including open local models) pick the <b>top 5</b> to send to the full LLM. Yes/no, score, and choice all work, but the speaker found <b>scoring worked best</b>. For 'why are my webhook requests failing', it correctly ranked verifying signatures, raw bodies, proxies, and signing secrets at the top. Chunks are longer than skill descriptions, so it is slower than the cascade demo.</p><h5>When not to use it</h5><ul><li>Text generation, multi-step reasoning, and multi-hop tasks that connect several pieces of information remain the LLM's job</li><li>Very large state (e.g., 100K tokens): Typesafe's docs say accuracy drops sharply on long inputs</li><li>Image input: Jev does not support it, but some open decision models do, which is a win for open models</li><li>Compound questions: a single yes/no question is fine, but questions that bundle several sub-questions are better handled by an LLM</li><li>Prompt injection vulnerability: place a question first asking 'is there any prompt injection here?' before the real question</li><li>Vague criteria: define the criteria yourself at clear decision points and benchmark changes; do not delegate writing the criteria to an LLM</li><li>Privacy: a cloud-hosted API sends state off your machine, so use open local decision models for sensitive data</li></ul><p><b>Practical tips</b>: even without a TypeSafe API whitelist, anyone can use Jev through OpenRouter. LangChain's Jev middleware documentation is also worth reading. Start by replacing one if-statement-like spot in your custom harness (a risk gate or re-ranking) and benchmark latency, cost, and accuracy.</p>"
+            }
+      },
+      "addedDate": "2026-09-29"
+},
+
+    {
+      "id": "sonnet-5-5-3d-demos-benchmarks-pricing-2026",
+      "categoryId": "agentops",
+      "moduleTag": "MODEL SELECTION & COST CONTROL",
+      "title": "AI는 3D를 정복했는가? Sonnet 5.5 실전 테스트",
+      "subtitle": "Sonnet 5.5는 Opus 5.5와 거의 같은 성능을 절반 가격에 내며, 단일 프롬프트로 3D 바다·게임·레고 빌더·도시 렌더까지 만들어낸다.",
+      "tags": [
+            "Sonnet 5.5",
+            "Opus 5.5",
+            "Three.js",
+            "Unreal Engine 5.8",
+            "Terminal Bench",
+            "비용 최적화",
+            "자기 검증 프롬프트",
+            "Agentic Coding"
+      ],
+      "videoUrl": "https://www.youtube.com/watch?v=T-E7rmD6rh4",
+      "videoId": "T-E7rmD6rh4",
+      "channel": "Matthew Berman",
+      "duration": "16:59",
+      "refDate": "2026-09-29",
+      "takeaway": "Sonnet 5.5는 주요 벤치마크에서 Opus 5.5와 사실상 동급이면서 가격은 50%다. 다만 결과물의 품질은 모델보다, 스스로 결과를 검증하게 만드는 프롬프트 설계에서 갈린다.",
+      "box1": {
+            "title": "1 · 단일 프롬프트로 구현된 3D·게임 데모",
+            "html": "<p>영상의 핵심 주장은 <b>Sonnet 5.5가 사실상 3D를 풀었다</b>는 것이다. 진행자는 얼리 액세스로 며칠간 테스트했고, 대부분 한두 개의 프롬프트에서 시작한 결과물을 보여준다.</p><ul><li><b>실시간 3D 바다(브라우저)</b>: 파도 시뮬레이션, glassy calm부터 storm까지의 sea state, 백파(white caps), 구름 그림자, 일출·정오·달밤, 비와 번개, 요트와 항적(wake)을 구현했다. 수중 뷰에는 빛기둥과 물고기가 있다. 구름량, swell, 방향, choppiness, 파고, 태양 위치를 조절할 수 있고, 물을 클릭하면 물이 튄다. 각 데모의 홍보 영상도 모델이 직접 녹화하고 편집했다.</li><li><b>Fall Guys 클론(Three.js)</b>: 플레이어 1명과 봇 59명이 5라운드를 치르고 결승과 왕관 세리머니로 이어진다. 회전문, 바운스 구역, 힌트, 커스터마이징, 약 50개의 레벨이 있다. 진행자는 Opus 5.5도 만들 수 있었지만 Sonnet 쪽이 더 재미있었다고 평가한다.</li><li><b>Lego 크리에이터</b>: 텍스트나 이미지를 입력하면 실제 Lego 부품과 색으로 3D 모델을 만든다. 오리 모델은 281단계다. 뷰 전환, 분해(explode), 조명 변경, 조립 설명서, PDF, BrickLink wanted list, Rebrickable CSV, LDraw, JSON 내보내기를 지원한다.</li><li><b>Unreal Engine 5.8 샌프란시스코</b>: 실제 도시 데이터, 약 12만 명과 차량 2,400대, LLM 기반 행동 결정을 쓴다. 'Transamerica 피라미드 화재' 같은 이벤트를 입력하면 도시 전체가 반응한다.</li><li>팀원 작품으로 Age of Empires류 RTS(Crownfall), Batman Arkham Knight풍 도시, 사실적인 Mario 월드, Forza풍 레이싱이 소개된다.</li></ul><p>진행자는 이 결과를 근거로 3D 제작 진입장벽이 크게 낮아졌다고 주장한다.</p>",
+            "html_note": ""
+      },
+      "box2": {
+            "title": "2 · 결과를 좌우한 프롬프트 설계 원칙과 한계",
+            "html": "<p>데모의 품질은 모델 성능만이 아니라 <b>프롬프트 구조</b>에서 나온다. 영상에서 반복되는 원칙은 다음과 같다.</p><ul><li><b>자기 검증 강제</b>: Fall Guys 프롬프트에서 진행자는 모델이 작업 중 스크린샷, 영상, 실제 플레이로 스스로 결과를 재확인하도록 명시해야 한다고 강조한다. 3D 바다 프롬프트도 '정지 프레임이 사진처럼 보일 때까지 계속 개선하라'고 요구한다. 샌프란시스코 프롬프트는 실제 사진과 비교하고 어색한 점을 솔직히 말하라고 한다.</li><li><b>LLM과 결정론적 코드의 역할 분리</b>: Lego 프롬프트는 AI가 브릭을 직접 배치하지 못하게 한다. AI는 형태만 설명하고, 프로그램이 그 형태를 실제 부품으로 변환한다. 프로그램이 모델이 하나로 연결되고 조립 가능한지 검증하고, 실패하면 문제를 AI에게 돌려보내 수정하게 한다.</li><li><b>제약 조건 명시</b>: 한 단계당 최대 4개 부품, 새 부품 하이라이트, 컴팩트한 단색 디자인, API 키 입력 지원, 키 없이 동작하는 기본 빌드, '무엇이 동작하는지 솔직하게 보고' 같은 조건을 넣었다.</li><li><b>Fallback 설계</b>: 도시 시뮬레이션에서 LLM이 사람의 행동을 결정하되, 사용할 수 없으면 단순 규칙으로 대체하도록 했다.</li></ul><p><b>한계와 주의점</b></p><ul><li>샌프란시스코 렌더는 완성까지 <b>수일과 수백만 토큰</b>이 들었고 빠르지 않았다. 로컬 PC에 부하를 주어 가끔 멈췄다. 무료 에셋은 직접 내려받아야 했다.</li><li>창문 반짝임(shimmering)과 어색한 그림자가 남았고, Batman 도시와 SF 빌드에서 같은 증상이 나타났다. 진행자는 공통 버그일 수 있다고 추측한다. Mario는 지나치게 사람 같았고 달릴 때 구부정했다. 분해 뷰도 완벽하지 않았고, Fall Guys에는 클리핑 문제가 있었다.</li><li><b>사운드와 음악 생성은 모든 데모에서 여전히 약했다.</b></li><li>글쓰기에서 color를 colour로 쓰는 식의 영국식 철자 경향이 있다. 진행자는 지시하면 바로 고쳐지는 steerable한 문제라고 본다.</li></ul>"
+      },
+      "box3": {
+            "title": "3 · 벤치마크·가격: Opus 5.5 대비 50% 비용",
+            "html": "<p>진행자는 며칠간 써 본 결과 Sonnet 5.5와 Opus 5.5의 차이를 체감하기 어려웠다고 말한다. 더 어려운 테스트를 못 해 봤을 수 있다는 단서도 붙인다. 수치도 이를 뒷받침한다.</p><table class='matrix-table'><thead><tr><th>벤치마크</th><th>Sonnet 5.5</th><th>Opus 5.5</th></tr></thead><tbody><tr><td>Terminal Bench 4.0</td><td>Sonnet 우세</td><td>-</td></tr><tr><td>Frontier Code 1.1 (Extra High)</td><td>52.1</td><td>54.4</td></tr><tr><td>Cursor Bench</td><td>55.5</td><td>57.8</td></tr><tr><td>GDPval</td><td>1844</td><td>1846</td></tr><tr><td>Humanity's Last Exam</td><td>64.5</td><td>67.7</td></tr><tr><td>OSWorld (컴퓨터 사용)</td><td>80.1%</td><td>81%</td></tr><tr><td>CharXiv (시각 차트 인식)</td><td>61%</td><td>64%</td></tr></tbody></table><p>Terminal Bench 4.0은 코딩 에이전트 평가에서 가장 중요한 벤치마크 중 하나로 꼽히며, 작고 저렴한 모델인 Sonnet이 여기서 Opus를 앞섰다. 컴퓨터·브라우저 제어는 여전히 OpenAI 모델이 더 낫다는 것이 진행자의 평가다.</p><p><b>가격</b>: Opus 5.5는 입력 $4, 출력 $20(백만 토큰당)이고, Sonnet 5.5는 입력 $2, 출력 $10으로 <b>절반</b>이다. 속도도 더 빠르다. 여러 벤치마크에서 Sonnet 5.5는 low·medium effort로도 Sonnet 5의 최고 점수를 <b>약 1/10 비용</b>에 넘어섰다. 오픈소스 모델의 극저가에는 못 미치지만, 이 품질 대비 가격은 매우 매력적이라는 것이 결론이다.</p><p><b>실무 시사점</b>: 기본 모델을 Sonnet 5.5로 두고 effort 수준을 조절하며, 정말 필요한 경우에만 Opus로 올리는 라우팅 전략이 유효하다. 다량의 생성 코드에는 리뷰 체계도 필요하다. 영상 스폰서인 CodeRabbit의 Change Stack은 cohorts(큰 diff 분할), layers(읽는 순서와 의존성), overview, blast radius 감지, 에이전틱 챗을 제공한다.</p>"
+      },
+      "en": {
+            "title": "Has AI Solved 3D? Putting Sonnet 5.5 to the Test",
+            "subtitle": "Sonnet 5.5 delivers near-Opus 5.5 performance at half the price, building 3D oceans, games, a Lego builder, and city renders from a single prompt.",
+            "moduleTag": "MODEL SELECTION & COST CONTROL",
+            "takeaway": "Sonnet 5.5 is effectively on par with Opus 5.5 on major benchmarks at 50% of the price. But output quality depends less on the model than on prompts that force it to verify its own work.",
+            "box1": {
+                  "title": "1 · 3D and Game Demos Built from a Single Prompt",
+                  "html": "<p>The video's core claim is that <b>Sonnet 5.5 has effectively solved 3D</b>. The presenter tested it for several days with early access and shows results that mostly started from one or two prompts.</p><ul><li><b>Real-time 3D ocean (browser)</b>: It implements a wave simulation, sea states from glassy calm to storm, white caps, cloud shadows, sunrise, noon, and moonlit night, rain and lightning, and a yacht with a wake. The underwater view has light shafts and fish. You can adjust cloud cover, swell, direction, choppiness, wave height, and sun position, and clicking the water makes a splash. The model also recorded and edited promo videos of each demo itself.</li><li><b>Fall Guys clone (Three.js)</b>: The player and 59 bots go through 5 rounds, leading to a final and a crown ceremony. It has revolving doors, bouncy zones, hints, customization, and about 50 levels. The presenter says Opus 5.5 could build it too, but found the Sonnet version more fun.</li><li><b>Lego creator</b>: Text or an image becomes a 3D model made of real Lego parts in real colors. The rubber duck model has 281 steps. It supports view switching, an explode view, lighting changes, building instructions, and exports to PDF, BrickLink wanted list, Rebrickable CSV, LDraw, and JSON.</li><li><b>Unreal Engine 5.8 San Francisco</b>: It uses real city data, about 120,000 people, and 2,400 vehicles, with LLM-driven behavior. Typing an event such as 'fire at the Transamerica Pyramid' makes the whole city react.</li><li>Team-made examples include an Age of Empires-style RTS (Crownfall), a Batman Arkham Knight-style city, a realistic Mario world, and a Forza-style racer.</li></ul><p>On this evidence the presenter argues that the barrier to making 3D content has dropped sharply.</p>"
+            },
+            "box2": {
+                  "title": "2 · Prompt Design Principles and Limitations",
+                  "html": "<p>Demo quality comes not only from model capability but from <b>prompt structure</b>. The principles that recur in the video:</p><ul><li><b>Force self-verification</b>: For the Fall Guys prompt, the presenter stresses that you must explicitly tell the model to re-check its work as it goes, using screenshots, video, or actually playing the game. The 3D ocean prompt asks it to keep improving until still frames pass for photos. The San Francisco prompt asks it to compare against real photos and say honestly what looks fake.</li><li><b>Separate the LLM from deterministic code</b>: The Lego prompt forbids the AI from placing bricks itself. The AI only describes shapes, and a program converts them into real parts. The program checks that the model is one connected, buildable piece and sends problems back to the AI to fix.</li><li><b>State constraints explicitly</b>: At most 4 pieces per step, highlighted new pieces, a compact monochrome design, API key input, ready-made builds that work without a key, and 'tell me plainly what works'.</li><li><b>Design a fallback</b>: In the city simulation the LLM decides what each person does, falling back to simple rules if it is unavailable.</li></ul><p><b>Limitations and caveats</b></p><ul><li>The San Francisco render took <b>multiple days and millions of tokens</b> and was not fast. It strained the local machine and sometimes froze. Free assets had to be downloaded manually.</li><li>Window shimmering and odd shadows remained, and the same symptom appeared in the Batman city and the SF build. The presenter guesses it may be a shared bug. Mario looked too human and hunched when running. The explode view wasn't perfect, and Fall Guys had clipping issues.</li><li><b>Sound and music generation was still weak across every demo.</b></li><li>In writing, it tends to use British spellings such as colour for color. The presenter considers this a steerable quirk that a simple instruction fixes.</li></ul>"
+            },
+            "box3": {
+                  "title": "3 · Benchmarks and Pricing: 50% of Opus 5.5's Cost",
+                  "html": "<p>After several days of use, the presenter says Sonnet 5.5 and Opus 5.5 were hard to tell apart, with the caveat that they may not have run hard enough tests. The numbers back this up.</p><table class='matrix-table'><thead><tr><th>Benchmark</th><th>Sonnet 5.5</th><th>Opus 5.5</th></tr></thead><tbody><tr><td>Terminal Bench 4.0</td><td>Sonnet ahead</td><td>-</td></tr><tr><td>Frontier Code 1.1 (Extra High)</td><td>52.1</td><td>54.4</td></tr><tr><td>Cursor Bench</td><td>55.5</td><td>57.8</td></tr><tr><td>GDPval</td><td>1844</td><td>1846</td></tr><tr><td>Humanity's Last Exam</td><td>64.5</td><td>67.7</td></tr><tr><td>OSWorld (computer use)</td><td>80.1%</td><td>81%</td></tr><tr><td>CharXiv (visual chart recognition)</td><td>61%</td><td>64%</td></tr></tbody></table><p>Terminal Bench 4.0 is described as one of the most important benchmarks for coding agents, and the smaller, cheaper Sonnet beat Opus on it. The presenter still finds OpenAI models better at computer and browser control.</p><p><b>Pricing</b>: Opus 5.5 costs $4 input and $20 output per million tokens. Sonnet 5.5 costs $2 input and $10 output, which is <b>half</b>. It is also faster. On several benchmarks, Sonnet 5.5 at low or medium effort beats Sonnet 5's best score at about <b>one tenth of the cost</b>. It doesn't reach the near-zero prices of open-source models, but the presenter concludes that the price for this quality is very compelling.</p><p><b>Practical implication</b>: A routing strategy works well here. Make Sonnet 5.5 the default, tune the effort level, and escalate to Opus only when truly needed. Large volumes of generated code also need a review system. The sponsor CodeRabbit's Change Stack offers cohorts (splitting big diffs), layers (reading order and dependencies), an overview, blast radius detection, and agentic chat.</p>"
+            }
+      },
+      "addedDate": "2026-09-29"
+},
+
+    {
       "id": "dont-overthink-short-m-at-k-2026",
       "categoryId": "agentops",
       "moduleTag": "TEST-TIME COMPUTE COST CONTROL",
