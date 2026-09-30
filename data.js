@@ -66,6 +66,64 @@ window.DASHBOARD_DATA = {
   ],
   entries: [
     {
+      "id": "openai-devday-2026-dots-ultrafast-soul",
+      "categoryId": "agentops",
+      "moduleTag": "FRONTIER COST-SPEED TRADEOFF & AGENT PLATFORM",
+      "title": "OpenAI Dev Day 2026 10분 총정리: 상시 가동 에이전트 Dots, 초고속 Ultrafast, 저가 고성능 GPT-6.1 Soul",
+      "subtitle": "속도·품질에는 프리미엄을 붙이고 범용 성능은 증류 모델로 싸게 푸는 OpenAI의 2단 가격 전략과, 클라우드 네이티브 에이전트 플랫폼으로의 전환을 정리한다.",
+      "tags": [
+            "OpenAI Dev Day 2026",
+            "Dots",
+            "GPT-6 Astra",
+            "Ultrafast",
+            "GPT-6.1 Soul",
+            "Pro500",
+            "Codex Cloud",
+            "비용통제",
+            "Distillation",
+            "Personal AI Assistant"
+      ],
+      "videoUrl": "https://www.youtube.com/watch?v=Xc6ERvZM1NY",
+      "videoId": "Xc6ERvZM1NY",
+      "channel": "Matthew Berman",
+      "duration": "10:00",
+      "refDate": "2026-09-30",
+      "takeaway": "AI 가격은 두 갈래로 갈라졌다. 범용 지능은 증류된 Soul급 모델로 계속 싸지고, 속도와 최상단 품질은 6배 프리미엄이 붙는다. 그래서 에이전트 운영의 핵심은 어떤 작업에 어떤 티어를 쓸지 정하는 라우팅과 비용 상한 설계다.",
+      "box1": {
+            "title": "1 · Dots: 클라우드에서 24시간 도는 능동형 개인 에이전트",
+            "html": "<p>OpenAI의 최대 발표는 <b>Dots</b>다. OpenClaw가 연 개인 비서 흐름을 따르는 제품으로, 영상은 Grockbot, Muse, Instinct를 같은 세대의 경쟁작으로 든다. Dots는 사용자가 프롬프트를 입력해야 움직이는 챗봇이 아니라 <b>상시 가동(always-on)</b>하는 <b>능동형(proactive)</b> 에이전트다. 사용자가 필요를 말하기 전에 할 일을 먼저 추론해 처리하는 것이 목표다. 접점은 ChatGPT, Slack, Teams이며, 사용자가 일하는 곳에서 호출된다.</p><h5>아키텍처 특징</h5><ul><li><b>독립 클라우드 환경</b>: 에이전트(또는 에이전트 집합)가 자기 환경에서 클라우드로 동작한다. 노트북을 켜 둘 필요가 없다.</li><li><b>계정 연결형 권한</b>: Gmail, Google Docs, Calendar 등 개인 계정을 연결하면 그 범위 안에서 실제 작업을 수행한다.</li><li><b>ChatGPT/Codex 위에 구축</b>: Dots는 ChatGPT 앱 안에 살면서 ChatGPT·Codex 스레드를 직접 제어한다. 컴퓨터 제어, 코딩, 자체 환경을 얻기 위한 선택으로 보이지만, 영상 화자는 별도 앱이었으면 좋겠다고 밝힌다. Muse나 Grockbot과 다른 접근이다.</li><li><b>과금 규칙</b>: Dots와 나누는 대화는 ChatGPT 사용량에 잡히지 않는다. 하지만 Dots가 ChatGPT나 Codex 스레드를 제어하는 순간 그 작업은 사용량에 산입된다.</li></ul><p>화자는 개인 비서 제품들의 디자인 언어가 눈 달린 부드러운 기하 도형으로 수렴한다고 본다. ChatGPT 출시 뒤 모든 제품이 ChatGPT 인터페이스를 닮아 간 현상과 같다는 것이다. 또 Codex나 ChatGPT보다 단순한 '비서와 대화하면 일이 끝나는' 경험이 AI에 대한 대중 인식을 긍정적으로 돌릴 것이라고 기대한다. 화자의 개인 기본 비서는 지금 Grockbot이고, Dots도 써 볼 계획이라고 한다.</p>",
+            "html_note": ""
+      },
+      "box2": {
+            "title": "2 · Ultrafast와 GPT-6.1 Soul: 프리미엄 속도 티어 대 증류된 가성비 티어",
+            "html": "<p>가격 구조가 두 갈래로 나뉜 것이 이번 발표의 핵심이다. 하나는 <b>Ultrafast(GPT-6 Astra, Cerebras 칩 기반)</b>다. 기존 Nvidia GPU 기반 Astra보다 <b>8배 빠르고 가격은 6배</b>다. 화자는 얼리 액세스로 약 1시간 반 만에 <b>$1,000</b>을 태웠다고 한다. 이에 맞춰 <b>Pro500($500/월)</b> 플랜이 새로 나왔다. 사용량 한도는 Plus의 25배다. 기존 $200 플랜은 20배에서 <b>10배</b>로 줄었으므로, $500 플랜은 예전 $200 플랜보다 조금 더 주면서 훨씬 비싸게 받는 셈이다. 화자는 '지능 단가는 내려가지만 최전선(frontier)은 속도든 품질이든 더 비싸다'고 정리한다. 1년 전 $10~30/M tokens였던 수준의 지능은 지금 몇 센트 수준이라고 한다.</p><table class='matrix-table'><thead><tr><th>모델</th><th>입력 ($/M)</th><th>출력 ($/M)</th><th>캐시 입력 ($/M)</th><th>포지션</th></tr></thead><tbody><tr><td>GPT-6 Astra</td><td>$10</td><td>$50</td><td>미언급</td><td>최상단 품질, Ultrafast 대상</td></tr><tr><td>GPT-6.1 Soul</td><td>$2</td><td>$10</td><td>$0.10</td><td>Astra급 성능의 저가·고속 모델</td></tr></tbody></table><p><b>GPT-6.1 Soul</b>은 Astra와 거의 같은 성능을 훨씬 싸고 빠르게 내는 모델이다. 개발자 체감을 가장 잘 반영한다고 화자가 꼽은 벤치마크에서는 Astra와 같거나 더 높았다. GDP PDF 벤치마크(화자는 PDF 관련으로 추정)에서도 Astra 수준을 낮은 가격에 냈다. 컴퓨터 사용 벤치마크 OS World에서는 높은 thinking 티어에서 잘 나오지만 최상단은 여전히 Astra가 앞선다. Anthropic의 Opus 5.5(Fable보다 훨씬 저렴)와 Sonnet 5.5(Opus급에 절반 가격)와 같은 흐름이다. 화자는 두 회사가 대형 모델(Fable, Astra)을 만든 뒤 증류 등으로 작고 추론이 쉬운 모델로 내리는 post-training을 사실상 풀었다고 해석한다.</p>"
+      },
+      "box3": {
+            "title": "3 · Codex 클라우드 이전과 생태계 재편: 병목은 이제 로컬 머신, 그리고 실무 시사점",
+            "html": "<p>Codex 쪽 발표는 개발 환경 전체를 클라우드로 옮기는 방향이다. 화자는 Codex가 클라우드에 있어야 하고 노트북을 항상 열어 둘 이유가 없다고 본다. Ultrafast를 쓰면 추론 자체는 매우 빠르지만, 도구 호출과 터미널 명령 실행이 느린 구간으로 드러난다고 한다. 병목이 모델에서 로컬 컴퓨터로 옮겨 갔다는 관찰이다.</p><ul><li><b>Codex Security Cloud</b>: 코드의 취약점과 문제를 지속적으로 스캔해 알려 주는 AI 보안 서비스.</li><li><b>Codex 네이티브 클라우드화</b>, 음성 제어가 가능한 새 CLI, 새 코드 리뷰 경험.</li><li><b>Decisions API(프리뷰)</b>: 빠른 의사결정용 모델로, 가장 가벼운 Luna의 지능을 기반으로 한다. 화자는 처음부터 결정 전용으로 만든 경쟁 모델 Jev가 더 빠를 것이라고 본다.</li><li><b>Plugins 재출시</b>: 예전 '앱은 죽었다' 논란 때의 경험이 잘 작동하지 않았다며 다시 낸 것이다. ChatGPT 안에서 앱을 네이티브로 쓰고, 'Sign in with ChatGPT'로 서드파티에 로그인하면서 <b>자신의 토큰을 가져가는(bring your tokens)</b> 모델이 핵심이다. 서드파티는 별도 구독이나 토큰을 제공하지 않아도 된다.</li><li><b>ChatGPT Spaces</b>: Notion과 비슷한 협업 공간으로, 팀원과 에이전트가 함께 PPT, 스프레드시트, 웹사이트를 만든다.</li></ul><h5>실무 시사점</h5><p>첫째, 티어 라우팅이 비용 통제의 1순위다. 일상 작업은 Soul급(입력 $2, 출력 $10, 캐시 $0.10)으로 처리하고, Ultrafast는 지연이 매출이나 생산성에 직결되는 구간에만 쓰는 것이 합리적이다. 둘째, Ultrafast는 시간당 수백~천 달러가 나갈 수 있으므로 하드 예산 한도, 알림, 세션 단위 토큰 상한 같은 가드레일이 필요하다. 셋째, 에이전트가 ChatGPT나 Codex 스레드를 제어하면 사용량이 합산되므로 상시 가동 에이전트의 비용 귀속을 미리 설계해야 한다. 넷째, 병목이 도구 실행으로 이동하므로 샌드박스와 클라우드 실행 환경의 성능이 새 최적화 대상이다. 참고로 전사본이 마지막에서 끊겨 있어 영상의 결론부(화자가 가장 기대하는 발표)는 다루지 못했다.</p>"
+      },
+      "en": {
+            "title": "OpenAI Dev Day 2026 in 10 Minutes: Always-On Agent Dots, Ultrafast Speed, and the Cheap-but-Strong GPT-6.1 Soul",
+            "subtitle": "OpenAI's two-tier pricing puts a premium on speed and top-end quality while releasing general capability through cheaper distilled models, alongside a shift to cloud-native agent platforms.",
+            "moduleTag": "FRONTIER COST-SPEED TRADEOFF & AGENT PLATFORM",
+            "takeaway": "AI pricing has split in two. General intelligence keeps getting cheaper through distilled Soul-class models, while speed and top-end quality carry a 6x premium. So the core of agent operations is routing each task to the right tier and designing cost ceilings.",
+            "box1": {
+                  "title": "1 · Dots: A Proactive Personal Agent Running 24/7 in the Cloud",
+                  "html": "<p>The biggest announcement is <b>Dots</b>. It follows the personal-assistant wave that OpenClaw started, and the video names Grockbot, Muse, and Instinct as peers of the same generation. Dots is not a chatbot that moves only when you type a prompt. It is an <b>always-on</b>, <b>proactive</b> agent that aims to work out what you need and handle it before you ask. You reach it through ChatGPT, Slack, and Teams, so it meets you where you already work.</p><h5>Architectural characteristics</h5><ul><li><b>Independent cloud environment</b>: the agent (or set of agents) runs in its own environment in the cloud. Your laptop doesn't need to stay on.</li><li><b>Account-connected permissions</b>: once you connect personal accounts such as Gmail, Google Docs, and Calendar, it does real work within that scope.</li><li><b>Built on top of ChatGPT/Codex</b>: Dots lives inside the ChatGPT app and directly controls ChatGPT and Codex threads. This looks like a choice made to get computer control, coding, and its own environment, but the speaker says they would have preferred a standalone app. It differs from the approach of Muse and Grockbot.</li><li><b>Billing rules</b>: conversations with Dots don't count toward ChatGPT usage. But once Dots controls a ChatGPT or Codex thread, that work is counted against your usage.</li></ul><p>The speaker notes that these assistants are converging on one design language: soft geometric shapes with eyes. They compare it to how every product started to look like ChatGPT's interface after its launch. They also expect that a simple 'talk to an assistant and the work gets done' experience, simpler than Codex or ChatGPT, will improve the general public's perception of AI. Their own default assistant today is Grockbot, and they plan to try Dots as well.</p>"
+            },
+            "box2": {
+                  "title": "2 · Ultrafast and GPT-6.1 Soul: A Premium Speed Tier vs. a Distilled Value Tier",
+                  "html": "<p>The core of this announcement is that pricing has split into two tracks. One is <b>Ultrafast (GPT-6 Astra on Cerebras chips)</b>. It is <b>8x faster</b> than Astra on Nvidia GPUs, at <b>6x the price</b>. With early access, the speaker burned <b>$1,000</b> in about an hour and a half. Alongside it comes a new <b>Pro500 ($500/month)</b> plan with usage limits 25x those of Plus. The existing $200 plan drops from 20x to <b>10x</b>, so the $500 plan gives only slightly more than the old $200 plan while charging far more. The speaker sums it up this way: the price of intelligence keeps falling, but the frontier costs more, whether for speed or for quality. Intelligence that cost $10–30 per million tokens a year ago now costs pennies.</p><table class='matrix-table'><thead><tr><th>Model</th><th>Input ($/M)</th><th>Output ($/M)</th><th>Cached input ($/M)</th><th>Positioning</th></tr></thead><tbody><tr><td>GPT-6 Astra</td><td>$10</td><td>$50</td><td>Not mentioned</td><td>Top-end quality, Ultrafast target</td></tr><tr><td>GPT-6.1 Soul</td><td>$2</td><td>$10</td><td>$0.10</td><td>Low-cost, fast model with near-Astra performance</td></tr></tbody></table><p><b>GPT-6.1 Soul</b> delivers roughly Astra-level performance at a much lower price and higher speed. On the benchmark the speaker calls the best reflection of how developers actually feel, it matched or beat Astra. On the GDP PDF benchmark (which the speaker assumes is about PDFs), it also reached Astra-level results at a low price. On OS World, the computer-use benchmark, it does well at high thinking tiers, but Astra still leads at the very top end. This mirrors Anthropic's Opus 5.5 (far cheaper than Fable) and Sonnet 5.5 (Opus-level at half the price). The speaker's read is that both companies have effectively solved post-training: build a huge model (Fable, Astra), then distill it into a smaller model that is easier to run inference on.</p>"
+            },
+            "box3": {
+                  "title": "3 · Codex Goes Cloud and the Ecosystem Reshuffles: The Bottleneck Is Now the Local Machine, and What It Means in Practice",
+                  "html": "<p>The Codex announcements move the whole development environment into the cloud. The speaker argues that Codex belongs in the cloud and that there was never a reason to keep a laptop open. With Ultrafast, inference itself is very fast, while tool calls and terminal commands show up as the slow part. The observation is that the bottleneck has moved from the model to the local computer.</p><ul><li><b>Codex Security Cloud</b>: an AI security service that continuously scans code for vulnerabilities and other issues and reports them.</li><li><b>Native cloud Codex</b>, a new CLI with voice control, and a new code review experience.</li><li><b>Decisions API (preview)</b>: a model for quick decisions, based on the intelligence of Luna, the lightest model. The speaker expects the competing model Jev, built from the ground up for decisions, to be faster.</li><li><b>Plugins relaunched</b>: the earlier attempt, from the period of 'apps are dead' claims, did not work well, so it is being relaunched. Apps run natively inside ChatGPT, and with 'Sign in with ChatGPT' on third-party services, you <b>bring your own tokens</b>. The third party doesn't need to charge a separate subscription or supply tokens.</li><li><b>ChatGPT Spaces</b>: a Notion-like collaboration space where teammates and agents build PowerPoints, spreadsheets, and websites together.</li></ul><h5>Practical implications</h5><p>First, tier routing is the top priority for cost control. Handle everyday work with Soul-class models ($2 input, $10 output, $0.10 cached), and use Ultrafast only where latency directly affects revenue or productivity. Second, Ultrafast can run from hundreds to a thousand dollars per hour, so you need guardrails such as hard budget caps, alerts, and per-session token limits. Third, usage adds up when an agent controls ChatGPT or Codex threads, so design cost attribution for always-on agents up front. Fourth, as the bottleneck moves to tool execution, the performance of sandboxes and cloud execution environments becomes a new optimization target. Note that the transcript ends abruptly, so the video's conclusion, the announcement the speaker is most excited about, is not covered.</p>"
+            }
+      },
+      "addedDate": "2026-09-29"
+},
+
+    {
       "id": "jev-ten-levels-agentic-engineering-2026",
       "categoryId": "agentops",
       "moduleTag": "JEV CLASSIFIER GUARDRAIL & TOKEN COST CONTROL",
