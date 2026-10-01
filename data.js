@@ -66,6 +66,61 @@ window.DASHBOARD_DATA = {
   ],
   entries: [
     {
+      "id": "gemini-4-argon-million-token-output-2026",
+      "categoryId": "agentops",
+      "moduleTag": "FRONTIER MODEL COST-PER-TASK ECONOMICS",
+      "title": "Gemini 4 Argon: 100만 토큰 단일 출력과 '태스크당 비용' 중심의 모델 평가",
+      "subtitle": "Google의 첫 Gemini 4 모델 Argon이 1M 토큰 출력, 낮은 환각률, 태스크당 비용 경쟁력으로 프런티어 3강에 복귀했다.",
+      "tags": [
+            "Gemini 4 Argon",
+            "1M Output Tokens",
+            "Artificial Analysis",
+            "Cost per Task",
+            "Hallucination Rate",
+            "Long-horizon Coding",
+            "Token Efficiency",
+            "Harness Simplification"
+      ],
+      "videoUrl": "https://www.youtube.com/watch?v=5XTJRU9na3Y",
+      "videoId": "5XTJRU9na3Y",
+      "channel": "Sam Witteveen",
+      "duration": "10:11",
+      "refDate": "2026-10-01",
+      "takeaway": "모델 선택의 기준은 토큰 단가나 출력 상한이 아니라 '태스크 하나를 끝내는 데 드는 총비용·지연·신뢰도'이며, Argon은 1M 출력과 15% 환각률로 하니스를 단순화할 수 있는 후보로 부상했다.",
+      "box1": {
+            "title": "1 · 모델 포지셔닝과 100만 토큰 단일 출력의 의미",
+            "html": "<p><b>Gemini 4 Argon</b>은 Gemini 4 시리즈의 첫 모델로, 현재는 일부 사용자 대상 테스트 단계이며 정식 출시는 가까운 시일 내로 예상된다. Google은 장기 호라이즌 코딩(long-horizon coding), 지식 노동, 사이버보안 방어를 핵심 용도로 내세운다. Artificial Analysis Intelligence Index에서 <b>53점</b>으로 GPT Astra(max reasoning)와 동급이고 GPT-6.1 Sol보다 1점 높으며, 직전 프런티어 Pro인 Gemini 3.1 Pro Preview보다 <b>23점</b> 높다. 7개월간 Pro급 모델 공백 끝에 Google이 지능 기준 상위 3개 랩에 복귀했다는 평가다.</p><p>가장 눈에 띄는 사양은 <b>단일 응답 최대 100만 토큰 출력</b>이다. 비교 기준으로 Gemini 3.8 Flash는 약 64K, Opus 5.5·Fable 5.1·Astra는 128K에서 상한이 걸린다. 즉 다른 프런티어 모델 대비 약 8배다.</p><h5>왜 중요한가: 3가지 이점</h5><ul><li><b>이음매 손실 제거</b>: 출력 상한에 걸리면 하니스가 중단 → 요약/압축 → 재시작을 해야 하고, 그때마다 세부 정보가 유실된다. 캐시 가격이 계속 내려가는 추세에서는 한 번에 더 많이 생성하는 편이 유리해진다.</li><li><b>더 긴 사고(chain of thought)</b>: 상한이 낮은 모델은 사고를 서두르거나 중간에 잘리는 경향이 있었다. 상한이 커지면 사고 토큰도 여유 있게 쓸 수 있다.</li><li><b>대형 아티팩트 일괄 생성</b>: 모듈 전체 재작성, 마이그레이션, 게임 한 판 분량의 코드를 한 번에 생성할 때 변수명 등 핵심 맥락을 끝까지 유지한다.</li></ul>"
+      },
+      "box2": {
+            "title": "2 · 태스크당 비용: 토큰 효율, 가격, 환각률 데이터",
+            "html": "<p>영상의 핵심 논지는 <b>'출력 토큰 수가 많은 것'보다 '태스크를 끝내는 데 쓰는 토큰 수'가 더 중요하다</b>는 점이다. 지난 6~9개월간 주요 랩은 같은 지능을 더 짧은 사고로 내는 방향으로 움직였다. 운영 환경에서는 사실상 태스크 단위로 과금되므로, 태스크당 토큰이 적으면 비용과 지연이 함께 줄어든다. Gemini 3.6/3.7 Flash는 똑똑했지만 토큰을 과도하게 소모한 것이 약점이었다. Intelligence Index의 'cost per intelligence'는 모델의 숨은 가격표인 셈이다.</p><table class=\"matrix-table\"><thead><tr><th>항목</th><th>Argon</th><th>비교 대상</th></tr></thead><tbody><tr><td>가격(런치 할인가)</td><td>입력 $2 / 출력 $10 (100만 토큰당)</td><td>50% 런칭 할인, 캐시 입력 95% 할인</td></tr><tr><td>태스크당 비용</td><td>$1.99</td><td>Astra $3.26 (약 60% 수준)</td></tr><tr><td>토큰 사용량</td><td>Astra의 약 1.2배</td><td>비용 우위는 토큰 절감이 아니라 낮은 단가 덕분</td></tr><tr><td>vs GPT-6.1 Sol (max)</td><td>약 2.7배 비쌈</td><td>Sol이 태스크당 비용에서는 여전히 우위</td></tr><tr><td>환각률</td><td>15%</td><td>Astra 51%, GPT-6.1 Sol 54%</td></tr></tbody></table><p>환각률 15%는 DeepMind가 '모르면 모른다고 답하도록' 학습시킨 결과로 해석된다. 대신 해당 벤치마크에서 정확도는 Astra보다 낮아, 종합 OmniScience 점수는 비슷한 수준이다. 그래도 프로덕션에서는 자신 있게 틀리는 모델보다 '모르겠다'고 말하는 모델이 더 유용하다는 것이 발표자의 판단이다. 런치 할인이 끝날 즈음에는 후속 모델이 나올 가능성이 커서, 이 가격이 사실상 표준이 될 것이며 모델을 갱신하지 않는 기업에 불이익이 된다고 본다.</p>"
+      },
+      "box3": {
+            "title": "3 · 에이전트 성능, 하니스 설계 시사점, 한계",
+            "html": "<p>Artificial Analysis 기준 Argon은 <b>Automation Bench 77.5%로 1위</b>다. 반면 <b>Terminal Bench 4는 57%</b>로 3.1 Pro 대비 크게 올랐지만 Sonnet 5.5, Opus 5.5, Astra보다는 낮다. 즉 에이전트 업무 전반에서는 강하지만 터미널 중심 작업에서는 아직 선두가 아니다. Google 자체 벤치마크는 영상에서 다루지 않았고 블로그에 별도로 게시되어 있다.</p><p>Google이 든 사례는 Argon 에이전트가 여러 라운드 실험을 거쳐 비디오 디코더 코드베이스를 <b>Rust로 완전히 재작성해 2.7배 빠르게</b> 만든 것이다. 다만 생성 속도는 미공개다. 가정으로 초당 100토큰이면 100만 토큰 생성에 약 3시간이 걸리므로 디코딩 속도 개선 여부가 실사용성의 변수다. 참고로 3.8 Flash는 약 300 tokens/s이고, OpenAI의 Ultrafast 발표로 고속 디코딩 수요도 커지고 있다.</p><h5>실무 적용 포인트</h5><ul><li><b>하니스 단순화</b>: 모델이 한 번에 더 많이 처리하면 루프, 요약·압축, 재시작 로직을 줄일 수 있다.</li><li><b>평가 지표 전환</b>: 토큰 단가 대신 태스크당 총비용(가격 × 토큰 사용량), 지연, 환각률을 함께 비교해야 한다.</li><li><b>한계</b>: 도구 호출이 많은 에이전트는 어차피 여러 번의 개별 호출로 동작하므로 1M 출력의 효과가 제한적이다. 정식 출시 전이라 실제 장시간 실행의 소요 시간과 비용은 검증되지 않았다.</li></ul><p>결론적으로 Argon은 OpenAI·Anthropic을 계속 압박하는 경쟁자로서 의미가 크며, 발표자는 출시 후 장시간 실행과 태스크당 비용을 실작업으로 검증하겠다고 밝혔다.</p>"
+      },
+      "en": {
+            "title": "Gemini 4 Argon: 1M-Token Single Output and Evaluating Models by Cost per Task",
+            "subtitle": "Google's first Gemini 4 model, Argon, returns to the top three frontier labs with 1M-token output, a low hallucination rate, and competitive cost per task.",
+            "moduleTag": "FRONTIER MODEL COST-PER-TASK ECONOMICS",
+            "takeaway": "The right model-selection metric is not token price or output cap but the total cost, latency, and reliability of finishing one task; with 1M output and a 15% hallucination rate, Argon emerges as a candidate for simplifying harnesses.",
+            "box1": {
+                  "title": "1 · Model Positioning and What 1M-Token Single Output Means",
+                  "html": "<p><b>Gemini 4 Argon</b> is the first model in the Gemini 4 series. It is currently in testing with selected users, and broader availability is expected in the near future. Google pitches it for long-horizon coding, knowledge work, and cybersecurity defense. On the Artificial Analysis Intelligence Index it scores <b>53</b>, on par with GPT Astra (max reasoning), one point above GPT-6.1 Sol, and <b>23 points</b> above Gemini 3.1 Pro Preview, the previous frontier Pro model. After seven months without a Pro-class release, Google is seen as back among the top three labs on intelligence.</p><p>The most striking spec is <b>up to 1 million output tokens in a single response</b>. For comparison, Gemini 3.8 Flash topped out around 64K, and Opus 5.5, Fable 5.1, and Astra cap at 128K, so Argon offers roughly 8x the output ceiling of other frontier models.</p><h5>Why it matters: three advantages</h5><ul><li><b>No loss at the seams</b>: When a model hits its output cap, the harness must stop, summarize/compact, and restart, losing detail each time. As cache prices keep falling, generating more in one shot becomes more attractive.</li><li><b>Longer chain of thought</b>: Models with lower caps tended to rush their reasoning or get cut off mid-generation. A higher cap leaves room for thinking tokens.</li><li><b>Large artifacts in one pass</b>: For full module rewrites, migrations, or generating a whole game's code, the model keeps variable names and other key context through to the end.</li></ul>"
+            },
+            "box2": {
+                  "title": "2 · Cost per Task: Token Efficiency, Pricing, and Hallucination Data",
+                  "html": "<p>The video's core argument is that <b>the number of tokens used to finish a task matters more than how many tokens a model can output</b>. Over the past 6–9 months, major labs have moved toward getting the same intelligence from shorter reasoning. In production you effectively pay per task, so fewer tokens per task means lower cost and latency together. Gemini 3.6/3.7 Flash were smart but burned too many tokens, which was their weakness. The Intelligence Index's cost per intelligence is effectively a model's hidden price tag.</p><table class=\"matrix-table\"><thead><tr><th>Item</th><th>Argon</th><th>Comparison</th></tr></thead><tbody><tr><td>Price (launch discount)</td><td>$2 in / $10 out per 1M tokens</td><td>50% launch discount, cached input 95% off</td></tr><tr><td>Cost per task</td><td>$1.99</td><td>Astra $3.26 (about 60%)</td></tr><tr><td>Token usage</td><td>About 1.2x Astra</td><td>The cost edge comes from lower unit price, not fewer tokens</td></tr><tr><td>vs GPT-6.1 Sol (max)</td><td>About 2.7x more expensive</td><td>Sol still wins on cost per task</td></tr><tr><td>Hallucination rate</td><td>15%</td><td>Astra 51%, GPT-6.1 Sol 54%</td></tr></tbody></table><p>The 15% hallucination rate suggests DeepMind trained Argon to say it doesn't know rather than make something up. The trade-off is lower accuracy than Astra on that benchmark, so overall OmniScience scores are roughly equal. Still, the presenter argues that for production work a model that says \"I don't know\" is more useful than one confidently wrong. He expects this price to be the effective standard by the time the launch discount ends, since newer models will arrive, which penalizes companies that don't keep updating models.</p>"
+            },
+            "box3": {
+                  "title": "3 · Agent Performance, Harness Design Implications, and Limits",
+                  "html": "<p>On Artificial Analysis, Argon ranks <b>first on Automation Bench at 77.5%</b>. On <b>Terminal Bench 4 it scores 57%</b>, a big jump over 3.1 Pro but still behind Sonnet 5.5, Opus 5.5, and Astra. So it is strong on agentic work in general but not yet the leader on terminal-centric tasks. Google's own benchmarks were not covered in the video and are in the blog post.</p><p>Google's example was Argon agents running many rounds of experiments to <b>fully rewrite a video decoder codebase in Rust, making it 2.7x faster</b>. Generation speed, however, has not been published. Assuming 100 tokens/s, producing 1M tokens would take about three hours, so decoding speed is the key variable for practical use. For reference, 3.8 Flash runs around 300 tokens/s, and OpenAI's Ultrafast announcement is also raising demand for faster decoding.</p><h5>Practical takeaways</h5><ul><li><b>Simpler harnesses</b>: If the model handles more in one shot, you can cut loops, summarize/compact steps, and restart logic.</li><li><b>Change the metric</b>: Compare total cost per task (price × token usage), latency, and hallucination rate rather than token price alone.</li><li><b>Limits</b>: Tool-heavy agents already work across many separate calls, so 1M output helps less. The model is not yet released, so real long-run duration and cost are unverified.</li></ul><p>In conclusion, Argon matters as a competitor that keeps pressure on OpenAI and Anthropic, and the presenter plans to test long runs and cost per task on real-world work once it is available.</p>"
+            }
+      },
+      "addedDate": "2026-10-01"
+},
+
+    {
       "id": "higgsfield-api-niche-saas-hikaya-2026",
       "categoryId": "agentops",
       "moduleTag": "API WRAPPER PRODUCTIZATION & COST CONTROL",
