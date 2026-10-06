@@ -66,6 +66,63 @@ window.DASHBOARD_DATA = {
   ],
   entries: [
     {
+      "id": "holo4-gui-code-tool-unified-agent-2026",
+      "categoryId": "multi-agent",
+      "moduleTag": "CROSS-INTERFACE AGENT MODEL",
+      "title": "Holo4: 클릭하고, 코딩하고, 툴을 호출하는 단일 에이전트 모델",
+      "subtitle": "H Company의 오픈 웨이트 Holo4는 GUI·코드·툴(MCP/API) 세 레인을 하나의 모델이 상황에 맞게 골라 쓰도록 RL로 학습시켰지만, 비상업 라이선스가 상용화의 걸림돌이다.",
+      "tags": [
+            "Holo4",
+            "H Company",
+            "Computer Use",
+            "GUI Agent",
+            "MCP",
+            "Reinforcement Learning",
+            "Agent Harness",
+            "Dense vs MoE",
+            "Qwen",
+            "OSWorld"
+      ],
+      "videoUrl": "https://www.youtube.com/watch?v=vKjnZAcimss",
+      "videoId": "vKjnZAcimss",
+      "channel": "Sam Witteveen",
+      "duration": "18:03",
+      "refDate": "2026-10-06",
+      "takeaway": "에이전트의 미래는 '클릭할지, 코드를 짤지, 툴을 부를지'를 모델이 스스로 고르는 능력이며, 이 능력은 하이브리드 환경 + 강화학습 + 전용 하네스의 결합에서 나온다.",
+      "box1": {
+            "title": "1 · 문제 정의: 한쪽 레인에 갇힌 에이전트와 Holo4의 세 레인",
+            "html": "<p>기존 에이전트는 대체로 한쪽 세계에만 강했습니다. 화면을 보고 클릭·입력하는 <b>컴퓨터 사용(GUI) 모델</b>은 화면이 없는 서버에서 막히고, 툴·API 호출에 강한 모델은 API가 없는 레거시 앱에서 리포트를 뽑아야 할 때 막힙니다. 그러나 실제 업무는 '레거시 UI 클릭 → CSV 정제 → Slack/API로 전송'처럼 경계를 넘나듭니다. 지금까지의 해법은 시각 전용 모델(모든 것을 스크린샷으로 처리)과 오케스트레이션/MCP 담당 모델을 체이닝하는 것이었습니다.</p><p>Paris 소재 H Company(Holo 모델 계열 개발사)가 공개한 <b>Holo4</b>는 클릭, 코드 작성·실행, MCP/API 툴 호출을 모두 수행하고, 무엇보다 <b>그 사이에서 스스로 선택(orchestrate)</b>하도록 학습된 오픈 웨이트 모델입니다. 이전 Holo 모델은 function calling 방식이었던 반면, Holo4는 GUI·코드·툴을 add-on이 아닌 <b>first-class</b> 옵션으로 함께 학습했다는 점이 차별점입니다.</p><p>에이전트 루프의 복습: 모델이 한 가지 액션을 결정하면 <b>하네스(harness, 모델 주변 코드)</b>가 실제로 실행(클릭/코드 실행/툴 호출)하고, 결과(새 스크린샷 또는 API 응답)를 이전 단계 메모리와 함께 모델에 돌려줍니다. 모델은 직접 아무것도 만지지 않고 결정만 하며, 벤치마크 점수가 하네스에 따라 크게 달라지므로 하네스의 중요성이 커지고 있습니다.</p><table class='matrix-table'><thead><tr><th>레인</th><th>방식</th><th>장점</th><th>한계</th></tr></thead><tbody><tr><td>GUI</td><td>스크린샷 → 클릭/입력</td><td>사람이 쓰는 모든 것에 적용 가능</td><td>느리고, 버튼/UI 변경에 취약, 컨텍스트 소모 큼</td></tr><tr><td>Code</td><td>스크립트 작성 → 샌드박스/셸 실행</td><td>빠르고 정확</td><td>코드로 풀 수 있는 작업에 한정(화면 버튼 위치 판단 불가)</td></tr><tr><td>Tools</td><td>MCP/API 호출 → 구조화 데이터</td><td>셋 중 가장 신뢰도 높음</td><td>해당 MCP/API가 존재해야 함</td></tr></tbody></table>"
+      },
+      "box2": {
+            "title": "2 · 모델 라인업, 벤치마크, 운영 시 고려사항",
+            "html": "<p><b>라인업:</b> ① Holo4 27B(dense, Qwen 계열 27B 기반), ② Holo4 35B-A3B(MoE, 활성 파라미터 3B, 더 이전 Qwen 세대 기반), ③ Holotron Nano(동일 레시피를 NVIDIA Nemotron 3 Nano Omni에 적용). 가중치는 Hugging Face에 양자화 버전과 함께 공개되며, H의 호스팅 API도 있습니다. bf16 풀 버전은 약 <b>54GB</b>로, 영상에서는 RTX Pro 6000이 달린 Dell Pro Max 머신에서 구동했습니다.</p><p><b>운영 팁:</b> 스크린샷은 KV cache를 매우 빠르게 채우므로 배포 시 이미지용 헤드룸을 반드시 확보해야 합니다. 또한 스크린샷은 JSON/터미널 출력 대비 컨텍스트를 훨씬 많이 소모하기 때문에, 많은 로컬 에이전트 사용자가 시각 작업을 아예 포기해 왔습니다.</p><p><b>벤치마크 해석:</b> 비교 대상은 며칠~몇 주 전 기준 프런티어 모델들이며, 이들은 로컬 실행이 불가하고 이미지 포함 API 비용이 급격히 커진다는 점에서 '현 수준 가늠용 가이드'로 보는 편이 좋습니다. OSWorld에서 27B는 이전 세대 GPT-5.5를 소폭 앞섰고, 다른 벤치마크에서는 상위권(Opus 5.5 등)과 상당한 격차가 있으나 <b>실행 비용은 27B가 약 1/7 수준</b>이라 정확도만 보지 말고 비용을 함께 봐야 합니다.</p><p><b>Dense vs MoE:</b> 35B-A3B MoE는 OSWorld에서 27B dense의 절반에도 못 미쳤고, 다른 벤치마크에서도 격차가 있었습니다. 활성 파라미터 27B 대 3B의 차이가 이미지 표현 추출에서 크게 드러난 것으로 보이며, GUI/비전 중심 작업에는 dense 모델이 명확히 유리하다는 시사점이 있습니다.</p><p><b>배치 전략:</b> H는 벤치마크를 Holo 단독(계획+실행)으로 측정했지만, 상위 대형 모델이 계획을 맡고 화면 중심 작업만 Holo에 위임하는 구조도 가능합니다. H의 자체 하네스/SDK(영상에서는 'High Agents'로 발음)는 Claude Code와 MCP로 연동될 수 있습니다.</p>"
+      },
+      "box3": {
+            "title": "3 · 학습 방법, 데모, 한계와 실무 판단",
+            "html": "<p><b>학습 레시피(가장 흥미로운 부분):</b> H는 자동 검증 가능한 인터랙티브 환경·과제를 대량 생성하는 <b>agentic task factory</b>를 구축했습니다. 실제 웹사이트 스크린샷, 오픈소스 웹앱, 특정 MCP 서버, 데스크톱 환경 등이 포함되며, 일부는 <b>하이브리드 환경</b>이라 같은 상태를 GUI로도, MCP·코드로도 풀 수 있습니다. 그 위에서 <b>강화학습(RL)</b>이 '그 상황에서 가장 잘 먹히는 방식'에 보상을 주므로, API가 있는데 5단계 메뉴를 클릭하는 것은 느린 길이고, API가 없을 때는 스크린샷이 정답이라는 선택 감각이 학습됩니다.</p><ul><li>SFT 약 <b>1,270억 토큰</b> → 별도 RL 전문가 2개를 학습 후 하나의 모델로 <b>병합</b></li><li>하네스도 재설계: 실패 사례를 태깅해 엔지니어가 검토·개선했고, 특히 <b>수백 스텝을 추적하는 안정적 메모리</b>가 큰 성과였음</li><li>동일 레시피를 Qwen dense/MoE와 Nemotron에 적용 → 특정 모델 커스터마이징보다 <b>post-training 파이프라인</b>이 핵심 자산이며, 차기 Qwen 4 27B 등장 시 즉시 재적용 가능한 구조</li></ul><p><b>데모(로컬 미니 하네스 + 가짜 어드민 패널의 주문 목록):</b> ① MCP 꺼짐: GUI 3스텝으로 CSV 다운로드 후 Python으로 집계해 답변. ② MCP 켜짐: 'export orders' 툴 호출 → 코드 → 답변으로 GUI 스텝 0, 단계 대폭 감소. ③ 코드 전용: 두 주문 export를 대조해 불일치 목록 산출(환경 문제를 겪으며 Pandas로 전환, 약 1분 37초). 즉 같은 과제를 사용 가능한 도구 구성에 따라 경로를 바꿔 해결합니다. H는 벤치마크 점수 뒤의 <b>모든 trajectory를 공개</b>했고 뷰어도 제공하므로 자체 모델 학습에 참고할 가치가 큽니다.</p><p><b>한계/결론:</b> 가장 큰 문제는 <b>라이선스</b>입니다. 기반 Qwen과 이전 Holo 3.1은 Apache 2.0이었지만 Holo4는 <b>비상업(non-commercial)</b>이라 실험·프로토타입·연구만 가능하고, 제품 출시는 H의 API 사용 또는 직접 계약이 필요합니다. 진영 전체의 방향성은 분명합니다: 클릭/코딩/호출 중 선택하는 에이전트, 그 능력은 훈련 환경·RL·하네스 공동 설계에서 나옵니다. 다만 진행자는 브라우저 에이전트가 일반 모델+커스텀 하네스 대비 얼마나 유용한지는 아직 확신하지 못한다는 입장입니다.</p>"
+      },
+      "en": {
+            "title": "Holo4: A Single Agent Model That Clicks, Codes, and Calls Tools",
+            "subtitle": "H Company's open-weight Holo4 is trained with RL so one model picks among GUI, code, and tool (MCP/API) lanes as the situation demands, but its non-commercial license blocks productization.",
+            "moduleTag": "CROSS-INTERFACE AGENT MODEL",
+            "takeaway": "The future of agents is the model itself choosing whether to click, write code, or call a tool, and that ability comes from combining hybrid environments, reinforcement learning, and a purpose-built harness.",
+            "box1": {
+                  "title": "1 · Problem definition: agents stuck in one lane, and Holo4's three lanes",
+                  "html": "<p>Existing agents have generally been strong on only one side. A <b>computer-use (GUI) model</b> that looks at the screen and clicks or types gets stuck on a server with no screen, while a model that is good at tools and APIs gets stuck when it must pull a report out of a legacy app with no API. Real work crosses that line: 'click through a legacy UI → clean a CSV → post to Slack/API'. The usual workaround has been chaining a vision-only model (everything as screenshots) with a separate orchestration/MCP model.</p><p><b>Holo4</b>, released by Paris-based H Company (the lab behind the Holo models), is an open-weight model that clicks, writes and runs code, and calls MCP/API tools, and above all <b>orchestrates the choice among them</b>. Earlier Holo models used function calling; the difference here is that GUI, code, and tools were trained together as <b>first-class</b> options rather than add-ons.</p><p>Agent loop recap: the model decides one action, the <b>harness</b> (the code around the model) executes it (click / run code / call tool), then returns the result (a new screenshot or an API response) along with memory of previous steps. The model never touches anything itself, it only decides. Benchmark scores vary significantly with the harness, so the harness matters more and more.</p><table class='matrix-table'><thead><tr><th>Lane</th><th>Method</th><th>Strength</th><th>Limitation</th></tr></thead><tbody><tr><td>GUI</td><td>Screenshot → click/type</td><td>Works on anything a human can use</td><td>Slow, brittle to UI changes, heavy context use</td></tr><tr><td>Code</td><td>Write script → run in sandbox/shell</td><td>Fast and precise</td><td>Only for tasks solvable with code (can't decide which on-screen button to press)</td></tr><tr><td>Tools</td><td>MCP/API call → structured data</td><td>Most reliable of the three</td><td>Requires a matching MCP/API to exist</td></tr></tbody></table>"
+            },
+            "box2": {
+                  "title": "2 · Lineup, benchmarks, and operational considerations",
+                  "html": "<p><b>Lineup:</b> ① Holo4 27B (dense, built on a Qwen 27B), ② Holo4 35B-A3B (MoE, 3B active parameters, built on an earlier Qwen generation), ③ Holotron Nano (the same recipe applied to NVIDIA's Nemotron 3 Nano Omni). Weights are on Hugging Face with several quantizations, and H also offers a hosted API. The full bf16 version is about <b>54GB</b>; the video runs it on a Dell Pro Max machine with an RTX Pro 6000.</p><p><b>Ops tip:</b> screenshots fill the KV cache very fast, so leave headroom for images when deploying. Screenshots also consume far more context than JSON or terminal output, which is why many local-agent users have skipped visual work entirely.</p><p><b>Reading the benchmarks:</b> the comparison models are frontier models from days to weeks earlier. They can't be run locally and image-heavy API usage gets expensive fast, so treat them as a guide to the current state of the art. On OSWorld the 27B was slightly ahead of the older GPT-5.5; on another benchmark it is well behind the top models (e.g., Opus 5.5), but <b>the 27B costs roughly 1/7 as much to run</b>, so look at cost alongside accuracy.</p><p><b>Dense vs MoE:</b> the 35B-A3B MoE scored less than half of the 27B dense on OSWorld, with a clear gap on other benchmarks too. The 27B vs 3B active-parameter difference seems to matter greatly for extracting representations from images, so dense models have a clear advantage for GUI/vision-centric tasks.</p><p><b>Deployment strategy:</b> H measured benchmarks with Holo alone (planning + acting), but a larger model can also plan and hand only the screen-heavy work to Holo. H's own harness/SDK (pronounced 'High Agents' in the video) can plug into Claude Code over MCP.</p>"
+            },
+            "box3": {
+                  "title": "3 · Training method, demo, limits, and practical judgment",
+                  "html": "<p><b>Training recipe (the most interesting part):</b> H built an <b>agentic task factory</b>, a set of pipelines producing interactive environments and automatically verifiable tasks, including real-website screenshots, open-source web apps, specific MCP servers, and desktop environments. Some are <b>hybrid environments</b> where the same state can be solved by GUI or by MCP/code. <b>Reinforcement learning (RL)</b> on top rewards whatever works best in that situation, so the model learns that clicking through five menus is the slow path when an API exists, and that screenshots are the right answer when no API is available.</p><ul><li>SFT on about <b>127 billion tokens</b> → two separate RL experts trained, then <b>merged</b> into one model</li><li>The harness was rebuilt too: failures were tagged and reviewed by engineers, and a major win was <b>reliable memory that tracks hundreds of steps</b></li><li>The same recipe was applied to Qwen dense/MoE and Nemotron → the <b>post-training pipeline</b>, not customization for one model, is the core asset, ready to reapply when Qwen 4 27B arrives</li></ul><p><b>Demo (local mini harness + a mock admin panel of orders):</b> ① MCP off: 3 GUI steps to download a CSV, then Python to aggregate and answer. ② MCP on: call the 'export orders' tool → code → answer, with far fewer steps and zero GUI. ③ Code only: reconcile two order exports and list mismatches (hit environment issues, switched to Pandas, about 1m37s). The same task is solved via different paths depending on the tools available. H has <b>open-sourced every trajectory</b> behind the benchmark scores, with a viewer, which is valuable for anyone training their own model.</p><p><b>Limits/conclusion:</b> the biggest problem is the <b>license</b>. The Qwen base and earlier Holo 3.1 were Apache 2.0, but Holo4 is <b>non-commercial</b>: fine for experiments, prototypes, and research, but shipping a product requires H's API or a direct agreement. The direction is clear: agents that choose between clicking, coding, and calling, with that ability coming from co-designing training environments, RL, and the harness. The presenter remains unconvinced, though, that browser agents are more useful than a normal model with a custom harness.</p>"
+            }
+      },
+      "addedDate": "2026-10-06"
+},
+
+    {
       "id": "adarip-autonomous-driving-distribution-shift-2026",
       "categoryId": "agentops",
       "moduleTag": "UNCERTAINTY-AWARE DETECTION · RECOVERY · ADAPTATION",
