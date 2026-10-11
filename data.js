@@ -66,6 +66,178 @@ window.DASHBOARD_DATA = {
   ],
   entries: [
     {
+      "id": "ai-literacy-1-intelligence-frontier-2026",
+      "categoryId": "agentops",
+      "moduleTag": "AI LITERACY: CAPABILITY & COST TRAJECTORY",
+      "title": "조코딩 AI 리터러시 강의 1부: 2026년, AI 지능은 어디까지 왔나",
+      "subtitle": "AI는 프로그래밍·수학·과학 벤치마크에서 인간을 넘어서고 있고 비용은 급락 중이므로, 업무 계획은 현재 성능이 아니라 '더 똑똑하고 더 싸진 미래'를 기준으로 세워야 한다.",
+      "tags": [
+            "AI Literacy",
+            "Benchmark",
+            "AtCoder",
+            "Humanity's Last Exam",
+            "ARC-AGI",
+            "Recursive Self-Improvement",
+            "Open-weight Models",
+            "Cost Deflation",
+            "DeepSeek",
+            "Kimi"
+      ],
+      "videoUrl": "https://www.youtube.com/watch?v=AHlWV-nI9yo",
+      "videoId": "AHlWV-nI9yo",
+      "channel": "조코딩 JoCoding",
+      "duration": "10:18",
+      "refDate": "2026-10-10",
+      "takeaway": "AI는 매년 더 똑똑해지고 더 싸지므로 '지금의 성능'을 전제로 업무 계획을 세우면 금방 낡는다. 개선 추세를 전제로 설계하고 실제 업무에 적용하는 쪽이 격차를 만든다.",
+      "box1": {
+            "title": "1 · 지능의 현주소: 분야별 벤치마크가 보여주는 인간 추월",
+            "html": "<p>영상은 총 6부 구성의 AI 리터러시 강의 중 1부로, 'AI 지능이 어디까지 발전했는가'를 다룬다. 전체 강의는 ① AI 지능의 발전 수준 ② AI가 만들 수 있는 콘텐츠 ③ 업무 방식 변화 사례 ④ AI 시대에 준비할 것의 흐름으로 진행된다. OpenAI, Anthropic, Google의 신모델이 계속 나오면서 최근 3년간 각종 지능 벤치마크 점수는 꾸준히 우상향하며 신기록을 경신하고 있다.</p><h5>분야별 증거</h5><ul><li><b>프로그래밍:</b> 2026년 AtCoder 세계대회에서 OpenAI 모델이 <b>8,300점</b>으로 1위, 인간 최고 성적(2위)은 <b>4,300점</b>으로 약 2배 격차였다. 1년 전 같은 대회에서는 인간이 근소한 차이로 1위를 지켰다.</li><li><b>바둑과의 유사성:</b> 2016년 AlphaGo 대 이세돌, 2017년 AlphaGo Zero가 2016 AlphaGo를 100대 0으로 이긴 사례와 같은 패턴이다. 이세돌 기사는 AI를 바둑의 '신' 같다고 표현했다. 장강명 작가의 『먼저 온 미래』가 바둑에서 일어난 일이 다른 산업으로 번질 것이라고 예견했는데, 지금 그대로 진행되고 있다.</li><li><b>그 밖의 영역:</b> 이미지 분류, 수학, 과학 등 여러 영역에서 인간 기준선을 넘어섰다.</li></ul><p>핵심은 단일 지표가 아니라, 한 분야씩 '인간이 따라가기 어려운 수준'에 도달하는 현상이 산업 전반으로 확산 중이라는 점이다.</p>"
+      },
+      "box2": {
+            "title": "2 · 벤치마크 난이도 상승과 '발견'의 단계",
+            "html": "<p>AI가 기존 시험을 빠르게 정복하자 평가 기준 자체가 계속 어려워지고 있다. 영상은 대표적인 두 가지 사례를 든다.</p><table class='matrix-table'><thead><tr><th>벤치마크</th><th>설계 의도</th><th>결과</th></tr></thead><tbody><tr><td>Humanity's Last Exam ('인류의 마지막 시험')</td><td>수학·인문·자연과학 전문가들이 모여 전문가만 풀 수 있는 <b>2,500문항</b>을 제작</td><td>출시 초기에는 다른 벤치마크에서 80~90%를 받던 최신 모델도 <b>한 자릿수</b> 점수. 신모델이 나오며 급등해 현재 <b>절반 이상</b> 돌파</td></tr><tr><td>ARC-AGI</td><td>설명 없는 게임을 직접 플레이하며 규칙을 파악하고 다음 단계로 진행. 인간은 준비 없이 100% 가능</td><td>출시 당시 최신 AI는 <b>1%도</b> 못 넘음. GPT-6 Astra 출시로 <b>99.9%</b> 달성</td></tr></tbody></table><p>'인간은 잘하지만 AI는 못하는 것'을 찾으려는 시도마저 신모델이 나올 때마다 빠르게 정복되고 있다.</p><h5>시험 풀이를 넘어 새로운 영역 발견으로</h5><p>OpenAI 발표에 따르면 AI가 수학·이론 전산학의 미해결 문제에서 새로운 결과를 도출하고 증명까지 해냈다. 수학자들이 수십 년간 풀지 못한 Erdős problems 같은 문제에 대해 AI가 형식적(formal) 방식으로 직접 검증했다. AI가 답을 내놓기 시작했고, 인간의 새로운 발견도 돕는 단계에 들어섰다는 의미다.</p>"
+      },
+      "box3": {
+            "title": "3 · 더 똑똑하고 더 싸진다: 가속·비용 하락과 실무 계획 원칙",
+            "html": "<p>조코딩이 Anthropic 공동창업자 및 OpenAI 내부 인력을 인터뷰한 바에 따르면, 모델 개발자들은 내부적으로 성능이 계속 오르고 있으며 둔화 조짐이 전혀 없다고 말한다. AI 개선 속도는 점점 빨라지고 있고, OpenAI는 AI가 스스로를 개선하는 <b>recursive self-improvement</b> 단계를 목격하고 있다고 한다.</p><h5>비용 구조의 변화</h5><ul><li>Google 발표: 최상위 모델의 비용이 최근 <b>18개월간 97% 하락</b>.</li><li>DeepSeek, Kimi 등 저가 중국 모델과 open-weight 모델이 가격을 끌어내리고 있다.</li><li>일부 중국 open 모델은 최첨단 미국 모델의 <b>80~90% 성능</b>을 내면서 가격은 약 <b>20%</b> 수준이라, 트래픽이 이쪽으로 옮겨가는 흐름이 나타난다.</li><li>경쟁이 이어지는 한 가격 인하 압력도 계속될 것으로 전망된다.</li></ul><h5>실무 시사점</h5><p>Sam Altman의 요약은 '모델은 더 좋아지고 가격은 더 싸진다'이다. 따라서 <b>현재 성능 수준을 기준으로 업무 계획을 세우지 말고</b>, 더 나은 모델이 계속 나온다는 가정 아래 미래 계획을 세우는 편이 유리하다. 비용 목표는 전등을 한 시간 켜두는 것을 신경 쓰지 않듯 AI 비용이 무시할 만한 수준이 되는 것이다. 결론적으로 AI는 매년 똑똑해지고 싸지므로, 차이는 이를 실제 업무에 적용하느냐에 달려 있다. 영상 말미에서는 코딩 없이 AI에게 업무를 위임하는 방법을 다루는 'AX Talent War Online' 강의를 안내한다.</p>"
+      },
+      "en": {
+            "title": "JoCoding's AI Literacy Lecture Part 1: 2026, How Far Has AI Intelligence Advanced?",
+            "subtitle": "AI is surpassing humans on programming, math, and science benchmarks while costs plunge, so work plans should be built on a future of smarter and cheaper models, not on today's performance.",
+            "moduleTag": "AI LITERACY: CAPABILITY & COST TRAJECTORY",
+            "takeaway": "AI gets smarter and cheaper every year, so plans anchored to today's performance go stale quickly. Design for the improvement trend and actually apply AI to your work, because that is what creates the gap.",
+            "box1": {
+                  "title": "1 · Where Intelligence Stands: Benchmarks Show AI Overtaking Humans",
+                  "html": "<p>This video is Part 1 of a six-part AI literacy course and asks how far AI intelligence has advanced. The full course covers: (1) how far AI intelligence has progressed, (2) what content AI can create, (3) case studies of changing ways of working, and (4) what to prepare for in the AI era. As OpenAI, Anthropic, and Google keep releasing new models, scores on intelligence benchmarks over the past three years have trended steadily upward and set new records.</p><h5>Evidence by field</h5><ul><li><b>Programming:</b> At the 2026 AtCoder world competition, an OpenAI model took first place with <b>8,300 points</b>, while the best human (second place) scored <b>4,300</b>, roughly half. At the same competition a year earlier, a human narrowly held first place.</li><li><b>The Go parallel:</b> The same pattern as AlphaGo vs. Lee Sedol in 2016 and AlphaGo Zero beating the 2016 AlphaGo 100 to 0 in 2017. Lee Sedol described AI as practically a 'god' of Go. Author Jang Kang-myung's book 'The Future That Came Early' predicted that what happened in Go would spread to other industries, and that is now unfolding.</li><li><b>Other areas:</b> AI has passed the human baseline in image classification, mathematics, science, and more.</li></ul><p>The key point is not any single metric but that field after field is reaching a level where humans struggle to keep up, and the phenomenon is spreading across industries.</p>"
+            },
+            "box2": {
+                  "title": "2 · Harder Benchmarks and the Move Toward 'Discovery'",
+                  "html": "<p>As AI conquers existing tests quickly, the evaluations themselves keep getting harder. The video gives two representative examples.</p><table class='matrix-table'><thead><tr><th>Benchmark</th><th>Design intent</th><th>Result</th></tr></thead><tbody><tr><td>Humanity's Last Exam ('the last test for humanity')</td><td>Experts in mathematics, humanities, and natural sciences built <b>2,500 questions</b> that only experts can solve</td><td>At launch, even top models scoring 80-90% on other benchmarks got only <b>single digits</b>. Scores rose steeply with new models and now <b>more than half</b> has been cleared</td></tr><tr><td>ARC-AGI</td><td>Play a game with no instructions, work out its rules, and advance to the next level. Humans can score 100% without preparation</td><td>At release, the latest AI couldn't clear <b>1%</b>. With GPT-6 Astra it reached <b>99.9%</b></td></tr></tbody></table><p>Even the effort to find 'things humans do well but AI cannot' keeps getting conquered each time a new model ships.</p><h5>From solving tests to discovering new territory</h5><p>According to an OpenAI announcement, AI has derived and proved new results on unsolved problems in mathematics and theoretical computer science. For problems like the Erdős problems, which mathematicians failed to solve for decades, AI directly verified results in a formal way. AI has begun to provide answers and is now helping with new human discoveries.</p>"
+            },
+            "box3": {
+                  "title": "3 · Smarter and Cheaper: Acceleration, Falling Costs, and Planning Principles",
+                  "html": "<p>In interviews JoCoding conducted with Anthropic co-founders and OpenAI insiders, model developers said their models keep improving internally with no sign of slowing down. AI is improving faster and faster, and OpenAI says it is witnessing a stage of <b>recursive self-improvement</b>, where AI improves itself.</p><h5>Changes in cost structure</h5><ul><li>Google's announcement: the cost of its top-tier models fell <b>97% over the last 18 months</b>.</li><li>Low-cost Chinese models and open-weight models such as DeepSeek and Kimi are pushing prices down.</li><li>Some Chinese open models reach <b>80-90% of the performance</b> of the most advanced US models at roughly <b>20% of the price</b>, and traffic is shifting toward them.</li><li>As long as competition continues, price pressure is expected to continue.</li></ul><h5>Practical implications</h5><p>Sam Altman's summary: 'models get better, and prices get cheaper.' Therefore <b>don't base work plans on current performance levels</b>; it is more advantageous to plan assuming newer, better models will keep emerging. The cost goal is for AI to become as negligible as leaving a light on for an hour. In short, AI gets smarter and cheaper every year, and the difference comes down to whether you apply it to your work. The video closes by pointing to the 'AX Talent War Online' course on delegating tasks to AI without knowing how to code.</p>"
+            }
+      },
+      "addedDate": "2026-10-10"
+},
+
+    {
+      "id": "ml-portfolio-five-projects-2026",
+      "categoryId": "agentops",
+      "moduleTag": "ML PORTFOLIO END-TO-END DEPLOYMENT",
+      "title": "취업으로 이어지는 머신러닝 프로젝트 5선: 노트북에서 배포 가능한 포트폴리오로",
+      "subtitle": "이탈 예측·집값 회귀·추천·사기 탐지·이미지 분류를 평가 지표, 데이터 누수, 배포, 모니터링까지 엮어 end-to-end 증명물로 만드는 법",
+      "tags": [
+            "Machine Learning",
+            "Portfolio",
+            "Churn Prediction",
+            "Regression",
+            "Recommendation System",
+            "Fraud Detection",
+            "Imbalanced Data",
+            "Transfer Learning",
+            "Streamlit",
+            "FastAPI",
+            "Model Monitoring",
+            "Data Drift"
+      ],
+      "videoUrl": "https://www.youtube.com/watch?v=aiUpMTL09jM",
+      "videoId": "aiUpMTL09jM",
+      "channel": "Intellipaat",
+      "duration": "13:59",
+      "refDate": "2026-10-10",
+      "takeaway": "포트폴리오를 강하게 만드는 것은 프로젝트 주제가 아니라 '문제 정의 → 베이스라인 비교 → 비즈니스에 맞는 평가 → 배포·모니터링'까지 이어지는 end-to-end 사고의 증명이다.",
+      "box1": {
+            "title": "1 · 핵심 주장: Titanic·Iris 노트북으로는 차별화되지 않는다",
+            "html": "<p>영상은 이력서에 'machine learning'을 적는 것만으로는 부족하다는 문제의식에서 출발한다. Titanic, Iris, 기본 예측 노트북은 수천 명의 지원자가 이미 올려둔 것이라 변별력이 없다. 채용 담당자가 보고 싶은 것은 모델을 학습시킬 줄 안다는 사실이 아니라, <b>실제 문제를 ML로 푸는 방법을 안다</b>는 증거다.</p><p>이를 위해 제시하는 방법은 다섯 가지 프로젝트를 단일 노트북이 아닌 <b>실제 ML 포트폴리오 프로젝트</b>로 끌어올리는 것이다. 공통 업그레이드 경로는 같다. 단순 베이스라인에서 시작하고, 더 복잡한 모델과 비교하며, 정확도 하나가 아닌 문제에 맞는 지표로 평가한다. 그리고 Streamlit UI나 FastAPI 엔드포인트로 배포까지 보여준다.</p><h5>다섯 프로젝트 한눈에 보기</h5><table class=\"matrix-table\"><tr><th>프로젝트</th><th>문제 유형</th><th>베이스라인 → 비교 모델</th><th>핵심 평가 지표</th></tr><tr><td>고객 이탈 예측</td><td>이진 분류</td><td>Logistic Regression → Random Forest, XGBoost</td><td>Precision, Recall, F1, ROC</td></tr><tr><td>집값 예측</td><td>회귀</td><td>Linear Regression → Random Forest, Gradient Boosting, XGBoost</td><td>MAE, RMSE, R²</td></tr><tr><td>추천 시스템</td><td>랭킹</td><td>Content-based → Collaborative → Hybrid</td><td>Precision@K, Recall@K, NDCG</td></tr><tr><td>사기 탐지</td><td>불균형 이진 분류</td><td>Logistic Regression → Random Forest, XGBoost</td><td>Precision, Recall, F1, PR-AUC</td></tr><tr><td>이미지 분류</td><td>딥러닝 / CV</td><td>CNN, Transfer Learning(ResNet, EfficientNet, MobileNet)</td><td>Precision, Recall, F1, Confusion Matrix</td></tr></table>"
+      },
+      "box2": {
+            "title": "2 · 프로젝트별 상세: 무엇을 만들고 어디서 차별화하는가",
+            "html": "<h5>프로젝트 1 · 고객 이탈 예측 (Churn)</h5><p>tenure, 월 요금, 계약 유형, 결제 방식, 사용량, 이전 상호작용으로 이탈 여부(yes/no)를 예측하는 이진 분류다. 영상은 \"정확도 92%\"라고만 말하지 말라고 경고한다. 이탈 고객이 잔류 고객보다 훨씬 적으면 정확도는 오해를 부르기 때문이다. Precision, Recall, F1, ROC로 평가하고 feature importance를 분석한다. 예를 들어 월 단위 계약 고객이 더 많이 이탈하는지, 월 요금이 높으면 이탈이 늘어나는지를 확인한다. 마지막에는 고객 정보를 입력하면 이탈 확률을 돌려주는 웹앱(Streamlit 또는 FastAPI)을 만든다.</p><h5>프로젝트 2 · 집값 예측 (Regression)</h5><p>위치, 방·욕실 수, 면적, 연식, 차고 크기 등으로 가격을 예측한다. 실제 데이터는 결측치, 범주형 변수, 이상치, 스케일 차이, 부정확·불일치 데이터를 포함하므로, 전처리 파이프라인이 이 문제들을 어떻게 다뤘는지 설명해야 한다. 평가는 MAE, RMSE, R²를 쓴다. 가장 강조한 개념은 <b>data leakage</b>다. 예측 시점에는 알 수 없는 정보가 학습 데이터에 섞이면 개발 중에는 매우 정확해 보이지만 실전에서는 실패한다. 이를 이해하고 있음을 보여주면 프로젝트가 훨씬 강해진다.</p><h5>프로젝트 3 · 추천 시스템</h5><p>숫자나 yes/no가 아니라 사용자 선호에 따라 아이템을 <b>랭킹</b>하는 문제다. 예를 들어 Interstellar, Inception, The Martian을 본 사용자에게 영화를 추천한다. 접근법은 content-based filtering(장르·배우·키워드·감독), collaborative filtering(여러 사용자의 패턴), 그리고 이 둘을 합친 hybrid가 있다. 추천 5개를 보여주는 것에서 끝내지 말고 Precision@K, Recall@K, NDCG로 유용성을 평가한다. 또 cold start 문제를 논의한다. 신규 사용자는 선호를 알 수 없고, 신규 아이템은 상호작용 데이터가 없다.</p><h5>프로젝트 4 · 사기 탐지 (Fraud Detection)</h5><p>데이터가 극단적으로 불균형하다. 영상의 예시는 거래 100만 건 중 사기가 500건이다. 항상 '사기 아님'을 예측하는 모델도 정확도는 매우 높지만 탐지 시스템으로는 쓸모가 없다. 그래서 Precision, Recall, F1, 특히 <b>PR-AUC</b>에 집중한다. 기본 임계값 0.5가 최선이 아닐 수 있으므로 threshold를 조정한다. 더 많은 의심 거래를 조사하는 대신 더 많은 사기를 잡는 선택은 ML 문제가 아닌 <b>비즈니스 트레이드오프</b>다. 확장으로는 explainability(왜 의심 거래로 표시됐는지)를 붙이고, 배포 후 fraud 패턴 변화에 대응하는 model monitoring, data drift, retraining을 논의한다.</p><h5>프로젝트 5 · 이미지 분류 (개 vs 고양이)</h5><p>수작업 feature 대신 CNN이 시각 패턴을 학습한다. 큰 네트워크를 처음부터 학습할 필요 없이 ResNet, EfficientNet, MobileNet 같은 사전 학습 모델로 <b>transfer learning</b>을 쓴다. 워크플로는 데이터 수집·선정 → train/validation/test 분할 → 전처리와 data augmentation → 학습 → Precision, Recall, F1, confusion matrix로 평가 → 이미지를 업로드하면 \"dog, 94% confidence\"처럼 반환하는 앱(Streamlit 또는 FastAPI) 순서다. 더 나아가려면 연산 자원이 제한된 기기를 위한 모델 최적화를 탐색할 수 있다.</p>"
+      },
+      "box3": {
+            "title": "3 · 실행 체크리스트: 포트폴리오·이력서·GitHub를 어떻게 구성할 것인가",
+            "html": "<p>영상의 결론은 다섯 개를 다 만들어도 취업이 보장되지는 않는다는 것이다. 프로젝트 제목이 아니라 <b>어떻게 만들었는지</b>가 포트폴리오를 인상적으로 만든다. 각 프로젝트는 다음 질문에 답해야 한다.</p><ul><li>어떤 문제를 풀고 있는가?</li><li>데이터는 어디서 왔고, 어떻게 정제·준비했는가?</li><li>왜 이 모델을 골랐고, 어떤 베이스라인과 비교했는가?</li><li>어떻게 평가했고, 한계는 무엇인가?</li><li>Jupyter 노트북 밖에서 이 시스템은 어떻게 동작하는가? 간단한 Streamlit 앱이나 API만으로도 data → model → prediction → user의 여정을 이해했음을 보여준다.</li></ul><p>영상은 참고 자료를 근거로, 튜토리얼식 프로젝트를 넘어 데이터 수집, 저장, 모델링, 배포, 프로덕션 고려사항까지 아우르는 자기주도 end-to-end 작업을 강조한다.</p><h5>이력서 작성법</h5><p>\"고객 이탈 머신러닝 모델을 만들었다\"처럼 쓰면 채용 담당자에게 아무 정보도 주지 못한다. 무엇을 만들었고, 어떤 기술을 썼고, 어떤 문제를 풀었는지, 가능하면 측정 가능한 결과까지 쓴다. 예를 들면 \"Python으로 전처리·모델 평가·Streamlit 예측 인터페이스를 갖춘 end-to-end 고객 이탈 예측 시스템 개발\"이다.</p><h5>GitHub 저장소 구성</h5><ul><li>깔끔한 README와 프로젝트 목표</li><li>데이터셋 정보와 설치 방법</li><li>모델 아키텍처 또는 워크플로</li><li>평가 결과와 앱 스크린샷</li><li>다른 사람이 프로젝트를 실행할 수 있는 명확한 안내</li></ul><p>두 번째 참고 자료도 GitHub README로 문서화하고 공개 공유하라고 강조한다. 이 다섯 프로젝트를 합치면 classification, regression, recommendation, imbalance learning, deep learning, computer vision, model evaluation, deployment를 모두 증명할 수 있다. 다만 한꺼번에 다 만들 필요는 없다. 관심 있는 문제 하나를 제대로 만들고, 문서화하고, 가능하면 배포한 뒤 다음으로 넘어간다. 강한 포트폴리오는 프로젝트 수가 아니라 실제 문제를 작동하는 ML 솔루션으로 바꿀 수 있음을 증명하는 데서 나온다.</p>"
+      },
+      "en": {
+            "title": "5 Machine Learning Projects That Get You Hired: From Notebook to Deployable Portfolio",
+            "subtitle": "Turn churn prediction, house price regression, recommendation, fraud detection, and image classification into end-to-end proof, covering evaluation metrics, data leakage, deployment, and monitoring",
+            "moduleTag": "ML PORTFOLIO END-TO-END DEPLOYMENT",
+            "takeaway": "What makes a portfolio strong is not the project topic but proof of end-to-end thinking: problem definition, baseline comparison, evaluation suited to the business, and deployment and monitoring.",
+            "box1": {
+                  "title": "1 · Core Claim: Titanic and Iris Notebooks Won't Differentiate You",
+                  "html": "<p>The video starts from the problem that putting 'machine learning' on a resume is not enough. Titanic, Iris, and basic prediction notebooks have already been uploaded by thousands of candidates, so they carry no distinguishing value. What a hiring manager wants to see is not that you can train a model, but evidence that you <b>know how to solve a real problem with ML</b>.</p><p>The proposed method is to lift each of the five projects from a single notebook into a <b>real ML portfolio project</b>. The upgrade path is the same for all of them. Start from a simple baseline, compare against more complex models, evaluate with metrics that fit the problem rather than accuracy alone, and show deployment through a Streamlit UI or a FastAPI endpoint.</p><h5>The five projects at a glance</h5><table class=\"matrix-table\"><tr><th>Project</th><th>Problem type</th><th>Baseline → comparison models</th><th>Key evaluation metrics</th></tr><tr><td>Customer churn prediction</td><td>Binary classification</td><td>Logistic Regression → Random Forest, XGBoost</td><td>Precision, Recall, F1, ROC</td></tr><tr><td>House price prediction</td><td>Regression</td><td>Linear Regression → Random Forest, Gradient Boosting, XGBoost</td><td>MAE, RMSE, R²</td></tr><tr><td>Recommendation system</td><td>Ranking</td><td>Content-based → Collaborative → Hybrid</td><td>Precision@K, Recall@K, NDCG</td></tr><tr><td>Fraud detection</td><td>Imbalanced binary classification</td><td>Logistic Regression → Random Forest, XGBoost</td><td>Precision, Recall, F1, PR-AUC</td></tr><tr><td>Image classification</td><td>Deep learning / CV</td><td>CNN, Transfer Learning (ResNet, EfficientNet, MobileNet)</td><td>Precision, Recall, F1, Confusion Matrix</td></tr></table>"
+            },
+            "box2": {
+                  "title": "2 · Project Details: What to Build and Where to Differentiate",
+                  "html": "<h5>Project 1 · Customer Churn Prediction</h5><p>A binary classification task that predicts churn (yes/no) from tenure, monthly charges, contract type, payment method, usage, and prior interactions. The video warns against just saying \"92% accuracy\", because accuracy is misleading when churners are far fewer than retained customers. Evaluate with Precision, Recall, F1, and ROC, and analyze feature importance, for example whether month-to-month contract customers churn more or whether higher monthly charges increase churn. Finish with a web app (Streamlit or FastAPI) that takes customer details and returns a churn probability.</p><h5>Project 2 · House Price Prediction (Regression)</h5><p>Predict price from location, bedrooms, bathrooms, area, age, garage size, and so on. Real data contains missing values, categorical variables, outliers, scale differences, and incorrect or inconsistent records, so the preprocessing pipeline should explain how each is handled. Evaluate with MAE, RMSE, and R². The most emphasized concept is <b>data leakage</b>. If information unavailable at prediction time leaks into training data, the model looks extremely accurate in development but fails in the real world. Showing you understand this makes the project much stronger.</p><h5>Project 3 · Recommendation System</h5><p>This is a <b>ranking</b> problem over user preferences, not a number or yes/no prediction. For example, recommend movies to a user who watched Interstellar, Inception, and The Martian. Approaches are content-based filtering (genre, actor, keyword, director), collaborative filtering (patterns across many users), and a hybrid of the two. Don't stop at displaying five recommendations; evaluate their usefulness with Precision@K, Recall@K, and NDCG. Also discuss the cold start problem: a new user has no known preferences, and a new item has no interactions.</p><h5>Project 4 · Fraud Detection</h5><p>The data is highly imbalanced. The video's example is 1 million transactions with only 500 fraudulent. A model that always predicts 'not fraud' still gets very high accuracy but is useless as a detector. So focus on Precision, Recall, F1, and especially <b>PR-AUC</b>. The default 0.5 threshold may not be best, so tune the threshold. Choosing to investigate more suspicious transactions in order to catch more fraud is a <b>business trade-off</b>, not just an ML problem. Extensions include explainability (why a transaction was flagged) and discussing post-deployment model monitoring, data drift, and retraining as fraud patterns change.</p><h5>Project 5 · Image Classification (Dog vs Cat)</h5><p>Instead of hand-crafting features, a CNN learns visual patterns. You don't need to train a large network from scratch; use <b>transfer learning</b> with a pretrained model such as ResNet, EfficientNet, or MobileNet. The workflow is: collect or select data → split into train/validation/test → preprocess and apply data augmentation → train → evaluate with Precision, Recall, F1, and a confusion matrix → build an app where users upload an image and get a result like \"dog, 94% confidence\" (Streamlit or FastAPI). To go further, explore model optimization for devices with limited compute.</p>"
+            },
+            "box3": {
+                  "title": "3 · Execution Checklist: Structuring Your Portfolio, Resume, and GitHub",
+                  "html": "<p>The video concludes that building all five does not guarantee a job. It is <b>how you build them</b>, not the project title, that makes a portfolio impressive. Each project should answer these questions.</p><ul><li>What problem are you solving?</li><li>Where did the data come from, and how did you clean and prepare it?</li><li>Why did you choose this model, and which baseline did you compare against?</li><li>How did you evaluate it, and what are the limitations?</li><li>How would this system work outside the Jupyter notebook? Even a simple Streamlit app or API shows you understand the journey from data to model to prediction to user.</li></ul><p>Citing its reference material, the video stresses self-directed end-to-end work that goes beyond tutorial-style projects, covering data collection, storage, modeling, deployment, and production considerations.</p><h5>How to write it on your resume</h5><p>A line like \"Built a machine learning model for customer churn\" tells a recruiter almost nothing. State what you built, which technologies you used, and what problem you solved, with measurable results where appropriate. For example: \"Developed an end-to-end customer churn prediction system in Python, with preprocessing, model evaluation, and a Streamlit prediction interface.\"</p><h5>GitHub repository structure</h5><ul><li>A clean README with the project objective</li><li>Dataset information and installation instructions</li><li>Model architecture or workflow</li><li>Evaluation results and screenshots of the app</li><li>Clear instructions for how someone can run the project</li></ul><p>The second reference also stresses documenting projects in GitHub READMEs and sharing them publicly. Together, these five projects demonstrate classification, regression, recommendation, imbalance learning, deep learning, computer vision, model evaluation, and deployment. You don't need to build them all at once, though. Pick one problem you care about, build it properly, document it, deploy it if possible, then move on. A strong portfolio comes not from the number of projects but from proving you can turn a real problem into a working ML solution.</p>"
+            }
+      },
+      "addedDate": "2026-10-10"
+},
+
+    {
+      "id": "verifiable-loop-everything-solved-2026",
+      "categoryId": "agentops",
+      "moduleTag": "VERIFIABLE LOOP AUTOMATION",
+      "title": "모든 것이 풀렸다: 검증 가능한 루프로 게임 디컴파일·소프트웨어 복제·수학 증명까지",
+      "subtitle": "정답 여부를 확인할 수 있는 목표만 있으면 AI 에이전트가 지치지 않고 반복해 풀어낸다는 영상의 주장을 사례별로 정리했다.",
+      "tags": [
+            "Verifiable Loop",
+            "Decompilation",
+            "Parallel Agents",
+            "/goal",
+            "/loop",
+            "Software Cloning",
+            "Recursive Self-Improvement",
+            "AlphaEvolve",
+            "Moat"
+      ],
+      "videoUrl": "https://www.youtube.com/watch?v=cX2kD2yQf88",
+      "videoId": "cX2kD2yQf88",
+      "channel": "Matthew Berman",
+      "duration": "17:37",
+      "refDate": "2026-10-10",
+      "takeaway": "결과가 맞는지 틀린지 검증할 수 있는 문제는, 해법을 몰라도 '생성 → 검증 → 반복' 루프와 병렬 에이전트로 사실상 풀 수 있다. 검증할 수 없는 영역인 취향과 창의성이 인간의 남은 가치다.",
+      "box1": {
+            "title": "1 · 핵심 메커니즘: 검증 가능한 루프와 디컴파일",
+            "html": "<p>영상의 출발점은 AI가 게임 <b>디컴파일</b>을 몇 년에서 몇 주, 심지어 며칠로 줄였다는 관찰이다. 디컴파일은 컴파일된 기계어에서 거꾸로 올라가는 작업이다. 출력(예: 마리오가 점프한다)은 알지만 그것을 만든 입력(소스 코드)은 모른다. 그래서 '코드를 써 보고 → 원본과 동작을 비교하고 → 틀리면 다시 쓰는' 추측-검증 게임이 된다.</p><p>결과 코드는 원본과 <b>동일하지 않다</b>. 컴파일 과정에서 주석이 버려지고, 변수·함수 이름이 사라지고, 컴파일러가 구조를 재배열하기 때문이다. 예를 들어 <code>return 2 + 3</code>은 컴파일 후 <code>return 5</code>가 되므로 복원 결과도 <code>return 5</code>가 된다. 그래도 게임의 동작·화면·플레이 감각은 동일하다. 영상은 이를 '코드는 다르지만 행동은 같다'는 기준으로 설명한다.</p><h5>왜 AI에 최적인 문제인가</h5><ul><li><b>코드 집약적</b>: AI가 사람보다 빠르고 잘 쓰는 영역이다.</li><li><b>검증 가능한 루프</b>: 생성한 결과를 원본 출력과 자동으로 대조할 수 있다.</li><li><b>무한 지구력</b>: 지치거나 자지 않고 목표 달성까지 계속 반복한다.</li><li><b>병렬화</b>: 작업을 잘게 쪼개 많은 에이전트에 동시에 맡긴다.</li></ul><p>사례로 Super Smash Bros. Melee는 팀과 팬덤이 수년째 디컴파일 중이다. 반면 Snowboard Kids는 Chris Lewis가 사람 손으로 약 2년 걸릴 일을 AI로 84일에 끝냈고, 이 기간은 빠르게 줄고 있다고 한다. 최근 몇 주 사이 수십 개 게임이 디컴파일되었다는 점도 근거로 든다.</p>"
+      },
+      "box2": {
+            "title": "2 · 적용 사례: 게임 매시업 4단계와 소프트웨어 복제",
+            "html": "<p>진행자는 직접 만들고 있는 사례도 보여준다. OpenAI Dev Day에서 받은 Mod Retro(Game Boy 재현 기기)에서 Super Mario World를 돌리기 위해, 영상에서 'GPT 6.1 Soul'이라 부른 모델에 처음부터 재구현을 맡겼다. 이 작업은 4일 넘게 돌고 있고 며칠 더 걸릴 것으로 본다. 온라인 문서를 참조해 코드를 쓰고, 화면 결과를 기대값과 비교하며 반복한다. 엄밀한 디컴파일은 아니지만 같은 루프 구조다. 더 싸고 효율적인 모델 덕분에 토큰을 소진하기 어렵고 리셋이 쌓일 정도라고 말한다.</p><table class='matrix-table'><thead><tr><th>매시업 방식</th><th>핵심</th><th>예시</th></tr></thead><tbody><tr><td>① 에셋 스왑</td><td>화면에 보이는 에셋만 교체(스킨). 동작은 원본과 같다.</td><td>Batman → Spider-Man</td></tr><tr><td>② 패스스루 모드</td><td>두 게임을 동시에 실행하고 카메라, 렌더링, 이벤트를 연결한다. 물리와 벽의 정렬을 맞춘다.</td><td>Minecraft TNT 폭발 → GTA 폭발 생성</td></tr><tr><td>③ 메카닉 이식</td><td>가속, 점프 높이, 충돌 같은 행동 규칙을 새 엔진에 맞춘다. 코드를 그대로 옮기거나, AI가 동작만 보고 재현한다.</td><td>Skyrim + Mirror's Edge 파쿠르, Call of Duty + 스케이트보드</td></tr><tr><td>④ 게임/룰 재구현</td><td>원본을 연구해 필요한 부분을 새 엔진용으로 다시 구현한다. 가장 집약적이지만 AI가 가장 크게 열어주는 방식이다.</td><td>Mario in Elden Ring</td></tr></tbody></table><p>이 논리를 일반 소프트웨어로 확장한다. 누군가 로컬에 설치된 Photoshop에 AI를 붙여 '사용해 보고 처음부터 재현하라'고 시켰고, 그 결과를 'Photo Craft'라는 무료 오픈소스로 공개했다고 한다. 진행자도 AI가 Excel을 클릭해 보며 동작을 파악하고 재현하게 한 적이 있다. 소스 코드는 보지 않고 출력과 행동만 관찰한다는 점이 핵심이며, 같은 논리로 Premiere 등 어떤 소프트웨어도 가능하다고 본다.</p>"
+      },
+      "box3": {
+            "title": "3 · 시사점: 수학·자기개선, 그리고 해자(Moat)의 재정의",
+            "html": "<p>영상은 같은 루프를 수학으로 확장한다. 수학은 최종 목표(증명이 맞는가)는 알지만 경로를 모르는 문제여서, AI가 가능한 경로를 끝없이 탐색하기에 적합하다. 진행자는 전날 OpenAI가 다수의 새 증명과 연구를 공개했고, Will Depue가 GPT-6 Pro와 'Fable 5.1'로 최근 3년의 수학적 발견을 분류했다고 전한다. 분류는 사람 발견(파랑), 어제 이전의 AI 발견(빨강), 어제 AI 발견(초록) 세 가지였다. 그 결과를 근거로 '사람 혼자 수학을 푸는 시대는 끝났다'고 주장한다. 이어 과학, 신소재, 암 치료까지 같은 방식으로 확장될 수 있다고 본다. 이 수치는 영상 속 차트와 발언에 의존한 것이며 독립 검증은 확인되지 않았다.</p><h5>핵심 원칙과 실무 함의</h5><ul><li><b>검증 가능한 결과가 있으면 풀린다</b>: 정답 여부를 알 수 있다면 방법을 몰라도 AI가 풀 수 있다. Claude Code, Codex, Cursor의 <code>/goal</code>, <code>/loop</code>가 같은 구조라고 설명한다.</li><li><b>소프트웨어만으로는 해자가 되지 않는다</b>: 소프트웨어 자체가 아니라 교육, 엔터프라이즈 기능, 고객 지원, 지속적인 유지보수와 업데이트로 차별화해야 한다. 'SaaS is dead' 주장의 연장선이다.</li><li><b>재귀적 자기개선</b>: AI가 자기 효율·속도를 개선하고 이를 다시 적용하는 가장 강력한 루프다. 영상은 이것이 지능 폭발을 낳을 수 있고, 프런티어 랩이 속도 조절을 말하는 이유이며, 정렬(alignment)이 중요하다고 본다. 초기 성과 사례로 Google AlphaEvolve가 Google 인프라 코드의 구조를 개선해 연간 수십억 달러를 절감했다고 소개한다.</li><li><b>인간의 가치는 비검증 영역</b>: 취향, 창의성, 무엇이 사람들에게 울림을 줄지 판단하는 일은 검증 루프로 풀 수 없다. 수백만 개의 파생물이 가능해질수록 신호(signal)가 노이즈 속에서 더 귀해진다. 음악의 리믹스처럼 파생은 예술의 오랜 역사이므로, 진짜 신호를 가진 창작이 더 중요해진다고 결론짓는다.</li></ul><p>실무 관점에서는 자사 업무 중 '검증 가능한 목표'로 정의할 수 있는 영역(테스트 통과, 출력 일치, 벤치마크 개선)을 찾아 병렬 에이전트 루프에 넣는 것이 효과적이다. 반대로 검증 기준을 정의하기 어려운 영역에 사람의 판단을 집중하라는 시사점이 있다.</p>"
+      },
+      "en": {
+            "title": "Everything Has Been Solved: Verifiable Loops Drive Game Decompilation, Software Cloning, and Math Proofs",
+            "subtitle": "A case-by-case summary of the video's claim that any goal whose result can be checked will be solved by AI agents that iterate without tiring.",
+            "moduleTag": "VERIFIABLE LOOP AUTOMATION",
+            "takeaway": "A problem whose result can be verified as right or wrong can effectively be solved, even when the solution path is unknown, using a generate → verify → repeat loop and parallel agents. Taste and creativity, which cannot be verified, are what remain valuable for humans.",
+            "box1": {
+                  "title": "1 · Core Mechanism: The Verifiable Loop and Decompilation",
+                  "html": "<p>The video starts from the observation that AI has cut game <b>decompilation</b> from years to weeks, even days. Decompiling means working backwards from compiled machine code. You know the output (e.g., Mario jumps) but not the input (the source code) that produced it. So it becomes a guess-and-check game: write code, compare behavior against the original, and rewrite if it is wrong.</p><p>The resulting code is <b>not identical</b> to the original. Compilation discards comments, drops variable and function names, and lets the compiler rearrange structure. For example, <code>return 2 + 3</code> compiles to <code>return 5</code>, so the recovered code is also <code>return 5</code>. The game's behavior, visuals, and feel are still identical. The video frames this as 'different code, same behavior'.</p><h5>Why this is a perfect fit for AI</h5><ul><li><b>Code-heavy</b>: AI writes code faster and better than humans.</li><li><b>Verifiable loop</b>: generated results can be checked automatically against the original output.</li><li><b>Unlimited stamina</b>: it never tires or sleeps and keeps iterating until the goal is reached.</li><li><b>Parallelism</b>: the work is split into small chunks and handed to many agents at once.</li></ul><p>As examples, Super Smash Bros. Melee has been decompiled by a team and fanbase for years. By contrast, Chris Lewis used AI to finish Snowboard Kids in 84 days, a job that would have taken him nearly 2 years by hand, and that timeline is shrinking fast. The video also cites dozens of games being decompiled within just a few weeks.</p>"
+            },
+            "box2": {
+                  "title": "2 · Applications: Four Game-Mashup Approaches and Software Cloning",
+                  "html": "<p>The presenter also shows a project of their own. They got a Mod Retro (a recreated Game Boy) at OpenAI Dev Day and tasked a model they call 'GPT 6.1 Soul' with rebuilding Super Mario World from scratch for it. The run has been going for over 4 days and they expect a few more. It reads online documentation, writes code, compares the screen output against expectations, and iterates. It is not strict decompilation, but it uses the same loop. They say cheaper, more efficient models make it hard to burn through tokens, and they have unused resets piling up.</p><table class='matrix-table'><thead><tr><th>Mashup approach</th><th>Key idea</th><th>Example</th></tr></thead><tbody><tr><td>① Asset swap</td><td>Replace only the on-screen assets (a skin). Behavior stays the same as the original.</td><td>Batman → Spider-Man</td></tr><tr><td>② Pass-through mod</td><td>Run both games at once and connect cameras, rendering, and events. Physics and walls must line up.</td><td>Minecraft TNT explosion → GTA explosion spawned</td></tr><tr><td>③ Mechanic transplant</td><td>Make behavior rules such as acceleration, jump height, and collision work in the new engine. Either copy the code directly or have AI recreate it from observed behavior.</td><td>Skyrim + Mirror's Edge parkour, Call of Duty + skateboard</td></tr><tr><td>④ Game/rules rebuild</td><td>Study the original and re-implement the needed parts for the new engine. The most intensive approach, and the one AI unlocks the most.</td><td>Mario in Elden Ring</td></tr></tbody></table><p>The video extends this logic to general software. Someone pointed AI at a locally installed Photoshop, told it to use the app and recreate it from scratch, and released the result as a free open-source project called 'Photo Craft'. The presenter once had an AI recreate Excel the same way, by clicking around and observing behavior. The key point is that it never looks at source code, only at outputs and behavior, and by the same logic Premiere or any other software could be next.</p>"
+            },
+            "box3": {
+                  "title": "3 · Implications: Math, Self-Improvement, and Redefining the Moat",
+                  "html": "<p>The video extends the same loop to mathematics. Math is a field where you know the end goal (is the proof correct?) but not the path, so AI can explore possible paths endlessly. The presenter says OpenAI published many new proofs and research results the day before, and that Will Depue had GPT-6 Pro and 'Fable 5.1' classify the last 3 years of mathematical discoveries. The three categories were human-discovered (blue), AI-discovered before yesterday (red), and AI-discovered yesterday (green). On that basis, the presenter claims the days of humans solving math alone are over, and that the same approach could extend to science, materials discovery, and even curing cancer. These figures rest on the video's chart and statements; independent verification was not confirmed.</p><h5>Key principles and practical implications</h5><ul><li><b>Verifiable outcomes get solved</b>: if you can tell whether an answer is right, AI can solve it even when you don't know the method. The video says <code>/goal</code> and <code>/loop</code> in Claude Code, Codex, and Cursor follow the same structure.</li><li><b>Software alone is not a moat</b>: differentiate through training, enterprise features, customer support, and ongoing maintenance and updates, not the software itself. This extends the presenter's 'SaaS is dead' argument.</li><li><b>Recursive self-improvement</b>: the ultimate loop, where AI improves its own efficiency and speed and reapplies the gains. The video says this could produce an intelligence explosion, is why frontier labs talk about pacing, and makes alignment important. As an early example, it cites Google AlphaEvolve, which improved the architecture of Google's own infrastructure code and reportedly saves billions of dollars per year.</li><li><b>Human value lies in the unverifiable</b>: taste, creativity, and judging what will resonate with people cannot be solved by a verification loop. As millions of derivatives become possible, real signal becomes more valuable amid noise. Like music remixes, derivation is a long tradition in art, so creations with genuine signal matter more.</li></ul><p>In practice, this suggests finding work in your own organization that can be defined as a 'verifiable goal' (passing tests, matching outputs, improving a benchmark) and feeding it into parallel agent loops. Conversely, concentrate human judgment on areas where the success criteria are hard to define.</p>"
+            }
+      },
+      "addedDate": "2026-10-10"
+},
+
+    {
       "id": "codex-junior-engineer-github-issue-workflow-2026",
       "categoryId": "agentops",
       "moduleTag": "AI CODING AGENT WORKFLOW CONTROL",
