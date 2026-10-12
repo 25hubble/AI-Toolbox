@@ -66,6 +66,63 @@ window.DASHBOARD_DATA = {
   ],
   entries: [
     {
+      "id": "pi-durable-proactive-agents-jev-oncall-2026",
+      "categoryId": "agentops",
+      "moduleTag": "DURABLE PROACTIVE AGENT INFRASTRUCTURE",
+      "title": "Pi Durable 프로액티브 에이전트: Jev 분류기가 온콜 에이전트를 깨우는 구조",
+      "subtitle": "세션·상태·작업을 클라이언트와 분리해 장애·재시작에도 이어가는 durable agent로, 사람 없이 먼저 일하고 승인만 받는 '휴먼 니어 더 루프'를 구현한다.",
+      "tags": [
+            "Pi Durable",
+            "Durable Agents",
+            "Proactive Agents",
+            "Jev Classifier",
+            "Incident Response",
+            "Shared App State",
+            "Durable Tasks",
+            "Multi-client",
+            "Human-near-the-loop",
+            "Harness Engineering"
+      ],
+      "videoUrl": "https://www.youtube.com/watch?v=DNDYYHsypZg",
+      "videoId": "DNDYYHsypZg",
+      "channel": "IndyDevDan",
+      "duration": "35:16",
+      "refDate": "2026-10-12",
+      "takeaway": "에이전트를 UI·터미널에서 분리해 별도 기기에서 영속적으로 돌리면(durable), 에이전트는 사람을 기다리지 않고 먼저 일한 뒤 승인만 기다리는 프로액티브·아웃루프 구조로 진화한다.",
+      "box1": {
+            "title": "1 · Durable Agent란 무엇인가: 개념과 프로액티브 온콜 데모",
+            "html": "<p><b>Pi Durable</b>(Mario·Armen 등 PI 코딩 에이전트 메인테이너가 공개한 실험적 릴리스)은 진행 중인 작업, 대화, 애플리케이션 상태를 <b>장애·클라이언트 교체·변경</b> 속에서도 유지한다. 단순한 <code>/resume</code>과의 차이는 에이전트가 '내 터미널 안의 프로세스'가 아니라 <b>별도 기기(M4/M6 Mac Mini, MacBook, exe.dev 클라우드 샌드박스)에서 분리(detached)되어 계속 실행</b>되고, 사용자는 TUI·브라우저·curl 같은 클라이언트로 붙었다 떨어진다는 점이다. 노트북을 닫거나 프로세스를 죽이거나 머신을 재시작해도 마지막 체크포인트에서 복귀한다. 영상은 Anthropic·OpenAI도 Slack 연동 제품 등에서 같은 durable 프리미티브를 기반으로 멀티클라이언트 에이전트를 만든다고 짚는다.</p><p><b>프로액티브 온콜 데모.</b> 마켓 앱에 이벤트 스트림이 들어오면 <b>Jev 분류기</b>가 매 이벤트를 분류하고, 장애를 감지하면 이슈 페이로드·위치·에러를 담아 Pi Durable 에이전트를 트리거한다. 에이전트는 표준 운영 절차(SOP)인 <b>감지 → 조사 → 근본 원인 분석 → 수정 → 리뷰 요청 → 배포</b>를 수행한다(인시던트 업데이트, 로그 읽기, 과거 이벤트 조회 등 툴 호출). 사례는 체크아웃 API의 로열티 할인 로직에서 non-null 단언(<code>!</code>)으로 인한 <b>고전적 null 체크 버그</b>가 트래픽 100%에 영향을 준 건이었고, 에이전트가 수정안을 만들어 리뷰 대기 상태로 두었다. 새로고침해도 상태가 유지되며, 사용자가 승인하자 프로덕션이 안정화됐다.</p><ul><li><b>비재실행(non-replayable) 안전성</b>: 프로덕션 배포 툴콜은 durable 기반 덕분에 정확히 1회만 실행된다.</li><li><b>비용</b>: Jev가 수백~수천 건(영상 말미 6,000행 기준 약 16센트, 촬영 내내 13센트)을 분류하는 데 드는 비용이 극히 낮다. 속도·신뢰성·단가 모두 대체하기 어렵다고 평가한다.</li><li><b>핵심 표현</b>: 프로액티브 에이전트는 '사람이 일하길 기다리지 않고, 사람을 위해 먼저 일한 뒤 기다린다.'</li></ul>"
+      },
+      "box2": {
+            "title": "2 · 핵심 기능 스택: 상태·태스크·툴·확장·멀티클라이언트",
+            "html": "<p>네트워크 플레이그라운드는 <b>Device → Workspace → Agent</b> 3계층 구조이며, 어느 기기에서든 연결할 수 있다. 탭은 Session / State / Tasks / Tools / Extend로 구성된다.</p><table class=\"matrix-table\"><thead><tr><th>기능</th><th>동작</th><th>실무 가치</th></tr></thead><tbody><tr><td><b>백그라운드 Compaction</b></td><td>임계 마커를 넘으면 세션을 fork해 백그라운드에서 압축, reserve 도달 시 에이전트 정지</td><td>장시간 실행 중에도 컨텍스트 관리가 끊기지 않음</td></tr><tr><td><b>Shared App State</b></td><td>read_state/update_state 툴, 디바이스 내 모든 세션이 공유하는 단일 JSON 객체와 UI 렌더링</td><td>여러 에이전트가 한 이슈를 분담·디버깅</td></tr><tr><td><b>Durable Tasks</b></td><td>phase를 가진 반복 가능 잡(순수 코드 또는 코드+에이전트). 실패한 phase부터 재개, 서브에이전트가 승인 질문 가능</td><td>장기·다단계 작업의 재시작/재개, 휴먼 니어 더 루프</td></tr><tr><td><b>모든 실행 = Task</b></td><td>모델 호출부터 툴 실행까지 하네스가 하는 일이 전부 task</td><td>실행 중 설정을 바꿀 수 있는 기반</td></tr><tr><td><b>라이브 툴셋 변경</b></td><td>read-only 모드 전환 시 세션 중간에 툴이 제거되고 에이전트가 이를 인지</td><td>권한·안전 모드를 재시작 없이 전환</td></tr><tr><td><b>Extensions</b></td><td>시스템 프롬프트 보정 확장과 <b>Jev damage control</b>(bash 명령을 Jev가 판정, <code>rm -rf</code> 차단) 을 즉시 on/off</td><td>실행 중 에이전트를 확장으로 업데이트</td></tr><tr><td><b>Fork / Handoff</b></td><td>어느 시점에서든 컨텍스트를 분기하거나 새 컨텍스트로 핸드오프</td><td>같은 컨텍스트에서 다른 방향 실험</td></tr></tbody></table><p><b>멀티클라이언트 API.</b> 에이전트 API를 하나 두면 브라우저, 커스텀 CLI/TUI, curl, 모바일, 자사 제품 UI가 모두 같은 에이전트에 붙는다. 데모에서는 <code>just</code> 명령으로 네트워크 ID를 조회하고, exe.dev 샌드박스의 세션에 TUI로 attach했으며, 브라우저에서 만든 새 세션이 동시에 반영됨을 보여줬다. 이를 확장하면 동료가 같은 인시던트 에이전트에 붙는 <b>멀티플레이어 에이전트</b>도 가능하지만, 화자는 멀티플레이어보다 <b>장시간 실행(long-running)</b>이 더 중요하다고 본다.</p>"
+      },
+      "box3": {
+            "title": "3 · 도입 전략과 시사점: 소유권, 아웃루프, 휴먼 니어 더 루프",
+            "html": "<p><b>왜 durable agent인가(5가지).</b> ① 프로액티브 에이전트, ② 멀티클라이언트 에이전트, ③ 멀티플레이어 에이전트, ④ 장시간 실행 에이전트, ⑤ <b>휴먼 니어 더 루프</b>(터미널에 묶이지 않고 프로세스를 지켜보다가 필요할 때만 승인·리뷰). 인루프에서 곧바로 아웃루프로 뛰기는 어렵기 때문에 니어 더 루프가 전환 단계를 제공한다는 논지다. 성공 KPI로는 <b>'지금 이 순간 나를 위해 유용한 일을 하고 있는 에이전트가 몇 개인가'</b>를 제시하며, 작업 시작을 사람이 맡는 phase 2 사고에서 에이전트가 먼저 시작하는 phase 3 사고로 옮기라고 권한다.</p><p><b>화자의 적용 방침.</b> 모든 제품 작업(예: 사이트 고객지원 챗봇)은 기본적으로 durable PI 에이전트로 만들어 사용자가 기존 세션으로 돌아오고, 6시간 후 정리 같은 정책도 쓸 수 있게 한다. 프로액티브 에이전트에 집중 투자하고, 에이전트에 전용 컴퓨터(샌드박스 기기)를 주어 사람과 같은 도구를 쓰게 한다. 프로덕션 로그 앞에 Jev를 두고 4xx/5xx만 필터링하는 식으로 비용을 더 줄일 수 있으며, 공개된 데모는 출발용 템플릿이다.</p><ul><li><b>소유권</b>: 지능(모델)·하네스·durable 인프라를 외부에 맡기면 언제든 정책이 바뀔 위험이 있으므로 오픈소스이고 제어 가능한 PI를 선호한다(비스폰서 주장). 로컬 모델(M5 Ultra 512GB 통합 메모리 등)도 후속 주제로 언급한다.</li><li><b>한계/주의</b>: Pi Durable은 아직 <b>실험 단계</b>라 프로덕션에 쓰려면 포크·유지보수가 필요하며, 화자는 v1 안정 릴리스를 기다린다. 데모는 모의 스트림 이벤트이며, 장시간 실행·자동 배포에는 승인 게이트와 Jev 같은 방어 장치가 전제된다.</li><li><b>엔지니어링 관점</b>: 코드 생성은 쉬워졌지만 무엇을 남기고 무엇을 덜어낼지에 대한 취향과 판단이 제품 가치라고 강조하며, 에이전트 코딩의 두 병목인 <b>계획과 리뷰</b>는 해결 가능하다고 본다.</li></ul>"
+      },
+      "en": {
+            "title": "Pi Durable Proactive Agents: A Jev Classifier Triggers the On-Call Agent",
+            "subtitle": "Durable agents decouple sessions, state and tasks from clients so work survives failures and restarts, enabling agents that work first and only wait for human approval (human-near-the-loop).",
+            "moduleTag": "DURABLE PROACTIVE AGENT INFRASTRUCTURE",
+            "takeaway": "When an agent is detached from the UI/terminal and runs persistently on its own device (durable), it evolves into a proactive, out-of-the-loop system that works first and only waits for your approval.",
+            "box1": {
+                  "title": "1 · What Is a Durable Agent: Concept and the Proactive On-Call Demo",
+                  "html": "<p><b>Pi Durable</b> (an experimental release from Mario, Armen and the other maintainers of the PI coding agent) persists ongoing work, conversations and application state through <b>failures, client changes and change itself</b>. The difference from a plain <code>/resume</code> is that the agent is not a process inside your terminal: it <b>runs detached on separate machines (M4/M6 Mac Minis, a MacBook, exe.dev cloud sandboxes)</b>, and you attach and detach with clients such as a TUI, a browser or curl. Close the laptop, kill the process or reboot the machine and the agent resumes from its last checkpoint. The video notes that Anthropic and OpenAI build multi-client agents (e.g. Slack-connected products) on the same durable primitives.</p><p><b>The proactive on-call demo.</b> As events stream into a market app, the <b>Jev classifier</b> classifies every event; when it detects an incident it triggers a Pi Durable agent with the issue payload, location and error. The agent follows a standard operating procedure (SOP): <b>detect → investigate → root-cause analysis → fix → request review → deploy</b> (tool calls such as updating the incident, reading logs and querying past events). The case was a <b>classic null-check bug</b> in the checkout API's loyalty-discount logic, caused by a non-null assertion (<code>!</code>) and affecting 100% of traffic; the agent produced a fix and left it waiting for review. State survived a page refresh, and once the user approved, production stabilized.</p><ul><li><b>Non-replayable safety</b>: thanks to the durable foundation, the production-deploy tool call can execute exactly once.</li><li><b>Cost</b>: Jev classifying hundreds to thousands of events costs very little (about 16 cents for 6,000 rows at the end of the video, 13 cents over the whole filming session). The speaker argues its speed, reliability and unit cost are hard to replace.</li><li><b>Key phrase</b>: a proactive agent does not wait for you to work; it works for you first, then waits.</li></ul>"
+            },
+            "box2": {
+                  "title": "2 · Core Feature Stack: State, Tasks, Tools, Extensions, Multi-client",
+                  "html": "<p>The network playground has a <b>Device → Workspace → Agent</b> three-level hierarchy, and you can connect from any device. Its tabs are Session / State / Tasks / Tools / Extend.</p><table class=\"matrix-table\"><thead><tr><th>Feature</th><th>Behavior</th><th>Practical value</th></tr></thead><tbody><tr><td><b>Background compaction</b></td><td>Past a threshold marker the session is forked and compacted in the background; the agent stops when the reserve is reached</td><td>Context management continues uninterrupted during long runs</td></tr><tr><td><b>Shared app state</b></td><td>read_state/update_state tools, one JSON object shared by every session on the device, rendered as a UI</td><td>Multiple agents split and debug a single issue</td></tr><tr><td><b>Durable tasks</b></td><td>Repeatable jobs with phases (pure code or code plus agents); resume from the failed phase; sub-agents can ask for approval</td><td>Restart/resume for long multi-step work, human-near-the-loop</td></tr><tr><td><b>Everything is a task</b></td><td>Everything the harness does, from model calls to tool execution, is a task</td><td>The basis for changing configuration mid-run</td></tr><tr><td><b>Live toolset changes</b></td><td>Switching to read-only mode strips tools mid-session and the agent notices</td><td>Switch permission/safety modes without restarting</td></tr><tr><td><b>Extensions</b></td><td>A system-prompt tuning extension and <b>Jev damage control</b> (Jev judges each bash command and blocks <code>rm -rf</code>) toggled instantly</td><td>Update a running agent with extensions</td></tr><tr><td><b>Fork / Handoff</b></td><td>Branch the context at any point or hand off to a fresh context</td><td>Try a different direction from the same context</td></tr></tbody></table><p><b>Multi-client API.</b> With a single agent API, browsers, custom CLI/TUIs, curl, mobile and your product UI can all attach to the same agent. In the demo, a <code>just</code> command lists the network IDs, the TUI attaches to a session on an exe.dev sandbox, and a session created in the browser shows up simultaneously. Extending this enables <b>multiplayer agents</b>, where coworkers join the same incident agent, but the speaker cares more about <b>long-running</b> agents than multiplayer.</p>"
+            },
+            "box3": {
+                  "title": "3 · Adoption Strategy and Implications: Ownership, Out-of-the-Loop, Human-near-the-Loop",
+                  "html": "<p><b>Why durable agents (five reasons).</b> ① proactive agents, ② multi-client agents, ③ multiplayer agents, ④ long-running agents, ⑤ <b>human-near-the-loop</b> (not tied to the terminal; you watch processes and approve or review only when needed). The argument is that jumping straight from in-the-loop to out-of-the-loop is hard, so near-the-loop provides the transition. The suggested success KPI is <b>'how many agents are doing useful work for you right now'</b>, moving from the phase 2 mindset, where you kick off the work, to a phase 3 mindset, where agents start first.</p><p><b>The speaker's adoption policy.</b> Build all product work (e.g. a support chatbot on a site) as durable PI agents by default so users return to their existing sessions and policies such as clearing after 6 hours are possible. Invest heavily in proactive agents, and give agents their own computer (a sandbox device) with the same tools a human has. Put Jev in front of production logs, and cut cost further by filtering to only 4xx/5xx; the published demo is a starting template.</p><ul><li><b>Ownership</b>: relying on others for intelligence (the model), the harness and durable infrastructure means policies can change at any time, so the speaker prefers the open-source, controllable PI (a non-sponsored stance). Local models (e.g. M5 Ultra with 512GB unified memory) are mentioned as a follow-up topic.</li><li><b>Limits/caveats</b>: Pi Durable is still <b>experimental</b>, so production use would require forking and maintaining it, and the speaker is waiting for a stable v1. The demo uses mock stream events, and long-running or auto-deploying agents assume approval gates and safeguards such as Jev.</li><li><b>Engineering view</b>: code generation is now easy, but taste and judgment about what to keep and what to strip away is the product's value, and the two bottlenecks of agentic coding, <b>planning and review</b>, are argued to be solvable.</li></ul>"
+            }
+      },
+      "addedDate": "2026-10-12"
+},
+
+    {
       "id": "forward-deployed-engineer-ai-ax-2026",
       "categoryId": "agentops",
       "moduleTag": "FORWARD DEPLOYED ENGINEER · AI PRODUCTION DEPLOYMENT",
