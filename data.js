@@ -66,6 +66,123 @@ window.DASHBOARD_DATA = {
   ],
   entries: [
     {
+      "id": "supply-chain-analyst-career-roadmap-2026",
+      "categoryId": "agentops",
+      "moduleTag": "DATA-DRIVEN OPERATIONS ANALYST ROLE",
+      "title": "공급망 분석가란? 역할·필요 역량·커리어 패스·면접 완전 정리",
+      "subtitle": "공급망 분석가는 데이터를 문제→인사이트→의사결정→성과로 연결해 재고·공급사·물류·비용의 병목을 찾아내는 직무다.",
+      "tags": [
+            "Supply Chain Analyst",
+            "Inventory Analysis",
+            "Demand Forecasting",
+            "SQL",
+            "Excel",
+            "Power BI",
+            "Tableau",
+            "SAP",
+            "Career Roadmap",
+            "Interview"
+      ],
+      "videoUrl": "https://www.youtube.com/watch?v=WZMvx7k4Ie0",
+      "videoId": "WZMvx7k4Ie0",
+      "channel": "Intellipaat",
+      "duration": "10:41",
+      "refDate": "2026-10-13",
+      "takeaway": "도구(Excel·SQL·BI)를 아는 것만으로는 부족하며, 숫자를 비즈니스 문제와 연결해 '문제→데이터→분석→권고'로 풀어내는 사고 틀이 공급망 분석가의 핵심 역량이다.",
+      "box1": {
+            "title": "1 · 직무의 본질: 데이터로 공급망의 병목을 찾는 사람",
+            "html": "<p>영상은 '주문이 늦었다'는 상황에서 시작합니다. 창고는 출고했다고 하고, 공급사는 배송 완료라 하고, 물류팀은 트럭이 제때 떠났다고 말합니다. 이 흩어진 점들을 연결하는 사람이 <b>공급망 분석가(Supply Chain Analyst)</b>입니다. 단순 배송 추적이 아니라, 무엇이 잘못되고 있는지, 왜 그런지, 어떻게 더 빠르고 싸게 움직이며 문제를 사전에 막을지를 데이터로 판단하는 직무입니다.</p><p><b>공급망</b>은 원자재 → 제조 → 창고 → 운송 → 고객으로 이어지는 제품의 전체 여정입니다. 각 단계에서 재고 과잉·부족, 공급사 지연, 비싼 운송, 창고 병목, 잘못된 수요 예측, 배송 지연이 생길 수 있습니다. 영상은 직무를 <b>데이터 → 문제 → 인사이트 → 의사결정 → 성과</b>의 흐름으로 요약합니다.</p><h5>스니커즈 사례로 보는 5가지 분석 축</h5><ul><li><b>재고(Inventory)</b>: 현재 재고량, 판매 속도, 품절 빈도, 적정 보유량. 재고가 많으면 자금이 묶이고 적으면 판매 기회를 잃습니다. '더 주문하자'로 끝내지 않고 반복 품절의 원인을 찾는 것이 일입니다.</li><li><b>수요(Demand)</b>: 지난달·작년 구매 이력, 증가 추세, 계절성, 예정된 프로모션을 보고 미래 수요를 예측해 재고를 계획합니다.</li><li><b>공급사(Supplier)</b>: 10,000켤레를 주문했는데 2주 늦게 도착한 경우, 지연 빈도, 평균 리드타임, 품질 요건 충족, 비용 효율, 타 공급사와의 비교를 확인합니다.</li><li><b>물류(Logistics)</b>: 생산과 납품이 제때여도 고객 도착이 늦을 수 있습니다. 지연 경로, 병목 원인, 운송 소요시간, 더 싸거나 빠른 대안을 조사합니다.</li><li><b>비용(Cost)</b>: 재고·공급사·창고·운송·운영 전반의 불필요한 비용을 찾습니다. 목표는 단순 절감이 아니라 자원 낭비 없이 더 나은 결과를 얻는 것입니다.</li></ul>"
+      },
+      "box2": {
+            "title": "2 · 일상 업무와 필수 스킬: 도구 + 비즈니스 해석력",
+            "html": "<p>일상 업무는 재고 대시보드 점검, 판매·수요 데이터 분석, 품절 조사, 공급사 성과 검토, 배송 데이터 모니터링, 리포트·대시보드 작성, 구매·물류팀 협업, 관리자 대상 권고안 발표로 구성됩니다. 영상은 농담 섞어 엑셀 시트의 말 안 듣는 숫자와 씨름하는 시간도 있다고 덧붙입니다.</p><h5>기술 스택</h5><table class='matrix-table'><thead><tr><th>영역</th><th>핵심 내용</th></tr></thead><tbody><tr><td>Excel</td><td>수식, 피벗 테이블, 룩업, 데이터 정제, 차트, 기본 분석</td></tr><tr><td>SQL</td><td>기업이 저장한 방대한 운영 데이터를 조회·분석</td></tr><tr><td>Power BI / Tableau</td><td>수천 행 대신 대시보드로 '문제가 여기 있다'를 전달 (인사이트 발견은 절반, 전달이 나머지 절반)</td></tr><tr><td>ERP / SCM 시스템</td><td>회사에 따라 SAP, Oracle 등을 사용</td></tr></tbody></table><p><b>더 중요한 것은 해석력입니다.</b> 도구를 안다고 좋은 분석가가 되지는 않습니다. 예를 들어 재고가 갑자기 30% 늘었다면 바로 좋아하지 말고 이유를 물어야 합니다. 수요가 줄었을 수도, 과잉 발주했을 수도, 공급사가 일찍 납품했을 수도, 제품이 창고에서 빠지지 않을 수도 있습니다. 진짜 실력은 데이터를 비즈니스 문제와 연결하는 데 있습니다.</p><h5>제로에서 시작할 때의 6대 학습 영역</h5><ul><li>공급망 기초: 문서, 재고, 창고, 물류, 유통, 수요 계획</li><li>Excel: 데이터 정제·정리·분석</li><li>SQL: 데이터 조회·가공</li><li>데이터 시각화: Power BI 또는 Tableau, 명확한 인사이트 전달</li><li>통계·예측: 기초 통계, 추세, 예측, 시계열 개념</li><li>문제 해결(가장 중요): 비즈니스 문제 → 데이터 → 분석 → 권고로 이어가는 능력</li></ul>"
+      },
+      "box3": {
+            "title": "3 · 취업 전략: 프로젝트, 커리어 패스, 면접, 로드맵",
+            "html": "<p>적합한 배경으로는 공급망 관리, 운영, 산업공학, 경영, 경제, 데이터 분석 등이 언급됩니다. 다만 이론에 그치지 않고 <b>실무처럼 보이는 프로젝트</b>가 필요합니다. 임의의 Power BI 대시보드를 이력서에 넣기보다 실제 공급망 문제를 풀어야 하며, 대시보드만 보여주지 말고 <b>문제 → 분석 → 인사이트 → 권고</b>를 함께 제시해야 데이터 프로젝트가 비즈니스 프로젝트가 됩니다.</p><h5>추천 프로젝트 4가지</h5><ul><li>재고 분석: 재고 수준, 품절, 제품 이동, 재고 회전율 대시보드</li><li>수요 예측: 과거 판매 데이터로 미래 수요 예측</li><li>공급사 성과: 비용·납기·품질·신뢰도 기준 공급사 비교</li><li>운송 비용: 고비용 경로를 찾고 최적화 기회 도출</li></ul><h5>커리어 패스</h5><p>일반적인 경로는 공급망 분석가 → 시니어 분석가 → 공급망 매니저 → 계획·운영 매니저 → 공급망 디렉터입니다. 수요 계획, 구매, 물류, 운영, 비즈니스 애널리틱스, 공급망 컨설팅으로 전문화할 수도 있습니다. 연봉은 지역·경력·산업·회사·기술·전문성에 따라 크게 달라 영상은 특정 수치를 제시하지 않고, 목표 시장의 최신 채용 공고를 확인하라고 권합니다.</p><h5>면접 3유형</h5><ul><li><b>행동 면접</b>: 운영 문제를 해결한 경험, 공급사·프로젝트 지연 대응 경험. STAR(상황·과제·행동·결과) 구조로 답합니다.</li><li><b>기술 면접</b>: 배송 데이터 분석 SQL 작성, 저회전 제품 식별, 예측 정확도 측정 방법. 난이도는 회사와 직무의 기술 비중에 따라 다릅니다.</li><li><b>케이스 스터디</b>: '빈번한 품절'이 주어지면 재고부터 늘리지 말고 수요, 예측 정확도, 공급사 리드타임, 재고 기록, 창고 운영, 운송을 차례로 점검해 병목을 특정합니다. 정의 암기보다 문제 해결 프레임워크가 중요합니다.</li></ul><h5>적성과 8단계 로드맵</h5><p>데이터, 비즈니스 문제 해결, 운영, 원인 규명을 좋아하면서 하루 종일 코딩하지 않고 데이터를 다루는 커리어를 원한다면 적합합니다. 순서는 ① 공급망 기초 ② Excel ③ SQL ④ Power BI/Tableau ⑤ 통계·예측 ⑥ 실전 프로젝트 2~3개 ⑦ 인턴십·엔트리 레벨 데이터 분석가 지원 ⑧ 행동·기술·케이스 면접 준비입니다. 인터넷의 모든 공급망 도구를 배우려는 것보다 훨씬 나은 전략이라고 영상은 결론짓습니다.</p><p><b>참고:</b> 이 영상은 AI 아키텍처가 아닌 직무·커리어 가이드이며, 가장 가까운 분류로 '데이터 기반 운영 관측·의사결정' 맥락의 agentops에 배치했습니다.</p>"
+      },
+      "en": {
+            "title": "What Is a Supply Chain Analyst? Role, Skills, Career Path and Interview Guide",
+            "subtitle": "A supply chain analyst turns data into problems, insights, decisions and results, finding bottlenecks across inventory, suppliers, logistics and cost.",
+            "moduleTag": "DATA-DRIVEN OPERATIONS ANALYST ROLE",
+            "takeaway": "Knowing the tools (Excel, SQL, BI) is not enough; the core skill of a supply chain analyst is connecting numbers to business problems through a problem → data → analysis → recommendation framework.",
+            "box1": {
+                  "title": "1 · The Essence of the Role: Finding Supply Chain Bottlenecks with Data",
+                  "html": "<p>The video opens with a late order. The warehouse says it shipped, the supplier says it was delivered, and the logistics team says the truck left on time. The person who connects these scattered dots is the <b>Supply Chain Analyst</b>. The job is not just tracking shipments. It is using data to determine what is going wrong, why, and how to move products faster, cut cost and prevent problems before they happen.</p><p>A <b>supply chain</b> is the whole journey of a product: raw materials → manufacturing → warehousing → transportation → customer. At each stage things can go wrong: too much or too little inventory, supplier delays, expensive transportation, warehouse bottlenecks, bad demand forecasts, late deliveries. The video summarizes the job as <b>data → problem → insight → decision → results</b>.</p><h5>Five Analysis Axes via the Sneaker Example</h5><ul><li><b>Inventory</b>: current stock, sales velocity, stockout frequency, appropriate stock level. Too much ties up cash; too little loses sales. The job is not to say 'order more' but to find why stockouts keep recurring.</li><li><b>Demand</b>: last month's and last year's purchases, growth trends, seasonality and upcoming promotions are used to forecast demand and plan inventory.</li><li><b>Supplier</b>: if 10,000 pairs arrived 2 weeks late, check how often the supplier is late, average lead time, quality compliance, cost effectiveness and comparison with other suppliers.</li><li><b>Logistics</b>: even if production and delivery are on time, shipments can reach customers late. Investigate delayed routes, bottleneck causes, transit time and cheaper or faster alternatives.</li><li><b>Cost</b>: look for unnecessary cost across inventory, suppliers, warehousing, transportation and operations. The goal is not simply spending less but getting better results without wasting resources.</li></ul>"
+            },
+            "box2": {
+                  "title": "2 · Daily Work and Core Skills: Tools Plus Business Interpretation",
+                  "html": "<p>A typical day includes checking inventory dashboards, analyzing sales and demand data, investigating stockouts, reviewing supplier performance, monitoring shipment data, updating reports and dashboards, working with procurement and logistics teams, and presenting recommendations to managers. The video jokes that some of it is staring at an Excel sheet wondering why one number refuses to behave.</p><h5>Technical Stack</h5><table class='matrix-table'><thead><tr><th>Area</th><th>Key Content</th></tr></thead><tbody><tr><td>Excel</td><td>Formulas, pivot tables, lookups, data cleaning, charts, basic analysis</td></tr><tr><td>SQL</td><td>Retrieve and analyze the large volumes of operational data companies store</td></tr><tr><td>Power BI / Tableau</td><td>Show a dashboard instead of thousands of rows: 'here is where the problem is' (finding an insight is only half the job; communicating it is the other half)</td></tr><tr><td>ERP / SCM systems</td><td>Depending on the company, SAP, Oracle, etc.</td></tr></tbody></table><p><b>Interpretation matters even more.</b> Knowing Excel, SQL and Power BI does not automatically make a good analyst. If inventory suddenly rises 30%, don't celebrate; ask why. Demand may have dropped, the company may have over-ordered, a supplier may have delivered early, or products may not be moving out of the warehouse. The real skill is connecting data to the business problem.</p><h5>Six Areas to Learn Starting from Zero</h5><ul><li>Supply chain fundamentals: documents, inventory, warehousing, logistics, distribution, demand planning</li><li>Excel: clean, organize and analyze data</li><li>SQL: query and manipulate data</li><li>Data visualization: Power BI or Tableau, communicating insights clearly</li><li>Statistics and forecasting: basic statistics, trends, forecasting, time-series concepts</li><li>Problem solving (the most important): go from business problem to data to analysis to recommendation</li></ul>"
+            },
+            "box3": {
+                  "title": "3 · Getting Hired: Projects, Career Path, Interviews and Roadmap",
+                  "html": "<p>Relevant backgrounds include supply chain management, operations, industrial engineering, business, economics and data analytics. But theory is not enough: you need <b>projects that look like real work</b>. Instead of putting a random Power BI dashboard on your resume, solve an actual supply chain problem, and don't just show the dashboard; present <b>problem → analysis → insight → recommendation</b>. That is what turns a data project into a business project.</p><h5>Four Recommended Projects</h5><ul><li>Inventory analysis: dashboard of inventory levels, stockouts, product movement and inventory turnover</li><li>Demand forecasting: forecast future demand from historical sales data</li><li>Supplier performance: compare suppliers on cost, delivery time, quality and reliability</li><li>Transportation cost: find expensive routes and identify optimization opportunities</li></ul><h5>Career Path</h5><p>A common path is supply chain analyst → senior analyst → supply chain manager → planning and operations manager → supply chain director. You can also specialize in demand planning, procurement, logistics, operations, business analytics or supply chain consulting. Salary varies widely by location, experience, industry, company, technical skills and specialization, so the video gives no specific figure and advises checking current job postings in your target market.</p><h5>Three Interview Types</h5><ul><li><b>Behavioral</b>: a time you solved an operational problem, or handled a delayed supplier or project. Structure answers with STAR (Situation, Task, Action, Result).</li><li><b>Technical</b>: write a SQL query to analyze shipment data, identify products with low inventory turnover, measure forecast accuracy. Difficulty depends on the company and how technical the role is.</li><li><b>Case study</b>: given 'frequent stockouts', don't jump to increasing inventory. Check demand, forecast accuracy, supplier lead times, inventory records, warehouse operations and transportation, then pinpoint the bottleneck. Your problem-solving framework matters more than memorized definitions.</li></ul><h5>Fit and the 8-Step Roadmap</h5><p>The career suits people who like data, business problem solving, operations and figuring out why something isn't working, and who want data work without writing code all day. The order is: ① supply chain fundamentals ② Excel ③ SQL ④ Power BI/Tableau ⑤ statistics and forecasting ⑥ build 2–3 real-world projects ⑦ apply for internships and entry-level data analyst roles ⑧ prepare for behavioral, technical and case-study interviews. The video says this is a much better strategy than trying to learn every supply chain tool on the internet.</p><p><b>Note:</b> This video is a job and career guide, not AI architecture content; it is filed under agentops as the closest category, in the sense of data-driven operational monitoring and decision-making.</p>"
+            }
+      },
+      "addedDate": "2026-10-13"
+},
+
+    {
+      "id": "gemini-4-argon-multimodal-foundation-2026",
+      "categoryId": "agentops",
+      "moduleTag": "FRONTIER MODEL SELECTION STRATEGY",
+      "title": "Gemini 4 Argon 실전 테스트: 1위 모델이 아니어도 중요한 이유",
+      "subtitle": "리더보드 순위보다 'Google 스택의 기반 모델'이라는 포지셔닝과 멀티모달·에이전틱 루프 강점으로 Argon을 평가해야 한다는 분석.",
+      "tags": [
+            "Gemini 4 Argon",
+            "Frontier Model",
+            "Multimodal",
+            "Agentic Loop",
+            "Blender",
+            "Antigravity",
+            "Artificial Analysis",
+            "Model Selection",
+            "Long Reasoning",
+            "Pricing"
+      ],
+      "videoUrl": "https://www.youtube.com/watch?v=4iK_UFzW6Zw",
+      "videoId": "4iK_UFzW6Zw",
+      "channel": "Sam Witteveen",
+      "duration": "11:18",
+      "refDate": "2026-10-13",
+      "takeaway": "Argon은 코딩·벤치마크 1위를 노린 모델이 아니라, Google 고객과 Google 제품 전체가 의지할 수 있는 프런티어급 멀티모달 기반 모델이다. 따라서 순위표가 아니라 자기 유스케이스에서 직접 검증해 선택해야 한다.",
+      "box1": {
+            "title": "1 · 모델의 강점: 코드·시각·미디어를 잇는 에이전틱 루프",
+            "html": "<p>Gemini 4 Argon은 Gemini API 유료 티어, Antigravity, Gemini 앱 등 대부분의 Google 서피스에 순차 공개되었다. 진행자는 NDA 하의 얼리 테스터였고, 이제 실제 사용 경험을 말할 수 있게 되었다. 결론은 <b>'매우 좋은 모델이지만 최고의 모델은 아니며, 그것이 크게 중요하지 않다'</b>는 것이다.</p><p>가장 두드러진 강점은 <b>시각 + 코드 + 미디어가 한 작업에 결합된 과제</b>다. 데모로 Gemini 앱에서 짧은 단일 프롬프트(ReBirth 스타일, 808·909·303, FX 필터, Roland식 스텝 시퀀서)를 주었더니, 정교한 UI와 함께 사운드 합성, 신스, 808/909 드럼머신까지 직접 만들어냈다. 실무가 단일 샷으로 끝나지 않는다는 점은 인정하되, 한정된 자원으로 모델의 잠재력을 가늠하는 용도로 의미가 있다고 본다.</p><ul><li><b>Blender·게임 생성·Three.js·셰이더</b> 영역에서 특히 강하며, 이는 해당 파이프라인에 대한 대규모 RL 환경 학습과 post-training의 결과로 추정된다.</li><li>Google 런칭 데모: Blender 애니메이션 스크립팅 + 커스텀 오디오 생성 + 실제 빈티지 CRT TV 출력, 그리고 Blender로 만든 다층 일본식 사원.</li><li>핵심 패턴은 <b>코드 작성 → 렌더 → 결과 관찰 → 수정</b>의 루프이며, 에이전틱 루프와 적절한 하네스가 주어질 때 성능이 극대화된다.</li></ul>",
+            "en": null
+      },
+      "box2": {
+            "title": "2 · 포지셔닝: 벤치마크 1위가 아니라 Google 스택의 기반",
+            "html": "<p>Artificial Analysis Intelligence Index에서 Argon은 <b>53점</b>으로 GPT-6 Astra, Fable 5.1과 동률이지만 Opus 5.5와 신규 Sonnet 5.5에는 한참 뒤지고, Meta의 Muse Wonder에도 뒤진다. 진행자는 코딩 모델로는 타 모델이 더 낫고, Antigravity도 Claude Code나 Codex에는 못 미친다고 본다. 즉 에이전틱 코딩용 최강 모델을 고르는 팀은 다른 선택지를 보게 될 것이다. 다만 벤치마크가 전부를 말해주지는 않으며, Argon은 <b>일반화(generalization)</b> 능력이 뛰어나다고 평가한다.</p><p>Google의 의도는 토큰을 파는 독립 회사가 되는 것이 아니다. 지난주 Google for Business 행사에서 <b>500곳 이상의 기업이 Gemini로 1조 토큰 이상</b>을 처리했다고 밝혔는데, 대부분 Flash나 Flash-Lite 모델일 것으로 추정된다. 부족했던 것은 고객에게 내놓을 <b>프런티어급 모델</b>이었고, Argon은 Google 스택을 떠나지 않고도 쓸 수 있는 신뢰할 만한 옵션이다. 이것이 진짜 타깃 고객이다.</p><ul><li><b>소비자 제품 측면</b>: 자리를 비워도 계속 실행되는 Gemini 앱의 태스크, 앱 연동, NotebookLM, Antigravity, Workspace 앱 전반의 밑바탕 모델이 된다.</li><li>Argon의 distillation으로 다른 Gemini 4 모델이 나올 가능성이 높고, 제품팀은 모델 대신 제품 자체 개선에 집중할 수 있다.</li><li>Argon은 지금까지 Google 최대 규모의 pre-training 모델이며, Flash/Pro/Ultra 계열 명칭이 아닌 <b>Gemini 4의 첫 모델</b>이다. 올해 핵심 인재가 이탈했음에도 TPU 운용, pre-training, RL 환경 구축 역량이 건재함을 보여준다.</li></ul>",
+            "en": null
+      },
+      "box3": {
+            "title": "3 · 실무 적용 가이드: 100만 토큰 추론, 가격, 업데이트 전망",
+            "html": "<p>첫 영상에서 강조했던 <b>100만 토큰 단일 응답(장시간 추론)</b>은 실제로는 훨씬 미묘하다. Gemini 앱에서는 제공되지 않고, Antigravity 지원 여부도 불명확하다. 주로 API 용도이며, 추론을 중간에 끊지 않도록 <b>config에 플래그를 전달</b>해야 한다. 수십만 토큰 이상의 추론이 필요한 과제가 아니면 혜택이 크지 않고, 모델이 계속 추론하도록 유도하는 프롬프트 기법도 아직 초기 단계다.</p><table class=\"matrix-table\"><thead><tr><th>항목</th><th>내용</th><th>실무 권고</th></tr></thead><tbody><tr><td>벤치마크</td><td>AA Index 53 (GPT-6 Astra·Fable 5.1과 동률, Opus 5.5·Sonnet 5.5·Muse Wonder보다 낮음)</td><td>순위만으로 판단하지 말고 자사 유스케이스로 직접 테스트</td></tr><tr><td>100만 토큰 추론</td><td>API 전용, config 플래그 필요</td><td>버티컬 하네스를 전면 재설계하지 말고, 과학 등 장시간 추론 과제에서만 켜서 측정</td></tr><tr><td>가격</td><td>입력 $2 / 출력 $10 (12월 1일까지)</td><td>프로모션 가격 구간에 평가를 서두를 것</td></tr><tr><td>체크포인트</td><td>최종 버전이 아니며 학습·테스트 지속 중</td><td>GPT-6 Sol이 6→6.1에서 크게 오른 사례처럼 1~2개월 내 개선 가능성 염두</td></tr></tbody></table><p>진행자의 권고는 명확하다. 데모를 더 보기보다 <b>AI Studio, Gemini 앱, Antigravity에 자기 유스케이스를 직접 넣어 검증</b>하라는 것이다. 단, AI Studio Build는 녹화 시점에 아직 써보지 않았다고 밝혔다. 또한 가격은 12월 1일까지이고, 진행자는 그때까지 이 체크포인트가 그대로 남아 있지 않을 것으로 예상한다.</p><p>결론적으로 Argon의 진짜 승리는 순위표가 아니라, Google 자신과 고객들이 이 모델 위에 무엇을 만들 수 있는가에 있다. Google 모델은 늘 일반화에 강했고, 이번에도 최고의 코딩 모델이나 전 벤치마크 석권보다 <b>이전에는 주변부였던 지능 영역까지 폭넓게 갖춘 강력한 멀티모달 모델</b>을 택했다.</p>",
+            "en": null
+      },
+      "en": {
+            "title": "Gemini 4 Argon Tested: Why It Matters Even If It Isn't the #1 Model",
+            "subtitle": "An analysis arguing Argon should be judged by its positioning as the foundation model of the Google stack and by its multimodal and agentic-loop strengths, not by leaderboard rank.",
+            "moduleTag": "FRONTIER MODEL SELECTION STRATEGY",
+            "takeaway": "Argon isn't built to win coding or benchmark rankings. It is a frontier-class multimodal foundation that Google's customers and Google's own products can rely on, so you should choose it by testing your own use cases rather than by leaderboard position.",
+            "box1": {
+                  "title": "1 · Strengths: An Agentic Loop Linking Code, Visuals, and Media",
+                  "html": "<p>Gemini 4 Argon is rolling out across most Google surfaces, including the paid tier of the Gemini API, Antigravity, and the Gemini app. The presenter was an early tester under NDA and can now talk about real usage. The conclusion: <b>it is a very good model, but not the best, and that doesn't matter much</b>.</p><p>Its standout strength is <b>tasks that combine visuals, code, and media</b>. In one demo, a short single prompt in the Gemini app (ReBirth-style, 808/909/303, FX filters, a Roland-style step sequencer) produced a sophisticated UI plus sound synthesis, a synth, and 808/909 drum machines. The presenter admits real work is not single-shot, but says such demos are useful for gauging what the model can do with limited resources.</p><ul><li>It is especially strong at <b>Blender, game generation, Three.js, and shaders</b>, likely the result of heavy RL-environment training and post-training on those pipelines.</li><li>Google's launch demos: Blender animation scripting + custom audio generation + output to a real vintage CRT TV, and a multi-tiered Japanese temple built in Blender.</li><li>The core pattern is a <b>write code → render → look at the result → fix</b> loop, and performance peaks when the model has an agentic loop and a proper harness.</li></ul>"
+            },
+            "box2": {
+                  "title": "2 · Positioning: A Foundation for the Google Stack, Not a Benchmark Champion",
+                  "html": "<p>On the Artificial Analysis Intelligence Index, Argon scores <b>53</b>, tying GPT-6 Astra and Fable 5.1 but well behind Opus 5.5 and the new Sonnet 5.5, and also behind Meta's Muse Wonder. The presenter thinks other models are better for coding and that Antigravity is nowhere near Claude Code or Codex. Teams picking the strongest agentic-coding model will likely look elsewhere. Still, benchmarks don't tell the whole story, and he rates Argon highly for <b>generalization</b>.</p><p>Google isn't trying to be a standalone company that just sells tokens. At last week's Google for Business event it said <b>over 500 companies have processed more than a trillion Gemini tokens</b>, most likely on Flash or Flash-Lite. What Google lacked was a <b>frontier model</b> to offer customers, and Argon is a credible option that doesn't require leaving the Google stack. That is the real target customer.</p><ul><li><b>Consumer products</b>: it underpins the Gemini app's tasks that keep running while you're away, app connections, NotebookLM, Antigravity, and the Workspace apps.</li><li>Distillations of Argon will likely produce other Gemini 4 models, and product teams can focus on improving products instead of the model.</li><li>Argon is Google's largest pre-training run to date, and it is the <b>first Gemini 4 model</b> rather than a Flash/Pro/Ultra tier. Despite this year's loss of key talent, it shows Google still knows how to run TPUs, pre-train, and build RL environments.</li></ul>"
+            },
+            "box3": {
+                  "title": "3 · Practical Guide: 1M-Token Reasoning, Pricing, and Update Outlook",
+                  "html": "<p>The <b>1M-token single response (long reasoning)</b> highlighted in the first video turns out to be far more nuanced. It isn't in the Gemini app, and whether it's in Antigravity is unclear. It is mainly for the API and requires <b>passing a flag in the config</b> so the model doesn't stop reasoning. It only pays off for tasks needing hundreds of thousands of reasoning tokens, and prompting techniques to keep the model reasoning are still early.</p><table class=\"matrix-table\"><thead><tr><th>Item</th><th>Details</th><th>Recommendation</th></tr></thead><tbody><tr><td>Benchmark</td><td>AA Index 53 (ties GPT-6 Astra and Fable 5.1; below Opus 5.5, Sonnet 5.5, and Muse Wonder)</td><td>Don't judge by rank alone; test on your own use cases</td></tr><tr><td>1M-token reasoning</td><td>API only, config flag required</td><td>Don't redesign your vertical harness around it; enable and measure it only on long-reasoning tasks such as scientific ones</td></tr><tr><td>Pricing</td><td>$2 input / $10 output (until December 1)</td><td>Evaluate during the promotional window</td></tr><tr><td>Checkpoint</td><td>Not final; training and testing continue</td><td>Expect improvement within 1–2 months, as with GPT-6 Sol's jump from 6 to 6.1</td></tr></tbody></table><p>The presenter's advice is clear: rather than watching more demos, <b>run your own use cases in AI Studio, the Gemini app, or Antigravity</b>. He notes he hadn't tried AI Studio Build at recording time. The price holds until December 1, and he doubts this checkpoint will still be around by then.</p><p>In conclusion, Argon's real win is not the leaderboard but what Google and its customers can build on it. Google models have always generalized well, and here Google again chose not to chase the best coding model or every benchmark, building instead <b>a strong multimodal model with broad intelligence in areas that used to be on the fringe</b>.</p>"
+            }
+      },
+      "addedDate": "2026-10-13"
+},
+
+    {
       "id": "meta-muse-wonder-frontier-model-2026",
       "categoryId": "agentops",
       "moduleTag": "FRONTIER MODEL COST & QUOTA EVALUATION",
