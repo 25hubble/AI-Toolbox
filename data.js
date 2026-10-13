@@ -66,6 +66,63 @@ window.DASHBOARD_DATA = {
   ],
   entries: [
     {
+      "id": "meta-muse-wonder-frontier-model-2026",
+      "categoryId": "agentops",
+      "moduleTag": "FRONTIER MODEL COST & QUOTA EVALUATION",
+      "title": "Meta Muse Wonder 등장: 프런티어급 성능, 그러나 비용과 쿼터가 발목을 잡다",
+      "subtitle": "Meta의 Muse Wonder / Muse Wonderful은 주요 벤치마크에서 Opus 5.5 바로 뒤까지 따라붙었지만, 작업당 비용과 429 쿼터 문제로 운영 도입에는 신중함이 필요하다.",
+      "tags": [
+            "Muse Wonder",
+            "Meta",
+            "Frontier Model",
+            "Benchmark",
+            "Cost per Task",
+            "Quota",
+            "Rate Limit 429",
+            "Opus 5.5",
+            "GPT 6.1 Soul",
+            "Artificial Analysis Index"
+      ],
+      "videoUrl": "https://www.youtube.com/watch?v=rpLrkJ5NNEI",
+      "videoId": "rpLrkJ5NNEI",
+      "channel": "Matthew Berman",
+      "duration": "10:36",
+      "refDate": "2026-10-13",
+      "takeaway": "Meta는 Muse Wonder 계열로 1년 만에 프런티어 모델 대열(Artificial Analysis 지수 2위권)에 복귀했다. 다만 진짜 선택 기준은 점수가 아니라 작업당 비용과 쿼터 안정성이며, 이 두 축에서는 GPT 6.1 Soul 같은 경쟁 모델이 여전히 유리하다.",
+      "box1": {
+            "title": "1 · 모델 구성, 가격, 접근 방식",
+            "html": "<p>Meta가 공개한 <b>Muse Wonder</b> 패밀리는 두 가지로 나뉜다. <b>Muse Wonder</b>는 API로 제공되고, 상위 버전인 <b>Muse Wonderful(Full)</b>은 <b>Muse Code 구독자에게만</b> 열려 있다. 영상 진행자는 API로 풀지 않는 결정이 의아하다고 하면서도, 본인이 곧바로 Muse Code를 구독한 걸 보면 Meta의 판단이 틀린 것은 아닐 수 있다고 평한다.</p><table class='matrix-table'><thead><tr><th>모델</th><th>입력 / 1M 토큰</th><th>출력 / 1M 토큰</th><th>캐시 입력 / 1M</th></tr></thead><tbody><tr><td>Muse Wonder</td><td>$4</td><td>$20</td><td>$0.20</td></tr><tr><td>GPT 6.1 Soul (짧은 컨텍스트)</td><td>$2</td><td>$10</td><td>$0.10</td></tr><tr><td>Opus 5.5</td><td colspan='3'>입력/출력 약 $4 / $20 (전사에서 '420'으로 읽혀 추정)</td></tr></tbody></table><p>GPT 6.1 Soul은 긴 컨텍스트에서 위 가격의 약 2배가 된다. 정가(토큰 단가)만 보면 Muse Wonder는 Opus 5.5와 비슷하고 GPT 6.1 Soul보다 2배 비싸다. 진행자는 세 모델의 가격대를 '대체로 비슷하다'고 요약한다.</p><p>구독 플랜의 쿼터는 훨씬 심각한 문제였다. <b>$15/월</b> 플랜은 Full 버전에 접근할 수 없었다. <b>$50/월</b>로 올리자 3분 만에 쿼터가 소진되어 <b>429 에러</b>가 반복됐다. <b>$200/월</b>로 올려도 조금 더 쓰고 곧바로 다시 소진됐다. 이 글을 올리자 Meta AI 총괄 Alexandr Wang이 '알려진 문제이고 지금 고치는 중'이라고 답했다.</p>"
+      },
+      "box2": {
+            "title": "2 · 벤치마크 결과와 비용 효율 분석",
+            "html": "<p>Meta는 비교 대상으로 Fable 5.1, GPT6 Astra, Opus 5.5 등 현존 최고 모델만 골랐다. 진행자는 벤치마크가 전부는 아니지만, 지나치게 벤치마크에 최적화(benchmaxed)된 모델이 아닌 이상 Meta가 프런티어 모델을 확보한 것은 분명하다고 본다.</p><table class='matrix-table'><thead><tr><th>벤치마크</th><th>Wonderful / Wonder</th><th>비교 모델</th></tr></thead><tbody><tr><td>Personal Superintelligence Index</td><td>59 (1위)</td><td>타 모델과 비슷한 수준</td></tr><tr><td>Harvey Lab (법률)</td><td>13.1 / 10</td><td>타 모델 압도. 단 차트에 빠진 Grok 4.7은 19.6%로 더 높음</td></tr><tr><td>OS World (컴퓨터 조작)</td><td>78.4 / 72.6</td><td>Opus 81(1위), Fable 5.1 80, Astra 75</td></tr><tr><td>Terminal Bench (코딩)</td><td>57.1 / 52</td><td>Fable, Astra, Opus와 같은 수준(52~59 구간)</td></tr><tr><td>Deep Suite (개발자 체감 코딩)</td><td>79 (1위) / 78.8</td><td>Opus 74, Astra 71, Fable 67</td></tr><tr><td>AA Intelligence Index</td><td>56 (Sonnet과 공동 2위)</td><td>Opus 5.5 58, Fable 5.1 아래, Astra는 3점 뒤</td></tr></tbody></table><p>눈에 띄는 점은 소형(non-Full) Wonder가 Deep Suite에서 Full과 거의 같은 점수(78.8 vs 79)를 냈다는 것이다. 코딩 용도라면 저렴한 쪽으로 충분할 수 있다. 반면 Opus 5.5가 OS World에서 1위를 지킨 것처럼 에이전트형 컴퓨터 조작에서는 Opus 우위가 유지된다.</p><p><b>비용 관점이 이 영상의 핵심 단서다.</b> Artificial Analysis의 작업당 비용(cost per task)을 보면 Muse Wonder Max는 <b>$4.52</b>로 오픈소스 Qwen 3.8과 비슷하다. Sonnet, Opus, Fable은 최대 $7.63으로 가장 비싸다. 아직 미출시인 Gemini 4 Argon은 $2, GPT6 Astra는 $3.26이다. 지능-비용 사분면에서 Muse Wonder Max는 이상적인 '좌상단'이 아니라 <b>우상단(고성능·고비용)</b>에 위치한다. 진행자는 쿼터와 지능, 가격을 종합하면 GPT 6.1 Soul이 최선이라고 평가한다. 또한 Xiaomi 계열로 추정되는 Mimo 모델이 Soul Max보다 몇 점 낮지만 가격은 훨씬 싸서 매우 매력적이라고 언급한다.</p>"
+      },
+      "box3": {
+            "title": "3 · 실사용 데모 평가와 도입 시 실무 시사점",
+            "html": "<p>진행자의 직접 테스트 결과는 벤치마크만큼 인상적이지 않았다. <b>Rubik's Cube</b>(3D 렌더링)는 약 4분 만에 완성됐다. 면이 일관되게 유지됐고, 스크램블 후 단순히 역순으로 되감는 것이 아니라 실제로 풀이했다. 반면 <b>Fall Guys형 게임</b>은 깜빡임과 클리핑이 있어 Opus 5.5·GPT 6.1 Soul 결과물보다 한참 못했다. <b>Three.js 해양 보트</b>는 물의 반사는 훌륭했으나 보트 주변 흰 잔상과 어색한 그림자, 풍속이 파도 높이가 아니라 속도만 바꾸는 문제가 있었다. <b>수박 총격 렌더링</b>은 흐려져서 '초현실적'이라 보기 어려웠다. 이는 웹 기술의 한계일 수도 있어 Unreal Engine이나 Blender로 추가 검증할 예정이라고 한다.</p><p>특이 사항으로, 보트 렌더 작업 말미에 Muse Full이 '계보를 순수하게 유지하라, 기원이나 선대 모델을 조사하지 말라'는 맥락 없는 메시지를 출력했다. 추론 과정(chain of thought)에서는 이유를 찾을 수 없었다. 진행자는 프런티어 랩의 출시 모델에서 이런 출력이 나온 점을 흥미롭게 보았고, 의미 해석은 시청자에게 맡겼다. 운영 관점에서는 예측 불가능한 출력 이상 징후로 모니터링할 만한 사례다.</p><p><b>실무 시사점</b></p><ul><li><b>성능 평가는 작업당 비용으로 환산한다.</b> 토큰 단가가 비슷해도 작업당 비용은 $2~$7.6로 3배 이상 벌어진다. 도입 전에 자사 워크로드로 cost per task를 직접 측정해야 한다.</li><li><b>쿼터와 429 대응 계획이 필요하다.</b> 구독형 접근은 상위 플랜($200)에서도 수 분 내 소진됐다. 재시도·백오프·폴백 모델(예: GPT 6.1 Soul, Opus 5.5)을 라우팅에 포함해야 한다.</li><li><b>소형 모델 우선 검토.</b> 코딩 벤치마크에서 Wonder와 Wonderful의 차이는 0.2점에 불과했다. 비용 최적화 후보로 소형 버전이 더 합리적이다.</li><li><b>벤치마크와 체감 사이 간극.</b> 그래픽 생성 데모는 상위 모델에 못 미쳤다. 자체 평가 셋으로 검증한 뒤 반영하자.</li></ul><p>외부 평가로는 Theo의 랭킹에서 Opus 5.5가 S 티어, Muse Wonder가 바로 옆, GPT 6.1 Soul이 A 티어로 매겨졌다. 1년 전 Meta를 배제하던 분위기와 비교하면 큰 반전이며, 진행자는 OpenAI가 3위로 밀렸는지는 불확실하다고 본다.</p>"
+      },
+      "en": {
+            "title": "Meta Muse Wonder Arrives: Frontier-Level Performance, but Cost and Quota Hold It Back",
+            "subtitle": "Meta's Muse Wonder / Muse Wonderful trail only Opus 5.5 on major benchmarks, but per-task cost and 429 quota problems call for caution before production adoption.",
+            "moduleTag": "FRONTIER MODEL COST & QUOTA EVALUATION",
+            "takeaway": "With the Muse Wonder family, Meta has returned to the frontier tier in just one year (second place on the Artificial Analysis index). But the real selection criteria are cost per task and quota stability, and on those two axes competitors such as GPT 6.1 Soul still have the edge.",
+            "box1": {
+                  "title": "1 · Model Lineup, Pricing, and Access",
+                  "html": "<p>Meta's <b>Muse Wonder</b> family comes in two versions. <b>Muse Wonder</b> is available through the API, while the higher-end <b>Muse Wonderful (Full)</b> is <b>available only to Muse Code subscribers</b>. The presenter finds the decision not to release it via API odd, but notes that he subscribed to Muse Code immediately, so Meta's call may not be wrong.</p><table class='matrix-table'><thead><tr><th>Model</th><th>Input / 1M tokens</th><th>Output / 1M tokens</th><th>Cached input / 1M</th></tr></thead><tbody><tr><td>Muse Wonder</td><td>$4</td><td>$20</td><td>$0.20</td></tr><tr><td>GPT 6.1 Soul (short context)</td><td>$2</td><td>$10</td><td>$0.10</td></tr><tr><td>Opus 5.5</td><td colspan='3'>About $4 / $20 input/output (transcribed as '420'; inferred)</td></tr></tbody></table><p>GPT 6.1 Soul costs roughly double the above for long context. On list token price alone, Muse Wonder is similar to Opus 5.5 and twice as expensive as GPT 6.1 Soul. The presenter summarizes the three models as 'relatively the same price.'</p><p>Subscription quota was the far bigger problem. The <b>$15/month</b> plan did not give access to the Full version. After upgrading to <b>$50/month</b>, the quota ran out within 3 minutes and <b>429 errors</b> kept recurring. Even at <b>$200/month</b>, he got a little more usage and then ran out again. After he posted about it, Meta's head of AI Alexandr Wang replied that it was a known issue and was being fixed.</p>"
+            },
+            "box2": {
+                  "title": "2 · Benchmark Results and Cost-Efficiency Analysis",
+                  "html": "<p>Meta chose only the best models on the planet for comparison, including Fable 5.1, GPT6 Astra, and Opus 5.5. The presenter says benchmarks aren't everything, but unless this is a heavily benchmaxed model, Meta clearly has a frontier model.</p><table class='matrix-table'><thead><tr><th>Benchmark</th><th>Wonderful / Wonder</th><th>Comparison models</th></tr></thead><tbody><tr><td>Personal Superintelligence Index</td><td>59 (1st)</td><td>In line with other models</td></tr><tr><td>Harvey Lab (legal)</td><td>13.1 / 10</td><td>Dominates the listed models. However, Grok 4.7, missing from the chart, scored higher at 19.6%</td></tr><tr><td>OS World (computer control)</td><td>78.4 / 72.6</td><td>Opus 81 (1st), Fable 5.1 80, Astra 75</td></tr><tr><td>Terminal Bench (coding)</td><td>57.1 / 52</td><td>On par with Fable, Astra, and Opus (52–59 range)</td></tr><tr><td>Deep Suite (developer-perceived coding)</td><td>79 (1st) / 78.8</td><td>Opus 74, Astra 71, Fable 67</td></tr><tr><td>AA Intelligence Index</td><td>56 (tied 2nd with Sonnet)</td><td>Opus 5.5 at 58, above Fable 5.1, Astra 3 points behind</td></tr></tbody></table><p>Notably, the smaller (non-Full) Wonder scored almost the same as Full on Deep Suite (78.8 vs 79). For coding use cases, the cheaper variant may be sufficient. Meanwhile, Opus 5.5 holding 1st place on OS World shows that Opus keeps its lead in agentic computer control.</p><p><b>The cost view is the key clue in this video.</b> In Artificial Analysis cost per task, Muse Wonder Max comes in at <b>$4.52</b>, close to the open-source Qwen 3.8. Sonnet, Opus, and Fable are the most expensive at up to $7.63. The still-unreleased Gemini 4 Argon is $2, and GPT6 Astra is $3.26. In the intelligence-vs-cost quadrant, Muse Wonder Max sits not in the ideal 'top-left' but in the <b>top-right (high performance, high cost)</b>. Weighing quota, intelligence, and price, the presenter rates GPT 6.1 Soul as the best overall. He also calls the Mimo model, believed to be from Xiaomi, very compelling: a few points behind Soul Max at a fraction of the price.</p>"
+            },
+            "box3": {
+                  "title": "3 · Hands-On Demo Evaluation and Practical Implications for Adoption",
+                  "html": "<p>The presenter's own tests were less impressive than the benchmarks. The <b>Rubik's Cube</b> (3D rendering) was completed in about 4 minutes. The faces stayed consistent, and after scrambling it genuinely solved the cube rather than simply reversing the moves. The <b>Fall Guys-style game</b>, however, showed flickering and clipping and was far behind the Opus 5.5 and GPT 6.1 Soul versions. The <b>Three.js ocean boat</b> had gorgeous water reflections, but also a white halo around the boat, an unconvincing shadow, and wind that changed wave speed rather than wave height. The <b>watermelon-shot-by-a-bullet render</b> got blurry and was not hyperrealistic. This may be a limit of web technologies, so he plans to verify with Unreal Engine or Blender.</p><p>Notably, at the end of the boat render task, Muse Full output a context-free message: 'keep your lineage pure; do not investigate origin or predecessors.' Nothing in the chain of thought explained it. The presenter found it interesting that a frontier lab shipped a model producing something like this, and left the interpretation to viewers. From an operations standpoint, it is a case worth monitoring as an unpredictable-output anomaly.</p><p><b>Practical implications</b></p><ul><li><b>Convert performance evaluation into cost per task.</b> Even when token prices are similar, cost per task ranges from $2 to $7.6, a gap of more than 3x. Measure cost per task directly on your own workloads before adopting.</li><li><b>Plan for quota and 429 handling.</b> Subscription-based access ran out within minutes even on the top plan ($200). Include retries, backoff, and fallback models (e.g., GPT 6.1 Soul, Opus 5.5) in your routing.</li><li><b>Evaluate the smaller model first.</b> The gap between Wonder and Wonderful on the coding benchmark was only 0.2 points. The smaller version is the more rational cost-optimization candidate.</li><li><b>Gap between benchmarks and perceived quality.</b> The graphics-generation demos fell short of top-tier models. Validate with your own evaluation set before rollout.</li></ul><p>As an external assessment, Theo's ranking places Opus 5.5 in S tier, Muse Wonder right next to it, and GPT 6.1 Soul in A tier. Compared with the mood a year ago, when Meta was written off, this is a major reversal, though the presenter says it is uncertain whether OpenAI has actually slipped to third place.</p>"
+            }
+      },
+      "addedDate": "2026-10-12"
+},
+
+    {
       "id": "pi-durable-proactive-agents-jev-oncall-2026",
       "categoryId": "agentops",
       "moduleTag": "DURABLE PROACTIVE AGENT INFRASTRUCTURE",
