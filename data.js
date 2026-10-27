@@ -66,6 +66,69 @@ window.DASHBOARD_DATA = {
   ],
   entries: [
     {
+      "id": "unlimited-ocr2-srswa-long-document-parsing-2026",
+      "categoryId": "onprem",
+      "moduleTag": "LONG-DOCUMENT OCR INFERENCE",
+      "title": "Unlimited OCR 2 공개: SRSWA(Sparse Reference Sliding Window Attention)로 수백 페이지 문서를 한 번에 파싱",
+      "subtitle": "Page Gate와 Token Sieve로 고르는 512토큰 참조와 128토큰 슬라이딩 윈도우를 함께 써서 KV cache를 일정하게 묶었습니다. 그 결과 24GB 소비자 GPU 한 장에서 수백 페이지 문서를 단일 패스로 처리하고, MarathonDocBench에서 77점으로 SOTA를 기록했습니다.",
+      "tags": [
+            "Unlimited OCR 2",
+            "SRSWA",
+            "RSWA",
+            "Sparse Attention",
+            "KV Cache",
+            "Page Gate",
+            "Token Sieve",
+            "MarathonDocBench",
+            "Long-Document OCR",
+            "SGLang",
+            "Hugging Face Transformers",
+            "PyMuPDF",
+            "RTX 4090",
+            "RunPod",
+            "Gundam Mode",
+            "Document Parsing"
+      ],
+      "videoUrl": "https://www.youtube.com/watch?v=OneYJJWDnNA",
+      "videoId": "OneYJJWDnNA",
+      "channel": "1littlecoder",
+      "duration": "11:55",
+      "refDate": "2026-10-27",
+      "takeaway": "긴 문서 OCR의 병목은 모델 크기가 아니라 페이지 수에 비례해 커지는 KV cache입니다. Unlimited OCR 2는 매 토큰마다 꼭 필요한 512토큰만 골라 보고 오래된 메모리는 계속 비웁니다. 덕분에 연산량과 메모리를 일정하게 유지하면서도 정확도는 Gemini·Kimi 계열의 2배 이상을 기록했습니다.",
+      "box1": {
+            "title": "1 · 왜 기존 OCR은 긴 문서에서 무너지는가: 페이지 분할의 한계와 KV cache 폭증",
+            "html": "<p><b>기존 OCR 파이프라인</b>은 문서를 페이지 단위로 자르고, 각 페이지를 따로 읽은 다음 결과를 이어 붙입니다. 페이지끼리 맥락이 필요 없는 문서에서는 잘 동작합니다. 하지만 <b>한 문단이 두 페이지에 걸쳐 끊기는 경우</b>처럼 페이지를 넘나드는 맥락이 필요하면 구조적으로 풀기 어렵습니다.</p><p>VLM 기반 OCR 모델은 이 문제를 <b>attention</b>으로 풉니다. 모델은 토큰을 하나씩 출력하는데, 매 토큰마다 입력 이미지 전체와 지금까지 쓴 출력 전체를 다시 참조합니다. 같은 계산을 반복하지 않으려고 과거 맥락을 <b>KV cache</b>에 저장합니다. 그런데 페이지가 늘수록 돌아봐야 할 이미지와 토큰이 늘고, KV cache가 선형으로 커지면서 메모리와 연산이 같이 폭증합니다. 긴 문서 OCR의 실제 병목이 바로 이것입니다.</p><h5>1세대 해법: RSWA (Reference Sliding Window Attention)</h5><p>Unlimited OCR 1은 <b>책을 베껴 쓰는 사람</b>에 비유할 수 있습니다. 필사하는 사람은 이미 쓴 내용을 처음부터 다시 읽지 않습니다. 원본을 보면서 방금 쓴 몇 단어만 확인하고 다음 단어를 씁니다. 오래된 내용은 기억에서 흐려집니다. RSWA는 이 방식을 그대로 구현해 최근 출력에만 슬라이딩 윈도우를 걸고 KV cache를 최소로 유지했습니다.</p><ul><li><b>문제:</b> 페이지 수에 비례해 KV cache와 연산량이 증가함</li><li><b>RSWA:</b> 최근 출력 윈도우만 참조해 KV cache 증가를 억제함</li><li><b>남은 과제:</b> 원본 문서 쪽 참조 범위를 지능적으로 줄여야 함 (2세대의 목표)</li></ul>"
+      },
+      "box2": {
+            "title": "2 · SRSWA의 핵심 메커니즘: Page Gate + Token Sieve로 고정 크기 참조 집합 만들기",
+            "html": "<p>Unlimited OCR 2의 새 기법은 <b>SRSWA (Sparse Reference Sliding Window Attention)</b>입니다. 핵심은 새로 붙은 <b>Sparse</b>라는 단어에 있습니다. 300페이지 책을 베끼는 사람도 300페이지를 한꺼번에 보지 않고, 지금 베끼는 페이지나 그 앞 페이지 정도만 봅니다. SRSWA도 같은 방식으로, 새 토큰을 생성할 때마다 이전 페이지 전체를 보지 않고 <b>가장 관련 있는 조각만 골라서</b> 참조합니다.</p><p>선별은 두 단계로 이루어집니다. ① <b>Page Gate</b>가 관련 있는 페이지를 고르고, ② <b>Token Sieve</b>가 그 안에서 필요한 토큰만 걸러냅니다. 결과적으로 모델이 어느 시점에 들고 있는 작업 참조는 늘 <b>512토큰으로 고정</b>되고, 여기에 자기 최근 출력을 보는 <b>128토큰 로컬 윈도우</b>가 1세대처럼 따로 붙습니다. 더 이상 필요 없는 문서 부분의 메모리는 해제되므로 KV cache가 계속 비워집니다.</p><table class='matrix-table'><tr><th>구성 요소</th><th>사양</th><th>역할</th></tr><tr><td>Sparse Reference</td><td>512 tokens (16 blocks × 32 tokens)</td><td>Page Gate·Token Sieve가 고른 원문 참조</td></tr><tr><td>Local Sliding Window</td><td>128 tokens</td><td>모델 자신의 최근 출력 참조 (RSWA 계승)</td></tr><tr><td>Memory Release</td><td>불필요 구간 KV cache 해제</td><td>토큰 생성이 진행돼도 메모리가 쌓이지 않음</td></tr></table><h5>벤치마크: MarathonDocBench (수백 페이지급 장문 문서)</h5><table class='matrix-table'><tr><th>모델</th><th>점수</th></tr><tr><td><b>Unlimited OCR 2</b></td><td><b>77</b></td></tr><tr><td>Kimi K3 (VLM, 전사상 'Kim K3')</td><td>33.7</td></tr><tr><td>Gemini 3.8 Flash</td><td>28.6</td></tr></table><p>정리하면 SRSWA는 <b>참조할 페이지 수를 고정</b>하고 <b>KV cache를 계속 해제</b>해서 문서가 길어져도 연산이 늘지 않게 만듭니다. 그러면서 2위 모델의 2배가 넘는 정확도를 냈습니다. 비용 효율과 정확도를 한꺼번에 해결한 셈입니다. 세부 내용은 공개된 논문을 참고하면 됩니다.</p>"
+      },
+      "box3": {
+            "title": "3 · 실전 배포 가이드: 24GB GPU, Transformers 테스트에서 SGLang 프로덕션까지",
+            "html": "<p>데모 환경은 <b>RunPod의 RTX 4090(24GB VRAM)</b>이었고 비용은 <b>시간당 $1 미만</b>이었습니다(스폰서 아님). 최소 요구 사항은 <b>CUDA 환경과 24GB 이상의 GPU 메모리</b>입니다. 소비자용 GPU 한 장으로 돌아가므로 폐쇄망이나 온프레미스 문서 파싱 서버의 후보로 현실성이 높습니다.</p><h5>서빙 스택 선택 (BU 공식 권장)</h5><ul><li><b>Hugging Face Transformers:</b> 한두 번 테스트하는 PoC·실험용. <code>AutoModel</code>/<code>AutoTokenizer</code>로 로드한 뒤 <code>.cuda()</code>로 올리면 몇 초 안에 준비됩니다.</li><li><b>SGLang:</b> 제품화, 상시 엔드포인트, 서버리스 운영 등 실제 프로덕션 서빙용.</li><li><b>PyMuPDF:</b> PDF를 페이지 이미지로 변환하는 전처리 유틸리티.</li></ul><h5>두 가지 추론 모드</h5><table class='matrix-table'><tr><th>모드</th><th>API</th><th>특징</th><th>적합한 경우</th></tr><tr><td>Multi-page</td><td><code>infer_multi</code></td><td>문서 전체 페이지를 한 요청으로 파싱해 페이지 간 맥락(끊긴 문단 등)을 유지</td><td>PDF, 장문 보고서, 논문</td></tr><tr><td>Single-page</td><td><code>model.infer</code></td><td>Dynamic tiling(일명 <b>Gundam mode</b>)으로 한 장을 인코딩하며 메모리를 더 절약</td><td>단일 JPEG, 낱장 이미지</td></tr></table><h5>라이브 데모 검증 결과 (약 13페이지 논문 PDF)</h5><p>인자로 tokenizer, 페이지 리스트, output path를 넘기면 <b>raw markdown 파일</b>과 <b>파싱된 구조화 결과</b>가 함께 저장됩니다. 원문과 직접 대조해 보니 <b>표</b>는 HTML/Markdown 테이블로 변환되었고, 수치(예: 72.2900, 0.81347)가 원본과 정확히 일치했습니다. 6페이지의 <b>수식</b>(categorical cross-entropy의 p<sub>i,k</sub>, k∈C<sub>i</sub>)도 첨자까지 정확히 재현되었습니다. 끝나면 반드시 pod를 <b>Stop한 뒤 Terminate</b>해서 과금과 데이터를 정리해야 합니다.</p><p><b>실무 시사점:</b> RAG 지식 파이프라인의 인제스트 단계에서 장문 PDF를 페이지 단위로 쪼개는 대신 문서 단위 단일 패스로 파싱할 수 있습니다. 그러면 페이지 경계에서 생기는 청크 손실과 이어 붙이기 오류가 구조적으로 줄어듭니다. 단, 벤치마크 점수는 영상에서 언급된 수치이므로 도입 전에 자사 문서로 재검증해야 합니다.</p>"
+      },
+      "en": {
+            "title": "Unlimited OCR 2 Is Here: Parsing Hundreds of Pages in One Pass with SRSWA (Sparse Reference Sliding Window Attention)",
+            "subtitle": "It keeps the KV cache bounded by combining a 512-token reference picked by Page Gate and Token Sieve with a 128-token sliding window. As a result, it processes documents of hundreds of pages in a single pass on one 24GB consumer GPU and sets the SOTA on MarathonDocBench with a score of 77.",
+            "moduleTag": "LONG-DOCUMENT OCR INFERENCE",
+            "takeaway": "The bottleneck in long-document OCR is not model size but a KV cache that grows with page count. Unlimited OCR 2 looks at only the 512 tokens it actually needs for each new token and keeps releasing older memory. This keeps compute and memory flat while scoring more than twice as high as the Gemini and Kimi models.",
+            "box1": {
+                  "title": "1 · Why Traditional OCR Breaks on Long Documents: The Limits of Page Splitting and KV Cache Growth",
+                  "html": "<p>A <b>traditional OCR pipeline</b> splits a document into pages, reads each page separately, and then stitches the results back together. This works well when pages don't need context from each other. But when context crosses page boundaries, such as <b>a paragraph split across two pages</b>, the approach has a hard time by design.</p><p>VLM-based OCR models handle this with <b>attention</b>. The model outputs one token at a time, and for each token it looks back over all input images and everything it has written so far. To avoid repeating that work, it stores past context in the <b>KV cache</b>. As the page count grows, there are more images and tokens to look back on, so the KV cache grows linearly and memory and compute grow with it. This is the real bottleneck in long-document OCR.</p><h5>Generation 1 fix: RSWA (Reference Sliding Window Attention)</h5><p>Unlimited OCR 1 works like <b>a person copying a book by hand</b>. The copier doesn't reread everything already written. They look at the original, check the last few words they wrote, and write the next word. Older content fades from memory. RSWA implements exactly this: it applies a sliding window over recent output only and keeps the KV cache as small as possible.</p><ul><li><b>Problem:</b> KV cache and compute grow with page count</li><li><b>RSWA:</b> Looks only at a window of recent output to limit KV cache growth</li><li><b>Remaining challenge:</b> Narrow the source-document side of attention intelligently (the goal of Generation 2)</li></ul>"
+            },
+            "box2": {
+                  "title": "2 · How SRSWA Works: Page Gate + Token Sieve Build a Fixed-Size Reference Set",
+                  "html": "<p>The new technique in Unlimited OCR 2 is <b>SRSWA (Sparse Reference Sliding Window Attention)</b>. The key is the newly added word <b>Sparse</b>. Someone copying a 300-page book doesn't look at all 300 pages at once, only the page they're copying now or maybe the one before it. SRSWA works the same way: for each new token, instead of looking at every earlier page, it <b>picks only the most relevant pieces</b> to reference.</p><p>Selection happens in two steps. ① <b>Page Gate</b> picks the relevant pages, and ② <b>Token Sieve</b> filters out only the tokens needed within them. As a result, the working reference the model holds at any moment is always <b>fixed at 512 tokens</b>, plus a separate <b>128-token local window</b> over its own recent output, as in Generation 1. Memory for parts of the document that are no longer needed is released, so the KV cache keeps getting cleared.</p><table class='matrix-table'><tr><th>Component</th><th>Spec</th><th>Role</th></tr><tr><td>Sparse Reference</td><td>512 tokens (16 blocks × 32 tokens)</td><td>Source references picked by Page Gate and Token Sieve</td></tr><tr><td>Local Sliding Window</td><td>128 tokens</td><td>The model's own recent output (carried over from RSWA)</td></tr><tr><td>Memory Release</td><td>Frees the KV cache for spans no longer needed</td><td>Memory doesn't pile up as tokens are generated</td></tr></table><h5>Benchmark: MarathonDocBench (documents of hundreds of pages)</h5><table class='matrix-table'><tr><th>Model</th><th>Score</th></tr><tr><td><b>Unlimited OCR 2</b></td><td><b>77</b></td></tr><tr><td>Kimi K3 (VLM, transcribed as 'Kim K3')</td><td>33.7</td></tr><tr><td>Gemini 3.8 Flash</td><td>28.6</td></tr></table><p>In short, SRSWA <b>fixes the number of pages it references</b> and <b>keeps releasing the KV cache</b>, so compute doesn't grow as documents get longer. On top of that, it more than doubles the accuracy of the next-best model. It solves cost efficiency and accuracy at the same time. See the published paper for details.</p>"
+            },
+            "box3": {
+                  "title": "3 · Deployment Guide: 24GB GPU, from Transformers Testing to SGLang Production",
+                  "html": "<p>The demo ran on an <b>RTX 4090 (24GB VRAM) on RunPod</b> for <b>under $1 per hour</b> (not sponsored). The minimum requirements are <b>a CUDA environment and at least 24GB of GPU memory</b>. Because it runs on a single consumer GPU, it is a realistic option for an air-gapped or on-prem document-parsing server.</p><h5>Choosing a serving stack (official BU recommendation)</h5><ul><li><b>Hugging Face Transformers:</b> For PoCs and experiments you run once or twice. Load with <code>AutoModel</code>/<code>AutoTokenizer</code> and move to the GPU with <code>.cuda()</code>; it's ready in a few seconds.</li><li><b>SGLang:</b> For real production serving, such as building a product, running an always-on endpoint, or serverless operation.</li><li><b>PyMuPDF:</b> Preprocessing utility that converts a PDF into page images.</li></ul><h5>Two inference modes</h5><table class='matrix-table'><tr><th>Mode</th><th>API</th><th>Characteristics</th><th>Best for</th></tr><tr><td>Multi-page</td><td><code>infer_multi</code></td><td>Parses all pages of a document in one request and keeps cross-page context (e.g., split paragraphs)</td><td>PDFs, long reports, papers</td></tr><tr><td>Single-page</td><td><code>model.infer</code></td><td>Encodes one page with dynamic tiling (aka <b>Gundam mode</b>) and saves more memory</td><td>Single JPEGs, standalone images</td></tr></table><h5>Live demo results (a roughly 13-page paper PDF)</h5><p>Passing the tokenizer, the list of pages, and an output path saves both a <b>raw markdown file</b> and a <b>parsed, structured result</b>. Checked directly against the source, <b>tables</b> were converted to HTML/Markdown tables and the values (e.g., 72.2900, 0.81347) matched the original exactly. The <b>equation</b> on page 6 (categorical cross-entropy with p<sub>i,k</sub>, k∈C<sub>i</sub>) was also reproduced correctly, down to the subscripts. When you're done, always <b>Stop and then Terminate</b> the pod to stop billing and clear the data.</p><p><b>Practical takeaway:</b> In the ingestion stage of a RAG knowledge pipeline, you can parse long PDFs per document in a single pass instead of splitting them into pages. This structurally reduces chunk loss and stitching errors at page boundaries. However, the benchmark scores are figures quoted in the video, so validate them on your own documents before adopting the model.</p>"
+            }
+      },
+      "addedDate": "2026-10-27"
+},
+
+    {
       "id": "anthropic-s1-ipo-flywheel-governance-2026",
       "categoryId": "agentops",
       "moduleTag": "FRONTIER AI UNIT ECONOMICS & GOVERNANCE",
