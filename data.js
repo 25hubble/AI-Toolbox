@@ -66,6 +66,67 @@ window.DASHBOARD_DATA = {
   ],
   entries: [
     {
+      "id": "deepseek-v4-1-flash-open-weights-pareto-2026",
+      "categoryId": "onprem",
+      "moduleTag": "OPEN-WEIGHTS COST-QUALITY FRONTIER",
+      "title": "DeepSeek V4.1 Flash, 오픈 웨이트로 가성비 1위에 오르다",
+      "subtitle": "최상위 프런티어 모델에 근접한 품질에 작업 1건당 0.26달러, 최대 1,286 tok/s, 로컬 실행까지 가능한 DeepSeek V4.1 Flash는 비용·품질·속도를 함께 놓고 볼 때 가장 좋은 오픈소스 모델이다.",
+      "tags": [
+            "DeepSeek V4.1 Flash",
+            "Open Weights",
+            "Local Inference",
+            "Quantization",
+            "DGX Station",
+            "Pareto Frontier",
+            "Cost per Task",
+            "Multimodal",
+            "Browser Agent",
+            "Baseten",
+            "Lithos AI",
+            "Artificial Analysis",
+            "Kimi K3.1",
+            "Opus 5.5"
+      ],
+      "videoUrl": "https://www.youtube.com/watch?v=DDZ-a6bAn3Y",
+      "videoId": "DDZ-a6bAn3Y",
+      "channel": "Matthew Berman",
+      "duration": "21:11",
+      "refDate": "2026-10-28",
+      "takeaway": "모델 선택의 기준은 이제 최고 품질이 아니라 작업 1건당 비용과 지능 밀도다. DeepSeek V4.1 Flash는 Opus 5.5 바로 아래 수준의 품질을 작업 1건당 0.26달러, 1,000 tok/s 이상의 속도로 제공하고 로컬에서도 돌릴 수 있다. 그래서 가장 복잡한 작업만 빼면 실무의 기본 모델로 둘 만하다.",
+      "box1": {
+            "title": "1 · 실전 데모 7종: 3D 생성, 비전, 에이전트, 장기 코딩",
+            "html": "<p>Matthew Berman은 벤치마크 수치보다 <b>실제 산출물</b>을 먼저 보여준다. 프롬프트는 대부분 한 줄로 짧게 주었다. 세부 요구사항을 일일이 적지 않아도 모델이 사람이 떠올리는 '당연한 완성형'을 만들어 내는지 보려는 의도다.</p><ul><li><b>3D 기계식 시계 'Mechanica'</b>: 단일 웹페이지 안에 부품들이 실제로 맞물려 돌아가고, 조명과 그림자가 실시간으로 움직인다. 부품에 마우스를 올리면 설명(예: hair spring)이 뜨고, 클릭하면 확대된다. 분해(explode) 뷰도 된다. 다만 뒷면의 자동 와인딩 로터는 빠져 있었다.</li><li><b>Fall Guys 클론 'Bean Blitz'</b>: HTML만으로 만든 3D 게임이다. 해머 넉백과 다이브가 동작한다. 오브젝트끼리 겹치는 clipping, 회전하지 않는 장애물, 산성 낙하가 안 되는 문제가 있었다. 평가는 'Opus 5.5에는 못 미치지만 꽤 가깝다'였다.</li><li><b>iPhone Duo 3D 모델</b>: 웹에서 스펙과 디자인을 조사한 뒤 3D로 재현했다. 로고, 반사, 내부 화면의 matte 질감, 버튼 위치, 힌지까지 거의 완벽했다. 접히는 애니메이션에서 화면이 프레임 밖으로 밀려나는 버그가 있었다. 같은 테스트에서 Kimi보다 확실히 나았다고 평가했다.</li><li><b>Rubik's Cube</b>: 'Scramble and solve'라는 한 줄 프롬프트로 색상 유지, 회전 물리, 스크램블 기록, 실제 풀이까지 모두 정확하게 구현했다.</li></ul><p>비전 테스트에서는 페이스트리 사진을 주고 개수를 세게 했다(max reasoning, 4분 25초). 모델은 눈에 보이는 페이스트리를 <b>137개</b>로 세고 종류별 이름까지 붙였다. 그리고 사용자가 묻지 않았는데도 '쌓여 있어서 가려진 것이 있으니 130~145개가 타당한 범위'라고 덧붙였다. 후속 질문에서는 마카롱 피라미드를 '밑변 5~6, 높이 5~6층의 원뿔'로 모델링해 앞면 24개로부터 <b>총 45개</b>를 추정했다. 크루아상 더미에는 +60%를 보정했다. 이 추론은 23초 만에 끝났다. 보이지 않는 부분까지 공간적으로 추론하는 능력을 보여준 사례다.</p>"
+      },
+      "box2": {
+            "title": "2 · 에이전트, 로컬 실행, 개인 소프트웨어 제작",
+            "html": "<p><b>브라우저 에이전트 테스트</b>에서는 Sam Altman 인터뷰 YouTube 링크만 주고 '클립으로 쓸 만한 순간 Top 5와 정확한 타임스탬프'를 요청했다. 모델은 6분 24초 동안 브라우저를 조작했고, 다음과 같은 클립을 골랐다.</p><ul><li>'1년째 코드를 한 줄도 안 봤다'(Revolutionary War reenactment 비유 포함): 타임스탬프와 인용이 정확했다. 뉴스 가치, 별도 맥락 없이 이해되는 점, 쇼츠 길이를 선정 근거로 들었다.</li><li>'Coders have never been busier'</li><li>'AI 의식 논쟁은 사람에게서 통제권을 빼앗는 뒷문이 될 수 있다'</li></ul><p>진행자는 모두 자신이 직접 골랐을 클립이라고 평가했다. 오픈 웨이트 모델이라 <b>chain of thought와 tool call 전체를 들여다볼 수 있다</b>는 점도 운영상 장점으로 꼽았다.</p><p><b>완전 로컬 실행</b>: DGX Station에서 'Excel 클론을 만들어라'라는 한 줄 지시로 <b>50분 동안 자율 작업</b>을 돌렸다. 결과물은 오프라인 우선 스프레드시트 'GridLine'이다. 수식(=B7+C7), 드래그로 수식 채우기, 굵게, 차트 삽입이 동작한다. 진행자는 양자화(quantized) 버전이라면 고사양 소비자 GPU에서도 돌릴 수 있다고 강조했다.</p><p><b>개인용 소프트웨어 제작</b>도 보여줬다. Opus 5.5로 상세 프롬프트를 만들고 DeepSeek(high thinking)에 실행을 맡기는 <b>2단계 구성</b>이다. 이렇게 만든 PDF 리더 'Folio'(Electron + React + TypeScript + PDF.js)는 목차, 줌, 드로잉, 텍스트 노트, 서명(직접 그리기, 업로드, 카메라 촬영 후 반전), PDF 다크 모드, 회전, 인쇄, 내보내기를 지원한다. 로컬에서 실행했으니 비용은 사실상 0이고, 추론 API를 써도 몇 달러 미만이다. 핵심 메시지는 'Adobe 같은 무거운 SaaS 대신 나에게 꼭 필요한 기능만 담은 앱을 직접 만들라'는 것이다.</p>"
+      },
+      "box3": {
+            "title": "3 · 경제성 지표: Pareto Frontier, 작업당 비용, 서빙 단가",
+            "html": "<p>Artificial Analysis의 <b>quality-cost Pareto Frontier</b> 차트에서 DeepSeek V4.1 Flash는 왼쪽 위, 즉 가장 저렴하면서 품질이 높은 위치에 홀로 있다. Opus 5, Fable 5, GPT 6.1 Soul, Astra 6 Soul, Gemini 3.8 Flash, GLM 5.3 Max보다 효율 면에서 앞선다. 벤치마크는 Humanity's Last Exam <b>42</b>(Kimi K3, GLM 5.3과 비슷한 수준), Terminal Bench <b>42</b>이고, Automation Bench와 Agents' Last Exam에서도 좋은 점수를 받았다. 진행자가 가장 중요하다고 강조한 지표는 <b>Cost per Intelligence Task</b>다. 토큰 단가에 작업 하나를 끝내는 데 쓰인 토큰 수를 곱한 값으로, 지능 밀도가 높을수록 토큰을 덜 쓰기 때문에 값이 낮아진다.</p><table class=\"matrix-table\"><tr><th>모델</th><th>작업 1건당 비용</th></tr><tr><td>Claude Fable 5.1 Max</td><td>$7.63</td></tr><tr><td>Qwen 3.8 Max</td><td>$5.00</td></tr><tr><td>Astra</td><td>$3.26</td></tr><tr><td>Kimi K3.1 Pro</td><td>$2.11</td></tr><tr><td><b>DeepSeek V4.1 Flash</b></td><td><b>$0.26</b></td></tr></table><table class=\"matrix-table\"><tr><th>서빙 제공사</th><th>속도</th><th>Input / Output (per 1M)</th><th>Cache hit</th></tr><tr><td>Lithos AI</td><td>최대 1,286 tok/s</td><td>$0.15 / $0.60</td><td>무료</td></tr><tr><td>Baseten</td><td>약 845 tok/s</td><td>$0.30 / $1.20</td><td>$0.01</td></tr></table><p>채팅 UI에서 reasoning을 끈 상태로 측정했을 때도 체감 속도는 약 125~150 tok/s였다. 이때 '도구를 쓰지 말라'고 명시해야 불필요하게 문서 파일을 만들거나 하지 않고 본문만 바로 출력한다. 진행자의 결론은 이렇다. <b>품질 하나만 보면 1위가 아니지만 비용, 품질, 속도를 합치면 현재 1위다.</b> 성능에서 아쉬움이 생기는 건 가장 복잡한 작업 정도다. Kimi K3.1은 벤치마크 총점은 더 높지만 실사용에서는 DeepSeek가 낫다고 평가했다. 실무 적용 포인트는 세 가지다. ① 기본 모델을 DeepSeek로 두고 고난도 작업만 Opus나 Fable로 라우팅한다. ② 플래너(Opus)가 계획을 세우고 실행기(DeepSeek)가 처리하는 2단계 구성을 쓴다. ③ 프로덕션에 올리기 전에 동시 요청 부하 테스트로 응답 지연과 비용을 확인한다(영상 스폰서 CoreWeave Arena 사례).</p>"
+      },
+      "en": {
+            "title": "DeepSeek V4.1 Flash Takes the Open-Weights Value Crown",
+            "subtitle": "DeepSeek V4.1 Flash comes close to top frontier models in quality while costing $0.26 per task, running at up to 1,286 tok/s, and fitting on local hardware. On cost, quality, and speed taken together, it is the best open-source model available.",
+            "moduleTag": "OPEN-WEIGHTS COST-QUALITY FRONTIER",
+            "takeaway": "The deciding factor in model choice is no longer peak quality. It is cost per task and intelligence density. DeepSeek V4.1 Flash delivers quality just below Opus 5.5 at $0.26 per task, serves at over 1,000 tok/s, and can run locally, so it is a strong production default for everything except the hardest work.",
+            "box1": {
+                  "title": "1 · Seven Live Demos: 3D Generation, Vision, Agents, Long-Horizon Coding",
+                  "html": "<p>Matthew Berman shows <b>real outputs</b> before he gets to benchmark numbers. Most prompts are a single line. The point is to see whether the model builds the 'obvious finished product' a person has in mind without being told every detail.</p><ul><li><b>3D mechanical watch 'Mechanica'</b>: In a single web page, the parts mesh and move, and lighting and shadows update in real time. Hovering over a part shows a description (e.g. the hair spring), clicking zooms in, and there is an exploded view. The automatic winding rotor on the back was missing.</li><li><b>Fall Guys clone 'Bean Blitz'</b>: A 3D game built in plain HTML. Hammer knockback and diving work. Problems included object clipping, an obstacle that never spins, and an acid pit you can't fall into. The verdict was 'not as good as Opus 5.5, but close.'</li><li><b>iPhone Duo 3D model</b>: The model researched the specs and design on the web and rebuilt the phone in 3D. The logo, reflections, matte inner screen, button placement, and hinge were close to flawless. The fold animation had a bug that pushed the phone off screen. In the same test it clearly beat Kimi.</li><li><b>Rubik's Cube</b>: From the one-line prompt 'Scramble and solve', it got color persistence, rotation physics, a scramble log, and a real solve all correct.</li></ul><p>For vision, the model was given a photo of pastries and asked to count them (max reasoning, 4:25). It counted <b>137 visible pastries</b> and named each type. Without being asked, it added that stacked items hide some pastries, so a defensible range is 130–145. In the follow-up, it treated the macaron pyramid as a cone about 5–6 wide at the base and 5–6 layers tall, and estimated <b>45 in total</b> from the 24 visible on the front face. It added 60% to the croissant piles for hidden layers. That reasoning took 23 seconds. It is a clear example of the model reasoning spatially about what it cannot see.</p>"
+            },
+            "box2": {
+                  "title": "2 · Agents, Local Execution, and Building Personal Software",
+                  "html": "<p>In the <b>browser agent test</b>, the model got only a YouTube link to the Sam Altman interview and was asked for the top 5 clippable moments with exact timestamps. It worked in the browser for 6m24s and picked these clips:</p><ul><li>'I haven't looked at a line of code in a year' (including the Revolutionary War reenactment line): the timestamp and quote were correct. It cited news value, no setup required, and Shorts-friendly length as reasons.</li><li>'Coders have never been busier'</li><li>'The AI consciousness debate could be a backdoor to taking control away from people'</li></ul><p>The host said these are the clips he would have chosen himself. Because the weights are open, <b>you can inspect the full chain of thought and every tool call</b>, which he called an operational advantage.</p><p><b>Fully local run</b>: On a DGX Station, the one-line instruction 'build an Excel clone' produced <b>50 minutes of autonomous work</b>. The result is 'GridLine', an offline-first spreadsheet. Formulas (=B7+C7), drag-to-fill, bold, and chart insertion all work. The host stressed that a quantized version can run on a high-end consumer GPU.</p><p>He also showed <b>building personal software</b> with a <b>two-stage setup</b>: Opus 5.5 writes a detailed prompt and DeepSeek (high thinking) carries it out. The resulting PDF reader 'Folio' (Electron + React + TypeScript + PDF.js) has a table of contents, zoom, drawing, text notes, signatures (draw, upload, or capture with the camera and flip), dark mode for any PDF, rotation, printing, and export. Running locally, it cost essentially nothing, and through an inference API it would cost a few dollars at most. The message: instead of bloated SaaS like Adobe, build the app with exactly the features you need.</p>"
+            },
+            "box3": {
+                  "title": "3 · The Economics: Pareto Frontier, Cost per Task, Serving Prices",
+                  "html": "<p>On Artificial Analysis' <b>quality-cost Pareto Frontier</b> chart, DeepSeek V4.1 Flash sits alone in the top-left corner, where models are cheapest for their quality. It is more efficient than Opus 5, Fable 5, GPT 6.1 Soul, Astra 6 Soul, Gemini 3.8 Flash, and GLM 5.3 Max. It scores <b>42</b> on Humanity's Last Exam (similar to Kimi K3 and GLM 5.3) and <b>42</b> on Terminal Bench, and does well on Automation Bench and Agents' Last Exam. The metric the host called most important is <b>Cost per Intelligence Task</b>: price per token multiplied by the number of tokens needed to finish a task. Higher intelligence density means fewer tokens per task, which lowers the cost.</p><table class=\"matrix-table\"><tr><th>Model</th><th>Cost per task</th></tr><tr><td>Claude Fable 5.1 Max</td><td>$7.63</td></tr><tr><td>Qwen 3.8 Max</td><td>$5.00</td></tr><tr><td>Astra</td><td>$3.26</td></tr><tr><td>Kimi K3.1 Pro</td><td>$2.11</td></tr><tr><td><b>DeepSeek V4.1 Flash</b></td><td><b>$0.26</b></td></tr></table><table class=\"matrix-table\"><tr><th>Provider</th><th>Speed</th><th>Input / Output (per 1M)</th><th>Cache hit</th></tr><tr><td>Lithos AI</td><td>up to 1,286 tok/s</td><td>$0.15 / $0.60</td><td>Free</td></tr><tr><td>Baseten</td><td>~845 tok/s</td><td>$0.30 / $1.20</td><td>$0.01</td></tr></table><p>Even in the chat UI with reasoning turned off, observed speed was about 125–150 tok/s. You need to say 'do not use tools' explicitly, or the model may spin up a document file instead of writing the text directly. The host's conclusion: <b>it is not number one on quality alone, but it is number one when you combine cost, quality, and speed.</b> You only give up much on the most complex tasks. Kimi K3.1 has a higher overall benchmark score, but he finds DeepSeek much better in real use. Three practical takeaways: ① make DeepSeek the default model and route only the hardest tasks to Opus or Fable; ② use a two-stage setup where a planner (Opus) writes the plan and an executor (DeepSeek) does the work; ③ before going to production, load-test with concurrent requests to check latency and cost (the video's sponsor, CoreWeave Arena, was the example).</p>"
+            }
+      },
+      "addedDate": "2026-10-28"
+},
+
+    {
       "id": "unlimited-ocr2-srswa-long-document-parsing-2026",
       "categoryId": "onprem",
       "moduleTag": "LONG-DOCUMENT OCR INFERENCE",
