@@ -66,6 +66,127 @@ window.DASHBOARD_DATA = {
   ],
   entries: [
     {
+      "id": "voice-agent-barge-in-interruption-handling-2026",
+      "categoryId": "agentops",
+      "moduleTag": "VOICE AGENT BARGE-IN CONTROL",
+      "title": "음성 에이전트의 끼어들기(Barge-in) 처리 설계: 3단 필터 캐스케이드와 발화 컨텍스트 동기화",
+      "subtitle": "Cascade형 음성 에이전트에서 소음·맞장구·배경 음성을 걸러내고, 끊긴 지점까지 실제로 말한 단어만 LLM 컨텍스트에 넣으며, 감지 모델을 서버와 클라이언트 중 어디에 둘지 정하는 실무 가이드",
+      "tags": [
+            "Voice Agent",
+            "Barge-in",
+            "Interruption Handling",
+            "Silero VAD",
+            "Backchannel Detection",
+            "Krisp",
+            "Hush",
+            "Speaker Isolation",
+            "TTS Word Timestamps",
+            "LiveKit",
+            "Pipecat",
+            "Cascade Architecture",
+            "Latency"
+      ],
+      "videoUrl": "https://www.youtube.com/watch?v=qccTOT6XSd8",
+      "videoId": "qccTOT6XSd8",
+      "channel": "Trelis Research",
+      "duration": "6:03",
+      "refDate": "2026-11-02",
+      "takeaway": "끼어들기 처리는 대부분 Silero VAD 임계값 0.7을 120~160ms 연속으로 넘는지만 봐도 충분히 동작합니다. 맞장구 판별과 배경 음성 분리는 필요할 때만 단계적으로 추가하면 됩니다. 놓치기 쉬운 핵심은 끊긴 시점까지 TTS가 실제로 말한 단어만 정확히 LLM 컨텍스트에 넣는 일입니다.",
+      "box1": {
+            "title": "1 · 끼어들기 판별의 3가지 문제와 필터 캐스케이드",
+            "html": "<p>이 가이드는 <b>Cascade형 구조(ASR → LLM → TTS)</b>에 해당합니다. Speech-to-Speech 모델은 끼어들기 처리를 이미 내장하고 있습니다. 끼어들기(Barge-in)에서 풀어야 할 문제는 세 가지이고, 아래 순서대로 난이도가 올라갑니다.</p><table class='matrix-table'><tr><th>문제</th><th>잘못 감지되는 예</th><th>해법</th><th>공개 여부</th></tr><tr><td><b>① 음성인가, 소음인가</b></td><td>잡음, 키보드 소리</td><td>Silero VAD + 임계값</td><td>오픈소스</td></tr><tr><td><b>② 진짜 끼어들기인가, 맞장구/필러인가</b></td><td>\"Yeah\", \"mm-hmm\"</td><td>Barge 감지 모델</td><td>오픈소스 없음(Krisp, Dialt 라이선스 모델)</td></tr><tr><td><b>③ 화자 음성인가, 배경 음성인가</b></td><td>TV, 스피커폰, 주변 대화</td><td>Hush 모델(화자 분리)</td><td>오픈소스(Hugging Face)</td></tr></table><h5>① 기본 방식: VAD만으로도 대부분 해결됩니다</h5><p><b>Silero VAD</b>가 사실상 표준입니다. 판정 규칙은 <b>음성 확률이 0.7을 넘는 상태가 120ms(또는 160ms) 연속 유지되는지</b>입니다. 이 조건을 만족하면 끼어들기로 보고 TTS 재생을 즉시 멈춘 뒤 발화자가 계속 말하도록 둡니다. 이것만으로도 꽤 쓸 만한 수준의 끼어들기 감지가 됩니다.</p><h5>② 맞장구(Backchannel)는 생각보다 덜 심각합니다</h5><p>사람은 에이전트와 대화할 때 사람끼리 말할 때보다 <b>맞장구와 필러를 덜 씁니다</b>. 그래서 실제 문제 규모는 예상보다 작습니다. 그래도 구분해야 한다면 <b>Barge 감지 모델</b>을 VAD 뒤에 붙입니다. VAD가 음성을 감지했을 때만 이 모델을 돌리고, 결과가 맞장구면 TTS를 계속 재생하고 끼어들기면 멈춥니다. 오픈소스 모델은 없으며, <b>Krisp</b> 제품이나 <b>Dialt Hugging Face 저장소에서 라이선스로 제공되는 모델</b>을 쓸 수 있습니다.</p><h5>③ 배경 음성은 Hush로 분리합니다</h5><p>오픈소스 <b>Hush</b> 모델(Hugging Face)로 배경 음성과 실제 화자의 발화를 구분합니다. 보통은 ASR 앞에 두지만, <b>VAD와 Barge 모델 앞에만 두면 호출 빈도가 줄어 비용이 절감됩니다.</b> 영상 화자의 회사(Dialt)는 자체 학습한 모델을 씁니다. 권장 순서는 <b>VAD → 화자 분리(Hush) → Barge 모델 → TTS 중지 여부 결정</b>입니다.</p>"
+      },
+      "box2": {
+            "title": "2 · 끼어들기 이후: 실제로 말한 단어만 컨텍스트에 넣기",
+            "html": "<p>끼어들기가 일어났다는 것은 <b>에이전트가 응답 일부만 말하고 멈췄다</b>는 뜻입니다. 이때 LLM 컨텍스트에 생성된 응답 전체를 넣으면 안 되고, <b>사용자가 실제로 들은 단어까지만</b> 기록해야 합니다. 그렇지 않으면 LLM은 사용자가 듣지 못한 내용을 들었다고 가정하고 다음 대화를 이어갑니다. 그러면 맥락이 어긋나고 같은 말을 반복하지 않는 등 대화가 부자연스러워집니다.</p><h5>구현 방법</h5><ul><li><b>클라이언트 재생 위치 추적:</b> 클라이언트가 오디오를 어디까지 재생했는지 실시간으로 확인합니다.</li><li><b>TTS 단어 타임스탬프 매핑:</b> TTS가 단어별 타임스탬프를 주면 재생 위치와 맞춰 몇 번째 단어까지 발화됐는지 정확히 계산하고, 그 지점까지만 대화 기록에 넣습니다.</li><li><b>타임스탬프가 없을 때:</b> 재생 시간과 단어 수가 대략 비례한다고 보고(선형 근사) 발화된 단어 수를 추정합니다.</li></ul><table class='matrix-table'><tr><th>TTS 특성</th><th>컨텍스트 정확도</th><th>권장</th></tr><tr><td>단어 단위 타임스탬프 제공</td><td>높음(정확한 절단 지점)</td><td><b>우선 선택</b></td></tr><tr><td>타임스탬프 미제공</td><td>근사치(시간↔단어 수 선형 매핑)</td><td>대안으로만 사용</td></tr></table><p><b>실무 시사점:</b> TTS 벤더를 고를 때 음질과 지연 시간만 보지 말고 <b>단어 타임스탬프 제공 여부</b>도 필수 평가 항목에 넣어야 합니다.</p>"
+      },
+      "box3": {
+            "title": "3 · 감지 모델 배치: 서버 vs 클라이언트",
+            "html": "<p>Barge 감지를 <b>서버에서 할지, 클라이언트(휴대폰·브라우저)에서 할지</b>는 지연 시간과 제어권 사이의 트레이드오프입니다.</p><table class='matrix-table'><tr><th>항목</th><th>서버 측 감지</th><th>클라이언트 측 감지</th></tr><tr><td>채택 현황</td><td><b>업계 기본값</b>(Dialt, LiveKit, Pipecat 등)</td><td>클라이언트를 직접 통제할 때만 가능</td></tr><tr><td>도입 이유</td><td>프레임워크가 클라이언트 재생을 통제하지 못함(예: Python SDK)</td><td>자체 모바일 앱이나 자체 브라우저 SDK를 제공하는 경우</td></tr><tr><td>지연 시간</td><td>오디오가 서버까지 가야 하므로 <b>약 100ms 추가</b></td><td>전송 구간이 없어 <b>가장 빠른 반응</b></td></tr><tr><td>연산 자원</td><td>충분함</td><td>단말 연산이 제한적</td></tr><tr><td>재생 상태 파악</td><td>클라이언트가 알려주지 않으면 알 수 없음</td><td>재생 위치를 직접 알 수 있음</td></tr></table><h5>왜 서버 측이 기본값인가</h5><p>대부분의 프레임워크는 <b>클라이언트를 통제하지 않습니다</b>. Python SDK처럼 서버 쪽만 제공하면 클라이언트가 오디오를 어떻게 재생하는지 서버는 알 수 없고, 클라이언트가 알림을 보내줄 때만 파악할 수 있습니다. 그래서 감지 속도가 조금 느려지더라도 서버에 두는 것이 일반적입니다. 추가 지연은 <b>약 100ms</b> 수준이라 대부분 허용할 만합니다.</p><h5>판단 기준</h5><ul><li><b>최고 수준의 반응성이 필요하고 클라이언트(자체 앱, 브라우저 SDK)를 직접 통제한다면:</b> 클라이언트 측 감지를 검토합니다. 전송 지연이 없어 가장 빠릅니다.</li><li><b>그 외 대부분의 경우:</b> 서버 측 감지를 기본으로 씁니다. 약 100ms 손해를 감수하고 구현 단순성과 연산 여유를 얻습니다.</li></ul><p>원칙적으로는 로컬 감지가 이상적이지만, <b>현실에서는 서버 측 감지가 표준</b>이라는 것이 영상의 결론입니다.</p>"
+      },
+      "en": {
+            "title": "Designing Barge-in Handling for Voice Agents: A 3-Stage Filter Cascade and Spoken-Context Synchronization",
+            "subtitle": "A practical guide for cascade voice agents: filter out noise, backchannels and background speech, add only the words actually spoken before the cutoff to the LLM context, and decide whether detection runs on the server or the client",
+            "moduleTag": "VOICE AGENT BARGE-IN CONTROL",
+            "takeaway": "Most barge-in detection works well enough with one check: does Silero VAD stay above a 0.7 threshold for 120–160ms in a row? Add backchannel classification and background-speech isolation only when you need them. The step people miss is putting into the LLM context exactly the words the TTS had spoken before it was cut off.",
+            "box1": {
+                  "title": "1 · The Three Barge-in Problems and the Filter Cascade",
+                  "html": "<p>This guide is for <b>cascade designs (ASR → LLM → TTS)</b>. Speech-to-speech models already have interruption handling built in. Barge-in handling has three problems to solve, and they get harder in the order below.</p><table class='matrix-table'><tr><th>Problem</th><th>False-trigger example</th><th>Solution</th><th>Availability</th></tr><tr><td><b>① Speech or noise?</b></td><td>Ambient noise, keyboard sounds</td><td>Silero VAD + threshold</td><td>Open source</td></tr><tr><td><b>② Real interruption or backchannel/filler?</b></td><td>\"Yeah\", \"mm-hmm\"</td><td>Barge detection model</td><td>No open-source option (Krisp, Dialt licensed model)</td></tr><tr><td><b>③ Caller or background speech?</b></td><td>TV, loudspeaker, nearby conversation</td><td>Hush model (speaker isolation)</td><td>Open source (Hugging Face)</td></tr></table><h5>① The baseline: VAD alone handles most cases</h5><p><b>Silero VAD</b> is the de facto standard. The rule is <b>whether the speech probability stays above 0.7 for 120ms (or 160ms) in a row</b>. If it does, treat it as an interruption: stop TTS playback right away and let the caller keep talking. This alone gives you reasonably good interruption detection.</p><h5>② Backchannels are a smaller problem than you'd expect</h5><p>People use <b>fewer fillers and backchannels</b> when talking to an agent than when talking to another person, so the real-world problem is smaller than you might think. If you still need to tell them apart, put a <b>barge detection model</b> after the VAD. Run it only when the VAD detects speech: keep playing TTS if it returns a backchannel, and stop if it returns an interruption. There is no open-source model for this. You can use <b>Krisp</b> or <b>a model that Dialt licenses on its Hugging Face repository</b>.</p><h5>③ Use Hush to separate out background speech</h5><p>The open-source <b>Hush</b> model (Hugging Face) tells background speech apart from the caller's own speech. People usually put it in front of the ASR, but <b>putting it only in front of the VAD and barge model means it runs less often and costs less.</b> The speaker's company (Dialt) uses its own trained model. The recommended order is <b>VAD → speaker isolation (Hush) → barge model → decide whether to stop TTS</b>.</p>"
+            },
+            "box2": {
+                  "title": "2 · After the Interruption: Add Only the Words Actually Spoken to the Context",
+                  "html": "<p>An interruption means <b>the agent spoke part of its response and then stopped</b>. Don't put the full generated response into the LLM context. Record <b>only the words the user actually heard</b>. Otherwise the LLM assumes the user heard content they never heard and builds the next turn on that. The context drifts and the conversation becomes unnatural, for example the agent won't repeat a point the user never heard.</p><h5>How to implement it</h5><ul><li><b>Track client playback position:</b> Follow how far the client has played the audio, in real time.</li><li><b>Map TTS word timestamps:</b> If the TTS returns per-word timestamps, match them to the playback position to work out exactly which word playback reached, and write only up to that point into the transcript.</li><li><b>When there are no timestamps:</b> Assume playback time and word count are roughly proportional (linear approximation) and estimate how many words were spoken.</li></ul><table class='matrix-table'><tr><th>TTS capability</th><th>Context accuracy</th><th>Recommendation</th></tr><tr><td>Provides word-level timestamps</td><td>High (exact cutoff point)</td><td><b>Prefer</b></td></tr><tr><td>No timestamps</td><td>Approximate (linear time ↔ word-count mapping)</td><td>Fallback only</td></tr></table><p><b>Practical implication:</b> When choosing a TTS vendor, don't look only at voice quality and latency. Make <b>word-timestamp support</b> a required evaluation criterion.</p>"
+            },
+            "box3": {
+                  "title": "3 · Where to Run Detection: Server vs Client",
+                  "html": "<p>Whether to run barge detection <b>on the server or on the client (phone or browser)</b> is a trade-off between latency and control.</p><table class='matrix-table'><tr><th>Aspect</th><th>Server-side detection</th><th>Client-side detection</th></tr><tr><td>Adoption</td><td><b>Industry default</b> (Dialt, LiveKit, Pipecat, etc.)</td><td>Only possible when you control the client</td></tr><tr><td>Why teams use it</td><td>Frameworks don't control client playback (e.g., a Python SDK)</td><td>You ship your own mobile app or browser SDK</td></tr><tr><td>Latency</td><td>Audio must reach the server: <b>~100ms extra</b></td><td>No transport hop: <b>fastest response</b></td></tr><tr><td>Compute</td><td>Plenty</td><td>Limited on-device</td></tr><tr><td>Playback-state awareness</td><td>Unknown unless the client reports it</td><td>Known directly</td></tr></table><h5>Why server-side is the default</h5><p>Most frameworks <b>don't control the client</b>. If you only ship a server-side Python SDK, the server can't see how the client plays back audio unless the client sends notifications. So detection usually runs on the server, even though it detects interruptions a little more slowly. The extra latency is <b>about 100ms</b>, which is acceptable in most cases.</p><h5>Decision rule</h5><ul><li><b>If you need the fastest possible response and you control the client (your own app or browser SDK):</b> consider client-side detection. With no transport hop, it's the fastest.</li><li><b>In most other cases:</b> default to server-side detection. You give up about 100ms and get a simpler implementation and more compute headroom.</li></ul><p>The video concludes that local detection is ideal in principle, but <b>in practice server-side detection is the standard</b>.</p>"
+            }
+      },
+      "addedDate": "2026-11-02"
+},
+
+    {
+      "id": "nvidia-dory-looped-transformer-2026",
+      "categoryId": "onprem",
+      "moduleTag": "ELASTIC INFERENCE COMPUTE",
+      "title": "NVIDIA Dory: 같은 4B 가중치를 여러 번 반복 실행하는 Looped Transformer와 탄력적 추론 연산",
+      "subtitle": "가중치 메모리는 4B 그대로 두고, 추론 시점에 루프 횟수만 바꿔 토큰당 연산 깊이를 72층에서 192층까지 늘리는 새로운 스케일링 축",
+      "tags": [
+            "Looped Transformer",
+            "Latent Recurrent Transformer",
+            "NVIDIA Nemotron",
+            "Dory",
+            "Elastic Inference Compute",
+            "vLLM",
+            "KV Cache",
+            "NVFP4",
+            "MXFP8",
+            "GRPO",
+            "Gemma 4 26B",
+            "MoE",
+            "Test-time Compute",
+            "Model Routing"
+      ],
+      "videoUrl": "https://www.youtube.com/watch?v=vSCYL8ySh9g",
+      "videoId": "vSCYL8ySh9g",
+      "channel": "Sam Witteveen",
+      "duration": "15:04",
+      "refDate": "2026-11-02",
+      "takeaway": "Dory는 Chain-of-Thought로 토큰을 더 많이 생성하는 대신 '토큰 하나를 더 깊이 생각하는' 방식으로 스케일링한다. 이 덕분에 GPU 메모리는 4B 모델 수준으로 유지하면서 배포 시점에 루프 수로 추론 강도를 고를 수 있다. 다만 지식 저장량은 파라미터 수에 묶여 있어, 강점은 agentic·instruction following 작업에 한정된다.",
+      "box1": {
+            "title": "1 · 아키텍처: 72층을 루프로 192층까지 펼치는 구조",
+            "html": "<p><b>Dory</b>는 NVIDIA Nemotron Labs가 공개한 <b>3.97B 파라미터</b> looped transformer(다른 이름은 latent recurrent transformer)다. 연구용 릴리스이지만 직접 내려받아 로컬 하드웨어에서 돌릴 수 있는 드문 looped 모델이다. 별도 블로그 포스트 없이 model card만 공개됐다. Context는 최대 <b>256K</b>이고, 상업적 사용이 가능한 <b>OpenMDW 라이선스</b>로 배포된다. 가중치는 bfloat16, MXFP8, NVFP4 버전과 GGUF로 제공된다.</p><h5>레이어 분할 구조</h5><p>일반 transformer는 모든 레이어를 입력부터 출력까지 한 번씩 통과한다. Dory는 레이어를 세 블록으로 나눈다.</p><ul><li><b>Input block (16층)</b>: 한 번만 실행</li><li><b>Recurrent block (40층)</b>: 같은 가중치를 N번 반복 실행</li><li><b>Output block (16층)</b>: 한 번만 실행</li></ul><p>루프를 돌 때마다 input block의 출력이 recurrent block에 <b>다시 더해진다</b>. 그래서 루프가 엉뚱한 방향으로 흘러가지 않는다. 원본 입력에 변형을 더해 가는 ResNet의 residual 구조와 비슷하다. 차이는 그 변형을 블록마다 다른 가중치가 아니라 <b>같은 가중치</b>가 반복해서 만든다는 점이다. 비유하면 매 바퀴마다 '질문을 다시 읽고' 표현을 다듬은 뒤 다음 시도를 하는 셈이다.</p><table class=\"matrix-table\"><tr><th>루프 수</th><th>유효 깊이</th><th>GPU 가중치 메모리</th><th>대략적 연산량</th></tr><tr><td>1 loop</td><td>72층</td><td>~4B</td><td>4B dense 수준</td></tr><tr><td>2 loops</td><td>112층</td><td>~4B</td><td>-</td></tr><tr><td>4 loops</td><td>192층</td><td>~4B</td><td>약 9B dense 수준</td></tr></table><h5>학습 레시피</h5><p>사전학습에는 총 <b>6T 토큰</b>이 쓰였다. 그중 처음 <b>4.5T 토큰은 NVFP4로 네이티브 학습</b>했고, 이후 16-bit로 전환했다. 이어서 <b>300B 토큰</b>으로 context extension을 하고, 마지막에 SFT와 <b>GRPO</b> 기반 강화학습을 거쳤다. 핵심은 output block이 <b>어떤 루프 횟수 뒤의 상태든 읽을 수 있도록</b> 학습됐다는 점이다. 그래서 1·2·4·8 loop가 모두 유효한 모델이고, 재학습 없이 추론 시점에 루프 수를 정할 수 있다. NVIDIA는 이를 <b>Elastic Inference Compute</b>라고 부른다.</p>"
+      },
+      "box2": {
+            "title": "2 · 서빙 실무: 메모리, KV Cache, vLLM 운영",
+            "html": "<p>가장 큰 운영상 이점은 이것이다. 루프를 늘리면 <b>토큰당 연산량은 늘지만 GPU에 올라가는 가중치는 3.9B 그대로</b>다. 4 loop에서는 9B dense급 연산을 하면서도 가중치 메모리는 4B 모델 크기를 유지한다. 대용량 VRAM이 없는 폐쇄망·온프렘 환경에서 매력적인 이유다.</p><h5>함정: KV Cache는 루프 수만큼 늘어난다</h5><ul><li><b>Per-loop 모드</b>(기본): 루프마다 별도 KV cache를 유지한다. 루프가 늘수록 cache 메모리도 늘어난다.</li><li><b>Last-loop 모드</b>: recurrent attention 레이어마다 cache를 하나만 두고 이전 것을 덮어쓴다. 1 loop에서 4 loop로 가도 cache 크기가 <b>변하지 않는다</b>.</li><li>수치 예시(32K context, 2 loops 기준): per-loop는 시퀀스당 약 <b>2GB</b>, 1 loop 또는 last-loop는 약 <b>1.32GB</b>.</li><li>NVIDIA는 last-loop 모드에서도 정확도와 출력 길이가 per-loop와 <b>거의 같다</b>고 밝혔다. 긴 context에 동시 사용자가 많은 서빙이라면 우선 검토할 설정이다.</li></ul><h5>vLLM 운영 시 현재 제약</h5><p>지금은 vLLM을 시작할 때 루프 수를 <b>고정</b>해야 한다. 발표자는 1·2·4 loop를 비교하려고 같은 모델의 vLLM 인스턴스를 세 개 띄웠다. 디코딩 속도는 1 loop가 가장 빠르고 루프가 늘수록 느려진다. 실제 데모에서는 4 loop가 출력 토큰 수는 1 loop보다 아주 조금 많았지만 wall time은 훨씬 길었다.</p><p>현실적인 아키텍처는 다음과 같다. 앞단에 <b>router</b>를 두고, 쉬운 질의는 1~2 loop 인스턴스로, 어려운 agentic 작업은 4~6 loop 인스턴스로 보낸다. 앞으로는 vLLM이 요청 단위로 루프 수를 직접 조절하게 될 것으로 예상된다. 발표자의 권장 배포안은 이렇다. <b>2 loop를 기본값</b>으로 두고(NVIDIA 권장과 일치), 어려운 agentic 작업용으로 <b>4 loop 인스턴스</b>를 따로 운영한다.</p>"
+      },
+      "box3": {
+            "title": "3 · 품질 실측과 벤치마크: 무엇이 좋아지고 무엇이 안 되나",
+            "html": "<h5>정성 관찰: 루프 증가가 곧 품질 향상은 아니다</h5><p>같은 수학 프롬프트에서 1 loop는 빠르게 정답에 도달했다. 2 loop는 풀이 없이 '5'만 출력했고, 4 loop는 LaTeX을 포함한 상세한 단계별 풀이로 정답을 냈다. 하지만 발표자는 <b>항상 그렇지는 않다</b>고 강조한다. 많은 프롬프트에서 루프 수와 관계없이 품질이 같았고, 출력 토큰 수도 루프 수에 비례하지 않는다. reasoning effort를 올리는 것과는 성격이 다르며, 대신 추론 스타일(번호 매긴 사고 vs 일반 서술)이 루프별로 달라졌다.</p><h5>Loop Lens: 루프별 내부 상태 관찰</h5><p>발표자는 모델을 plain PyTorch로 포팅하고 bf16 가중치로 매 루프의 내부 상태를 읽어 vLLM log probability와 맞춰 봤다. 특정 토큰(괄호)의 예측 확률은 1 loop <b>15%</b>, 2 loop <b>68%</b>, 3 loop <b>74%</b>, 4 loop <b>75%</b>였고 5~6 loop에서는 거의 그대로였다. 루프가 늘수록 확신이 커지다가 <b>포화</b>되는 패턴이다. 어떤 질문 유형에 몇 loop가 필요한지 판별하는 일은 프로덕션의 과제로 남는다.</p><h5>Gemma 4 26B(MoE, 4B active) 대비 10개 벤치마크</h5><table class=\"matrix-table\"><tr><th>설정</th><th>승리 벤치마크 수</th></tr><tr><td>Dory 1 loop</td><td>1 / 10</td></tr><tr><td>Dory 2 loops</td><td>4 / 10</td></tr><tr><td>Dory 4 loops</td><td>5 / 10</td></tr></table><ul><li><b>강점</b>: instruction following, long context, SWE-bench Verified 같은 <b>agentic 작업</b>. NVIDIA 자체 composite score로는 Gemma 4 26B보다 앞선다.</li><li><b>약점</b>: GPQA, Humanity's Last Exam 같은 <b>지식 집약형</b> 벤치마크에서는 전혀 이기지 못하고 상당히 뒤처진다. 지식은 가중치에 저장되는데, 26B MoE는 expert에 훨씬 많은 지식을 담고 있기 때문이다.</li><li>두 모델의 토큰당 연산량은 비슷하다. 차이는 연산을 '넓은 가중치(MoE)'로 하느냐 '같은 가중치의 반복 깊이(loop)'로 하느냐에 있다.</li></ul><p><b>전망</b>: 이 구조를 2~3배 크기로 키우면 50B 이상 MoE와 경쟁할 수 있다고 본다. GPT-6가 looped 구조라는 소문도 있다. 현재 research 버전이 프로덕션 모델을 대체할 수준은 아니지만, 루프 수별 fine-tuning이 발전하면 큰 MoE 같은 거대한 메모리 없이도 작은 모델 하나로 다양한 난이도의 작업을 소화하는 방향이 열린다.</p>"
+      },
+      "en": {
+            "title": "NVIDIA Dory: A Looped Transformer That Reruns the Same 4B Weights for Elastic Inference Compute",
+            "subtitle": "Keep weight memory at 4B and change only the loop count at inference time, scaling per-token compute depth from 72 to 192 layers along a new scaling axis",
+            "moduleTag": "ELASTIC INFERENCE COMPUTE",
+            "takeaway": "Dory scales by thinking harder per token instead of writing more Chain-of-Thought tokens. That keeps GPU memory at the level of a 4B model and lets you choose reasoning intensity at deployment time through the loop count. Knowledge capacity is still bound by parameter count, though, so its gains are limited to agentic and instruction-following work.",
+            "box1": {
+                  "title": "1 · Architecture: Unrolling 72 Layers into 192 Through Loops",
+                  "html": "<p><b>Dory</b> is a <b>3.97B-parameter</b> looped transformer (also called a latent recurrent transformer) released by NVIDIA Nemotron Labs. It is a research release, but it is one of the rare looped models you can download and run on local hardware. NVIDIA published only a model card, with no accompanying blog post. It supports up to <b>256K</b> context and ships under the commercially usable <b>OpenMDW license</b>. Weights are available in bfloat16, MXFP8, and NVFP4 versions, plus GGUFs.</p><h5>Layer Partitioning</h5><p>A normal transformer runs every layer once, from input to output. Dory splits its layers into three blocks.</p><ul><li><b>Input block (16 layers)</b>: runs once</li><li><b>Recurrent block (40 layers)</b>: runs the same weights N times</li><li><b>Output block (16 layers)</b>: runs once</li></ul><p>On every loop, the input block's output is <b>re-added</b> to the recurrent block, which keeps the loops from drifting off course. This resembles the residual structure of ResNet, where a modification is added to the original input. The difference is that the modification comes from the <b>same weights</b> applied repeatedly, not from different weights in each block. Think of it as the model 'rereading the question' and refining its representation on every lap before taking another shot.</p><table class=\"matrix-table\"><tr><th>Loops</th><th>Effective Depth</th><th>GPU Weight Memory</th><th>Approx. Compute</th></tr><tr><td>1 loop</td><td>72 layers</td><td>~4B</td><td>4B dense level</td></tr><tr><td>2 loops</td><td>112 layers</td><td>~4B</td><td>-</td></tr><tr><td>4 loops</td><td>192 layers</td><td>~4B</td><td>~9B dense level</td></tr></table><h5>Training Recipe</h5><p>Pre-training used <b>6T tokens</b> in total. The first <b>4.5T tokens were trained natively in NVFP4</b>, after which training switched to 16-bit. This was followed by <b>300B tokens</b> of context extension, and finally SFT and <b>GRPO</b>-based reinforcement learning. The key detail is that the output block was trained to <b>read the state after any number of loops</b>. As a result, 1, 2, 4, and 8 loops are all valid models, and you can set the loop count at inference time without retraining. NVIDIA calls this <b>Elastic Inference Compute</b>.</p>"
+            },
+            "box2": {
+                  "title": "2 · Serving in Practice: Memory, KV Cache, and vLLM Operations",
+                  "html": "<p>The biggest operational advantage is this: adding loops increases per-token compute, but <b>the weights on the GPU stay at 3.9B</b>. At 4 loops the model does roughly 9B-dense compute while its weight memory remains the size of a 4B model. That makes it attractive for air-gapped and on-prem environments without large amounts of VRAM.</p><h5>The Catch: KV Cache Grows with Loop Count</h5><ul><li><b>Per-loop mode</b> (default): each loop keeps its own KV cache, so cache memory grows as loops increase.</li><li><b>Last-loop mode</b>: each recurrent attention layer keeps a single cache and overwrites the old one. Going from 1 to 4 loops does <b>not change</b> the cache size.</li><li>Example figures (32K context, 2 loops): per-loop needs about <b>2GB</b> per sequence, while 1 loop or last-loop needs about <b>1.32GB</b>.</li><li>NVIDIA states that last-loop mode keeps accuracy and output length <b>close to</b> per-loop. For long-context serving with many concurrent users, it is the first setting to evaluate.</li></ul><h5>Current vLLM Constraints</h5><p>Today the loop count must be <b>fixed</b> when vLLM starts. To compare 1, 2, and 4 loops, the presenter ran three vLLM instances of the same model. Decoding is fastest at 1 loop and slows as loops increase. In the demo, the 4-loop run produced only slightly more output tokens than the 1-loop run, but its wall time was much longer.</p><p>A realistic architecture looks like this. Put a <b>router</b> in front: easy queries go to a 1–2 loop instance, and hard agentic tasks go to a 4–6 loop instance. In the future, vLLM is expected to adjust the loop count per request on its own. The presenter's recommended deployment is <b>2 loops as the default</b> (which matches NVIDIA's recommendation), plus a separate <b>4-loop instance</b> for harder agentic tasks.</p>"
+            },
+            "box3": {
+                  "title": "3 · Measured Quality and Benchmarks: What Improves and What Doesn't",
+                  "html": "<h5>Qualitative Observations: More Loops Do Not Always Mean Better Output</h5><p>On the same math prompt, 1 loop reached the correct answer quickly. 2 loops output only '5' with no breakdown, and 4 loops gave a detailed step-by-step solution with LaTeX that reached the correct answer. The presenter stresses that this is <b>not always the case</b>. For many prompts, quality was the same regardless of loop count, and output token count does not scale with loops. It behaves differently from turning up reasoning effort; what changes instead is reasoning style (numbered thinking vs. general prose) across loop counts.</p><h5>Loop Lens: Inspecting Internal State per Loop</h5><p>The presenter ported the model to plain PyTorch and used the bf16 weights to read the internal state of every loop, matching the results against vLLM log probabilities. The predicted probability of one token (a bracket) was <b>15%</b> at 1 loop, <b>68%</b> at 2, <b>74%</b> at 3, and <b>75%</b> at 4, then roughly flat at 5–6 loops. Confidence rises with more loops and then <b>saturates</b>. Working out how many loops each type of question needs remains an open problem for production.</p><h5>10 Benchmarks vs. Gemma 4 26B (MoE, 4B active)</h5><table class=\"matrix-table\"><tr><th>Configuration</th><th>Benchmarks Won</th></tr><tr><td>Dory 1 loop</td><td>1 / 10</td></tr><tr><td>Dory 2 loops</td><td>4 / 10</td></tr><tr><td>Dory 4 loops</td><td>5 / 10</td></tr></table><ul><li><b>Strengths</b>: <b>agentic work</b> such as instruction following, long context, and SWE-bench Verified. On NVIDIA's own composite score, it ranks ahead of Gemma 4 26B.</li><li><b>Weaknesses</b>: on <b>knowledge-heavy</b> benchmarks such as GPQA and Humanity's Last Exam, it does not win at all and falls well behind. Knowledge lives in the weights, and the 26B MoE stores far more of it across its experts.</li><li>Per-token compute is similar for the two models. The difference is whether that compute comes from 'wide weights' (MoE) or 'repeated depth over the same weights' (loops).</li></ul><p><b>Outlook</b>: scaling this architecture up 2–3x could let it compete with MoE models of 50B or more. There are also rumors that GPT-6 uses a looped architecture. The current research version is not ready to replace production models, but as fine-tuning for different loop counts matures, a single small model could handle tasks of varying difficulty without the large memory footprint of a big MoE.</p>"
+            }
+      },
+      "addedDate": "2026-11-02"
+},
+
+    {
       "id": "ai-video-model-9way-ad-benchmark-2026",
       "categoryId": "agentops",
       "moduleTag": "GENERATIVE VIDEO MODEL COST-QUALITY BENCHMARK",
