@@ -66,6 +66,63 @@ window.DASHBOARD_DATA = {
   ],
   entries: [
     {
+      "id": "personal-software-build-vs-buy-2026",
+      "categoryId": "agentops",
+      "moduleTag": "BUILD-VS-BUY TOKEN ECONOMICS",
+      "title": "마침내 일어났다: 소프트웨어를 '사는' 비용보다 '만드는' 비용이 싸진 순간",
+      "subtitle": "모델 품질·토큰 단가·에이전트 자율성이라는 세 조건이 동시에 충족되면서, 개인과 기업이 필요한 소프트웨어를 직접 만들고 유지하는 편이 구독·라이선스 구매보다 경제적인 전환점에 도달했다는 분석이다.",
+      "tags": [
+            "Build vs Buy",
+            "Token Economics",
+            "Opus 5.5",
+            "Agentic Coding",
+            "Software Cloning",
+            "Open Source",
+            "SaaS is Dead",
+            "Personal Software",
+            "DeepSeek V4.1 Flash",
+            "Maintenance Agent"
+      ],
+      "videoUrl": "https://www.youtube.com/watch?v=r0cJOa9MZsE",
+      "videoId": "r0cJOa9MZsE",
+      "channel": "Matthew Berman",
+      "duration": "12:58",
+      "refDate": "2026-11-03",
+      "takeaway": "이제 소프트웨어를 만들고 유지하는 데 드는 토큰 비용이 같은 소프트웨어를 사는 비용보다 낮아졌다. 그래서 소프트웨어의 한계 가치는 0에 가까워지고 있고, 앞으로 모든 소프트웨어는 사실상 오픈소스가 되며, 각자 필요한 기능만 담아 직접 만들어 쓰는 시대로 넘어간다.",
+      "box1": {
+            "title": "1 · 전환점의 3대 조건: 성능·가격·쉬움",
+            "html": "<p>발단은 아주 작은 일이었다. 새 PC에 Adobe Acrobat을 설치했는데 기능이 과하고, 다른 제품 홍보에 로그인까지 강요했다. PDF를 읽고 조금 고치려던 화자는 이를 참는 대신 PDF 리더를 직접 만들었다. 단순한 일화처럼 보이지만, 화자는 이것이 <b>소비자가 자기 소프트웨어를 직접 만드는 시대</b>가 열렸다는 신호라고 본다. 그리고 지난 한 달 사이에 아래 세 조건이 동시에 충족됐다고 확신한다.</p><ul><li><b>① 모델이 충분히 좋아졌다</b>: Opus 5.5가 결정적인 전환점이었다. \"이 소프트웨어를 만들어/복제해\"라고만 지시해도 끝까지 완성한다.</li><li><b>② 충분히 싸졌다</b>: 10~30달러짜리 소프트웨어를 만드는 데 수천만 토큰을 태워야 한다면 의미가 없다. 토큰 단가와 작업당 완료 비용이 크게 떨어졌다.</li><li><b>③ 충분히 쉬워졌다</b>: 모델을 감싼 에이전트가 매우 자율적이어서, 사실상 지시 한 줄이면 된다.</li></ul><p>화자의 벤치마크 변화가 모델 성능의 궤적을 보여 준다. Python Snake 게임에서 Rubik's Cube 시뮬레이션으로, 그다음엔 <b>Microsoft Excel 전체 복제</b>로 난이도를 올려 왔다. GPT-5와 Fable 이전 세대 모델은 겉모습은 Excel과 비슷했지만 기능이 덜 갖춰졌고 거친 부분이 많았다. 최신 세대는 <b>90분에서 두어 시간 안에</b> 모든 기능을 갖춘 브라우저 기반 Excel을 처음부터 끝까지 만들어 낸다.</p>"
+      },
+      "box2": {
+            "title": "2 · Build vs Buy 계산식과 실제 사례",
+            "html": "<p>핵심은 늘 따져 봐야 하는 비교식 하나다. <b>(직접 만들고 유지하는 토큰 비용)</b>과 <b>(라이선스·구독으로 사는 비용)</b> 중 어느 쪽이 싼가. 화자는 이제 앞쪽이 더 싸지는 임계점을 넘었다고 주장한다. 게다가 직접 만들면 남들에게는 쓸모없는 기능이라도 <b>정확히 자신에게 필요한 기능만</b> 넣을 수 있다.</p><table class=\"matrix-table\"><tr><th>항목</th><th>구매 비용</th><th>직접 구축 비용</th></tr><tr><td>Microsoft Excel</td><td>단품 평생 라이선스 $180, 또는 Office 구독 월 $7~10</td><td>토큰 약 $10, 기능 동등 수준, 90분~수 시간</td></tr><tr><td>Adobe Acrobat → <b>Folio</b></td><td>무겁고, 로그인·업셀 강요</td><td>전자서명, AI 문서 질의, 드로잉, 노트 지원. 가볍고 빠름. 오픈소스</td></tr><tr><td>One of 10 → <b>Outlier Tracker</b></td><td>인증·정보 제공 요구, YouTube 화면의 30%를 차지</td><td>필요한 기능(영상별 통계, 영상 추적, 채널 분석)만 구현. 약 30분 소요</td></tr></table><p>다른 개발자들은 규모를 더 키웠다. <b>Artcraft</b>는 Adobe 제품군 전체를 오픈소스 무료로 복제했다. Photoshop에 해당하는 PhotoCraft, 벡터 도구 Vectorcraft, Premiere에 해당하는 Filmcraft가 있다. 방법은 단순하다. 기존 소프트웨어를 AI에 보여 주고 \"<b>복제될 때까지 반복하라</b>\"고 지시한다. 화자는 이를 '디컴파일'이라고 부른다. 이렇게 되면 월 $200짜리 Claude나 ChatGPT 구독만 있으면 누구나 어떤 소프트웨어든 만들어 공개할 수 있다. 다른 사람은 그것을 원래 구축 비용의 일부만 들여 포크해 고쳐 쓴다. 결국 <b>소프트웨어의 가치와 가격은 0에 수렴하고, 모든 소프트웨어는 사실상 오픈소스가 된다</b>.</p><p><i>(참고: 영상 중간에 스폰서 광고가 있다. Nvidia RTX Spark 기반 Microsoft Surface Laptop Ultra로, Grace CPU와 Blackwell RTX GPU를 탑재하고 최대 128GB 통합 메모리를 공유하며 CUDA를 기본 지원한다. 화자는 이 장비로 로컬 모델 실행과 개발을 한다고 소개했다.)</i></p>"
+      },
+      "box3": {
+            "title": "3 · 반론(유지보수·보안)과 실무 시사점",
+            "html": "<p><b>'SaaS is Dead' 논지의 확장</b>: 화자는 몇 년 전 영상에서 엔터프라이즈 소프트웨어가 결국 <b>에이전트 계층</b>과 AI가 대신할 수 없는 <b>ground truth 데이터베이스 계층</b>, 이 두 층으로 수렴한다고 주장했다. 당시에는 소비자가 직접 소프트웨어를 만드는 일은 경제적으로 맞지 않는다고 봤다. 그런데 불과 몇 주 전부터 계산이 '직접 구축' 쪽으로 기울었다.</p><p><b>대표적인 반론은 유지보수와 보안이다.</b> 만드는 것만으로는 부족하고, 업데이트하고 보안을 챙겨야 한다는 것이다. 해킹 사고가 늘고 있어서 vibe-coded '슬롭' 소프트웨어는 허점투성이일 수 있다. 화자의 반박은 세 가지다.</p><ul><li>모델이 발전할수록 AI가 쓰는 코드는 더 단단하고 안전해진다.</li><li><b>에이전트를 상시 돌려 업데이트와 보안 점검을 계속 맡기는 비용</b>조차 소프트웨어를 사는 비용보다 낮아지는 지점이 있다.</li><li>직접 운영하기 싫다면 Artcraft처럼 다른 개발자가 계속 토큰을 투입해 관리하는 오픈소스를 내려받으면 된다. 토큰 비용이 0에 가까워질수록 '만드는 즐거움' 때문에 공개 소프트웨어는 더 늘어난다.</li></ul><p><b>전망</b>: 화자는 지금을 '소프트웨어 르네상스'라고 부르며, 모든 개인이 필요한 소프트웨어를 직접 만들게 된다고 본다. 운영체제도 예외가 아니다. Ruby on Rails 창시자가 만든 <b>Omari</b>는 AI를 DNA에 심은 OS로, 사용자가 언제든 원하는 형태로 바꿀 수 있다. 화자는 새 OS가 들어설 여지가 생겼다고 평가한다. 오픈 모델 추천은 <b>DeepSeek V4.1 Flash</b>다.</p><p><b>AgentOps 관점의 실무 적용</b>: (1) SaaS를 갱신할 때 구독료 대 토큰 비용 비교표를 정례화한다. (2) 내부 도구는 '필요 기능만 담은 경량 클론'부터 먼저 검토한다. (3) 직접 만든 소프트웨어에는 상시 보안·업데이트 에이전트를 붙이고, 그 실행 비용을 운영 예산에 넣는다. (4) 데이터의 진실 원천(ground truth DB)은 AI 계층과 분리해 전통적인 방식으로 관리한다.</p>"
+      },
+      "en": {
+            "title": "It Finally Happened: Building Software Is Now Cheaper Than Buying It",
+            "subtitle": "With model quality, token prices, and agent autonomy all reaching the threshold at once, building and maintaining the software you need is now cheaper for individuals and companies than paying for subscriptions or licenses.",
+            "moduleTag": "BUILD-VS-BUY TOKEN ECONOMICS",
+            "takeaway": "Building and maintaining software with tokens now costs less than buying the same software. The marginal value of software is heading toward zero, all software is becoming de facto open source, and people will increasingly build their own, with exactly the features they need.",
+            "box1": {
+                  "title": "1 · Three Conditions for the Tipping Point: Capability, Cost, Ease",
+                  "html": "<p>It started small. On a new PC, the host installed Adobe Acrobat and found it bloated, full of upsells, and demanding a login. All he wanted was to read and lightly edit a PDF, so instead of putting up with it he built his own PDF reader. It sounds trivial, but he sees it as a sign that <b>consumers can now build their own software</b>, and he is convinced that three conditions came together over the past month.</p><ul><li><b>① Models are good enough</b>: Opus 5.5 was the turning point. A prompt like \"build/clone this software\" is now enough for the model to finish the job.</li><li><b>② It is cheap enough</b>: burning tens of millions of tokens to make software you could buy for $10–30 makes no sense. Token prices and cost per completed task have dropped sharply.</li><li><b>③ It is easy enough</b>: models wrapped in agents are autonomous enough that a single instruction is effectively all it takes.</li></ul><p>His benchmarks trace how far the models have come: from a Python Snake game, to a Rubik's Cube simulation, to <b>cloning Microsoft Excel in full</b>. Models from GPT-5 up to the release of Fable produced something that looked like Excel but was rough and missing features. The latest generation builds a complete, browser-based Excel with every feature <b>in 90 minutes to a couple of hours</b>.</p>"
+            },
+            "box2": {
+                  "title": "2 · The Build-vs-Buy Math and Real Examples",
+                  "html": "<p>The core is one comparison you should always be running: is <b>(the token cost to build and maintain)</b> lower than <b>(the cost to buy via license or subscription)</b>? The host argues we have crossed the point where building wins. And when you build it yourself, you get <b>exactly the features you need</b>, even ones nobody else would want.</p><table class=\"matrix-table\"><tr><th>Item</th><th>Cost to buy</th><th>Cost to build</th></tr><tr><td>Microsoft Excel</td><td>$180 lifetime license, or a $7–10/month Office subscription</td><td>About $10 in tokens, feature parity, 90 minutes to a few hours</td></tr><tr><td>Adobe Acrobat → <b>Folio</b></td><td>Bloated, pushes login and upsells</td><td>E-sign, AI Q&amp;A over the PDF, drawing, notes. Lightweight and fast. Open source</td></tr><tr><td>One of 10 → <b>Outlier Tracker</b></td><td>Requires authentication and personal data, takes up 30% of the YouTube screen</td><td>Only the needed features (per-video stats, video tracking, channel analysis). About 30 minutes to build</td></tr></table><p>Other developers have gone further. <b>Artcraft</b> cloned the entire Adobe suite as free, open-source software: PhotoCraft (Photoshop), Vectorcraft for vector work, and Filmcraft (Premiere). The method is simple: show the AI an existing product and tell it to \"<b>iterate until you clone it</b>.\" The host calls this decompiling. Anyone with a $200/month Claude or ChatGPT subscription can now build any software and release it. Others fork and adapt it for a fraction of the original build cost. The result: <b>the value and price of software converge on zero, and all software becomes de facto open source</b>.</p><p><i>(Note: the video includes a sponsor segment for the Microsoft Surface Laptop Ultra, built on Nvidia RTX Spark: a Grace CPU, a Blackwell RTX GPU, up to 128GB of shared unified memory, and native CUDA. The host says he uses it to run local models and build software.)</i></p>"
+            },
+            "box3": {
+                  "title": "3 · Counterarguments (Maintenance, Security) and Practical Implications",
+                  "html": "<p><b>Extending the 'SaaS is Dead' thesis</b>: a few years ago, the host argued in a video that enterprise software would collapse into two layers: an <b>agent layer</b> and a <b>ground-truth database layer</b> that AI cannot replace. At the time he thought it made no economic sense for consumers to build their own software. Within the last few weeks, the math has tipped toward building.</p><p><b>The standard objection is maintenance and security.</b> Building isn't enough; you also have to keep the software updated and secure. Hacks are increasing, so vibe-coded 'slop' software may be full of holes. His rebuttal has three parts:</p><ul><li>As models improve, the code they write gets more hardened and more secure.</li><li>There is a point where even <b>running an agent around the clock to keep updating and security-scanning the software</b> costs less than buying it.</li><li>If you don't want to run that yourself, download an open-source project like Artcraft that other developers keep maintaining with their own tokens. As token costs fall toward zero, the joy of building means more free software gets released.</li></ul><p><b>Outlook</b>: the host calls this a 'software renaissance' in which every individual builds the software they need. That includes operating systems. <b>Omari</b>, from the creator of Ruby on Rails, has AI built into its DNA so users can reshape it however they want at any time, which he sees as room for a new OS. His open-model pick is <b>DeepSeek V4.1 Flash</b>.</p><p><b>AgentOps takeaways</b>: (1) At every SaaS renewal, compare the subscription fee against the token cost of building. (2) For internal tools, consider a lightweight clone with only the needed features first. (3) Attach always-on security and update agents to self-built software, and put their running cost in the operations budget. (4) Keep the ground-truth database separate from the AI layer and manage it the traditional way.</p>"
+            }
+      },
+      "addedDate": "2026-11-03"
+},
+
+    {
       "id": "ai-for-business-analysts-no-code-2026",
       "categoryId": "agentops",
       "moduleTag": "HUMAN-IN-THE-LOOP BA WORKFLOW",
