@@ -66,6 +66,62 @@ window.DASHBOARD_DATA = {
   ],
   entries: [
     {
+      "id": "gemini-4-carbon-cost-performance-agentic-2026",
+      "categoryId": "agentops",
+      "moduleTag": "FRONTIER MODEL COST-PERFORMANCE SELECTION",
+      "title": "Gemini 4 Carbon 출시: 1위는 내줬지만 작업당 비용은 1/3, 장시간 에이전트·소프트웨어 개발용 프런티어 모델",
+      "subtitle": "Carbon은 Artificial Analysis 지수에서 Fable 5.2에 5점 뒤지지만 작업당 비용이 약 1/3이라, 장시간 에이전트 작업의 실전 선택지로 평가된다.",
+      "tags": [
+            "Gemini 4 Carbon",
+            "Fable 5.2",
+            "Artificial Analysis",
+            "비용 대비 성능",
+            "Long-running Agent",
+            "Terminal Bench",
+            "Vibe Coding",
+            "Antigravity",
+            "토큰 가격"
+      ],
+      "videoUrl": "https://www.youtube.com/watch?v=l32KKNKdpIk",
+      "videoId": "l32KKNKdpIk",
+      "channel": "Sam Witteveen",
+      "duration": "16:02",
+      "refDate": "2026-11-10",
+      "takeaway": "모델 선택의 기준은 리더보드 1위가 아니라 작업당 비용과 소요 시간이다. Carbon은 지수상 5점 낮지만 작업당 $7.80 대 $26.50으로 약 1/3 비용이어서, 매일 돌리는 에이전트 워크로드에서는 더 의미 있는 숫자다.",
+      "box1": {
+            "title": "1 · 포지셔닝과 벤치마크: 2위지만 '1/3 가격'",
+            "html": "<p><b>Gemini 4 Carbon</b>은 Google DeepMind가 내놓은 최신 프런티어 모델로, Google은 'Gemini 4 중 가장 강력한 모델'이라고 소개한다. 먼저 나온 Argon과 <b>모델 크기는 같고</b>, Carbon이 더 새롭고 성능이 좋으며 Argon은 더 빠르다. 영상 진행자는 Carbon의 개선이 주로 '더 잘, 더 많이 생각하는' 방식에서 나온 것으로 추정한다. 곧 Flash 크기의 Gemma 모델도 나올 예정이다.</p><p>Google이 제시한 4대 타깃은 다음과 같다.</p><ul><li><b>멀티데이 에이전틱 엔지니어링</b>: 장시간 작업, 코드베이스 외과적 수정, 검증 루프, 사이버 방어(프로덕션 전 보안 점검)</li><li><b>고정밀 지식 노동</b>: 금융·법률·의료 등 제약 조건 검증과 철저한 검색. Google은 '조작된 인용 0건'을 주장한다.</li><li><b>프런티어 디스커버리</b>: 물리, 수학, 양자 컴퓨팅, 유전체, 신약 개발</li><li><b>풀스택 프런트엔드·3D 웹 개발</b>: 물리 시뮬레이션, 게임 메커닉, 스스로 검증하는 UI</li></ul><p>벤치마크에서 Carbon은 Terminal Bench 4.0(터미널 에이전틱 코딩)에서 <b>65.2%</b>로, Opus 5.5와 GPT-6 Astra의 약 59%를 앞선다. 지식 노동용 Automation Bench에서는 약 54점으로 경쟁 모델의 40점대 초반을 앞선다. 다만 이 수치 대부분은 Fable 5.2 출시 전에 정리된 자료다.</p><table class=\"matrix-table\"><tr><th>항목</th><th>Carbon</th><th>Fable 5.2</th></tr><tr><td>AA Intelligence Index</td><td>60 (출시 당시 1위, 지금은 2위)</td><td>65</td></tr><tr><td>작업당 비용</td><td>약 $7.80</td><td>약 $26.50</td></tr><tr><td>작업당 소요 시간</td><td>약 26분 (중앙값 13분)</td><td>-</td></tr><tr><td>생성 토큰(지수 전체)</td><td>약 2.05억 (중앙값 약 7,200만)</td><td>-</td></tr></table><p>핵심은 <b>5점 차이에 약 1/3 비용</b>이라는 점이다. 과학적 발견처럼 최고 성능이 필요한 작업이 아니라면 일상적 워크로드에서는 이 비용 격차가 지수 순위보다 중요하다는 것이 진행자의 판단이다.</p>"
+      },
+      "box2": {
+            "title": "2 · 과금 구조와 운영 특성: 느리고 많이 생각하는 '발사 후 방치형' 에이전트",
+            "html": "<p>Carbon은 중앙값의 약 2배 시간(26분 대 13분)과 약 2.8배 토큰(2.05억 대 7,200만)을 쓰는 <b>사고량 많은 모델</b>이다. 그래서 채팅용이 아니라 <b>작업을 던져 놓고 나중에 결과를 확인하는 방식</b>에 맞는다. 진행자도 테스트 때 대부분 이렇게 사용했다고 한다. 지연 시간 민감도가 높은 UX에는 맞지 않고, 비동기 에이전트 작업이나 배치성 엔지니어링 작업에 적합하다.</p><ul><li><b>정가</b>: 입력 $4 / 출력 $20 (100만 토큰당). Opus 5.5와 같은 가격이다.</li><li><b>도입 프로모션</b>: 입력 $2 / 출력 $10 (Argon 출시가와 동일), <b>11월 30일까지</b>. 캐시 입력은 95% 할인된다.</li><li><b>API 제어</b>: temperature, top_p, top_k는 모두 사전 고정되어 조절할 수 없고, <b>reasoning effort 수준</b>만 지정할 수 있다. 진행자는 이를 근거로 LLM 호출보다 '에이전트를 호출한다'는 관점이 더 맞다고 본다.</li></ul><p>가격은 진행자의 추측이지만, 프로모션 종료 뒤 신규 모델이 비슷한 가격으로 나오거나 프로모션이 연장될 가능성을 열어 둔다. 운영 관점의 시사점은 세 가지다. 첫째, 모델 비교는 토큰 단가가 아니라 <b>작업당 총비용(토큰 소모량 × 단가)</b>과 <b>작업당 소요 시간</b>으로 해야 한다. 둘째, 사고량이 큰 모델은 같은 단가여도 실제 청구액이 달라진다. 셋째, 진행자는 정액제 '뷔페형' 토큰 플랜이 앞으로 줄고 최고 모델이 너무 비싸져 대안을 찾게 될 수 있다고 전망하며, 그런 세계에서 Carbon이 대안이 된다고 본다.</p><p>알려진 약점도 있다. 동일 계열인 Argon에서는 검색 도구를 호출하지 않고 '너무 똑똑하게' 스스로 답하려는 <b>툴 콜링 약점</b>이 관찰되었다고 한다. Carbon에서도 같은 패턴을 점검할 필요가 있다.</p>"
+      },
+      "box3": {
+            "title": "3 · 데모와 시사점: 자체 검증하는 3D·네이티브 앱 빌드와 SaaS 시장의 변화",
+            "html": "<p><b>데모 1 – 3D 렌더링</b>: 싱가포르 Marina Bay Sands의 인터랙티브 3D 렌더링을 요청했다. 에펠탑처럼 학습 데이터가 많은 대상 대신 일부러 어려운 주제를 골랐다. 결과는 대부분 원샷이었고, 이후 셰이더 개선과 구름·사람 추가 정도의 프롬프트만 더했다. 주변 건물(Apple 스토어 구체, Louis Vuitton 피라미드 등)까지 실제와 닮게 재현했고, 반복할 때마다 디테일을 보강하며 <b>스스로 결과를 점검하는 self-verified UI</b> 동작이 관찰되었다.</p><p><b>데모 2 – 네이티브 Mac 앱</b>: Antigravity에서 'ultimate Pomodoro native Mac app'이라는 짧은 프롬프트만 주었다. 결과는 Swift 기반 앱으로, 프로젝트별 추적, 집중용 오디오, 요청하지 않은 메뉴바 컨트롤까지 갖췄다. 서명까지 처리해 <b>Xcode 프로젝트와 바로 실행 가능한 컴파일 앱</b>을 함께 내놓았다(Xcode가 설치된 환경이라 서명 방식은 불확실). <b>데모 3</b>은 'Bear와 Obsidian을 조사해 두 앱의 장점을 합친 앱을 만들라'는 한 줄 프롬프트다. 리버스 엔지니어링 없이 모델의 지식과 웹 조회만으로, 회의에 간 사이 메뉴바를 포함한 네이티브 Swift 앱을 완성했다. 진행자는 일부 기능이 빠졌을 수 있지만 후속 프롬프트 없이 나온 결과라는 점을 강조한다.</p><p><b>시사점</b>은 다음과 같다.</p><ul><li>진행자는 Carbon과 Fable 5.2가 소프트웨어 개발에서 '새로운 리그'에 들어섰다고 평가한다. 모든 사용자가 직접 앱을 만들지는 않겠지만, 중소기업 개발자는 <b>좌석당 비용이 높은 SaaS를 직접 만들거나 오픈소스로 대체</b>하는 흐름이 강해질 것이다.</li><li>'잘 다듬은 앱과 문제 이해'라는 소규모 소프트웨어 하우스의 가치가 약해지고, 이에 대응해 <b>단순한 프런트엔드만 두고 핵심 지능을 클라우드에 두는 복제 방지 구조</b>가 늘어날 수 있다.</li><li>모델이 프로덕션 준비와 보안까지 강화되면서 바이브 코딩에 대한 기존 반론이 약해지고, 소프트웨어를 판매·라이선스하는 방식 자체를 재고해야 한다.</li></ul><p><b>실무 적용</b>: 장시간 코딩·보안 점검 에이전트는 Carbon을 기본값으로 두고 정말 필요한 경우에만 Fable 5.2로 승격하는 <b>비용 계층화</b>를 검토한다. 프로모션 종료일(11월 30일)을 비용 시뮬레이션에 반영하고, 툴 콜링 정확도와 검색 도구 사용 여부를 자체 평가셋으로 확인한다.</p>"
+      },
+      "en": {
+            "title": "Gemini 4 Carbon Is Live: Out of First Place, but One-Third the Cost per Task for Long-Running Agents and Software Development",
+            "subtitle": "Carbon trails Fable 5.2 by five points on the Artificial Analysis index, but at about one-third the cost per task it is a practical choice for long-running agentic work.",
+            "moduleTag": "FRONTIER MODEL COST-PERFORMANCE SELECTION",
+            "takeaway": "Model selection should be driven by cost and time per task, not leaderboard rank. Carbon scores five points lower on the index but costs about $7.80 per task versus $26.50, roughly one-third, which matters more for agent workloads you run every day.",
+            "box1": {
+                  "title": "1 · Positioning and Benchmarks: Second Place at One-Third the Price",
+                  "html": "<p><b>Gemini 4 Carbon</b> is Google DeepMind's new frontier model, billed as the strongest in the Gemini 4 lineup. It is the <b>same size</b> as the earlier Argon; Carbon is newer and better, while Argon is faster. The presenter guesses that Carbon's gains come mainly from thinking better and thinking more on each task. A Flash-sized Gemma model is also coming soon.</p><p>Google lists four target areas:</p><ul><li><b>Multi-day agentic engineering</b>: long-running tasks, surgical code edits, verification loops, and cyber defense (security checks before production)</li><li><b>High-precision knowledge work</b>: finance, legal and healthcare, with constraint checking and exhaustive retrieval. Google claims zero fabricated citations.</li><li><b>Frontier discovery</b>: physics, math, quantum computing, genomics and drug discovery</li><li><b>Full-stack front-end and 3D web development</b>: realistic physics, game mechanics, and UIs that check themselves</li></ul><p>On benchmarks, Carbon scores <b>65.2%</b> on Terminal Bench 4.0 (agentic coding in a terminal), against about 59% for Opus 5.5 and GPT-6 Astra. On Automation Bench for knowledge work it scores about 54 versus the low 40s for competitors. Most of these figures were compiled before Fable 5.2 was released.</p><table class=\"matrix-table\"><tr><th>Item</th><th>Carbon</th><th>Fable 5.2</th></tr><tr><td>AA Intelligence Index</td><td>60 (first at launch, now second)</td><td>65</td></tr><tr><td>Cost per task</td><td>about $7.80</td><td>about $26.50</td></tr><tr><td>Time per task</td><td>about 26 min (median 13 min)</td><td>-</td></tr><tr><td>Tokens generated (whole index)</td><td>about 205M (median about 72M)</td><td>-</td></tr></table><p>The key point is <b>five fewer points for about one-third of the cost</b>. Unless the work is something like scientific discovery, where only the best will do, the presenter argues this cost gap matters more than index rank for everyday workloads.</p>"
+            },
+            "box2": {
+                  "title": "2 · Pricing and Operating Profile: A Slow, Heavy-Thinking 'Launch and Leave' Agent",
+                  "html": "<p>Carbon is a <b>heavy-thinking model</b> that takes about twice the median time (26 vs. 13 minutes) and about 2.8x the median tokens (205M vs. 72M). That makes it a fit for <b>launching a task and checking back later</b> rather than for chat, which is how the presenter mostly used it. It suits asynchronous agent tasks and batch-style engineering work, not latency-sensitive UX.</p><ul><li><b>List price</b>: $4 input / $20 output per million tokens, the same as Opus 5.5.</li><li><b>Introductory price</b>: $2 input / $10 output (the same as Argon's launch price), running through <b>November 30</b>. Cached input is 95% off.</li><li><b>API control</b>: temperature, top_p and top_k are preset and cannot be changed. You can only set a <b>reasoning effort level</b>. The presenter takes this as a sign you should think of it as calling an agent rather than an LLM.</li></ul><p>The presenter guesses that after the promotion ends, either a newer model arrives at a similar price or the promotion gets extended. Three operational takeaways follow. First, compare models on <b>total cost per task (tokens consumed × unit price)</b> and <b>time per task</b>, not on token price. Second, a model that thinks a lot can bill very differently at the same unit price. Third, the presenter foresees all-you-can-eat token plans shrinking and top models becoming so expensive that people look for alternatives, in which case Carbon becomes one.</p><p>There is a known weakness. In the sibling Argon model, the presenter saw a <b>tool-calling problem</b>: it tries to be too smart and answer on its own instead of calling search. It is worth checking whether Carbon shows the same pattern.</p>"
+            },
+            "box3": {
+                  "title": "3 · Demos and Implications: Self-Verifying 3D, Native App Builds, and the Future of SaaS",
+                  "html": "<p><b>Demo 1 – 3D rendering</b>: The presenter asked for an interactive 3D rendering of Marina Bay Sands in Singapore, deliberately choosing a harder subject than data-rich ones like the Eiffel Tower. The result was mostly one-shot, with only a few follow-up prompts for shader improvements, clouds and people. It reproduced the surrounding buildings (the Apple store sphere, the Louis Vuitton pyramid and others) convincingly, and added detail with each iteration, showing <b>self-verifying UI behavior</b>.</p><p><b>Demo 2 – native Mac app</b>: In Antigravity, a short prompt asked for the 'ultimate Pomodoro native Mac app'. The result was a Swift app with per-project tracking, focus audio, and an unrequested menu bar controller. It handled signing and delivered both an <b>Xcode project and a compiled app that runs immediately</b> (Xcode was installed, so how signing was done is unclear). <b>Demo 3</b> used a one-line prompt: research Bear and Obsidian and build an app with the best features of both. With no reverse engineering, using only the model's knowledge and web lookups, it built a native Swift app with a menu bar component while the presenter was in meetings. The presenter notes some features may be missing, but stresses this came with no follow-up prompts.</p><p><b>Implications</b>:</p><ul><li>The presenter says Carbon and Fable 5.2 have entered a 'new league' in software development. Not every end user will build their own apps, but developers at small and mid-sized companies will increasingly <b>build or open-source replacements for per-seat SaaS</b>.</li><li>The value of small software houses, polished apps and deep problem understanding, weakens. In response, more products may adopt <b>a dumb front end with the real intelligence in the cloud to deter cloning</b>.</li><li>As models improve at production readiness and security, the old objections to vibe coding fall apart, and anyone licensing or selling software has to rethink how it is built.</li></ul><p><b>Practical application</b>: consider <b>tiered cost routing</b>, with Carbon as the default for long-running coding and security-review agents and Fable 5.2 only where truly needed. Build the November 30 promotion end date into cost simulations, and check tool-calling accuracy and search usage against your own eval set.</p>"
+            }
+      },
+      "addedDate": "2026-11-10"
+},
+
+    {
       "id": "fable-5-2-ultracode-autonomous-builds-cost-2026",
       "categoryId": "agentops",
       "moduleTag": "FRONTIER MODEL EVALUATION & TOKEN COST CONTROL",
