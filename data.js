@@ -66,6 +66,64 @@ window.DASHBOARD_DATA = {
   ],
   entries: [
     {
+      "id": "cloudflare-ai-gateway-cost-guardrails-2026",
+      "categoryId": "agentops",
+      "moduleTag": "AI COST CONTROL & GATEWAY GUARDRAILS",
+      "title": "AI 요금 폭탄 방지: 코드 3줄로 붙이는 Cloudflare AI Gateway",
+      "subtitle": "URL·API 키·모델명 3줄만 바꾸면 사용자별 예산, 레이트 리밋, 캐싱, 폴백, 가드레일까지 무료로 얻는 AI 프록시 계층",
+      "tags": [
+            "Cloudflare AI Gateway",
+            "비용 통제",
+            "Spend Limit",
+            "Rate Limit",
+            "Response Caching",
+            "Dynamic Routing",
+            "Fallback",
+            "Guardrails",
+            "Llama Guard",
+            "DLP",
+            "OpenAI SDK"
+      ],
+      "videoUrl": "https://www.youtube.com/watch?v=f1quywzT-a8",
+      "videoId": "f1quywzT-a8",
+      "channel": "노마드 코더 Nomad Coders",
+      "duration": "6:06",
+      "refDate": "2026-11-15",
+      "takeaway": "사용자별 예산·레이트 리밋·캐싱·폴백·라우팅은 직접 구현할 필요 없이 앱과 AI API 사이에 게이트웨이를 끼우는 3줄 변경으로 대부분 해결된다. 직접 만드는 쪽이 오히려 낭비다.",
+      "box1": {
+            "title": "1 · 문제 정의와 아키텍처: AI API 앞단의 '슈퍼 방화벽'",
+            "html": "<p>AI API를 쓰는 앱의 가장 큰 운영 리스크는 <b>예상치 못한 청구서</b>입니다. 영상은 이를 막기 위해 필요한 기능을 다섯 가지로 요약합니다. 사용자별·모델별 지출 한도, 필요할 때 저렴한 모델로 돌리는 리다이렉트, 스팸으로 파산하지 않게 하는 레이트 리밋, 같은 질문에 두 번 돈 내지 않는 캐싱, 그리고 그 외 보호 기능입니다. 이 모두를 제공하는 제품이 <b>Cloudflare AI Gateway</b>이며, 앱과 AI API 사이에 위치해 'AI 요청용 방화벽'처럼 동작합니다. 영상에서는 무료라고 소개합니다.</p><h5>도입은 3줄 변경</h5><ul><li><b>URL 변경</b>: base URL을 Cloudflare 게이트웨이 엔드포인트로 바꿉니다.</li><li><b>키 교체</b>: OpenAI API 키 대신 Cloudflare 토큰을 넣습니다.</li><li><b>모델명에 provider 접두</b>: Cloudflare가 요청을 보낼 곳을 알아야 하므로 <code>provider/model</code> 형태로 씁니다. Anthropic 모델을 지정하면 같은 코드로 Claude와 통신합니다.</li></ul><p>OpenAI SDK와 호환되므로 기존 코드를 거의 건드리지 않습니다. 실행하면 대시보드에 요청, 프롬프트, 응답, 토큰 수, 소요 시간, 비용이 요청 단위로 기록됩니다. 즉 관측성과 비용 가시성이 설정 없이 따라옵니다.</p><h5>동작 흐름과 과금 방식</h5><p>앱이 Cloudflare로 요청을 보내면 Cloudflare가 OpenAI 등으로 전달하고, 응답을 받아 다시 앱에 돌려줍니다. 이 중간 지점에서 한도, 캐시, 라우팅 같은 제어가 일어납니다. 결제 방식은 두 가지입니다. Cloudflare에서 크레딧을 사면 Cloudflare가 provider에 대신 지불하거나, 기존 provider API 키를 대시보드에 등록해 그 키로 호출하게 할 수 있습니다. 지원 provider는 OpenAI, Anthropic, Google, Azure, Amazon Bedrock, DeepSeek, Cloudflare Workers AI 등입니다.</p>"
+      },
+      "box2": {
+            "title": "2 · 게이트웨이 단위 보호 설정과 사용자별 메타데이터 제어",
+            "html": "<p>Settings에서 켜는 게이트웨이 전역 보호 기능은 다음과 같습니다. 모두 코드를 쓰지 않고 토글과 규칙만으로 설정합니다.</p><table class='matrix-table'><thead><tr><th>기능</th><th>설정 예시</th><th>효과</th></tr></thead><tbody><tr><td>Spend Limits</td><td>Add rule, 일 $50 상한</td><td>어떤 상황에서도 그 이상 지출하지 않음. 모델·provider·메타데이터 단위로도 상한 지정 가능</td></tr><tr><td>Cache Responses</td><td>보관 기간 1시간</td><td>동일 질문은 저장된 답을 반환하므로 모델 호출 없이 즉시 응답하고 비용도 0</td></tr><tr><td>Rate Limits</td><td>분당 1,000건</td><td>스팸·남용 트래픽 차단</td></tr><tr><td>Retry Requests</td><td>기본 3회, 짧은 지연</td><td>일시 실패 시 게이트웨이가 자동 재시도</td></tr><tr><td>Zero Data Retention</td><td>토글 on</td><td>provider에 요청·응답 데이터를 보관하지 말라고 지시</td></tr></tbody></table><h5>메타데이터 헤더로 사용자 식별</h5><p>핵심은 요청에 <b>헤더 하나</b>(user ID가 담긴 작은 JSON)를 붙이는 것입니다. 실행하면 대시보드의 각 요청에 user ID가 표시되고, 이 값을 기준으로 지출 한도나 레이트 리밋을 걸 수 있습니다. 영상 진행자가 가장 좋아하는 기능이 바로 이 <b>사용자별 AI 예산</b>입니다. 사용자마다 예산을 줄 수 있다는 점이 요금제 설계와 직결되기 때문입니다.</p><p>실무적으로 보면 전역 한도는 최후의 안전망(blast radius 제한)이고, 메타데이터 기반 한도는 개별 사용자·테넌트 단위의 공정성과 마진 보호 장치입니다. 둘을 함께 써야 한 명의 악성 사용자가 전체 예산을 소진하는 상황을 막을 수 있습니다. 캐시 보관 시간은 답이 얼마나 자주 바뀌는지에 맞춰 정해야 하며, 개인화 응답에는 주의가 필요합니다. 이 부분은 영상에서 다루지 않은 일반적 고려사항입니다.</p>"
+      },
+      "box3": {
+            "title": "3 · 라우팅·폴백·Auto Router·가드레일·DLP: 클릭만으로 만드는 운영 계층",
+            "html": "<p>영상이 말하는 '진짜 핵심'은 <b>Routing</b>입니다. 게이트웨이가 요청마다 플로차트를 따라 판단하도록 만드는 기능입니다. 영상의 예시 라우트 'by plan'은 다음과 같이 구성됩니다.</p><ul><li><b>If/else 분기</b>: 사용자가 유료 플랜인지 확인합니다. 참이면 고가 모델(OpenAI), 거짓이면 DeepSeek 같은 저가 모델로 보냅니다.</li><li><b>Fallback</b>: OpenAI가 실패하면 Claude로 넘어가 유료 사용자는 오류를 보지 않습니다.</li><li><b>Limit 노드</b>: user ID 기준 분당 100건 레이트 리밋과 $1 예산 한도를 겁니다. 한도를 넘으면 폴백 경로로 전환되고 거기에 더 저렴한 모델을 붙입니다.</li><li><b>배포</b>: Save 후 우측 상단 Deploy를 누르고, 코드에서는 모델명을 <code>dynamic/byplan</code>으로 바꾸고 메타데이터에 plan을 추가하면 끝입니다.</li></ul><p>결과적으로 폴백 체계, 사용자별 레이트 리밋·예산, 캐싱, 재시도를 한 줄도 직접 구현하지 않고 얻습니다. 진행자는 AI API로 앱을 만드는 모두가 결국 필요로 하는 기능인데 대부분 손으로 만든다고 지적합니다. 또한 <b>Auto Router</b>를 쓰면 모델 지정 줄만 바꿔 질문 난이도에 따라 Cloudflare가 저가/고가, 추론형/고속 모델을 자동 선택합니다.</p><h5>Guardrails (Firewall 메뉴)</h5><p>모델 호출 전(사용자 입력)과 후(AI 응답) 양쪽에서 혐오, 폭력, 자해, 폭력 범죄, 프롬프트 인젝션·탈옥 같은 카테고리를 검사합니다. 카테고리별로 Ignore, Flag, Block 중에서 선택합니다. 검사에는 Meta가 만든 안전성 판별 모델 <b>Llama Guard</b>가 쓰이며, 요청 로그에서 요청 전후로 실행되고 하나는 flag, 다른 하나는 block되는 모습을 볼 수 있습니다. <b>유일하게 비용이 드는 기능</b>입니다. 모든 요청에 AI 모델을 돌리므로 Workers AI 정상 요금이 부과되니 필요할 때 켜라고 조언합니다.</p><h5>DLP (Data Loss Prevention)</h5><p>정책을 추가해 금융 정보, 주민번호(SSN) 등 탐지 대상을 고르고, 프롬프트 또는 응답 중 어디를 스캔할지와 Flag/Block 중 어떤 조치를 할지 정합니다. 사용자가 민감정보를 입력하거나 모델이 민감정보를 출력하는 경우를 모두 잡을 수 있습니다.</p><p><b>결론</b>: 비용 통제, 안정성(폴백·재시도), 보안(가드레일·DLP)을 앱 코드 밖의 게이트웨이 계층으로 빼면 구현·유지 부담이 크게 줄어듭니다. 단, 영상은 홍보 성격(유료 강의 안내 포함)이 있으므로 실제 도입 전에 한도 적용 방식, 요금, 지연 시간 영향은 공식 문서로 확인해야 합니다.</p>"
+      },
+      "en": {
+            "title": "Stop AI Bill Shock: Cloudflare AI Gateway in 3 Lines of Code",
+            "subtitle": "Change the URL, API key and model name, and get per-user budgets, rate limits, caching, fallbacks and guardrails from a free AI proxy layer.",
+            "moduleTag": "AI COST CONTROL & GATEWAY GUARDRAILS",
+            "takeaway": "Per-user budgets, rate limits, caching, fallbacks and routing don't need to be built by hand. Putting a gateway between your app and the AI API, a 3-line change, covers most of it, and building it yourself is mostly wasted effort.",
+            "box1": {
+                  "title": "1 · Problem and Architecture: A 'Firewall on Steroids' in Front of AI APIs",
+                  "html": "<p>The biggest operational risk of an app that uses AI APIs is an <b>unexpected bill</b>. The video lists five capabilities needed to prevent it: per-user and per-model spend limits, redirecting to cheaper models when needed, rate limits so spam can't bankrupt you, caching so you never pay twice for the same question, and other protections. The product that provides all of this is <b>Cloudflare AI Gateway</b>, which sits between your app and the AI API like a firewall for AI requests. The video presents it as free.</p><h5>Adoption is a 3-line change</h5><ul><li><b>Change the URL</b>: point the base URL at the Cloudflare gateway endpoint.</li><li><b>Swap the key</b>: use a Cloudflare token instead of your OpenAI API key.</li><li><b>Prefix the model name with the provider</b>: Cloudflare needs to know where to route, so you write <code>provider/model</code>. Put an Anthropic model there and the same code talks to Claude.</li></ul><p>Because it is compatible with the OpenAI SDK, existing code barely changes. Once you run it, the dashboard records each request with the prompt, response, token counts, latency and cost. Observability and cost visibility come with no extra setup.</p><h5>How it works and how you pay</h5><p>The app sends a request to Cloudflare, which forwards it to OpenAI or another provider, receives the response and returns it to the app. Controls such as limits, caching and routing happen at this midpoint. There are two payment options: buy credits from Cloudflare and let it pay the provider, or register your own provider API key in the dashboard and have the gateway use it. Supported providers include OpenAI, Anthropic, Google, Azure, Amazon Bedrock, DeepSeek and Cloudflare Workers AI.</p>"
+            },
+            "box2": {
+                  "title": "2 · Gateway-Level Protection and Per-User Metadata Controls",
+                  "html": "<p>These are the gateway-wide protections you turn on under Settings. All are configured with toggles and rules, with no code.</p><table class='matrix-table'><thead><tr><th>Feature</th><th>Example setting</th><th>Effect</th></tr></thead><tbody><tr><td>Spend Limits</td><td>Add rule, $50 per day cap</td><td>No more spend than the cap under any circumstances. Caps can also target a model, provider or metadata value</td></tr><tr><td>Cache Responses</td><td>Keep for 1 hour</td><td>Identical questions get the saved answer, so the response is instant, the model isn't called and the cost is zero</td></tr><tr><td>Rate Limits</td><td>1,000 requests per minute</td><td>Blocks spam and abusive traffic</td></tr><tr><td>Retry Requests</td><td>3 attempts by default, short delay</td><td>The gateway automatically retries transient failures</td></tr><tr><td>Zero Data Retention</td><td>Toggle on</td><td>Tells providers not to retain request and response data</td></tr></tbody></table><h5>Identifying users via metadata headers</h5><p>The key is attaching <b>one header</b>, a small JSON object carrying the user ID, to the request. After you run it, each request in the dashboard shows the user ID, and you can base spend limits or rate limits on that value. The presenter's favorite feature is exactly this <b>per-user AI budget</b>, because it ties directly to pricing-plan design.</p><p>In practice, the global cap is the last-resort safety net that limits blast radius, while metadata-based limits protect fairness and margin per user or tenant. You need both so that one abusive user can't drain the whole budget. Cache duration should match how often answers change, and personalized responses need care. That point is a general consideration, not something the video covers.</p>"
+            },
+            "box3": {
+                  "title": "3 · Routing, Fallbacks, Auto Router, Guardrails and DLP: An Ops Layer You Build by Clicking",
+                  "html": "<p>What the video calls the real core is <b>Routing</b>, which lets the gateway make a decision for every request by walking a flowchart. The example route 'by plan' is built like this:</p><ul><li><b>If/else branch</b>: check whether the user is on the paid plan. If true, send to an expensive model (OpenAI). If false, send to a cheap one such as DeepSeek.</li><li><b>Fallback</b>: if OpenAI fails, the request goes to Claude, so paid users never see an error.</li><li><b>Limit node</b>: a rate limit of 100 requests per minute and a $1 budget, both per user ID. Once a user goes over, the request switches to the fallback path, which gets an even cheaper model.</li><li><b>Deploy</b>: Save, click Deploy at the top right, then in code set the model to <code>dynamic/byplan</code> and add the plan to the metadata. That's it.</li></ul><p>The result is a fallback system, per-user rate limits and budgets, caching and retries without writing any of it yourself. The presenter says everyone building on an AI API ends up needing this, yet most people build it by hand. There is also <b>Auto Router</b>: change the model line and Cloudflare picks the model per question, cheap or expensive, thinking or fast, depending on difficulty.</p><h5>Guardrails (Firewall menu)</h5><p>Guardrails check both before the model call (user input) and after it (AI output) for categories such as hate, violence, self-harm, violent crimes, and prompt injection or jailbreaks. For each category you choose Ignore, Flag or Block. The check uses <b>Llama Guard</b>, a safety-classification model made by Meta. In the request log you can see it run before and after the request, flagging one item and blocking another. This is <b>the one feature that costs money</b>: it runs an AI model on all your requests and is billed at normal Workers AI prices, so turn it on when you need it.</p><h5>DLP (Data Loss Prevention)</h5><p>Add a policy, pick what to detect (financial information, social security numbers and so on), choose whether to scan the prompt or the response, and choose Flag or Block. This catches both users sharing sensitive data and models outputting it.</p><p><b>Conclusion</b>: moving cost control, reliability (fallback and retries) and security (guardrails and DLP) out of app code and into a gateway layer greatly reduces build and maintenance effort. The video is promotional, though, and includes a paid course pitch. Before adopting it, verify how limits are enforced, the pricing, and the latency impact in the official documentation.</p>"
+            }
+      },
+      "addedDate": "2026-11-15"
+},
+
+    {
       "id": "business-analyst-interview-15-questions-ai-fluency-2026",
       "categoryId": "agentops",
       "moduleTag": "AI-ERA BUSINESS ANALYST INTERVIEW PLAYBOOK",
