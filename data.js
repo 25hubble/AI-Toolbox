@@ -66,6 +66,128 @@ window.DASHBOARD_DATA = {
   ],
   entries: [
     {
+      "id": "upstage-document-parse-2-vlm-autorag-2026",
+      "categoryId": "rag",
+      "moduleTag": "VLM DOCUMENT PARSING FOR RAG",
+      "title": "VLM이 RAG의 출발점을 바꾼다: Document Parse 2.0과 AutoRAG 연동",
+      "subtitle": "파싱(DX)이 무너지면 RAG·에이전트(AX)도 무너진다 — 단일 VLM 파서로 손글씨·차트·사진까지 검색 가능한 지식으로 바꾸는 방법",
+      "tags": [
+            "RAG",
+            "Document Parsing",
+            "VLM",
+            "OCR",
+            "Upstage",
+            "Document Parse 2.0",
+            "AutoRAG",
+            "MCP",
+            "Docling",
+            "DX/AX"
+      ],
+      "videoUrl": "https://www.youtube.com/watch?v=5HeF1R8J2Us",
+      "videoId": "5HeF1R8J2Us",
+      "channel": "테디노트 TeddyNote",
+      "duration": "15:38",
+      "refDate": "2026-11-24",
+      "takeaway": "RAG 품질은 검색·LLM 이전에 '문서를 제대로 읽는 파싱 단계'에서 결정되며, 파이프라인형 OCR의 한계를 전역 맥락을 보는 단일 VLM 파서가 해소해 손글씨·차트·사진까지 검색 가능한 지식으로 만든다.",
+      "box1": {
+            "title": "1 · 문제 정의: 'DX 없이 AX 없다' — 파싱 오류가 RAG 전체를 오염시킨다",
+            "html": "<p>발표자(Upstage Document AI 팀 리드)는 AI 전환(AX)이 문서 디지털화(DX)가 완벽히 이뤄졌다는 전제 위에서만 작동한다고 강조합니다. LLM은 사실상 텍스트만 읽을 수 있으므로 이미지·팩스·스캔 속 글자와 구조는 반드시 텍스트(주로 Markdown)로 변환되어야 하고, 이 파싱 단계가 틀리면 인덱싱 시 잘못된 정보가 저장되어 검색·답변 모두 잘못된 데이터 위에서 생성됩니다.</p><h5>실제 사례: 팩스로 보낸 손글씨 신청서</h5><ul><li>약간 기울어진 표 + 팩스 노이즈(점)가 있는 문서를 기본 AutoRAG 인덱싱에 그대로 넣으면 OCR 결과가 크게 깨짐</li><li>전화번호가 '5, 6, 7, 8'처럼 분절되어 인식됨</li><li>위아래 노이즈 점 때문에 이메일의 'com'이 'coin'으로 오인식됨</li><li>이름 등 다른 필드도 오독 — 현실의 문서 상당수는 기계가 읽기 어렵다는 점을 보여줌</li></ul><h5>텍스트만으로는 부족하다: 구조(관계) 정보의 손실</h5><p>이용요금 표에서 사람은 '필라테스 초급반 화/목 청소년 요금 = 70,000원'을 바로 이해하지만, 일반 OCR(auto-regressive 방식) 결과는 '70,000원'과 '초급반 화/목'은 가깝게, '필라테스'는 멀리 떨어뜨려 출력합니다. 이렇게 관계 정보가 사라지면 최신 LLM이나 미래의 AGI도 해당 요금을 찾을 수 없습니다. 결론: 문서에서는 텍스트뿐 아니라 문서 구조 자체가 핵심 정보입니다.</p>",
+            "en": null
+      },
+      "box2": {
+            "title": "2 · 접근법 진화: 파이프라인 모델의 한계에서 단일 VLM 파서로",
+            "html": "<p>DX를 위한 일반적 경로는 (1) PDF·Excel에 텍스트 레이어가 있으면 그대로 읽고, (2) 없으면 오픈소스 또는 사전학습 OCR로 문자를 추출하는 것입니다. 하지만 구조 복원을 위해 여러 컴퓨터 비전 모델을 조합한 '파이프라인 모델'이 오랫동안 쓰였습니다.</p><h5>파이프라인 모델의 구성과 약점</h5><ul><li>구성: 레이아웃 검출기(문단·표·차트 영역과 읽기 순서 판단) + OCR + 표 인식기 + 차트 인식기 + 이를 읽기 쉬운 Markdown으로 합치는 병합 도구</li><li>약점 1 — 오류 전파: 앞 단계 오류는 뒤에서 복구 불가. 예) 레이아웃 검출기가 표 모서리를 잘라 넘기면 표 인식기가 아무리 잘해도 고칠 수 없음</li><li>약점 2 — 전문가 집합의 시야 한계: 차트 인식기는 차트 이미지만 보고, 문서 안의 설명 텍스트 같은 전역 맥락을 참조하기 어려움</li></ul><h5>VLM으로의 전환 단계</h5><p>VLM(Vision-Language Model)은 세계 지식을 가진 언어 모델에 '눈'을 달아 문서를 보게 한 것입니다. 업계 흐름은 ① 파이프라인의 각 전문가 모듈을 VLM으로 하나씩 교체 → ② 문서를 입력하면 한 번에 모든 것을 인식하는 단일 VLM으로 수렴하는 방향입니다. 단일 VLM 개발은 어렵지만 Upstage는 이를 Document Parse 2.0으로 출시했다고 설명합니다(학습 방법 자체는 이 발표의 핵심 주제가 아님).</p>",
+            "en": null
+      },
+      "box3": {
+            "title": "3 · Document Parse 2.0의 효과, 벤치마크, AutoRAG 적용 가이드",
+            "html": "<p>핵심 이점은 사전 지식(world knowledge)을 가진 모델이 이미지 전체를 한 번에 처리하며 전역 맥락을 포착한다는 점입니다. 이로써 표 인식과 모호한 손글씨 보정이 개선됩니다.</p><h5>정성적 개선 사례</h5><ul><li>손글씨: 앞서 '5 6 7 8'로 깨졌던 전화번호를 '전화번호 필드'라는 맥락으로 인식해 소소한 오류를 덮고 올바르게 복원</li><li>차트: 주변 설명과 전체 맥락을 함께 봐서 일반 OCR이나 얕은 모델이 틀리던 값을 더 정확히 인식</li><li>텍스트 없는 사진: 일반 OCR은 글자만 인식하지만 VLM 기반 파서는 이미지를 설명함(예: '콘크리트 벽의 균열과 흩어진 돌'). 결과적으로 이미지 정보도 검색 가능해져 RAG의 검색 범위가 크게 확장됨</li></ul><h5>벤치마크와 비교</h5><p>LlamaIndex 계열의 글로벌 벤치마크 공식 리더보드에 등재되었고, Claude Opus 5.5·PaLM 5.1 같은 대형 모델보다 파싱 성능이 높은 VLM으로 소개됩니다. 글로벌 한국어 리더보드는 없어 내부 테스트를 했으며 한국어에서도 강한 성능이라고 밝혔습니다(수치는 발표에서 제시되지 않음). 또한 유명 오픈소스 모델들(Min-U, Fedor-sia 등)보다 Document Parse 2.0이 우수하다고 주장합니다.</p><h5>AutoRAG 적용 가이드와 선택 기준</h5><table class=\"matrix-table\"><thead><tr><th>문서 유형</th><th>권장 파서</th></tr></thead><tbody><tr><td>깨끗한 영수증·표·텍스트 위주 문서</td><td>AutoRAG 기본 파서 Docling(공공 부문 '골드 스탠더드') — 일반 용도로 충분</td></tr><tr><td>손글씨, 차트, 사진, 표 안의 표·다양한 셀 병합(한·일 문서에서 특히 어려움)</td><td>Document Parse 2.0</td></tr></tbody></table><p>데모(녹화 영상)는 Document Parse MCP와 AutoRAG MCP로 원래 사진이던 문서를 재파싱 → AutoRAG 새로고침·재인덱싱 → 원본에 텍스트로 없던 '벽 균열 찾기' 질의가 검색되는 흐름을 보여줍니다. 연동은 API 제공 + Claude Code MCP 한 줄 설정으로 가능하며, 기존 Python 기반 AutoRAG는 이미 Document Parse와 통합되어 있고 MCP로는 어느 쪽이든 연결할 수 있습니다(향후 AutoRAG 기여 가능성 언급). 체험용으로 $50 크레딧이 제공되며 페이지 수로는 개인 용도로 오래 쓸 수 있는 분량이라고 설명합니다. 발표 메시지는 '찾으려면 먼저 읽어야 한다(You must read to find)'입니다.</p>",
+            "en": null
+      },
+      "en": {
+            "title": "VLMs Change the Start of RAG: Document Parse 2.0 Meets AutoRAG",
+            "subtitle": "If parsing (DX) fails, RAG and agents (AX) fail too — how a single VLM parser turns handwriting, charts, and photos into searchable knowledge",
+            "moduleTag": "VLM DOCUMENT PARSING FOR RAG",
+            "takeaway": "RAG quality is decided at the parsing stage, before retrieval or the LLM; a single VLM parser that sees global context overcomes the limits of pipeline OCR and makes handwriting, charts, and photos searchable.",
+            "box1": {
+                  "title": "1 · Problem: No DX, No AX — Parsing Errors Poison the Entire RAG",
+                  "html": "<p>The presenter (lead of Upstage's Document AI team) stresses that AI transformation (AX) only works if document digitization (DX) has been done properly. LLMs can effectively read only text, so text and structure inside images, faxes, and scans must be converted to text (usually Markdown). If this parsing stage is wrong, incorrect information is indexed, and both retrieval and answers are generated from faulty data.</p><h5>Real example: a handwritten application sent by fax</h5><ul><li>A slightly skewed table plus fax noise (dots), run through default AutoRAG indexing as-is, produces badly broken OCR</li><li>A phone number is recognized as fragments like '5, 6, 7, 8'</li><li>Noise dots above and below turn 'com' in an email into 'coin'</li><li>Other fields such as names are also misread — showing that many real-world documents are hard for machines to read</li></ul><h5>Text alone is not enough: loss of structural (relational) information</h5><p>In a fee table, a human immediately understands 'Pilates beginner class Tue/Thu youth fee = 70,000 won'. Standard OCR (auto-regressive) places '70,000 won' near 'beginner Tue/Thu' but puts 'Pilates' far away. Once relational information is lost, even the latest LLM or a future AGI cannot find that fee. Conclusion: for documents, structure itself is key information, not just text.</p>"
+            },
+            "box2": {
+                  "title": "2 · Evolution of Approaches: From Pipeline Models to a Single VLM Parser",
+                  "html": "<p>The usual DX path is (1) read the text layer directly if a PDF or Excel file has one, and (2) otherwise extract characters with open-source or pre-trained OCR. To recover structure, however, 'pipeline models' that combine several computer vision models have long been used.</p><h5>Pipeline composition and weaknesses</h5><ul><li>Composition: layout detector (identifies paragraph/table/chart regions and reading order) + OCR + table recognizer + chart recognizer + a merger that assembles readable Markdown</li><li>Weakness 1 — error propagation: an early-stage error cannot be fixed later. E.g., if the layout detector crops off a table corner, the table recognizer cannot repair it however good it is</li><li>Weakness 2 — narrow view of a collection of specialists: a chart recognizer sees only the chart image and struggles to use global context such as the explanatory text in the document</li></ul><h5>The shift to VLMs</h5><p>A VLM (Vision-Language Model) is a language model with world knowledge that has been given 'eyes' to see documents. The industry trend is ① replace each specialist module in the pipeline with a VLM one by one, then ② converge on a single VLM that recognizes everything at once from the input document. Building a single VLM is hard, but Upstage says it released this as Document Parse 2.0 (the training method itself is not the focus of this talk).</p>"
+            },
+            "box3": {
+                  "title": "3 · Document Parse 2.0 Impact, Benchmarks, and AutoRAG Adoption Guide",
+                  "html": "<p>The core benefit is that a model with prior world knowledge processes the whole image at once and captures global context, which improves table recognition and the correction of ambiguous handwriting.</p><h5>Qualitative improvements</h5><ul><li>Handwriting: the phone number previously broken into '5 6 7 8' is recovered correctly because the model recognizes it as a phone-number field, covering minor errors</li><li>Charts: it reads surrounding descriptions and overall context together, getting right values that ordinary OCR or shallow models miss</li><li>Photos without text: ordinary OCR reads only characters, but VLM-based parsers describe the image (e.g., 'cracks and scattered stones on a concrete wall'). Image information becomes searchable, greatly widening RAG's search scope</li></ul><h5>Benchmarks and comparison</h5><p>It appeared on the official leaderboard of a global benchmark from the LlamaIndex side, presented as a VLM that parses better than heavyweights such as Claude Opus 5.5 and PaLM 5.1. Since no global Korean leaderboard exists, internal testing was done, with strong results on Korean as well (no figures were given in the talk). The presenter also claims Document Parse 2.0 beats well-known open-source models (Min-U, Fedor-sia, etc.).</p><h5>AutoRAG adoption guide and selection criteria</h5><table class=\"matrix-table\"><thead><tr><th>Document type</th><th>Recommended parser</th></tr></thead><tbody><tr><td>Clean receipts, tables, text-centric documents</td><td>AutoRAG's default parser Docling (the 'gold standard' in the public sector) — sufficient for general use</td></tr><tr><td>Handwriting, charts, photos, tables within tables, various merged cells (especially hard in Korean/Japanese documents)</td><td>Document Parse 2.0</td></tr></tbody></table><p>The demo (a recorded video) shows the original photo-only document re-parsed through the Document Parse MCP and AutoRAG MCP → AutoRAG refresh and re-indexing → a query such as 'find wall cracks', whose terms never appeared as text in the original, being retrieved. Integration works via the API plus a one-line Claude Code MCP setup; the older Python-based AutoRAG is already integrated with Document Parse, and MCP can connect to either (a future contribution to AutoRAG was mentioned). $50 in trial credits is offered, which the presenter says covers a large number of pages for long personal use. The message of the talk: 'You must read to find.'</p>"
+            }
+      },
+      "addedDate": "2026-11-25"
+},
+
+    {
+      "id": "cse-resume-projects-six-placement-2026",
+      "categoryId": "agentops",
+      "moduleTag": "PROJECT PORTFOLIO VERIFIABILITY PLAYBOOK",
+      "title": "CSE 학생을 위한 이력서 프로젝트 6선: 취업 서류 통과를 만드는 포트폴리오 전략",
+      "subtitle": "AI API를 붙이는 것은 쉽다. 설명 가능하고, 실제로 동작하고, 검증 가능한 결과를 내는 프로젝트 2~3개가 면접관의 시선을 잡는다.",
+      "tags": [
+            "Resume Projects",
+            "Placement",
+            "Full Stack",
+            "RBAC",
+            "NLP",
+            "Resume Screening",
+            "CI/CD",
+            "GitHub Actions",
+            "Docker",
+            "Phishing Detection",
+            "LLM Code Review",
+            "Explainability"
+      ],
+      "videoUrl": "https://www.youtube.com/watch?v=Ogr5g8kE7yE",
+      "videoId": "Ogr5g8kE7yE",
+      "channel": "Intellipaat",
+      "duration": "15:55",
+      "refDate": "2026-11-24",
+      "takeaway": "좋은 프로젝트는 가장 복잡하거나 유행 기술을 쓴 것이 아니라, 문제를 정의하고 적절한 도구를 골라 실제로 동작시키며 모든 기술적 결정을 설명할 수 있는 것이다. AI 기능도 점수나 답을 던지는 블랙박스가 아니라 근거와 한계를 함께 보여줘야 한다.",
+      "box1": {
+            "title": "1 · 프로젝트 선정 4원칙과 6개 프로젝트 카탈로그",
+            "html": "<p>영상은 AI API를 웹사이트에 붙이는 일은 쉽지만, <b>특정 문제를 풀고 검증 가능한 결과를 내는 애플리케이션</b>이 면접관의 관심을 얻는다고 말한다. 프로젝트를 고르기 전의 4원칙은 다음과 같다.</p><ul><li><b>설명 가능한 문제:</b> 문제를 명확하게 말로 설명할 수 있어야 한다.</li><li><b>기술 개념의 깊이:</b> API, DB, 인증, 알고리즘, 테스트, 배포가 프로젝트 안에 들어 있어야 한다.</li><li><b>시연 가능성:</b> 동작하는 앱이 끝내지 못한 멋진 아이디어보다 낫다.</li><li><b>구현 전체 이해:</b> 왜 이 기술을 썼는지, 어떤 어려움이 있었는지 답하지 못하면 면접에서 드러난다.</li></ul><table class='matrix-table'><thead><tr><th>#</th><th>프로젝트</th><th>핵심 스택</th><th>증명하는 역량</th><th>적합 직무</th></tr></thead><tbody><tr><td>1</td><td>Campus Placement Management System</td><td>React, Node/Express, MongoDB·MySQL (또는 Spring Boot, ASP.NET Core)</td><td>풀스택, DB 설계, 인증, API, 역할 관리</td><td>Front/Back/Full Stack</td></tr><tr><td>2</td><td>AI Resume Screening &amp; Skill Gap Analysis</td><td>Python, spaCy, Sentence-BERT, FastAPI, React</td><td>NLP, 텍스트 처리, API 연동, 실용 AI</td><td>AI/ML, Backend</td></tr><tr><td>3</td><td>Sales Analysis &amp; BI Dashboard</td><td>Python, Pandas, SQL, Power BI·Tableau</td><td>데이터 정제, SQL, 시각화, 인사이트 전달</td><td>Data/Business Analyst</td></tr><tr><td>4</td><td>Automated CI/CD Deployment Platform</td><td>GitHub Actions, Docker, AWS</td><td>Git, Docker, CI/CD, 클라우드 배포, 자동화</td><td>DevOps, Cloud, Backend</td></tr><tr><td>5</td><td>Phishing URL Detection System</td><td>Python, Pandas, NumPy, scikit-learn, Flask·FastAPI</td><td>보안 기초, ML, 피처 엔지니어링, 모델 평가</td><td>Cybersecurity, ML</td></tr><tr><td>6</td><td>AI-powered Code Review Assistant</td><td>React, Python/Node, LLM API, GitHub 연동</td><td>API·GitHub 연동, 프롬프트 설계, 실용 AI 앱</td><td>AI/ML, Backend</td></tr></tbody></table>",
+            "en": null
+      },
+      "box2": {
+            "title": "2 · 프로젝트별 구현 설계와 '평범함 vs 차별화' 포인트",
+            "html": "<p>각 프로젝트에서 영상이 강조한 것은 기능 목록보다 <b>흔히 빠뜨리는 한 끗</b>이다.</p><h5>Project 1 · Placement Management</h5><p>학생·채용담당자·관리자 3개 역할을 두고 <b>Role-Based Access Control</b>로 각자 권한 범위만 접근하게 한다. 지원 상태 추적, 알림, 검색 필터, 통계 대시보드를 더하고, 선택 기능으로 이력서와 공고 간 스킬 매칭 스크리닝을 넣을 수 있다.</p><h5>Project 2 · Resume Screening</h5><p>PDF 이력서와 JD(Job Description)를 입력받아 기술, 학력, 경력, 키워드를 추출하고 JD와 비교해 매칭/누락 스킬 리포트를 만든다. 예를 들어 JD가 Java, Spring Boot, SQL, REST API, Git을 요구하는데 이력서에 Java, SQL, Git만 있으면 Spring Boot와 REST API를 누락으로 표시한다. <b>점수만 보여주는 것은 블랙박스</b>이므로 매칭 키워드, 누락 스킬, 결과에 영향을 준 이력서 섹션을 함께 보여주고 다양한 이력서와 JD로 테스트해야 한다.</p><h5>Project 3 · Sales BI Dashboard</h5><p>공개 데이터셋(또는 현실적인 샘플)을 Pandas로 정제하고 SQL에 저장해 총매출, 월별 매출, 상위 제품, 지역별 성과, YoY, 평균 주문 금액(AOV), 매출 성장률, 이익률을 시각화한다. 날짜·카테고리·지역 필터를 넣고, 대부분이 건너뛰는 <b>인사이트 섹션</b>(어느 카테고리가 가장 많이 벌었고 어느 달이 최고였는지)을 반드시 쓴다. 차트는 데이터를 보여줄 뿐이고 인사이트가 사고력을 보여준다.</p><h5>Project 4 · CI/CD Platform</h5><p>GitHub push를 트리거로 코드 체크아웃, 의존성 설치, 자동 테스트, 빌드, 클라우드 배포 순으로 실행하고 실패하면 배포하지 않고 에러를 표시한다. 환경 변수, 배포 로그, 기본 모니터링을 더하고 개발/운영 환경을 분리하면 더 좋다. 경고는 명확하다. <b>YAML 파일만 저장소에 있는 것은 부족하고, 파이프라인을 실제로 돌려 성공한 배포를 시연</b>해야 한다.</p><h5>Project 5 · Phishing URL Detection</h5><p>URL 길이, 특수문자 수, 의심 패턴, 도메인 정보 등을 피처로 추출해 Logistic Regression, Decision Tree, Random Forest를 학습하고 비교한다. <b>정확도만으로는 부족하며 Precision, Recall, Confusion Matrix</b>를 봐야 한다. 피싱 URL을 안전으로 분류하는 오류의 비용이 크기 때문이다. UI는 예측과 간단한 설명을 보여주되 결과를 안전/위험의 보증이 아닌 <b>위험 지표(risk indicator)</b>로 제시한다.</p><h5>Project 6 · AI Code Review Assistant</h5><p>코드 파일 업로드 또는 GitHub 저장소/PR 링크를 받아 품질, 버그 가능성, 가독성, 보안 문제를 제안한다(중복 코드, 입력 검증 누락, 비효율 로직, 위험 패턴). <b>LLM 응답을 그대로 출력하지 말고</b> 심각도별 분류, 관련 코드 구간 표시, 제안별 수락/거절, 과거 리뷰 저장과 비교를 지원해야 한다. 여러 코드 샘플로 제안의 관련성을 검증하고, 결과는 개발자가 확인해야 하는 권고이지 보안 탐지의 보증이 아니라고 명시한다.</p>",
+            "en": null
+      },
+      "box3": {
+            "title": "3 · 선택 전략과 이력서 서술법: 깊이, 증거, 설명 책임",
+            "html": "<p><b>선택 기준은 목표 직무다.</b> 풀스택은 Placement Management, AI/ML은 Resume Screening과 Code Review Assistant, 데이터 분석은 Sales Dashboard, 클라우드/DevOps는 CI/CD Platform, 보안은 Phishing URL Detection을 고른다. 6개를 전부 만들어 이력서를 채우지 말고, <b>잘 만든 2~3개가 미완성 6개보다 항상 낫다</b>. 현재 실력에 맞는 하나를 골라 핵심 기능부터 완성한 뒤 추가 기능으로 확장한다.</p><p><b>이력서 서술은 무엇을 만들었고 어떤 기술적 작업을 했는지 드러내야 한다.</b> 'React와 Node JS로 웹사이트 제작'은 채용담당자에게 거의 정보를 주지 않는다. 반면 'React, Node.js, Express, MongoDB로 역할 기반 인증, 지원 현황 추적, 채용담당자 대시보드를 갖춘 풀스택 캠퍼스 취업 관리 시스템 개발'은 같은 프로젝트인데 인상이 완전히 다르다. GitHub 링크도 가능한 한 넣는다. README에는 프로젝트 개요, 기능, 기술 스택, 설치 방법, 스크린샷, 라이브 데모 링크를 담아 다른 사람이 실행할 수 있게 한다. 황금률은 <b>실제로 쓰지 않았거나 구현하지 않은 기술·기능을 이력서에 절대 쓰지 않는 것</b>이다.</p><p>영상 전체를 관통하는 공통 패턴은 <b>검증 가능성과 설명 책임</b>이다. AI 점수에는 근거를, 분류 모델에는 Precision/Recall을, 코드 리뷰에는 수락/거절 워크플로를, 배포에는 실제 실행 증거를 붙인다. 목표는 가장 복잡한 프로젝트가 아니라 문제를 식별하고, 적절한 도구를 고르고, 동작하는 해법을 만들고, 기술적 결정을 설명하는 능력이다. 면접장에서 모든 줄을 설명할 수 있을 만큼 직접 만들고, 테스트하고, 문서화하라.</p>",
+            "en": null
+      },
+      "en": {
+            "title": "6 Best Resume Projects for CSE Students: A Portfolio Strategy That Gets You Shortlisted in Placements",
+            "subtitle": "Plugging in an AI API is easy; two or three projects that are explainable, working, and verifiable are what catch an interviewer's attention.",
+            "moduleTag": "PROJECT PORTFOLIO VERIFIABILITY PLAYBOOK",
+            "takeaway": "A good project is not the most complex one or the one with trendy tech; it is one where you defined a problem, chose the right tools, made it actually work, and can explain every technical decision. Even AI features should show evidence and limits rather than act as a black-box score or answer.",
+            "box1": {
+                  "title": "1 · Four Selection Principles and the Six-Project Catalog",
+                  "html": "<p>The video says plugging AI APIs into a website is easy, but an <b>application that solves a specific problem and produces verifiable results</b> is what earns interviewers' attention. The four-point checklist before choosing a project:</p><ul><li><b>Explainable problem:</b> you can clearly explain the problem you are solving.</li><li><b>Depth of technical concepts:</b> APIs, databases, authentication, algorithms, testing, and deployment should be inside the project.</li><li><b>Demonstrability:</b> a working app beats a brilliant idea that never got finished.</li><li><b>Understanding every part:</b> if you cannot answer why this technology and what challenges you faced, the interviewer will find out.</li></ul><table class='matrix-table'><thead><tr><th>#</th><th>Project</th><th>Core Stack</th><th>Skills Proven</th><th>Best For</th></tr></thead><tbody><tr><td>1</td><td>Campus Placement Management System</td><td>React, Node/Express, MongoDB·MySQL (or Spring Boot, ASP.NET Core)</td><td>Full stack, DB design, authentication, APIs, role management</td><td>Front/Back/Full Stack</td></tr><tr><td>2</td><td>AI Resume Screening &amp; Skill Gap Analysis</td><td>Python, spaCy, Sentence-BERT, FastAPI, React</td><td>NLP, text processing, API integration, practical AI</td><td>AI/ML, Backend</td></tr><tr><td>3</td><td>Sales Analysis &amp; BI Dashboard</td><td>Python, Pandas, SQL, Power BI·Tableau</td><td>Data cleaning, SQL, visualization, communicating insights</td><td>Data/Business Analyst</td></tr><tr><td>4</td><td>Automated CI/CD Deployment Platform</td><td>GitHub Actions, Docker, AWS</td><td>Git, Docker, CI/CD, cloud deployment, automation</td><td>DevOps, Cloud, Backend</td></tr><tr><td>5</td><td>Phishing URL Detection System</td><td>Python, Pandas, NumPy, scikit-learn, Flask·FastAPI</td><td>Security basics, ML, feature engineering, model evaluation</td><td>Cybersecurity, ML</td></tr><tr><td>6</td><td>AI-powered Code Review Assistant</td><td>React, Python/Node, LLM API, GitHub integration</td><td>API and GitHub integration, prompt design, practical AI apps</td><td>AI/ML, Backend</td></tr></tbody></table>"
+            },
+            "box2": {
+                  "title": "2 · Per-Project Design and the 'Ordinary vs. Standout' Difference",
+                  "html": "<p>For each project, the video stresses the <b>one detail people commonly skip</b> rather than the feature list.</p><h5>Project 1 · Placement Management</h5><p>Define three roles (student, recruiter, administrator) and use <b>Role-Based Access Control</b> so each user reaches only what they are authorized to use. Add application status tracking, notifications, search filters, and a statistics dashboard; optionally add resume screening that matches student skills to job requirements.</p><h5>Project 2 · Resume Screening</h5><p>Take a PDF resume and a JD (Job Description), extract skills, education, experience, and keywords, compare them with the JD, and generate a matched/missing skills report. For example, if the JD asks for Java, Spring Boot, SQL, REST APIs, and Git and the resume has only Java, SQL, and Git, flag Spring Boot and REST APIs as gaps. <b>A score without a reason is a black box</b>, so show matched keywords, missing skills, and the resume sections that influenced the result, and test with varied resumes and JDs.</p><h5>Project 3 · Sales BI Dashboard</h5><p>Clean a public (or realistic sample) dataset with Pandas, store it in SQL, and visualize total revenue, monthly sales, top products, regional performance, YoY, average order value (AOV), revenue growth, and profit margin. Add date, category, and location filters, and write the <b>insight section</b> most students skip (which category earned the most and which month was strongest). A chart shows data; the insight shows thinking.</p><h5>Project 4 · CI/CD Platform</h5><p>On every GitHub push: check out the code, install dependencies, run automated tests, build, and deploy; if anything fails, show the error instead of deploying. Add environment variables, deployment logs, and basic monitoring, and separate staging and production environments for a bigger challenge. The warning is clear: <b>a YAML file sitting in a repository is not enough; you must actually run the pipeline and demonstrate a successful deployment</b>.</p><h5>Project 5 · Phishing URL Detection</h5><p>Extract features such as URL length, special-character count, suspicious patterns, and domain information, then train and compare Logistic Regression, Decision Tree, and Random Forest. <b>Accuracy alone is not enough; look at Precision, Recall, and the Confusion Matrix</b>, because labeling a phishing URL as safe carries serious consequences. The UI should show the prediction with a simple explanation, framed as a <b>risk indicator</b>, not a guarantee that a site is safe or unsafe.</p><h5>Project 6 · AI Code Review Assistant</h5><p>Accept an uploaded code file or a GitHub repository/PR link and suggest improvements on quality, possible bugs, readability, and security (repeated code, missing input validation, inefficient logic, unsafe patterns). <b>Do not just send code to an LLM API and display what comes back</b>: categorize findings by severity, show the relevant code section, let users accept or reject each suggestion, and store past reviews for comparison. Test with different code samples for relevance, and present output as recommendations developers must verify, not guaranteed security detection.</p>"
+            },
+            "box3": {
+                  "title": "3 · Selection Strategy and Resume Writing: Depth, Evidence, Accountability",
+                  "html": "<p><b>Choose by target role.</b> Full stack: Placement Management. AI/ML: Resume Screening and Code Review Assistant. Data analytics: Sales Dashboard. Cloud/DevOps: CI/CD Platform. Cybersecurity: Phishing URL Detection. Do not build all six just to fill the resume: <b>two or three well-developed projects always beat six half-finished ones</b>. Pick one that matches your current skill level, build the core functionality first, then level up with extra features.</p><p><b>Resume wording must show what you built and what technical work you did.</b> 'Created a website using React and Node JS' tells a recruiter almost nothing. 'Developed a full stack campus placement management system using React, Node.js, Express, and MongoDB featuring role-based authentication, job application tracking, and a recruiter dashboard' is the same project with a completely different impression. Add your GitHub link wherever possible, and make the README clear: project overview, features, tech stack, setup instructions, screenshots, and a live demo link, so others can run it. The golden rule: <b>never list a technology or feature you did not actually use or implement</b>.</p><p>The pattern running through the whole video is <b>verifiability and accountability</b>: attach reasons to AI scores, Precision/Recall to classifiers, an accept/reject workflow to code review, and real execution evidence to deployments. The goal is not the most complex project but showing you can identify a problem, choose the right tool, build a working solution, and explain your technical decisions. Build it, test it, document it, and be confident enough to explain every line of it in the interview.</p>"
+            }
+      },
+      "addedDate": "2026-11-25"
+},
+
+    {
       "id": "five-stages-of-hacking-attack-lifecycle-2026",
       "categoryId": "agentops",
       "moduleTag": "ATTACK LIFECYCLE & DETECTION OBSERVABILITY",
